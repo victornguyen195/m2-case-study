@@ -1,0 +1,18 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="smart_experts_listing_data_source" xsi:type="string">Smart\ExpertReview\Model\ResourceModel\Experts\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Smart\ExpertReview\Model\ResourceModel\Experts\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">smart_experts</argument>
+            <argument name="resourceModel" xsi:type="string">Smart\ExpertReview\Model\ResourceModel\Experts</argument>
+        </arguments>
+    </virtualType>
+    <preference for="Smart\ExpertReview\Api\ExpertsRepositoryInterface" type="Smart\ExpertReview\Model\ExpertsRepository"/>
+    <preference for="Smart\ExpertReview\Api\Data\ExpertsInterface" type="Smart\ExpertReview\Model\Experts"/>
+    <preference for="Smart\ExpertReview\Api\Data\ExpertsSearchResultInterface" type="Smart\ExpertReview\Model\ExpertsSearchResult"/>
+</config>

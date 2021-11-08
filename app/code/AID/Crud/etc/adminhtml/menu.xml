@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="AID_Crud::crud" title="Books Listing" module="AID_Crud" sortOrder="1000" resource="Magento_Catalog::categories" action="crud/index/index"/>
+    </menu>
+</config>
+

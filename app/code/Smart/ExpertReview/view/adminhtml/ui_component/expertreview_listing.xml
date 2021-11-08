@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">expertreview_listing.expertreview_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>expertreview_columns</spinner>
+        <deps>
+            <dep>expertreview_listing.expertreview_listing_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="expertreview_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <storageConfig>
+                <param name="cacheRequests" xsi:type="boolean">false</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+<!--        <aclResource>Magento_Review::reviews_all</aclResource>-->
+        <dataProvider class="Smart\ExpertReview\Ui\DataProvider\Product\ExpertReviewDataProvider" name="expertreview_listing_data_source">
+            <settings>
+                <requestFieldName>entity_id</requestFieldName>
+                <primaryFieldName>entity_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+<!--        <filters name="listing_filters">-->
+<!--            <argument name="data" xsi:type="array">-->
+<!--                <item name="config" xsi:type="array">-->
+<!--                    <item name="params" xsi:type="array">-->
+<!--                        <item name="filters_modifier" xsi:type="array"/>-->
+<!--                    </item>-->
+<!--                </item>-->
+<!--            </argument>-->
+<!--            <settings>-->
+<!--                <statefull>-->
+<!--                    <property name="applied" xsi:type="boolean">false</property>-->
+<!--                </statefull>-->
+<!--            </settings>-->
+<!--        </filters>-->
+        <paging name="listing_paging"/>
+    </listingToolbar>
+    <columns name="expertreview_columns" class="Magento\Ui\Component\Listing\Columns">
+        <settings>
+            <childDefaults>
+                <param name="fieldAction" xsi:type="array">
+                    <item name="provider" xsi:type="string">expertreviewsGrid</item>
+                    <item name="target" xsi:type="string">selectExpertreview</item>
+                    <item name="params" xsi:type="array">
+                        <item name="0" xsi:type="string">${ $.$data.rowIndex }</item>
+                    </item>
+                </param>
+            </childDefaults>
+        </settings>
+        <column name="entity_id" sortOrder="0">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">ID</label>
+                <sorting>asc</sorting>
+            </settings>
+        </column>
+        <column name="expert_id" component="Magento_Ui/js/grid/columns/select">
+            <settings>
+                <options class="Smart\ExpertReview\Model\Source\ExpertOption"/>
+                <filter>select</filter>
+                <editor>
+                    <editorType>select</editorType>
+                </editor>
+                <dataType>select</dataType>
+                <label translate="true">Expert</label>
+            </settings>
+        </column>
+        <column name="title" sortOrder="2">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Title</label>
+            </settings>
+        </column>
+<!--        <column name="detail" sortOrder="3">-->
+<!--            <settings>-->
+<!--                <filter>text</filter>-->
+<!--                <label translate="true">Detail</label>-->
+<!--            </settings>-->
+<!--        </column>-->
+        <column name="link_video" sortOrder="4">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">video</item>
+                    <item name="source" xsi:type="string">smart_expertreview</item>
+                    <item name="dataScope" xsi:type="string">link_video</item>
+                    <item name="label" xsi:type="string" translate="true">Video</item>
+                    <item name="filter" xsi:type="string">text</item>
+                </item>
+            </argument>
+        </column>
+        <actionsColumn name="actions" class="Smart\ExpertReview\Ui\Component\Listing\Column\ExpertReview\ExpertReviewActions">
+            <settings>
+                <indexField>entity_id</indexField>
+            </settings>
+        </actionsColumn>
+    </columns>
+</listing>
