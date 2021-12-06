@@ -5,7 +5,8 @@
             "name": true,
             "image": true,
             "status": true,
-            "description": true
+            "description": true,
+            "short_description": true
         },
         "index": {
             "BANNER_BANNER_ID": true

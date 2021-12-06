@@ -5,6 +5,7 @@
         <column xsi:type="varchar" name="description" nullable="false" length="255" comment="Banner Description" disabled="true"/>
         <column xsi:type="varchar" name="image" nullable="false" length="255" comment="Banner Image" />
         <column xsi:type="int" name="status" nullable="false" padding="2" comment="Banner Image" />
+        <column xsi:type="varchar" name="short_description" nullable="false" length="64" comment="Banner Short Description" />
         <index referenceId="DEV_BANNER_ID" indexType="btree">
             <column name="banner_id"/>
         </index>
