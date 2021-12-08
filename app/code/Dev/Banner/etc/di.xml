@@ -1,0 +1,5 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Dev\Banner\Api\BannerInterface" type="Dev\Banner\Model\Banner" />
+    <preference for="Dev\Banner\Api\BannerSearchResultInterface" type="Dev\Banner\Model\BannerSearchResult" />
+    <preference for="Dev\Banner\Api\BannerRepositoryInterface" type="Dev\Banner\Model\BannerRepository" />
+</config>
