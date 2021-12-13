@@ -3,4 +3,5 @@
     <referenceContainer name="content">
         <block class="Dev\Banner\Block\Banner" name="banner_detail" template="Dev_Banner::banner.phtml" />
     </referenceContainer>
+    <referenceContainer name="footer" remove="true" />
 </page>
