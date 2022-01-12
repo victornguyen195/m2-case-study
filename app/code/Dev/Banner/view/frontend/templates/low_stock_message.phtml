@@ -1,0 +1,12 @@
+<?php
+    /**
+     * @var $block \Magento\Framework\View\Element\Template
+     */
+
+    /** @var $viewModel \Dev\Banner\ViewModel\LowStock\LowStock */
+    $viewModel = $block->getViewModel();
+
+?>
+<?php if ($viewModel->getLowStockMessageMessage()) :?>
+    <p><?= $viewModel->getLowStockMessageMessage() ?></p>
+<?php endif; ?>
