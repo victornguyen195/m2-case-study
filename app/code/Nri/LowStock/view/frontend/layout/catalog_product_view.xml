@@ -4,7 +4,7 @@
     </head>
     <body>
         <referenceContainer name="product.info.form.content">
-            <referenceBlock name="product.info.addtocart">
+            <referenceBlock name="product.info.addtocart.additional">
                 <action method="setTemplate">
                     <argument name="template" xsi:type="string">Nri_LowStock::product/view/addtocart.phtml</argument>
                 </action>
