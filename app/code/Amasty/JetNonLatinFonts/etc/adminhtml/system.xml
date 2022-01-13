@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="amasty_jettheme" translate="label" type="text" sortOrder="100520" showInDefault="1" showInWebsite="1" showInStore="1">
+            <group id="fonts" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="0" showInStore="1">
+                <field id="non_latin_font" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Non-Latin Font</label>
+                    <source_model>Amasty\JetNonLatinFonts\Model\Config\Source\NonLatinFonts</source_model>
+                    <comment><![CDATA[Specify the Non-Latin font name. For example <strong>Hachi Maru Pop.</strong>]]></comment>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="font_type">non-latin</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

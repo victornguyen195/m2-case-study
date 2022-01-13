@@ -1,0 +1,92 @@
+<?php
+
+use Amasty\JetTheme\ViewModel\Wishlist\SharingViewModel;
+use Magento\Framework\View\Element\Template;
+use Magento\Wishlist\Helper\Rss;
+
+/** @var Template $block */
+$reviewFormTrigger = 'review-form-open';
+// phpcs:ignore
+$rssHelper = $this->helper(Rss::class);
+/** @var SharingViewModel $viewModel */
+$viewModel = $block->getViewModel();
+?>
+
+<div class="amtheme-popup-block -wishlist"
+     data-mage-init='{"amPopup":{"trigger": "<?= $escaper->escapeHtml($reviewFormTrigger); ?>"}}'>
+    <div class="popup-inner">
+        <button class="amtheme-button-close"
+                tabindex="0"
+                title="<?= $escaper->escapeHtmlAttr(__('Close')); ?>"
+                aria-label="<?= $escaper->escapeHtmlAttr(__('Close')); ?>"
+                data-amtheme-js="popup-close">
+            <svg class="amtheme-icon -icon-close">
+                <use xlink:href="#icon-close" />
+            </svg>
+        </button>
+        <div class="form-heading">
+            <h4 class="form-title">
+                <?= $escaper->escapeHtml(__('Wish List Sharing')) ?>
+            </h4>
+        </div>
+        <div class="block-content">
+            <form class="form wishlist share"
+                  action="<?= $escaper->escapeUrl($viewModel->getSendUrl()) ?>"
+                  id="form-validate"
+                  method="post"
+                  data-hasrequired="<?= $escaper->escapeHtmlAttr(__('* Required Fields')) ?>"
+                  data-mage-init='{"validation":{}}'>
+                <fieldset class="fieldset">
+                    <?= $block->getBlockHtml('formkey') ?>
+                    <legend class="legend">
+                        <?= $escaper->escapeHtml(__('Sharing Information')) ?>
+                    </legend>
+                    <div class="field emails required">
+                        <label class="label" for="email_address">
+                            <?= $escaper->escapeHtml(__('Email addresses, separated by commas')) ?>
+                        </label>
+                        <div class="control">
+                            <input type="text"
+                                   name="emails"
+                                   id="email_address"
+                                   data-validate="{required:true,'validate-emails':true}"
+                                   value="<?= $escaper->escapeHtml($viewModel->getEnteredData('emails')) ?>" />
+                        </div>
+                    </div>
+                    <div class="field text">
+                        <label class="label" for="message">
+                            <?= $escaper->escapeHtml(__('Message')) ?>
+                        </label>
+                        <div class="control">
+                            <textarea id="message" name="message" cols="60" rows="4"><?= /* @noEscape */ $block->getEnteredData('message') ?></textarea>
+                        </div>
+                    </div>
+                    <?php if ($rssHelper->isRssAllow()): ?>
+                        <div class="field choice rss">
+                            <input type="checkbox"
+                                   name="rss_url"
+                                   id="rss_url"
+                                   value="1"
+                                   title="<?= $escaper->escapeHtmlAttr(__('Check here to link an RSS feed to your Wish List.')) ?>"
+                                   class="checkbox" />
+                            <label class="label" for="rss_url">
+                                <?= $escaper->escapeHtml(__('Check here to link an RSS feed to your Wish List.')) ?>
+                            </label>
+                        </div>
+                    <?php endif; ?>
+                </fieldset>
+                <?= $block->getChildHtml('captcha'); ?>
+                <div class="actions-toolbar">
+                    <div class="primary">
+                        <button type="submit"
+                                title="<?= $escaper->escapeHtmlAttr(__('Share Wish List')) ?>"
+                                aria-label="<?= $escaper->escapeHtmlAttr(__('Share Wish List')) ?>"
+                                class="action submit primary">
+                            <?= $escaper->escapeHtml(__('Share')) ?>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

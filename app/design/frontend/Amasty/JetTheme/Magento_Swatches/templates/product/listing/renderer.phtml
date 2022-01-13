@@ -1,0 +1,55 @@
+<?php
+/**
+ * @var $block Magento\Swatches\Block\Product\Renderer\Listing\Configurable
+ * @var $configurableViewModel Magento\Swatches\ViewModel\Product\Renderer\Configurable
+ * @var $productViewModel Amasty\JetTheme\ViewModel\ProductPage\ProductPageViewModel
+ * @var $escaper Magento\Framework\Escaper
+ */
+
+$product = $block->getProduct();
+$productId = $product->getId();
+$productViewModel = $block->getProductViewModel();
+$configurableViewModel = $block->getConfigurableViewModel();
+$swatchType = $productViewModel ? $productViewModel->getSwatchesType() : false;
+// 2.3.0 compatibility fix
+$isShowTooltip = method_exists($configurableViewModel, 'getShowSwatchTooltip');
+?>
+
+<?php if ($product->isSaleable()): ?>
+    <div class="swatch-wrapper <?= $swatchType ? '-' . $escaper->escapeHtmlAttr($swatchType) : ''?> swatch-opt-<?= $escaper->escapeHtmlAttr($productId) ?>"
+         data-role="swatch-option-<?= $escaper->escapeHtmlAttr($productId) ?>"></div>
+
+    <script type="text/x-magento-init">
+        {
+            "[data-role=swatch-option-<?= $escaper->escapeJs($productId) ?>]": {
+                "Magento_Swatches/js/swatch-renderer": {
+                    "selectorProduct": ".product-item-details",
+                    "onlySwatches": true,
+                    "enableControlLabel": false,
+                    "numberToShow": <?=  $escaper->escapeJs($block->getNumberSwatchesPerProduct()) ?>,
+                    "jsonConfig": <?= /* @noEscape */ $block->getJsonConfig() ?>,
+                    "jsonSwatchConfig": <?= /* @noEscape */ $block->getJsonSwatchConfig() ?>,
+                    "mediaCallback": "<?= $escaper->escapeJs($escaper->escapeUrl($block->getMediaCallback())) ?>",
+                    "jsonSwatchImageSizeConfig": <?= /* @noEscape */ $block->getJsonSwatchSizeConfig() ?>
+                    <?php if ($isShowTooltip): ?>
+                        ,"showTooltip": <?= $escaper->escapeJs($configurableViewModel->getShowSwatchTooltip()) ?>
+                    <?php endif;?>
+                }
+            }
+        }
+    </script>
+
+    <script type="text/x-magento-init">
+        {
+            "[data-role=priceBox][data-price-box=product-id-<?= $escaper->escapeJs($productId) ?>]": {
+                "priceBox": {
+                    "priceConfig": {
+                        "priceFormat": <?= /* @noEscape */ $block->getPriceFormatJson(); ?>,
+                        "prices": <?= /* @noEscape */ $block->getPricesJson(); ?>
+                    }
+                }
+            }
+        }
+    </script>
+<?php endif; ?>
+

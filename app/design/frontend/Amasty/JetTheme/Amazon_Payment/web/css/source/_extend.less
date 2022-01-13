@@ -1,0 +1,112 @@
+//
+//  Amazon login styles
+//  ____________________________________________
+
+//
+//  Variables
+//  --------------------------------------------
+
+@amazon-checkout-now__min-width: 110px;
+@amazon-button-wrap__max-width: @checkout-page-opc-wrap__max-width;
+
+//
+//  Common
+//  --------------------------------------------
+
+& when (@media-common = true) {
+    .amtheme-amazon-product {
+        & {
+            .am-padding(10px);
+
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            border-radius: @amtheme__border-radius__s;
+            background: @amtheme__background-secondary__color;
+        }
+
+        > .amazon-checkout-now {
+            .am-margin(0 10px 10px 0);
+            .am-padding(0);
+
+            min-width: @amazon-checkout-now__min-width;
+            border: 0;
+        }
+
+        > .amazon-button-container {
+            .am-margin(0);
+            width: auto;
+        }
+
+        > .amazon-button-container .field-tooltip {
+            .am-margin(0);
+        }
+    }
+
+    .checkout-shipping-address {
+        .amazon-button-container,
+        .amazon-express-title,
+        .amazon-divider {
+            max-width: @amazon-button-wrap__max-width;
+            width: 100%;
+        }
+
+        .amazon-button-container,
+        .amazon-express-title {
+            box-sizing: border-box;
+            border-radius: @amtheme__border-radius__s;
+            background: @amtheme__background-secondary__color;
+        }
+
+        .amazon-button-container__cell {
+            min-width: 35px;
+        }
+
+        .amazon-button-container {
+            .am-margin(0 0 30px);
+            .am-padding(20px);
+
+            display: flex;
+            justify-content: center;
+        }
+
+        .amazon-express-title {
+            .am-padding(20px 20px 0);
+
+            text-align: center;
+            font-weight: @font-weight__bold;
+            font-size: @h3__font-size;
+        }
+
+        .amazon-button-container .field-tooltip,
+        .amazon-express-title + .amazon-button-container {
+            margin-top: -5px; // Override Amazon styles
+        }
+
+        .amazon-divider {
+            .am-margin(30px 0);
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__xs) {
+    .checkout-shipping-address {
+        .amazon-divider {
+            border: 0;
+            line-height: 1;
+        }
+    }
+}
+
+//
+//  Desktop
+//  --------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .amtheme-amazon-product {
+        > .amazon-checkout-now {
+            .am-margin(0 10px 0 0);
+        }
+    }
+}

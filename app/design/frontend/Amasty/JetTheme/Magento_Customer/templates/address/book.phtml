@@ -1,0 +1,64 @@
+<?php
+/** @var \Magento\Customer\Block\Address\Book $block */
+?>
+
+<div class="amtheme-addresses-block amtheme-addresses-default">
+    <div class="amtheme-content">
+        <?php if ($pAddsses = $block->getDefaultBilling()): ?>
+            <div class="amtheme-address-card amtheme-address-billing">
+                <div class="amtheme-wrapper">
+                    <span class="amtheme-title">
+                        <?= $block->escapeHtml(__('Default Billing Address')) ?>
+                    </span>
+                    <address class="amtheme-content">
+                        <?= $block->getAddressHtml($block->getAddressById($pAddsses)) ?>
+                    </address>
+                </div>
+                <div class="amtheme-actions">
+                    <a class="action edit"
+                       title="<?= $block->escapeHtml(__('Edit Address')) ?>"
+                       href="<?= $block->escapeUrl($block->getAddressEditUrl($pAddsses)) ?>">
+                        <?= $block->escapeHtml(__('Edit')) ?>
+                    </a>
+                </div>
+            </div>
+        <?php else: ?>
+            <div class="amtheme-address-card amtheme-billing-address">
+                <span class="amtheme-title">
+                    <?= $block->escapeHtml(__('Default Billing Address')) ?>
+                </span>
+                <div class="amtheme-content">
+                    <?= $block->escapeHtml(__('You have no default billing address in your address book.')) ?>
+                </div>
+            </div>
+        <?php endif ?>
+        <?php if ($pAddsses = $block->getDefaultShipping()): ?>
+            <div class="amtheme-address-card amtheme-address-shipping">
+                <div class="amtheme-wrapper">
+                    <span class="amtheme-title">
+                        <?= $block->escapeHtml(__('Default Shipping Address')) ?>
+                    </span>
+                    <address class="amtheme-content">
+                        <?= $block->getAddressHtml($block->getAddressById($pAddsses)) ?>
+                    </address>
+                </div>
+                <div class="amtheme-actions">
+                    <a class="action edit"
+                       title="<?= $block->escapeHtml(__('Edit Address')) ?>"
+                       href="<?= $block->escapeUrl($block->getAddressEditUrl($pAddsses)) ?>">
+                        <?= $block->escapeHtml(__('Edit')) ?>
+                    </a>
+                </div>
+            </div>
+        <?php else: ?>
+            <div class="amtheme-address-card amtheme-shipping-address">
+                <span class="amtheme-title">
+                    <?= $block->escapeHtml(__('Default Shipping Address')) ?>
+                </span>
+                <div class="amtheme-content">
+                    <?= $block->escapeHtml(__('You have no default shipping address in your address book.')) ?>
+                </div>
+            </div>
+        <?php endif ?>
+    </div>
+</div>

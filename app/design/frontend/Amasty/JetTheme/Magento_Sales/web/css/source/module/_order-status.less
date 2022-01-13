@@ -1,0 +1,27 @@
+//
+//  Order Status Styles
+//  _____________________________________________
+
+//
+//  Common
+//  ---------------------------------------------
+
+& when (@media-common = true) {
+    .amtheme-status {
+        &.-processing {
+            .am-status-indicator(@color-green);
+        }
+
+        &.-closed {
+            .am-status-indicator(@color-red);
+        }
+
+        &.-new {
+            .am-status-indicator(@color-yellow);
+        }
+
+        &.-holded {
+            .am-status-indicator(@color-purple);
+        }
+    }
+}

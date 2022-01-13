@@ -1,0 +1,61 @@
+//
+//  Swatch option tooltip styles
+//  ____________________________________________
+
+//
+//  Common
+//  ---------------------------------------------
+
+& when (@media-common = true) {
+    .swatch-option-tooltip {
+        & {
+            position: absolute;
+            z-index: @swatch-tooltip__z-index;
+            display: none;
+            padding: @swatch-tooltip__padding;
+            min-width: 30px;
+            min-height: 10px;
+            max-width: 90vw;
+            max-height: 100%;
+            border-radius: @swatch-tooltip__border-radius;
+            background: @swatch-tooltip__background;
+            color: @amtheme__text-primary__color;
+            text-align: center;
+        }
+
+        .corner {
+            display: none;
+        }
+
+        &-layered .image,
+        .image {
+            display: block;
+            margin: 0 auto @swatch-tooltip__padding;
+            width: @swatch-tooltip__image__size;
+            height: @swatch-tooltip__image__size;
+            border-radius: @swatch-tooltip__border-radius @swatch-tooltip__border-radius 0 0;
+        }
+
+        &-layered {
+            position: absolute;
+            z-index: @swatch-tooltip__z-index;
+            display: none;
+            width: 140px;
+            border-radius: @swatch-tooltip__border-radius;
+            background: @swatch-tooltip__background;
+            color: @amtheme__text-primary__color;
+        }
+
+        .title {
+            .am-word-break;
+
+            display: block;
+            overflow: hidden;
+            max-height: 200px;
+            color: @amtheme__text-primary__color;
+            text-align: center;
+            letter-spacing: @letter-spacing__base;
+            font-size: @swatch-tooltip__font-size;
+        }
+    }
+}

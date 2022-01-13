@@ -1,0 +1,57 @@
+//
+//  Amasty columns layout variables
+//  _____________________________________________
+
+//
+//  Base
+//  ---------------------------------------------
+
+// Page layout class names
+@am-layout-class-1column: @layout-class-1column;
+@am-layout-class-2columns__left: @layout-class-2columns__left;
+@am-layout-class-2columns__right: @layout-class-2columns__right;
+@am-layout-class-3columns: @layout-class-3columns;
+@am-layout-class-product-full-width: page-layout-product-full-width;
+@am-layout-class-category-full-width: page-layout-category-full-width;
+@am-layout-class-page-full-width: page-layout-page-full-width;
+
+// Columns variables
+@am-layout-column-main__width-1: 100%;
+
+//
+//  Tablet
+//  ---------------------------------------------
+
+// Gutter
+@am-gutter-2columns__width: 2%;
+@am-gutter-3columns__width: @am-gutter-2columns__width;
+
+// Variables for aside columns
+@am-layout-column__left-width: 185px;
+@am-layout-column__right-width: @am-layout-column__left-width;
+
+// Columns variables
+@am-layout-column-main__width-2-left: ~'calc(100% - @{am-layout-column__left-width} - @{am-gutter-2columns__width})';
+@am-layout-column-main__width-2-right: ~'calc(100% - @{am-layout-column__right-width} - @{am-gutter-2columns__width})';
+@am-layout-column-main__width-3: ~'calc(100% - @{am-layout-column__left-width} - @{am-layout-column__right-width} - @{am-gutter-3columns__width} * 2)';
+@am-layout-grid-column-main__width-3: ~'calc(100% - @{am-layout-column__left-width} - @{am-layout-column__right-width})';
+@am-layout-grid-filter-inactive__width-3: ~'calc(@{am-layout-grid-column-main__width-3} + @{am-layout-column__left-width} * 2)';
+
+//
+//  Desktop
+//  ---------------------------------------------
+
+// Gutter
+@am-gutter-2columns__width__l: 4%;
+@am-gutter-3columns__width__l: 25px;
+
+// Variables for aside columns
+@am-layout-column__left-width__l: 230px;
+@am-layout-column__right-width__l: @am-layout-column__left-width__l;
+
+// Columns variables
+@am-layout-column-main__width-2-left__l: ~'calc(100% - @{am-layout-column__left-width__l} - @{am-gutter-2columns__width__l})';
+@am-layout-column-main__width-2-right__l: ~'calc(100% - @{am-layout-column__right-width__l} - @{am-gutter-2columns__width__l})';
+@am-layout-column-main__width-3__l: ~'calc(100% - @{am-layout-column__left-width__l} - @{am-layout-column__right-width__l} - @{am-gutter-3columns__width__l} * 2)';
+@am-layout-grid-column-main__width-3__l: ~'calc(100% - @{am-layout-column__left-width__l} - @{am-layout-column__right-width__l} )';
+@am-layout-grid-filter-inactive__width-3__l: ~'calc(100% - @{am-layout-column__right-width__l} )';

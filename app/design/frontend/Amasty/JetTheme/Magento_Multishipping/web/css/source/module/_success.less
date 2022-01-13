@@ -1,0 +1,84 @@
+//
+//  Multishipping success page styles
+//  _____________________________________________
+
+//
+//  Variables
+//  ---------------------------------------------
+
+@amtheme-multishipping-success_item__gap: 45px;
+@amtheme-multishipping-success-button-arrow__size: 20px;
+
+//
+//  Common
+//  ---------------------------------------------
+
+& when (@media-common = true) {
+    .multishipping-checkout-success {
+        .page-title {
+            text-align: center;
+        }
+    }
+
+    .multishipping-checkout-success .multicheckout.success {
+        & {
+            margin: auto;
+            max-width: 530px;
+            width: 100%;
+        }
+
+        .actions-toolbar {
+            margin-top: 45px;
+        }
+
+        .note {
+            text-align: center;
+            font-size: 1.6rem;
+        }
+    }
+
+    .multishipping-checkout-success .orders-list {
+        & {
+            .lib-list-reset-styles();
+
+            margin-top: @amtheme-multishipping-success_item__gap;
+        }
+
+        > .shipping-list:not(:first-of-type) {
+            margin-top: @amtheme-multishipping-success_item__gap;
+        }
+
+        .order-id {
+            font-weight: @font-weight__bold;
+            font-size: @h2__font-size;
+        }
+
+        .shipping-item {
+            margin-top: @indent__s;
+            padding: @indent__m @indent__base;
+            border-radius: @amtheme__border-radius__s;
+            background: @amtheme__background-secondary__color;
+        }
+
+        .shipping-address {
+            line-height: 2.5rem;
+        }
+    }
+
+    .multishipping-checkout-success .actions-toolbar {
+        & {
+            justify-content: center;
+        }
+
+        .action.submit {
+            display: flex;
+        }
+
+        .action.submit .amtheme-icon {
+            .am-margin-left(10px);
+            width: @amtheme-multishipping-success-button-arrow__size;
+            height: @amtheme-multishipping-success-button-arrow__size;
+            fill: @amtheme__outline__color;
+        }
+    }
+}

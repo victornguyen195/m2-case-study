@@ -1,0 +1,97 @@
+<?php
+$order = $block->getOrder();
+$invoice = $block->getInvoice();
+
+if ($invoice) {
+    $invoices = [$invoice];
+} else {
+    $invoices = $order->getInvoiceCollection();
+}
+
+foreach ($invoices as $invoice): ?>
+<div class="order-details-items invoice">
+    <div class="order-title">
+        <?= $block->escapeHtml(__('Invoice #')) ?><?= $block->escapeHtml($invoice->getIncrementId()) ?>
+    </div>
+    <div class="table-wrapper table-order-items invoice">
+        <table class="data table table-order-items invoice" id="my-invoice-table-<?= (int) $invoice->getId() ?>">
+            <caption class="table-caption"><?= $block->escapeHtml(__('Items Invoiced')) ?></caption>
+            <thead>
+                <tr>
+                    <th class="col name"><?= $block->escapeHtml(__('Product Name')) ?></th>
+                    <th class="col sku"><?= $block->escapeHtml(__('SKU')) ?></th>
+                    <th class="col price"><?= $block->escapeHtml(__('Price')) ?></th>
+                    <th class="col qty"><?= $block->escapeHtml(__('Qty Invoiced')) ?></th>
+                    <th class="col subtotal"><?= $block->escapeHtml(__('Subtotal')) ?></th>
+                </tr>
+            </thead>
+            <?php
+            $items = $invoice->getItemsCollection();
+            foreach ($items as $item): ?>
+                <?php if (!$item->getOrderItem()->getParentItem()): ?>
+                    <tbody>
+                        <?= $block->getItemHtml($item) ?>
+                    </tbody>
+                <?php endif; ?>
+            <?php endforeach; ?>
+            <tfoot>
+                <?= $block->getInvoiceTotalsHtml($invoice) ?>
+            </tfoot>
+        </table>
+    </div>
+    <div class="block block-order-details-view">
+        <div class="block-title">
+            <?= $block->escapeHtml(__('Order Information')) ?>
+        </div>
+        <div class="block-content">
+            <?php if (!$order->getIsVirtual()): ?>
+                <div class="box column -address box-order-shipping-address">
+                    <div class="box-title">
+                        <strong><?= $block->escapeHtml(__('Shipping Address')) ?></strong>
+                    </div>
+                    <address class="box-content">
+                        <?php $shipping = $invoice->getShippingAddress() ?>
+                        <?= /* @noEscape */ $block->formatAddress($shipping, 'html') ?>
+                    </address>
+                </div>
+            <?php endif; ?>
+
+            <div class="box column -address box-order-billing-address">
+                <div class="box-title">
+                    <strong><?= $block->escapeHtml(__('Billing Address')) ?></strong>
+                </div>
+                <address class="box-content">
+                    <?php $billing = $invoice->getbillingAddress() ?>
+                    <?= /* @noEscape */ $block->formatAddress($order->getBillingAddress(), 'html') ?>
+                </address>
+            </div>
+
+            <div class="column -methods">
+                <?php if (!$order->getIsVirtual()): ?>
+                    <div class="box box-order-shipping-method">
+                        <div class="box-title">
+                            <strong><?= $block->escapeHtml(__('Shipping Method')) ?></strong>
+                        </div>
+                        <div class="box-content">
+                            <?php if ($order->getShippingDescription()): ?>
+                                <?= $block->escapeHtml($order->getShippingDescription()) ?>
+                            <?php else: ?>
+                                <?= $block->escapeHtml(__('No shipping information available')) ?>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
+
+                <div class="box box-order-billing-method<?= $order->getIsVirtual() ? ' -fullwidth' : ''?>">
+                    <div class="box-title">
+                        <strong><?= $block->escapeHtml(__('Payment Method')) ?></strong>
+                    </div>
+                    <div class="box-content">
+                        <?= $block->getPaymentInfoHtml() ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php endforeach; ?>

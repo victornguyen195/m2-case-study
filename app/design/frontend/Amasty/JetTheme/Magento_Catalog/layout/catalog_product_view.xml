@@ -1,0 +1,149 @@
+<?xml version="1.0"?>
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="css/gallery/gallery.css"/>
+    </head>
+
+    <body>
+        <referenceContainer name="content">
+            <container name="amtheme.product.wrap" htmlTag="div" htmlClass="amtheme-product-wrap" before="-">
+                <container name="amtheme.product.info" htmlTag="div" htmlClass="amtheme-product-info" after="-">
+                    <container name="amtheme.short.info" htmlTag="div" htmlClass="amtheme-short-info" after="page.main.title"/>
+                </container>
+            </container>
+
+            <container name="amtheme.product.info.wrap" htmlTag="div" htmlClass="amtheme-productinfo-wrap">
+                <container name="amtheme.product.aside.wrap" htmlTag="div" htmlClass="amtheme-productaside-wrap" />
+            </container>
+        </referenceContainer>
+
+        <referenceContainer name="product.info.stock.sku">
+            <block
+                class="Magento\Framework\View\Element\Template"
+                name="amtheme.stock.wrapper"
+                ifconfig="amasty_jettheme/product_page/show_stock_info"
+                template="Magento_Catalog::product/view/am-config-wrapper.phtml"
+                before="-"
+            />
+            <block
+                class="Magento\Framework\View\Element\Template"
+                name="amtheme.sku.wrapper"
+                ifconfig="amasty_jettheme/product_page/show_product_sku"
+                template="Magento_Catalog::product/view/am-config-wrapper.phtml"
+                after="amtheme.stock.wrapper"
+            />
+        </referenceContainer>
+
+        <referenceContainer name="amtheme.product.aside.wrap">
+            <block class="Magento\Review\Block\Product\Review"
+                   name="amtheme.product.info.review.tab"
+                   template="Magento_Catalog::product/view/am-review-tab.phtml"
+                   after="product.info.details"
+                   ifconfig="catalog/review/active"
+            >
+                <block class="Magento\Catalog\Block\Product\View"
+                       name="amtheme.product.info.review.rating.number"
+                       as="amtheme-rating-number"
+                       template="Magento_Review::helper/am-rating-number.phtml"
+                />
+                <block class="Magento\Catalog\Block\Product\View"
+                       name="amtheme.product.info.review.rating"
+                       as="amtheme-rating"
+                       template="Magento_Catalog::product/view/am-rating.phtml"
+                />
+            </block>
+        </referenceContainer>
+
+        <move element="product.info.details" destination="amtheme.product.aside.wrap" before="-" />
+        <move element="content.aside" destination="amtheme.product.aside.wrap" after="-" />
+
+        <move element="product.info.media" destination="amtheme.product.wrap" before="-" />
+
+        <move element="page.main.title" destination="amtheme.product.info" before="-" />
+        <move element="product.info.main" destination="amtheme.product.info" after="-" />
+
+        <move element="product.info.review" destination="amtheme.short.info" before="-" />
+        <move element="product.info.stock.sku" destination="amtheme.short.info" after="product.info.review" />
+        <move element="product.info.sku" destination="amtheme.sku.wrapper" />
+        <move element="product.info.type" destination="amtheme.stock.wrapper" />
+
+        <move element="product.info.overview" destination="product.info.main" before="-" />
+
+        <referenceBlock name="product.info.addtocart" remove="true"/>
+
+        <referenceBlock name="product.info">
+            <block class="Magento\Catalog\Block\Product\View" name="product.info.qty" as="product_info_qty" template="Magento_Catalog::product/view/qty.phtml" after="product.info.form.options"/>
+            <container name="amtheme.product.price" as="product-price-wrap" before="product.info.addtocart" />
+            <container name="amtheme.product.actions" htmlTag="div" htmlClass="amtheme-actions-wrap" after="amtheme.product.price" />
+            <container name="amtheme.product.amazon" htmlTag="div" htmlClass="amtheme-amazon-product" after="amtheme.product.actions" />
+
+            <block class="Magento\Framework\View\Element\Template"
+                   name="amtheme.payment.methods.block"
+                   template="Magento_Theme::html/payments.phtml"
+                   as="amtheme.product.payments"
+                   ifconfig="amasty_jettheme/payment_links/show_payment_links_block_product_page">
+                <arguments>
+                    <argument name="payment_view_model" xsi:type="object">Amasty\JetTheme\ViewModel\PaymentViewModel</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+
+        <referenceBlock name="product.info.media.image">
+            <arguments>
+                <argument name="product_view_model" xsi:type="object">Amasty\JetTheme\ViewModel\ProductPage\ProductPageViewModel</argument>
+            </arguments>
+        </referenceBlock>
+
+        <referenceBlock name="product.info">
+            <arguments>
+                <argument name="view_model" xsi:type="object">Amasty\JetTheme\ViewModel\ProductCaret\ProductCaretConfigurationViewModel</argument>
+                <argument name="layout_view_model" xsi:type="object">Amasty\JetTheme\ViewModel\ProductPage\ProductPageViewModel</argument>
+                <argument name="ajax_view_model" xsi:type="object">Amasty\JetTheme\ViewModel\Catalog\Ajax</argument>
+            </arguments>
+        </referenceBlock>
+
+        <referenceBlock name="catalog.product.related">
+            <arguments>
+                <argument name="am_product_caret_view_model" xsi:type="object">
+                    Amasty\JetTheme\ViewModel\ProductCaret\ProductCaretConfigurationViewModel
+                </argument>
+            </arguments>
+        </referenceBlock>
+
+        <referenceBlock name="product.info.upsell">
+            <arguments>
+                <argument name="am_product_caret_view_model" xsi:type="object">
+                    Amasty\JetTheme\ViewModel\ProductCaret\ProductCaretConfigurationViewModel
+                </argument>
+            </arguments>
+        </referenceBlock>
+
+        <move element="product.info.price" destination="amtheme.product.price" before="-" />
+        <move element="product.price.tier" destination="amtheme.product.price" after="product.info.price" />
+        <move element="product.info.social" destination="amtheme.product.actions" after="-" />
+        <move element="product.info.options.wrapper.bottom" destination="product.info" as="add_to_cart_button" />
+
+        <referenceBlock name="reviews.tab">
+            <block class="Magento\Catalog\Block\Product\View"
+                   name="amtheme.reviews.aside.title"
+                   template="Magento_Catalog::product/view/am-review-aside-title.phtml"
+                   before="-"
+            >
+                <arguments>
+                    <argument name="view_model" xsi:type="object">Amasty\JetTheme\ViewModel\Review\ReviewViewModel</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+
+        <referenceBlock name="view.addto.compare">
+            <arguments>
+                <argument name="amAjaxViewModel" xsi:type="object">Amasty\JetTheme\ViewModel\Catalog\Ajax</argument>
+                <argument name="amLayoutViewModel" xsi:type="object">Amasty\JetTheme\ViewModel\ProductPage\ProductPageViewModel</argument>
+            </arguments>
+        </referenceBlock>
+
+        <move element="product.review.form" destination="content" after="-" />
+        <move element="alert.urls" destination="product.info.main" after="-" />
+        <move element="product.info.mailto" destination="product.info.addto" after="-" />
+    </body>
+</page>

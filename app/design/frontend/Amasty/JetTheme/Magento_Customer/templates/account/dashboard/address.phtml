@@ -1,0 +1,52 @@
+<?php
+/** @var \Magento\Customer\Block\Account\Dashboard\Address $block */
+?>
+
+<div class="amtheme-addresses-block -dashboard-addresses">
+    <div class="amtheme-heading">
+        <span class="amtheme-title">
+            <?= $block->escapeHtml(__('Address Book')) ?>
+        </span>
+        <a class="action edit"
+           title="<?= $block->escapeHtml(__('Manage Addresses')) ?>"
+           href="<?= $block->escapeUrl($block->getAddressBookUrl()) ?>">
+            <?= $block->escapeHtml(__('Manage Addresses')) ?>
+        </a>
+    </div>
+    <div class="amtheme-content">
+        <div class="amtheme-address-card amtheme-address-billing">
+            <div class="amtheme-wrapper">
+                <span class="amtheme-title">
+                    <?= $block->escapeHtml(__('Default Billing Address')) ?>
+                </span>
+                <address class="amtheme-content">
+                    <?= $block->getPrimaryBillingAddressHtml() ?>
+                </address>
+            </div>
+            <div class="amtheme-actions">
+                <a class="action edit"
+                   title="<?= $block->escapeHtml(__('Edit Address')) ?>"
+                   href="<?= $block->escapeUrl($block->getPrimaryBillingAddressEditUrl()) ?>">
+                    <?= $block->escapeHtml(__('Edit')) ?>
+                </a>
+            </div>
+        </div>
+        <div class="amtheme-address-card amtheme-address-shipping">
+            <div class="amtheme-wrapper">
+                <span class="amtheme-title">
+                    <?= $block->escapeHtml(__('Default Shipping Address')) ?>
+                </span>
+                <address class="amtheme-content">
+                    <?= $block->getPrimaryShippingAddressHtml() ?>
+                </address>
+            </div>
+            <div class="amtheme-actions">
+                <a class="action edit"
+                   title="<?= $block->escapeHtml(__('Edit Address')) ?>"
+                   href="<?= $block->escapeUrl($block->getPrimaryShippingAddressEditUrl()) ?>">
+                    <?= $block->escapeHtml(__('Edit')) ?>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,107 @@
+//
+//  Payflow Pro method styles
+//  _____________________________________________
+
+//
+//  Common
+//  ---------------------------------------------
+
+& when (@media-common = true) {
+    .checkout-payment-method .payment-method-content .payment.payflowpro {
+        .field.type > .control {
+            .am-margin-left(0);
+        }
+
+        .field.number .input-text {
+            .am-padding-right(40px);
+            width: 100%;
+            background: @braintree-card-icon__background no-repeat;
+            background-position: calc(~'100% - @{braintree-card-icon__width}') 50%;
+        }
+
+        .credit-card-types img {
+            .lib-css(filter, none, 1);
+        }
+
+        .field.date .fields.group {
+            display: flex;
+            margin-right: 30px;
+        }
+
+        .field.date .fields.group > .field {
+            margin-bottom: 10px;
+        }
+
+        .field.date .fields.group > .field select {
+            padding: 10px;
+        }
+
+        .field.date .fields.group > .field.year {
+            & {
+                flex-direction: row;
+                .am-padding-left(0);
+            }
+
+            &:before {
+                margin: 0 15px;
+                content: '/';
+                font-size: 18px;
+                line-height: 40px;
+            }
+        }
+
+        .field.date,
+        .field.cvv {
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .field.cvv .control._with-tooltip {
+            width: @braintree-card-cid__width;
+        }
+    }
+
+    .checkout-payment-method .payment.payflowpro + .field-tooltip-content {
+        & {
+            position: relative;
+            margin: 0;
+            padding: 10px;
+            border-radius: @amtheme__border-radius__s;
+            background: @amtheme__background-secondary__color;
+        }
+
+        .label {
+            margin: 0;
+        }
+    }
+
+    .checkout-payment-method .payment.payflowpro .field.cvv {
+        .field-tooltip {
+            position: static;
+            transform: none;
+        }
+
+        .control._with-tooltip {
+            display: flex;
+            align-items: center;
+        }
+    }
+}
+
+//
+//  Mobile
+//  ---------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .checkout-payment-method .payment.payflowpro .field.cvv {
+        & {
+            position: relative;
+            display: block;
+        }
+
+        .field-tooltip-content {
+            left: 0;
+            margin-top: 10px;
+        }
+    }
+}

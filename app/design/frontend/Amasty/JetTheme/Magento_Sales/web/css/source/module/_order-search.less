@@ -1,0 +1,41 @@
+//
+//  Order Search Page styles
+//  _____________________________________________
+
+//
+//  Common
+//  ---------------------------------------------
+
+& when (@media-common = true) {
+    .sales-guest-form {
+        .page-title-wrapper {
+            text-align: center;
+        }
+    }
+
+    .form-orders-search {
+        & {
+            margin: 0 auto;
+        }
+
+        .fieldset,
+        .field {
+            &:last-of-type,
+            &.zip {
+                margin-bottom: 0;
+            }
+        }
+
+        .amtheme-select-block {
+            width: 100%;
+        }
+
+        .legend {
+            display: block;
+            margin: 0 auto 20px;
+            letter-spacing: .01em;
+            font-weight: @h3__font-weight;
+            font-size: @h3__font-size;
+        }
+    }
+}

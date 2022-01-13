@@ -1,0 +1,327 @@
+//
+//  Newsletter styles
+//  _____________________________________________
+
+//
+//  Variables
+//  ---------------------------------------------
+@amtheme-newsletter__background-color: @amtheme__newsletter-background-custom__color;
+@amtheme-newsletter__text-color: @amtheme__newsletter-text-custom__color;
+@amtheme-newsletter__padding: @indent__xl 0;
+@amtheme-newsletter__height: 252px;
+@amtheme-newsletter__container__max-width: 1060px;
+
+//
+//  Common
+//  ---------------------------------------------
+
+& when (@media-common = true) {
+    .amtheme-newsletter-block.amtheme-newsletter {
+        & {
+            background-color: @amtheme-newsletter__background-color;
+        }
+
+        .amtheme-container {
+            padding: 0 @layout__width-xs-indent;
+        }
+
+        .amtheme-description {
+            color: @amtheme-newsletter__text-color;
+        }
+
+        .amtheme-content .amtheme-description,
+        .amtheme-content .amtheme-form {
+            order: 1;
+            padding: 15px;
+        }
+    }
+
+    .amtheme-newsletter-block.amtheme-newsletter .amtheme-content.-vertical-view {
+        & {
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        &.-left {
+            align-items: flex-start;
+        }
+
+        &.-right {
+            align-items: flex-end;
+        }
+
+        &.-center {
+            align-items: center;
+        }
+
+        .-before-input {
+            order: 1;
+        }
+
+        .-after-input {
+            order: 2;
+        }
+    }
+
+    .amtheme-newsletter-block.amtheme-newsletter .amtheme-content.-horizontal-view {
+        .amtheme-content {
+            flex-direction: column;
+            justify-content: center;
+        }
+    }
+
+    .amtheme-newsletter-block.amtheme-subscribe {
+        & {
+            padding: @indent__l 0;
+            border-bottom: @amtheme__border;
+        }
+
+        .amtheme-label {
+            width: 100%;
+        }
+    }
+
+    .amtheme-newsletter-block {
+        .amtheme-description {
+            margin: 0 0 @indent__sm;
+        }
+
+        .amtheme-title {
+            margin: 0 0 @indent__sm;
+            font-weight: @h1__font-weight;
+            font-size: @h1__font-size;
+        }
+
+        .amtheme-form {
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .amtheme-field {
+            flex-grow: 1;
+        }
+
+        .amtheme-field.newsletter {
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .amtheme-label {
+            position: relative;
+            display: block;
+        }
+
+        .amtheme-input {
+            min-width: 150px;
+            height: 44px;
+        }
+
+        // Mozilla placeholder vertical alignment fix
+        .amtheme-input::-moz-placeholder {
+            line-height: 1.4;
+        }
+
+        .action {
+            margin: 0 0 0 @indent__sm;
+        }
+
+        .amtheme-image {
+            display: none;
+        }
+    }
+
+    .block.newsletter {
+        .title {
+            display: none;
+        }
+    }
+}
+
+//
+//  Mobile
+//  ---------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__xs) {
+    .amtheme-newsletter-block .action {
+        .am-padding-right(@indent__base);
+        .am-padding-left(@indent__base);
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .amtheme-newsletter-block.-mobile-hidden {
+        display: none;
+    }
+
+    .amtheme-newsletter-block.amtheme-subscribe {
+        margin-bottom: @indent__l;
+    }
+
+    .amtheme-newsletter-block.amtheme-newsletter {
+        & {
+            padding: @amtheme-newsletter__padding;
+        }
+
+        .amtheme-label {
+            max-width: 190px;
+        }
+
+        .amtheme-content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .-horizontal-view.-center {
+            align-items: center;
+        }
+
+        .-horizontal-view.-right {
+            align-items: flex-end;
+        }
+    }
+}
+
+//
+//  Desktop
+//  ---------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .amtheme-newsletter-block.amtheme-newsletter .amtheme-content.-horizontal-view {
+        & {
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        &.-center {
+            justify-content: center;
+        }
+
+        .-left {
+            order: 0;
+        }
+
+        .-right {
+            order: 2;
+        }
+    }
+
+    .amtheme-newsletter-block.amtheme-newsletter {
+        & {
+            min-height: @amtheme-newsletter__height;
+            max-height: @amtheme-newsletter__height;
+            height: 100%;
+        }
+
+        .amtheme-container {
+            flex-wrap: wrap;
+            margin: 0 auto;
+            padding: 0 @layout__width-xs-indent * 2;
+            max-width: @amtheme-newsletter__container__max-width;
+        }
+
+        .amtheme-content {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            height: 100%;
+        }
+
+        .amtheme-content .amtheme-form {
+            max-width: 42%;
+        }
+    }
+
+    .amtheme-newsletter-block.amtheme-subscribe {
+        & {
+            margin-top: @indent__l;
+            border-top: @amtheme__border;
+        }
+
+        .amtheme-container {
+            justify-content: flex-end;
+        }
+
+        .amtheme-content {
+            flex-basis: 50%;
+        }
+    }
+
+    .amtheme-newsletter-block .amtheme-image {
+        &.-left {
+            left: 0;
+        }
+
+        &.-right {
+            right: 0;
+        }
+
+        &.-center {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        &.-stretch {
+            right: 0;
+            left: 0;
+        }
+    }
+
+    .amtheme-newsletter-block {
+        & {
+            display: flex;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+
+        .amtheme-image {
+            position: absolute;
+            display: block;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .amtheme-image > img {
+            width: 100%;
+        }
+
+        .amtheme-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .amtheme-description {
+            .am-word-break;
+
+            position: relative;
+            margin: @indent__base 0 0;
+        }
+
+        .amtheme-description,
+        .amtheme-text,
+        .amtheme-title {
+            margin: 0;
+        }
+
+        .amtheme-title {
+            letter-spacing: @h1__letter-spacing-desktop;
+            font-weight: @font-weight__regular;
+            font-size: @h1__font-size-desktop;
+        }
+
+        .amtheme-text,
+        .amtheme-title {
+            position: relative;
+        }
+
+        .mage-error[generated] {
+            position: absolute;
+            top: 100%;
+            left: 0;
+        }
+    }
+}

@@ -1,0 +1,190 @@
+//
+//  Multishipping Review Order Styles
+//  _____________________________________________
+
+//
+//  Common
+//  ---------------------------------------------
+
+& when (@media-common = true) {
+    .multishipping-checkout-overview {
+        .block:not(.block-other) .block-title {
+            .am-text-uppercase;
+
+            margin-bottom: @indent__base;
+            color: @amtheme__text-secondary__color;
+        }
+    }
+
+    .multishipping-checkout-overview .block-billing {
+        .box-billing-method .box-title {
+            margin-bottom: 20px;
+        }
+
+        .box-billing-method .payment-method dt {
+            font-weight: @font-weight__regular;
+        }
+    }
+
+    .multishipping-checkout-overview .box-items {
+        .box-title {
+            display: none;
+            justify-content: space-between;
+            margin-bottom: @indent__base;
+            font-weight: @font-weight__bold;
+            font-size: @h3__font-size;
+        }
+
+        .box-title .action.edit {
+            .am-text-uppercase;
+        }
+    }
+
+    .multishipping-checkout-overview .table-order-review {
+        > thead > tr > th,
+        > tbody > tr > td,
+        > tfoot > tr > th,
+        > tfoot > tr > td {
+            & {
+                display: table-cell;
+                text-align: right;
+            }
+
+            &:first-of-type {
+                .am-padding-left(0);
+            }
+        }
+
+        > thead > tr > th {
+            padding: 25px 15px 0;
+        }
+
+        > tbody > tr > td {
+            padding: 25px 15px;
+        }
+
+        > tbody > tr:not(:last-of-type) > td {
+            border-bottom: @amtheme__border;
+        }
+
+        .col.item {
+            width: 75%;
+            text-align: left;
+        }
+
+        .col.item .product.name {
+            color: @amtheme__text-primary__color;
+            font-weight: @font-weight__regular;
+        }
+
+        .action.edit {
+            .am-margin-left(10px);
+        }
+
+        .price-including-tax + .price-excluding-tax {
+            display: inline-flex;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .price-including-tax + .price-excluding-tax .price {
+            margin: 0;
+        }
+
+        > tfoot > tr > th,
+        > tfoot > tr > th strong {
+            .am-text-uppercase;
+
+            color: @amtheme__text-secondary__color;
+            vertical-align: center;
+        }
+
+        .item-options {
+            .am-product-options;
+
+            margin-top: 20px;
+        }
+    }
+
+    .multishipping-checkout-overview .checkout-review {
+        .grand.totals {
+            padding: 15px;
+            background: @amtheme__background-secondary__color;
+            text-align: right;
+            font-size: @h3__font-size;
+        }
+
+        .grand.totals .mark {
+            color: @amtheme__text-secondary__color;
+        }
+
+        .grand.totals .amount {
+            .am-margin-left(30px);
+        }
+    }
+
+    .multishipping-checkout-overview .block-other {
+        > .block-title {
+            &:extend(.multicheckout.shipping .block-other > .block-title all);
+
+            margin-bottom: 0;
+            font-size: @h3__font-size;
+        }
+    }
+
+    .multishipping-checkout-overview .actions-toolbar {
+        > .secondary .action.back {
+            display: inline;
+        }
+    }
+}
+
+//
+//  Mobile
+//  --------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
+    .multishipping-checkout-overview .table-order-review {
+        > thead > tr > th,
+        > tbody > tr > td {
+            text-align: left;
+        }
+
+        > tfoot {
+            display: table;
+            width: 100%;
+        }
+    }
+
+    .multishipping-checkout-overview .box-items {
+        .box-title {
+            display: flex;
+        }
+    }
+
+    .multishipping-checkout-overview .block-other {
+        > .block-title {
+            margin-bottom: @indent__base;
+        }
+    }
+}
+
+//
+//  Tablet
+//  --------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .multishipping-checkout-overview .block-billing {
+        margin-bottom: 50px;
+    }
+
+    .multishipping-checkout-overview .box-items {
+        margin-top: 35px;
+    }
+
+    .multishipping-checkout-overview .actions-toolbar {
+        > .secondary {
+            margin: 0 40px 0 0;
+        }
+    }
+}

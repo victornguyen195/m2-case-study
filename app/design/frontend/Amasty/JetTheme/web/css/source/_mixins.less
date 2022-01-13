@@ -1,0 +1,582 @@
+//
+//  Mixins Jet Theme
+//  _____________________________________________
+
+//
+//  Placeholder mixin
+//  ---------------------------------------------
+
+.amtheme-input-placeholder(
+    @_input-placeholder-color: @form-element-input-placeholder__color,
+    @_input-placeholder-font-weight: @form-element-input__font-weight,
+    @_input-placeholder-font-size: @form-element-input__font-size,
+    @_input-placeholder-line-height: @form-element-input__line-height
+) {
+    &::-webkit-input-placeholder {
+        .lib-css(color, @_input-placeholder-color);
+        .lib-css(font-weight, @_input-placeholder-font-weight);
+        .lib-css(font-size, @_input-placeholder-font-size);
+        .lib-css(line-height, @_input-placeholder-line-height);
+    }
+
+    &:-moz-placeholder {
+        .lib-css(color, @_input-placeholder-color);
+        .lib-css(font-weight, @_input-placeholder-font-weight);
+        .lib-css(font-size, @_input-placeholder-font-size);
+        .lib-css(line-height, @_input-placeholder-line-height);
+    }
+
+    &::-moz-placeholder {
+        .lib-css(color, @_input-placeholder-color);
+        .lib-css(font-weight, @_input-placeholder-font-weight);
+        .lib-css(font-size, @_input-placeholder-font-size);
+        .lib-css(line-height, @_input-placeholder-line-height);
+    }
+
+    &:-ms-input-placeholder {
+        .lib-css(color, @_input-placeholder-color);
+        .lib-css(font-weight, @_input-placeholder-font-weight);
+        .lib-css(font-size, @_input-placeholder-font-size);
+        .lib-css(line-height, @_input-placeholder-line-height);
+    }
+}
+
+//
+//  Button Extra Large
+//  ---------------------------------------------
+
+.lib-button-xl(
+    @_button-xl-font-size: @button__font-size__xl,
+    @_button-xl-height: @button__line-height__xl,
+    @_button-xl-padding: @button__padding__xl
+) {
+    .lib-button-l(
+        @_button-l-font-size: @_button-xl-font-size,
+        @_button-l-height: @_button-xl-height,
+        @_button-l-padding: @_button-xl-padding
+    );
+}
+
+//
+//  Inline select mixin
+//  ---------------------------------------------
+
+.amtheme-select-inline(
+    @_amtheme-select__padding: @amtheme-select-inline__padding,
+    @_amtheme-select__color: @amtheme-select-inline__color,
+    @_amtheme-select__font-weight: @amtheme-select-inline__font-weight,
+    @_amtheme-select__background: @amtheme-select-inline__background
+) {
+    & {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+    label {
+        white-space: nowrap;
+        &:extend(.am-no-display-mobile all);
+    }
+
+    select {
+        & {
+            position: relative;
+            .lib-css(appearance, none, 1);
+            .lib-form-element-input(
+                @_type: select,
+                @_padding: @_amtheme-select__padding,
+                @_height: auto,
+                @_border: none,
+                @_background: @_amtheme-select__background,
+                @_color: @_amtheme-select__color,
+                @_font-weight: @_amtheme-select__font-weight,
+                @_focus-border: none
+            );
+            cursor: pointer;
+        }
+
+        &:focus,
+        &:not([disabled]):focus {
+            & {
+                box-shadow: none;
+            }
+
+            ._keyfocus & {
+                box-shadow: @focus__box-shadow;
+            }
+        }
+
+        &::-ms-expand {
+            display: none;
+        }
+    }
+}
+
+//
+//  Cut text with ellipsis mixin
+//  ---------------------------------------------
+
+.am-ellipsis(
+    @_lines: 1
+) {
+    & {
+        overflow: hidden;
+    }
+
+    & when (@_lines = 1) {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    & when not (@_lines = 1), (@_lines = 0) {
+        display: -webkit-box;
+        -webkit-line-clamp: @_lines;
+        -webkit-box-orient: vertical;
+    }
+
+    & when (@_lines = 0) {
+        -webkit-line-clamp: 1;
+    }
+}
+
+//
+//  Grid column width calc mixin
+//  ---------------------------------------------
+
+.am-grid-col-width(
+    @_column-count: 2,
+    @_column-margin: @indent__s
+) {
+    @_gaps-count: @_column-count - 1;
+    @_width-column: round(100% / @_column-count, 2);
+    @_column-gap: round(@_column-margin * @_gaps-count / @_column-count, 2);
+
+    & {
+        width: ~'calc(@{_width-column} - @{_column-gap})';
+    }
+}
+
+//
+//  Cross icon
+//  ---------------------------------------------
+
+.am-cross-icon(
+    @color: @amtheme__system-icon__hover__color,
+    @color__active: @amtheme__system-icon__color
+) {
+    & {
+        position: relative;
+    }
+
+    &:before,
+    &:after {
+        position: absolute;
+        top: 50%;
+        right: 12px;
+        display: block;
+        width: 15px;
+        height: 1px;
+        background: @color;
+        content: '';
+    }
+
+    &:before {
+        transform: rotate(45deg);
+    }
+
+    &:after {
+        transform: rotate(-45deg);
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+        &:before,
+        &:after {
+            background: @color__active;
+        }
+    }
+}
+
+//
+//  Full width in container through pseudo elements
+//  ---------------------------------------------
+
+.am-full-width(
+    @_background__color: @amtheme__background-tertiary__color
+) {
+    & {
+        position: relative;
+        background-color: @_background__color;
+    }
+
+    &:before,
+    &:after {
+        position: absolute;
+        top: 0;
+        display: block;
+        width: calc(~'(100vw - 100%) / 2');
+        height: 100%;
+        background-color: @_background__color;
+        content: '';
+    }
+
+    &:before {
+        right: 100%;
+    }
+
+    &:after {
+        left: 100%;
+    }
+}
+
+//
+//  Status Indicators
+//  ---------------------------------------------
+
+.am-status-indicator(
+    @_indicator-color: @color-green,
+    @_size: 5px,
+    @_margin: 0 5px 0 0
+) {
+    & {
+        white-space: nowrap;
+    }
+
+    &:before {
+        display: inline-block;
+        margin: @_margin;
+        width: @_size;
+        height: @_size;
+        border-radius: 50%;
+        background: @_indicator-color;
+        content: '';
+        vertical-align: top;
+    }
+}
+
+//
+//  Back Button
+//  ---------------------------------------------
+
+.am-back-button(
+    @_arrow-size: 20px,
+    @_arrow-margin-right: 10px,
+    @_element-color: @amtheme__text-secondary__color
+) {
+    & {
+        .lib-css(padding-left, @_arrow-size + @_arrow-margin-right);
+        .lib-css(color, @_element-color);
+
+        position: relative;
+        display: block;
+        white-space: nowrap;
+    }
+
+    &:hover {
+        .lib-css(color, @_element-color);
+    }
+
+    .amtheme-icon {
+        .am-vertical-center;
+        .lib-css(width, @_arrow-size);
+        .lib-css(height, @_arrow-size);
+        .lib-css(fill, @_element-color);
+
+        position: absolute;
+        left: 5px;
+        transition: left @amtheme__transition;
+    }
+
+    &:hover .amtheme-icon {
+        left: 0;
+    }
+}
+
+//
+//  Spinner
+//  ---------------------------------------------
+
+.am-spinner(
+    @_spinner-size: @spinner__size,
+    @_spinner-border-size: @spinner__border-width,
+    @_spinner-margin: @spinner__margin,
+    @_spinner-border-color: @spinner__border-color,
+    @_spinner-background: @spinner__background
+) {
+    @spinner-background-image: linear-gradient(@_spinner-background, @_spinner-background),
+        radial-gradient(circle at top left, @_spinner-border-color, fade(@_spinner-border-color, 20));
+
+    &:before {
+        .lib-css(margin, @_spinner-margin);
+        .lib-css(width, @_spinner-size);
+        .lib-css(height, @_spinner-size);
+        .lib-css(border, @_spinner-border-size solid transparent);
+        .lib-css(background-image, @spinner-background-image);
+
+        border-radius: 50%;
+        background-clip: content-box, border-box;
+        background-origin: border-box;
+        content: '';
+        vertical-align: top;
+
+        .spin-animation();
+    }
+}
+
+//
+//  Spin Animation
+//  ---------------------------------------------
+
+.spin-animation (
+    @_animation: spin .8s linear 0s infinite
+) {
+    & {
+        animation: @_animation;
+    }
+
+    @keyframes spin {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+}
+
+//
+//  Absolute position
+//  ---------------------------------------------
+
+.am-absolute-position (
+    @_position: absolute,
+    @_top: 0,
+    @_right: 0,
+    @_bottom: 0,
+    @_left: 0
+) {
+    .lib-css(position, @_position);
+    .lib-css(top, @_top);
+    .lib-css(right, @_right);
+    .lib-css(bottom, @_bottom);
+    .lib-css(left, @_left);
+}
+
+//
+//  Icons Fill
+//  ---------------------------------------------
+
+.icons-fill (@mode) when (@mode = dark) {
+    & {
+        fill: @amtheme-icon__fill;
+    }
+
+    &:hover,
+    &.-hover {
+        fill: @amtheme-icon__hover__color;
+    }
+
+    &.-hover-bg:hover,
+    &.-hover-bg.-selected {
+        fill: @amtheme-icon__fill;
+        color: @amtheme-icon__hover__color;
+    }
+
+    &.-active,
+    &.-active-bg {
+        color: @amtheme-icon__fill;
+    }
+}
+
+.icons-fill (@mode, @color: @color-white) when (@mode = light) {
+    & {
+        fill: @color;
+    }
+
+    &:hover,
+    &.-hover {
+        fill: @amtheme-icon-light__hover__color;
+    }
+
+    &.-hover-bg:hover,
+    &.-hover-bg.-selected {
+        fill: @color;
+        color: @amtheme-icon-light__hover__color;
+    }
+
+    &.-active,
+    &.-active-bg {
+        color: @color;
+    }
+}
+
+.icons-fill (@mode, @color: @color-light-green) when (@mode = light_green) {
+    & {
+        fill: @color;
+    }
+
+    &:hover,
+    &.-active {
+        fill: darken(@color, 20%);
+    }
+
+    &.-hover-bg:hover,
+    &.-hover-bg.-selected {
+        color: lighten(@color, 40%);
+    }
+
+    &.-active-bg {
+        color: @color;
+    }
+}
+
+.color-mode (@status, @color) when (@status = darken) {
+    fill: darken(@color, 20%);
+    border-color: darken(@color, 20%);
+    color: darken(@color, 20%);
+}
+
+.color-mode (@status, @color) when (@status = lighten) {
+    fill: lighten(@color, 20%);
+    border-color: lighten(@color, 20%);
+    color: lighten(@color, 20%);
+}
+
+.color-mode (@status, @color) when (@status = default) {
+    fill: @color;
+    border-color: @color;
+    color: @color;
+}
+
+.set-color-mode (@mode, @status, @color: @amtheme-icon__fill) when (@mode = dark) {
+    & {
+        .color-mode(@status, @color);
+    }
+}
+
+.set-color-mode (@mode, @status, @color: @color-white) when (@mode = light) {
+    & {
+        .color-mode(@status, @color);
+    }
+}
+
+.set-color-mode (@mode, @status, @color: @color-light-green) when (@mode = light_green) {
+    & {
+        .color-mode(@status, @color);
+    }
+}
+
+//
+//  Mixins for Margin, Padding, Borders
+//  ---------------------------------------------
+
+.am-margin-left(@val) {
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+        & {
+            margin-left: @val;
+        }
+    }
+
+    margin-inline-start: @val;
+}
+
+.am-margin-right(@val) {
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+        & {
+            margin-right: @val;
+        }
+    }
+
+    margin-inline-end: @val;
+}
+
+.am-padding-left(@val) {
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+        & {
+            padding-left: @val;
+        }
+    }
+
+    padding-inline-start: @val;
+}
+
+.am-padding-right(@val) {
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+        & {
+            padding-right: @val;
+        }
+    }
+
+    padding-inline-end: @val;
+}
+
+.am-margin(@value) {
+    & when not (length(@value) = 4) {
+        margin: @value;
+    }
+
+    & when (length(@value) = 4) {
+        @top: extract(@value, 1);
+        @right: extract(@value, 2);
+        @bottom: extract(@value, 3);
+        @left: extract(@value, 4);
+
+        margin-top: @top;
+        margin-inline-end: @right;
+        margin-bottom: @bottom;
+        margin-inline-start: @left;
+
+        @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+            & {
+                margin-right: @right;
+                margin-left: @left;
+            }
+        }
+    }
+}
+
+.am-padding(@value) {
+    & when not (length(@value) = 4) {
+        padding: @value;
+    }
+
+    & when (length(@value) = 4) {
+        @top: extract(@value, 1);
+        @right: extract(@value, 2);
+        @bottom: extract(@value, 3);
+        @left: extract(@value, 4);
+
+        padding-top: @top;
+        padding-inline-end: @right;
+        padding-bottom: @bottom;
+        padding-inline-start: @left;
+
+        @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+            & {
+                padding-right: @right;
+                padding-left: @left;
+            }
+        }
+    }
+}
+
+.am-border-right(@val) {
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+        & {
+            border-right: @val;
+        }
+    }
+
+    border-inline-end: @val;
+}
+
+.am-border-left(@val) {
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+        & {
+            border-left: @val;
+        }
+    }
+
+    border-inline-start: @val;
+}

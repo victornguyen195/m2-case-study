@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="my-account-link">
+            <arguments>
+                <argument name="label" xsi:type="string" translate="true">Account</argument>
+            </arguments>
+        </referenceBlock>
+
+        <referenceBlock name="header.links">
+            <block class="Magento\Customer\Block\Account\Customer"
+                   name="customer"
+                   template="Magento_Customer::account/customer.phtml"
+                   after="-"/>
+            <block class="Magento\Customer\Block\Account\AuthorizationLink"
+                   name="authorization-link-login"
+                   template="Magento_Customer::account/link/authorization.phtml">
+                <arguments>
+                    <argument name="sortOrder" xsi:type="number">10</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+        <referenceContainer name="header.icons">
+            <block class="Magento\Customer\Block\Account\AuthorizationLink"
+                   name="authorization.icon"
+                   ifconfig="amasty_jettheme/additional_elements/enable_sticky_header"
+                   template="Magento_Customer::account/link/authorization-icon.phtml"
+                   before="-" />
+        </referenceContainer>
+        <move element="register-link" destination="header.links"/>
+        <move element="top.links" destination="customer"/>
+        <move element="authorization-link" destination="top.links" after="-"/>
+    </body>
+</page>

@@ -1,0 +1,10 @@
+<?php
+/**
+ * @var Amasty\ThankYouPage\Block\Onepage\Success\Facade $block
+ * @var Magento\Framework\Escaper $escaper
+ */
+?>
+
+<div class="<?= $escaper->escapeHtmlAttr($block->getClassForBlock()) ?>">
+    <?= /* @noEscape */ $block->getBlocksHtml() ?>
+</div>

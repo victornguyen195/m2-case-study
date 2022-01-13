@@ -1,0 +1,18 @@
+.amtheme-svg-sprite {
+    display: none;
+}
+
+.amtheme-icons-pack {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.amtheme-icon-block {
+    margin: 30px;
+    width: 100px;
+    text-align: center;
+}
+
+.amtheme-icon-block .amtheme-label {
+    margin-top: 5px;
+}

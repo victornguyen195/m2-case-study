@@ -1,0 +1,17 @@
+<?php
+/**
+ * @var $block Magento\Backend\Block\Template
+ * @var $escaper Magento\Framework\Escaper
+ */
+?>
+
+<div class="amasty-info-block">
+    <span class="message">
+        <?= /** noEscape */
+        __(
+            'If you want to use image optimization functionality '
+            . 'please install Amasty Jet Optimizer by the following command: <b>"%1"</b>',
+            'composer require amasty/module-jet-optimizer'
+        ); ?>
+    </span>
+</div>

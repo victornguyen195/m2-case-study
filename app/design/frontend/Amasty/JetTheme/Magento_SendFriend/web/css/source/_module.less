@@ -1,0 +1,152 @@
+//
+//  Email to a Friend Page
+//  _____________________________________________
+
+//
+//  Common
+//  ---------------------------------------------
+
+& when (@media-common = true) {
+    .action.mailto.friend {
+        display: inline-flex;
+    }
+
+    .form.send.friend {
+        margin: auto 0;
+        max-width: 600px;
+    }
+
+    .form.send.friend > .actions-toolbar {
+        & {
+            justify-content: flex-end;
+        }
+
+        .primary .action {
+            margin: 0;
+        }
+
+        .secondary {
+            display: none;
+        }
+    }
+
+    .form.send.friend .fieldset.sender,
+    .form.send.friend .fieldset.recipients {
+        .field {
+            width: 100%;
+        }
+
+        .legend + br {
+            display: none;
+        }
+    }
+
+    .form.send.friend .fieldset.sender {
+        padding-bottom: 10px;
+        border-bottom: @amtheme__border;
+    }
+
+    .form.send.friend .fieldset.recipients {
+        & {
+            margin-top: @indent__l;
+        }
+
+        .fields:first-child > .actions-toolbar {
+            display: none;
+        }
+
+        > .actions-toolbar {
+            margin-top: @indent__s;
+        }
+
+        > .actions-toolbar .secondary {
+            margin: 0;
+            padding: 0;
+        }
+
+        .action.add,
+        .action.remove {
+            .lib-button-as-link();
+            .am-text-uppercase;
+        }
+    }
+
+    .form.send.friend .fieldset.recipients .fields.additional {
+        & {
+            display: flex;
+            flex-direction: column;
+        }
+
+        > .fieldset {
+            order: 1;
+        }
+
+        > .actions-toolbar {
+            align-items: flex-end;
+            justify-content: flex-end;
+            order: 2;
+            margin: 0;
+        }
+
+        > .actions-toolbar > .secondary {
+            margin: 0;
+            padding: 0;
+        }
+    }
+}
+
+//
+//  Mobile
+//  ---------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .form.send.friend .fieldset.recipients {
+        .fields.additional {
+            margin-top: @indent__sm;
+        }
+
+        > .actions-toolbar {
+            align-items: flex-start;
+        }
+    }
+}
+
+//
+//  Tablet
+//  ---------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .sendfriend-product-send .page-title {
+        text-align: center;
+    }
+
+    .form.send.friend {
+        margin: auto;
+    }
+
+    .form.send.friend .fieldset.sender {
+        .field.sender,
+        .field.email {
+            display: inline-block;
+            width: ~'calc(50% - @{indent__base} / 2)';
+        }
+
+        .field.sender {
+            float: left;
+            .am-margin-right(@indent__base);
+        }
+    }
+
+    .form.send.friend .fieldset.recipients {
+        .field.name,
+        .field.email {
+            display: inline-block;
+            width: ~'calc(50% - @{indent__base} / 2)';
+        }
+
+        .field.name {
+            float: left;
+            .am-margin-right(@indent__base);
+        }
+    }
+}

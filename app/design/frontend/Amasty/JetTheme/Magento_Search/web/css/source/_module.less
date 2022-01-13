@@ -1,0 +1,22 @@
+//
+//  Search Terms
+//  _____________________________________________
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+    .search-terms {
+        &:extend(.abs-reset-list all);
+
+        > li {
+            display: inline-block;
+            .am-margin(0 @indent__base @indent__base 0);
+            padding: @indent__s 12px;
+            border-radius: @amtheme__border-radius__s;
+            background: @amtheme__background-secondary__color;
+            vertical-align: middle;
+        }
+    }
+}

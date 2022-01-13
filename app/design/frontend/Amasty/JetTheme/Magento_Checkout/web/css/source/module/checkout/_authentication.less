@@ -1,0 +1,97 @@
+//
+//  Authentication styles
+//  _____________________________________________
+
+//
+//  Variables
+//  ---------------------------------------------
+
+@auth-dropdown__width: 400px;
+@auth-modal__width: 500px;
+
+//
+//  Common
+//  ---------------------------------------------
+
+& when (@media-common = true) {
+    .checkout-index-index._has-auth-shown .opc-block-summary {
+        z-index: 99;
+    }
+
+    .authentication-dropdown {
+        .block.block-customer-login .block-title {
+            text-align: left;
+        }
+    }
+
+    .popup-authentication {
+        .modal-content {
+            padding: 0 30px 30px;
+        }
+
+        .block-customer-login {
+            padding-bottom: 45px;
+            border-bottom: @amtheme__border;
+        }
+
+        .block-new-customer {
+            padding-top: 45px;
+        }
+
+        .block.block-customer-login .block-title,
+        .block.block-new-customer .block-title {
+            margin-bottom: @indent__base;
+            text-align: left;
+        }
+    }
+}
+
+//
+//  Mobile
+//  --------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .checkout-index-index .block.block-customer-login .block-title {
+        margin-bottom: 40px;
+    }
+}
+
+//
+//  Desktop
+//  --------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .authentication-dropdown,
+    .popup-authentication {
+        &.modal-popup .actions-toolbar .secondary .action {
+            .am-margin(6px 0 0);
+            color: @link__color;
+            font-weight: @font-weight__bold;
+        }
+    }
+
+    .checkout-index-index .authentication-dropdown.modal-popup {
+        & {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-inner-wrap {
+            position: relative;
+            top: auto;
+            left: auto;
+            .am-margin(0);
+            width: @auth-dropdown__width;
+            transform: none;
+        }
+
+        .modal-content {
+            padding: 0 30px 40px;
+        }
+    }
+
+    .modals-wrapper .popup-authentication.modal-popup .modal-inner-wrap {
+        width: @auth-modal__width;
+    }
+}

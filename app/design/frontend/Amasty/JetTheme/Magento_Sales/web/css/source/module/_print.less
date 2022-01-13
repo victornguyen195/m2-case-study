@@ -1,0 +1,72 @@
+//
+//  Order Details Print Pages Styles
+//  _____________________________________________
+
+//
+//  Common
+//  ---------------------------------------------
+
+& when (@media-common = true) {
+    [class*='sales-guest-'].page-print .logo,
+    .account[class*='sales-'].page-print .logo {
+        margin-bottom: @indent__l;
+    }
+
+    .sales-order-printshipment,
+    .sales-guest-printshipment {
+        &.page-print .table-wrapper .table.table-order-items .col.price {
+            text-align: inherit;
+        }
+    }
+
+    @media print {
+        .page-print .block.block-order-details-view {
+            & {
+                .am-padding-right(0);
+                .am-padding-left(0);
+            }
+
+            .block-content {
+                display: block;
+            }
+
+            .column,
+            .column.-methods {
+                display: inline-block;
+                float: left;
+                vertical-align: top;
+            }
+        }
+
+        .page-print {
+            .copyright,
+            .order-details-items {
+                clear: both;
+            }
+
+            .order-details-items .table-wrapper {
+                overflow: inherit;
+                margin: 0;
+            }
+
+            .main .order-tracking {
+                display: block;
+            }
+
+            .main .order-tracking .wrapper {
+                display: block;
+            }
+        }
+    }
+}
+
+//
+//  Mobile
+//  ---------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    [class*='sales-guest-'].page-print .logo,
+    .account[class*='sales-'].page-print .logo {
+        margin-top: @indent__l;
+    }
+}

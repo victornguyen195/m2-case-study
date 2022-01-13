@@ -1,0 +1,30 @@
+<?php
+/**
+ * @var $block Magento\Framework\View\Element\Template
+ * @var $viewModel Amasty\JetTheme\ViewModel\SocialViewModel
+ * @var $escaper Magento\Framework\Escaper
+ */
+
+$viewModel = $block->getViewModel();
+?>
+
+<ul class="amtheme-socials-list">
+    <?php if ($viewModel->isShowLinksBlock()): ?>
+        <?php foreach ($viewModel->getSocialLinks() as $socialLink): ?>
+            <li class="amtheme-item">
+                <a href="<?= $escaper->escapeUrl($socialLink->getLink()) ?>"
+                   class="amtheme-action <?= $escaper->escapeHtmlAttr($socialLink->getDefaultIcon()) ?>"
+                   title="<?= $escaper->escapeHtmlAttr($socialLink->getTitle()); ?>"
+                   aria-label="<?= $escaper->escapeHtmlAttr($socialLink->getTitle()); ?>"
+                   target="_blank">
+                    <?php if (!$socialLink->getDefaultIcon()): ?>
+                        <img src="<?= $escaper->escapeHtmlAttr($viewModel->getSocialImage($socialLink->getIcon())); ?>"
+                             alt="<?= $escaper->escapeHtmlAttr($socialLink->getTitle()); ?>">
+                    <?php else: ?>
+                        <?= /* @noEscape */ $socialLink->getDefaultIconContent()?>
+                    <?php endif; ?>
+                </a>
+            </li>
+        <?php endforeach; ?>
+    <?php endif; ?>
+</ul>

@@ -1,0 +1,101 @@
+<form action="#" method="post">
+    <h2>Radio Button</h2>
+    <div class="field">
+        <input type="radio"
+               name="radio-choice-1"
+               id="radio-choice-1"
+               tabindex="0"
+               value="choice-1" />
+        <label class="label" for="radio-choice-1">Choice 1</label>
+
+        <input class=""
+               type="radio"
+               name="radio-choice-1"
+               id="radio-choice-2"
+               tabindex="0"
+               value="choice-2" />
+        <label class="label" for="radio-choice-2">Choice 2</label>
+
+        <input class="mage-error"
+               type="radio"
+               name="radio-choice-1"
+               id="radio-choice-3"
+               tabindex="0"
+               value="choice-2" />
+        <label class="label" for="radio-choice-3">Choice 3 - error</label>
+
+        <div generated="true" class="mage-error">This is a required field.</div>
+    </div>
+
+    <h2>Checkbox</h2>
+    <div class="field">
+        <input type="checkbox" name="checkbox" id="checkbox1" />
+        <label class="label" for="checkbox1">Checkbox 1</label>
+
+        <input class="" type="checkbox" name="checkbox" id="checkbox2" />
+        <label class="label" for="checkbox2">Checkbox 2</label>
+
+        <input class="mage-error" type="checkbox" name="checkbox" id="checkbox3" />
+        <label class="label" for="checkbox3">Checkbox 3 - error</label>
+
+        <div generated="true" class="mage-error">This is a required field.</div>
+    </div>
+
+    <hr>
+
+    <h2>Alternative html Radio Button</h2>
+    <div class="field">
+        <label class="label">Alt choice radio button</label>
+        <div class="control">
+            <label for="rad-1">
+                <input type="radio" name="rd" id="rad-1">
+                <span>choice one</span>
+            </label>
+            <label for="rad-2">
+                <input class="required" type="radio" name="rd" id="rad-2">
+                <span>choice two</span>
+            </label>
+        </div>
+    </div>
+    <div class="field required">
+        <label class="label">This is your last chance. After this, there is no turning back.</label>
+        <div class="control">
+            <label class="label" for="rad-3">
+                <input type="radio" name="rd2" id="rad-3">
+                <span>red pill</span>
+            </label>
+            <label class="label" for="rad-4">
+                <input class="required" type="radio" name="rd2" id="rad-4">
+                <span>blue pill</span>
+            </label>
+        </div>
+    </div>
+
+    <h2>Alternative html Checkbox</h2>
+    <div class="field required">
+        <label class="label">Alt choice checkbox</label>
+        <div class="control">
+            <label for="ch-1">
+                <input type="checkbox" name="ch1" id="ch-1">
+                <span>choice one</span>
+            </label>
+            <label for="ch-2">
+                <input class="required" type="checkbox" name="ch2" id="ch-2">
+                <span>choice two</span>
+            </label>
+        </div>
+    </div>
+    <div class="field choice">
+        <label class="label">Alt choice checkbox</label>
+        <div class="control">
+            <label class="label" for="ch-3">
+                <input type="checkbox" name="ch3" id="ch-3">
+                <span>another choice</span>
+            </label>
+            <label class="label" for="ch-4">
+                <input type="checkbox" name="ch4" id="ch-4">
+                <span>and another choice</span>
+            </label>
+        </div>
+    </div>
+</form>

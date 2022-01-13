@@ -1,0 +1,76 @@
+<?php
+/** @var $block \Magento\ProductAlert\Block\Email\Price */
+?>
+<?php if ($_products = $block->getProducts()): ?>
+    <p><?= $block->escapeHtml(__('Price change alert! We wanted you to know that prices have changed for these products:')) ?></p>
+    <div class="amtheme-table-wrapper">
+        <div>
+            <table class="amtheme-product-alert">
+                <?php /** @var $_product \Magento\Catalog\Model\Product */ ?>
+                <?php $_productsValues = array_values($_products);?>
+                <?php foreach ($_productsValues as $key => $_product): ?>
+                    <?php $_additionalClasses = '';
+                    if (count($_productsValues) == 1):
+                        $_additionalClasses = '-first -last';
+                    elseif ((count($_productsValues) - 1) == $key):
+                        $_additionalClasses = '-last';
+                    elseif ($key == 0):
+                        $_additionalClasses = '-first';
+                    endif;?>
+                    <tr class="amtheme-item <?= $block->escapeHtml($_additionalClasses)?>">
+                        <td class="col photo">
+                            <a href="<?= $block->escapeUrl($_product->getProductUrl()) ?>"
+                               title="<?= $block->escapeHtml($_product->getName()) ?>"
+                               aria-label="<?= $block->escapeHtml($_product->getName()) ?>"
+                               class="product photo">
+                                <?= $block->getImage($_product, 'product_thumbnail_image', ['class' => 'photo image'])->toHtml() ?>
+                            </a>
+                        </td>
+                        <td class="col item">
+                            <p>
+                                <strong class="product name">
+                                    <a href="<?= $block->escapeUrl($_product->getProductUrl()) ?>"
+                                       title="<?= $block->escapeHtml($_product->getName()) ?>"
+                                       aria-label="<?= $block->escapeHtml($_product->getName()) ?>">
+                                        <?= $block->escapeHtml($_product->getName()) ?>
+                                    </a>
+                                </strong>
+                            </p>
+                            <?php if ($shortDescription = $block->getFilteredContent($_product->getShortDescription())): ?>
+                                <p><small><?= /* @noEscape */  $shortDescription ?></small></p>
+                            <?php endif; ?>
+                            <?=
+                            $block->getProductPriceHtml(
+                                $_product,
+                                \Magento\Catalog\Pricing\Price\FinalPrice::PRICE_CODE,
+                                \Magento\Framework\Pricing\Render::ZONE_EMAIL,
+                                [
+                                    'display_label' => '',
+                                ]
+                            );
+                            ?>
+                            <p class="amtheme-unsubscribe-product">
+                                <small>
+                                    <a class="amtheme-link"
+                                       href="<?= $block->escapeUrl($block->getProductUnsubscribeUrl($_product->getId())) ?>"
+                                       title="<?= $block->escapeHtml(__('Click here to stop alerts for this product.')) ?>"
+                                       aria-label="<?= $block->escapeHtml(__('Click here to stop alerts for this product.')) ?>">
+                                        <?= $block->escapeHtml(__('Unsubscribe')) ?>
+                                    </a>
+                                </small>
+                            </p>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </table>
+        </div>
+    </div>
+    <p class="amtheme-unsubscribe-container">
+        <a class="amtheme-link"
+           href="<?= $block->escapeUrl($block->getUnsubscribeUrl()) ?>"
+           title="<?= $block->escapeHtml(__('Unsubscribe from all price alerts')) ?>"
+           aria-label="<?= $block->escapeHtml(__('Unsubscribe from all price alerts')) ?>">
+            <?= $block->escapeHtml(__('Unsubscribe from all price alerts')) ?>
+        </a>
+    </p>
+<?php endif; ?>

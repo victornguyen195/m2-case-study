@@ -1,0 +1,24 @@
+<?php
+/**
+ * @var Amasty\ThankYouPage\Block\Adminhtml\System\Config\Field\MarkupEditor $block
+ * @var Magento\Framework\Escaper $escaper
+ */
+?>
+
+<?= $escaper->escapeHtml('
+    Use dot <b>.</b> as a row separator and comma <b>,</b> as a column separator.
+    Either of these symbols might always be inserted after each variable name to structurize the page.
+    Spaces are not allowed. All available variables associated with Thank You Page blocks are listed below:
+', ['b']) ?>
+
+<br>&bull; <i><?= $escaper->escapeHtml('{{header}}') ?></i>
+<br>&bull; <i><?= $escaper->escapeHtml('{{order_review}}') ?></i>
+<br>&bull; <i><?= $escaper->escapeHtml('{{custom1}}') ?></i>
+<br>&bull; <i><?= $escaper->escapeHtml('{{custom2}}') ?></i>
+<br>&bull; <i><?= $escaper->escapeHtml('{{custom3}}') ?></i>
+<br>&bull; <i><?= $escaper->escapeHtml('{{newsletter}}') ?></i>
+<br>&bull; <i><?= $escaper->escapeHtml('{{cross_sell}}') ?></i>
+<br>&bull; <i><?= $escaper->escapeHtml('{{create_account}}') ?></i>
+<br><?= $escaper->escapeHtml(__('Make sure that the block you want to use is enabled, otherwise it won\'t be displayed.
+If the block is enabled but the corresponding variable isn\'t inserted in the text editor,
+ it won\'t be displayed either.Double braces around variable names should not be omitted')) ?>

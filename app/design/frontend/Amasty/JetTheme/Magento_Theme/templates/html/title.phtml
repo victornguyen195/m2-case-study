@@ -1,0 +1,26 @@
+<?php
+/**
+ * @var $block Magento\Theme\Block\Html\Title
+ * @var $escaper Magento\Framework\Escaper
+ */
+
+$baseAttributeAria = $block->getAddBaseAttributeAria();
+$cssClass = $block->getCssClass() ? ' ' . $block->getCssClass() : '';
+$title = $escaper->escapeHtml($block->getPageHeading());
+?>
+
+<?php if ($title): ?>
+    <div class="page-title-wrapper <?= $escaper->escapeHtml($cssClass) ?>">
+        <h1 class="page-title" data-ui-id="page-title-wrapper"
+            <?= /* @noEscape */ $block->getAddBaseAttribute(); ?>
+            <?php if ($block->getId()): ?>
+                id="<?= $escaper->escapeHtml($block->getId()) ?>"
+            <?php endif; ?>
+            <?php if ($baseAttributeAria): ?>
+                aria-labelledby="<?= $escaper->escapeHtml($baseAttributeAria) ?>"
+            <?php endif; ?>>
+            <?= /* @noEscape */ $title ?>
+        </h1>
+        <?= $block->getChildHtml() ?>
+    </div>
+<?php endif; ?>

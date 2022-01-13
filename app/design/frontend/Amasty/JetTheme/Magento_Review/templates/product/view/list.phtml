@@ -1,0 +1,62 @@
+<?php
+/** @var Magento\Review\Block\Product\View\ListView $block */
+
+$items = $block->getReviewsCollection()->getItems();
+$format = $block->getDateFormat() ?: \IntlDateFormatter::SHORT;
+?>
+
+<?php if (count($items)): ?>
+<div class="block review-list" id="customer-reviews">
+    <div class="block-content">
+        <ol class="items review-items">
+        <?php foreach ($items as $review): ?>
+            <li class="item review-item"
+                itemscope
+                itemprop="review"
+                itemtype="http://schema.org/Review">
+                <div class="review-heading">
+                    <span class="review-title" itemprop="name">
+                        <?= $block->escapeHtml($review->getTitle()) ?>
+                    </span>
+                    <time class="review-date"
+                          itemprop="datePublished"
+                          datetime="<?= $block->escapeHtml($block->formatDate($review->getCreatedAt(), $format)) ?>">
+                        <?= $block->escapeHtml($block->formatDate($review->getCreatedAt(), $format)) ?>
+                    </time>
+                </div>
+                <?php if (count($review->getRatingVotes())): ?>
+                    <div class="review-ratings">
+                    <?php foreach ($review->getRatingVotes() as $vote): ?>
+                        <div class="rating-summary item"
+                             itemprop="reviewRating"
+                             itemscope
+                             itemtype="http://schema.org/Rating">
+                            <span class="label rating-label">
+                                <?= $block->escapeHtml($vote->getRatingCode()) ?>
+                            </span>
+                            <div class="rating-result" title="<?= $block->escapeHtml($vote->getPercent()) ?>%">
+                                <meta itemprop="worstRating" content = "1"/>
+                                <meta itemprop="bestRating" content = "100"/>
+                                <span style="width:<?= $block->escapeHtml($vote->getPercent()) ?>%">
+                                    <span itemprop="ratingValue"><?= $block->escapeHtml($vote->getPercent()) ?>%</span>
+                                </span>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
+                <div class="review-content" itemprop="description">
+                    <?= /* @noEscape */ nl2br($block->escapeHtml($review->getDetail())) ?>
+                </div>
+                <div class="review-author" itemprop="author">
+                    <?= $block->escapeHtml($review->getNickname()) ?>
+                </div>
+            </li>
+        <?php endforeach; ?>
+        </ol>
+        <div class="toolbar review-toolbar">
+            <?= /* @noEscape */ $block->getChildHtml('toolbar') ?>
+        </div>
+    </div>
+</div>
+<?php endif;?>

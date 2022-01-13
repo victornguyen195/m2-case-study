@@ -1,0 +1,19 @@
+<?php
+/**
+ * @var $block Magento\Backend\Block\Template
+ * @var $escaper Magento\Framework\Escaper
+ */
+?>
+
+<div class="amasty-info-block">
+    <span class="message">
+        <?= $escaper->escapeHtml(
+            __(
+                'If you want to use non latin font '
+                . 'please install Amasty Jet Non Latin Fonts by the following command: <b>"%1"</b>',
+                'composer require amasty/jet-non-latin-fonts'
+            ),
+            ['b']
+        ); ?>
+    </span>
+</div>

@@ -1,0 +1,48 @@
+<?php
+/**
+ * Product list toolbar
+ *
+ * @var $block \Magento\Catalog\Block\Product\ProductList\Toolbar
+ * @var $escaper Magento\Framework\Escaper
+ */
+?>
+
+<?php if ($block->isEnabledViewSwitcher()):?>
+    <div class="modes">
+        <?php $_modes = $block->getModes(); ?>
+        <?php if ($_modes && count($_modes) > 1):?>
+            <strong class="modes-label" id="modes-label"><?= $escaper->escapeHtml(__('View as')) ?></strong>
+            <?php foreach ($block->getModes() as $_code => $_label):?>
+                <?php
+                    if ($_code === 'grid'):
+                        $nameIconView = 'icon-view-block';
+                    elseif ($_code === 'list'):
+                        $nameIconView = 'icon-view-list';
+                    endif;
+                    $isHover = $block->isModeActive($_code) ? ' -active' : ' -hover';
+                    $iconView = '<svg class="amtheme-icon'.$isHover.'" focusable="false">'
+                        .'<use xlink:href="#'.$escaper->escapeHtml($nameIconView).'"/>'
+                        .'</svg>';
+                ?>
+
+                <?php if ($block->isModeActive($_code)):?>
+                    <strong title="<?= $escaper->escapeHtml($_label) ?>"
+                            class="modes-mode active mode-<?= $escaper->escapeHtml(strtolower($_code)) ?>"
+                            data-value="<?= $escaper->escapeHtml(strtolower($_code)) ?>">
+                        <?= /* @noEscape */ $iconView ?>
+                    </strong>
+                <?php else:?>
+                    <a class="modes-mode mode-<?= $escaper->escapeHtml(strtolower($_code)) ?>"
+                       title="<?= $escaper->escapeHtml($_label) ?>"
+                       href="#"
+                       data-role="mode-switcher"
+                       data-value="<?= $escaper->escapeHtml(strtolower($_code)) ?>"
+                       id="mode-<?= $escaper->escapeHtml(strtolower($_code)) ?>"
+                       aria-labelledby="modes-label mode-<?= $escaper->escapeHtml(strtolower($_code)) ?>">
+                        <?= /* @noEscape */  $iconView ?>
+                    </a>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        <?php endif; ?>
+    </div>
+<?php endif; ?>

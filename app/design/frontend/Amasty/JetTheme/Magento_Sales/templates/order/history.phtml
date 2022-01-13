@@ -1,0 +1,90 @@
+<?php
+/** @var \Magento\Sales\Block\Order\History $block */
+
+$orders = $block->getOrders();
+// phpcs:ignore
+$reorderHelper = $this->helper(\Magento\Sales\Helper\Reorder::class);
+// phpcs:ignore
+$postHelper = $this->helper(\Magento\Framework\Data\Helper\PostHelper::class);
+?>
+<?= $block->getChildHtml('info') ?>
+<?php if ($orders && count($orders)): ?>
+    <div class="table-wrapper orders-history">
+        <table class="data table table-order-items history" id="my-orders-table">
+            <caption class="table-caption"><?= $block->escapeHtml(__('Orders')) ?></caption>
+            <thead>
+                <tr>
+                    <th scope="col" class="col id"><?= $block->escapeHtml(__('Order #')) ?></th>
+                    <th scope="col" class="col date"><?= $block->escapeHtml(__('Date')) ?></th>
+                    <?= $block->getChildHtml('extra.column.header') ?>
+                    <th scope="col" class="col shipping"><?= $block->escapeHtml(__('Ship To')) ?></th>
+                    <th scope="col" class="col total"><?= $block->escapeHtml(__('Order Total')) ?></th>
+                    <th scope="col" class="col status"><?= $block->escapeHtml(__('Status')) ?></th>
+                    <?php if ($reorderHelper->isAllowed()): ?>
+                        <th scope="col" class="col actions"><?= $block->escapeHtml(__('Action')) ?></th>
+                    <?php endif;?>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($orders as $order):
+                    $canReorder = $reorderHelper->canReorder($order->getEntityId());
+                    $shipTo = $order->getShippingAddress()
+                        ? $block->escapeHtml($order->getShippingAddress()->getName())
+                        : '&nbsp;';?>
+                    <tr>
+                        <td data-th="<?= $block->escapeHtmlAttr(__('Order #')) ?>" class="col id">
+                            <a href="<?= $block->escapeUrl($block->getViewUrl($order)) ?>"
+                               title="<?= $block->escapeHtmlAttr(__('View Order')) ?>"
+                               aria-label="<?= $block->escapeHtmlAttr(__('Order Id')) ?>">
+                                <?= $block->escapeHtml($order->getRealOrderId()) ?>
+                            </a>
+                        </td>
+                        <td data-th="<?= $block->escapeHtmlAttr(__('Date')) ?>"
+                            class="col date">
+                            <?= /* @noEscape */ $block->formatDate($order->getCreatedAt()) ?>
+                        </td>
+                        <?php $extra = $block->getChildBlock('extra.container'); ?>
+                        <?php if ($extra): ?>
+                            <?php $extra->setOrder($order); ?>
+                            <?= $extra->getChildHtml() ?>
+                        <?php endif; ?>
+                        <td data-th="<?= $block->escapeHtmlAttr(__('Ship To')) ?>"
+                            class="col shipping">
+                            <?= /* @noEscape */ $shipTo ?>
+                        </td>
+                        <td data-th="<?= $block->escapeHtmlAttr(__('Order Total')) ?>"
+                            class="col total">
+                            <?= /* @noEscape */ $order->formatPrice($order->getGrandTotal()) ?>
+                        </td>
+                        <td data-th="<?= $block->escapeHtmlAttr(__('Status')) ?>"
+                            class="col status">
+                            <span class="amtheme-status -<?= $block->escapeHtml($order->getState()) ?>">
+                                <?= $block->escapeHtml($order->getStatusLabel()) ?>
+                            </span>
+                        </td>
+                        <?php if ($canReorder):
+                            $reorderUrl = $postHelper->getPostData($block->getReorderUrl($order)); ?>
+                            <td data-th="<?= $block->escapeHtmlAttr(__('Actions')) ?>"
+                                class="col actions">
+                                    <a href="#"
+                                       data-post='<?= /* @noEscape */ $reorderUrl ?>'
+                                       class="action order"
+                                       title="<?= $block->escapeHtmlAttr(__('Reorder')) ?>"
+                                       aria-label="<?= $block->escapeHtmlAttr(__('Reorder')) ?>">
+                                        <?= $block->escapeHtml(__('Reorder')) ?>
+                                    </a>
+                            </td>
+                        <?php endif ?>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+    <?php if ($block->getPagerHtml()): ?>
+        <div class="order-products-toolbar toolbar bottom"><?= $block->getPagerHtml() ?></div>
+    <?php endif ?>
+<?php else: ?>
+    <div class="message info empty">
+        <span><?= $block->escapeHtml(__('You have placed no orders.')) ?></span>
+    </div>
+<?php endif ?>

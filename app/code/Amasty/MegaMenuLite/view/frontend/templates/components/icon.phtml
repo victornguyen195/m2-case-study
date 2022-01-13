@@ -1,0 +1,25 @@
+<?php
+/**
+ * @var \Magento\Theme\Block\Html\Header\Logo $block
+ * @var \Magento\Framework\Escaper $escaper
+ * @var \Amasty\MegaMenuLite\ViewModel\Store\Menu $viewModel
+ */
+
+$viewModel = $block->getViewModel();
+$item = $block->getData('item');
+$colorSettings = $viewModel->getColorSettings();
+?>
+
+<figure class="ammenu-icon-block"
+        style="
+            -webkit-mask-image: <?= $escaper->escapeHtmlAttr(isset($item['icon']) ? 'url(' . $item['icon'] . ')' : '') ?>;
+            maskImage: <?= $escaper->escapeHtmlAttr(isset($item['icon']) ? 'url(' . $item['icon'] . ')' : '') ?>;
+            background-color: <?= $escaper->escapeHtmlAttr($colorSettings['menu_text']) ?>;
+        "
+        data-bind="
+           style: {
+                'background-color': item.color() && item.icon ? item.color() : ''
+           },
+           css: { '-empty': !item.icon }
+       ">
+</figure>

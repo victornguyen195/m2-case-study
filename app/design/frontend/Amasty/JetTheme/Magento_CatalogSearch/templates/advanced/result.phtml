@@ -1,0 +1,40 @@
+<?php
+/**
+ * @var $block \Magento\CatalogSearch\Block\Advanced\Result
+ * @var $escaper Magento\Framework\Escaper
+ */
+
+$productList = $block->getProductListHtml();
+$results = $block->getResultCount();
+$searchCriteria = $block->getSearchCriterias();
+?>
+
+<?php if (!$results): ?>
+    <?= /* @noEscape */ $block->getLayout()->renderElement('page.main.title', false) ?>
+    <div role="alert" class="message error">
+        <div>
+            <?= $escaper->escapeHtml(__('We can\'t find any items matching these search criteria.')) ?>
+            <a href="<?= $escaper->escapeUrl($block->getFormUrl()) ?>"
+               title="<?= $escaper->escapeHtml(__('Modify your search.')) ?>"
+               aria-label="<?= $escaper->escapeHtml(__('Modify your search.')) ?>"
+            ><?= $block->escapeHtml(__('Modify your search.')) ?></a>
+        </div>
+    </div>
+    <div class="search summary">
+        <ul class="items">
+            <?php foreach (['left', 'right'] as $side): ?>
+                <?php if (!empty($searchCriteria[$side])): ?>
+                    <?php foreach ($searchCriteria[$side] as $criteria): ?>
+                        <li class="item">
+                            <span class="amtheme-name"><?= $escaper->escapeHtml(__($criteria['name'])) ?>:</span>
+                            <?= $escaper->escapeHtml($criteria['value']) ?>
+                        </li>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+<?php endif; ?>
+<?php if ($block->getResultCount()): ?>
+    <div class="search results"><?= /* @noEscape */ $productList ?></div>
+<?php endif; ?>

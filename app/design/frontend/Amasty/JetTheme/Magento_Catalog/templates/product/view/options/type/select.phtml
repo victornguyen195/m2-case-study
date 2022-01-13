@@ -1,0 +1,93 @@
+<?php
+/* @var $block Magento\Catalog\Block\Product\View\Options\Type\Select */
+
+use Magento\Catalog\Model\Product\Option;
+
+$option = $block->getOption();
+$requiredClass = $option->getIsRequire() ? 'required' : '';
+$optionType = $option->getType();
+$isMultiple = $optionType === Option::OPTION_TYPE_MULTIPLE;
+$isDropDown = $optionType === Option::OPTION_TYPE_DROP_DOWN;
+$isCheckbox = $optionType === Option::OPTION_TYPE_CHECKBOX;
+$isRadio = $optionType === Option::OPTION_TYPE_RADIO;
+$multipleClass = $isMultiple ? '-multiple' : '';
+$selectType = $isMultiple ? 'multiple' : 'default';
+$multiNamePart = $isMultiple ? '[]' : '';
+$amSelectClass = $isDropDown || $isMultiple ? ' -select-field' : '';
+$isSwatch = (bool)$option->getIsSwatch();
+?>
+
+<div class="field <?= $block->escapeHtml($requiredClass . $amSelectClass) ?>">
+    <label class="label" for="select_<?= $block->escapeHtml($option->getId()) ?>">
+        <?= $block->escapeHtml($option->getTitle()) ?>
+    </label>
+    <div class="control">
+        <?php if (!$isSwatch && ($isDropDown || $isMultiple)): ?>
+            <select id="amtheme-select_<?= $block->escapeHtml($option->getId()) ?>"
+                    class="amtheme-select product-custom-option
+               <?= $block->escapeHtml($requiredClass . ' ' . $multipleClass) ?>"
+                    name="options[<?= $block->escapeHtml($option->getId()) ?>]<?= $block->escapeHtml($multiNamePart) ?>"
+                    tabindex="-1"
+                    data-selector="options[<?= $block->escapeHtml($option->getId()) ?>]<?= $block->escapeHtml($multiNamePart) ?>"
+                    data-option-id="<?= $block->escapeHtml($option->getId())  ?>"
+
+                <?php if ($isMultiple): ?>
+                    multiple="multiple"
+                <?php endif; ?>>
+
+                <?php if (!$isMultiple): ?>
+                    <option value=""><?= $block->escapeHtml(__('-- Please Select --')) ?></option>
+                <?php endif; ?>
+
+                <?php foreach ($option->getValues() as $value): ?>
+                    <option value="<?= (int)$value->getOptionTypeId() ?>">
+                        <?= $block->escapeHtml($value->getTitle()) ?>
+                    </option>
+                <?php endforeach;?>
+            </select>
+            <div class="amtheme-select-block"
+                 data-mage-init='{"amSelect": {
+                    "selectId": "amtheme-select_<?= $block->escapeHtml($option->getId()) ?>",
+                    "selectType": "<?= $block->escapeJs($selectType) ?>"
+                 }}'
+                 name="options[<?= $block->escapeHtml($option->getId()) ?>]<?= $block->escapeHtml($multiNamePart) ?>"
+                 data-amselect-js="select">
+                <span role="button"
+                      tabindex="0"
+                      class="amtheme-placeholder"
+                      data-amselect-js="placeholder">
+                    <span class="amtheme-content"
+                          data-amselect-js="placeholder-content">
+                       <?= $block->escapeHtml(__('Please Select')) ?>
+                    </span>
+                </span>
+                <ul role="list"
+                    class="amtheme-select-options"
+                    data-amselect-js="options">
+                    <?php $index = 0; ?>
+                    <?php foreach ($option->getValues() as $value): ?>
+                        <?php if (($index++) == 0 && !$isMultiple): ?>
+                            <li class="amtheme-option"
+                                tabindex="0"
+                                data-amselect-js="item">
+                                <?= $block->escapeHtml(__('Please Select')) ?>
+                            </li>
+                        <?php endif; ?>
+                        <li class="amtheme-option"
+                            tabindex="0"
+                            data-amselect-js="item"
+                            data-amselect-value="<?= (int)$value->getOptionTypeId() ?>">
+                            <?= $block->escapeHtml($value->getTitle()) ?>
+                        </li>
+                    <?php endforeach;?>
+                </ul>
+            </div>
+        <?php endif;?>
+        <?php if ($isCheckbox || $isRadio || $isSwatch): ?>
+            <?= $block->getValuesHtml() ?>
+            <?php if ($option->getIsRequire()): ?>
+                <span id="options-<?= $block->escapeHtml($option->getId()) ?>-container"></span>
+            <?php endif;?>
+        <?php endif; ?>
+    </div>
+</div>

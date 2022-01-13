@@ -1,0 +1,94 @@
+<?php
+/**
+ * Product list toolbar
+ *
+ * @var \Magento\Catalog\Block\Product\ProductList\Toolbar $block
+ * @var \Amasty\JetTheme\ViewModel\Catalog\FilterStatusViewModel $viewModel
+ */
+
+$viewModel = $block->getViewModel();
+$isActiveFilters = $viewModel->getLayer()->getState()->getFilters();
+$nameIconView = 'icon-sort-view';
+$sorterId = 'sorter';
+?>
+
+<div class="toolbar-sorter sorter">
+    <div class="amtheme-filter-wrap">
+        <div class="amtheme-filter-button" data-amtheme-js="filter-sidebar">
+            <?php if ($isActiveFilters): ?>
+                <svg class="amtheme-icon -active" focusable="false">
+                    <use xlink:href="#icon-check-big"/>
+                </svg>
+            <?php else: ?>
+                <svg class="amtheme-icon -filter" focusable="false">
+                    <use xlink:href="#icon-filter"/>
+                </svg>
+            <?php endif; ?>
+            <strong class="filter-title-text"><?= $block->escapeHtml(__('Filters')) ?></strong>
+        </div>
+    </div>
+    <label class="sorter-label" for="sorter"><?= $block->escapeHtml(__('Sort By')) ?></label>
+    <select id="<?= $block->escapeHtml($sorterId) ?>" data-role="sorter" class="sorter-options amtheme-select">
+        <?php foreach ($block->getAvailableOrders() as $key => $order):?>
+            <option value="<?= $block->escapeHtml($key) ?>"
+                <?php if ($block->isOrderCurrent($key)):?>
+                    selected="selected"
+                <?php endif; ?>
+                >
+                <?= $block->escapeHtml(__($order)) ?>
+            </option>
+        <?php endforeach; ?>
+    </select>
+    <div class="amtheme-select-block -no-border"
+         data-mage-init='{"amSelect": {"selectId": "<?= $block->escapeJs($sorterId) ?>"}}'
+         data-amselect-js="select"
+    >
+        <ul role="list" class="amtheme-select-options" data-amselect-js="options" >
+            <?php foreach ($block->getAvailableOrders() as $key => $order): ?>
+                <?php if ($block->isOrderCurrent($key)): ?>
+                    <?php $selectedOption = $order ?>
+                <?php endif; ?>
+                <li class="amtheme-option <?= $block->isOrderCurrent($key) ? '-selected' : '' ?>"
+                    tabindex="0"
+                    data-amselect-js="item"
+                    data-amselect-value="<?= $block->escapeHtml($key) ?>"
+                >
+                    <span class="amtheme-title"><?= $block->escapeHtml(__($order)) ?></span>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+        <span role="button"
+              tabindex="0"
+              class="amtheme-placeholder"
+              data-amselect-js="placeholder"
+        >
+            <span class="amtheme-content"
+                  data-amselect-js="placeholder-content">
+                <?= isset($selectedOption) ? $block->escapeHtml($selectedOption) : '' ?>
+            </span>
+        </span>
+    </div>
+    <?php if ($block->getCurrentDirection() == 'desc'):?>
+        <a title="<?= $block->escapeHtml(__('Set Ascending Direction')) ?>"
+           href="#"
+           class="action sorter-action sort-desc"
+           data-role="direction-switcher"
+           aria-label="<?= $block->escapeHtml(__('Set Ascending Direction')) ?>"
+           data-value="asc">
+            <svg class="amtheme-icon -circle" focusable="false">
+                <use xlink:href="#<?= $block->escapeHtml($nameIconView) ?>"/>
+            </svg>
+        </a>
+    <?php else:?>
+        <a title="<?= $block->escapeHtml(__('Set Descending Direction')) ?>"
+           href="#"
+           class="action sorter-action sort-asc"
+           data-role="direction-switcher"
+           aria-label="<?= $block->escapeHtml(__('Set Descending Direction')) ?>"
+           data-value="desc">
+            <svg class="amtheme-icon -circle" focusable="false">
+                <use xlink:href="#<?= $block->escapeHtml($nameIconView) ?>"/>
+            </svg>
+        </a>
+    <?php endif; ?>
+</div>

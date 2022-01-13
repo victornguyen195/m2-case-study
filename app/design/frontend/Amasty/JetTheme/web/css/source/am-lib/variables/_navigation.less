@@ -1,0 +1,84 @@
+//
+//  Navigation mixins variables
+//  _____________________________________________
+
+//
+//  Mobile view
+//  ---------------------------------------------
+
+@amasty-navigation__background: @amtheme__background-primary__color;
+@amasty-navigation-bottom__background: @amtheme__background-secondary__color;
+@amasty-navigation__transition: all @amtheme__fast__transition;
+@amasty-navigation__box-shadow: @search-block__box-shadow;
+@amasty-navigation__padding: 25px;
+@amasty-navigation-item__border: @amtheme__border__width solid @amasty-navigation-bottom__background;
+@amasty-navigation-item__width: 14px;
+@amasty-navigation-item__height: 8px;
+@amasty-navigation-item-icon__background: ~'url("../svg/@{amtheme__icons__color-mode-prefix}/@{amtheme__icons__mode}/arrow-bottom-xs.svg")';
+@amasty-navigation-text__color: @amtheme__text-secondary__color;
+@amasty-navigation-text-bottom__color: @amtheme__text-secondary__color;
+@amasty-navigation-icon-bottom__size: 25px;
+@amasty-navigation-item-before__active__size: 5px;
+@amasty-navigation-item-before__active__margin-right: 7px;
+@amasty-navigation-item-before__active__background: @amtheme__link__color;
+@amasty-navigation-item__active__background: @amtheme__background-secondary__color;
+
+//
+//  Navigation Icon Styles (mobile)
+//  ---------------------------------------------
+
+@amasty-nav-icon__color: @amtheme__text-primary__color;
+@amasty-nav-icon__transition: @amtheme__fast__transition;
+@amasty-nav-icon__padding: 10px 5px;
+@amasty-nav-icon-item__width: 30px;
+@amasty-nav-icon-item__margin-bottom: 5px;
+@amasty-nav-icon-item__height: 3px;
+@amasty-nav-icon-item-close__height: 2px;
+
+//
+//  Desktop view
+//  ---------------------------------------------
+
+// Top level
+@amasty-navigation-desktop__background: false;
+@amasty-navigation-desktop__transition: @amasty-navigation__transition;
+@amasty-navigation-desktop__color: @amtheme__text-secondary__color;
+@amasty-navigation-desktop__active__color: @amtheme__secondary__color;
+@amasty-navigation-desktop__padding: 0;
+@amasty-navigation-desktop__margin: 0 0 40px;
+@amasty-navigation-desktop__font-size: 1.6rem;
+@amasty-navigation-desktop__font-weight: @font-weight__regular;
+
+@amasty-navigation-desktop-item-link__padding: 20px 0;
+@amasty-navigation-desktop-item__active__font-weight: @font-weight__bold;
+@amasty-navigation-desktop-item-distance: 40px;
+@amasty-navigation-desktop-item__padding: 0 @amasty-navigation-desktop-item-distance 0 0;
+@amasty-navigation-desktop-item-arrow__background: ~'url("../svg/@{amtheme__icons__color-mode-prefix}/@{amtheme__icons__mode}/arrow-bottom-xs.svg") no-repeat center / cover';
+@amasty-navigation-desktop-item-arrow__width: 10px;
+@amasty-navigation-desktop-item-arrow__height: 6px;
+@amasty-navigation-desktop-item-arrow__margin-left: 10px;
+@amasty-navigation-desktop-item-arrow__margin-right: 5px;
+@amasty-navigation-desktop-item-arrow__right: -@amasty-navigation-desktop-item-arrow__width - @amasty-navigation-desktop-item-arrow__margin-left;
+@amasty-navigation-desktop-item-arrow__padding-right: @amasty-navigation-desktop-item-distance + @amasty-navigation-desktop-item-arrow__margin-left + @amasty-navigation-desktop-item-arrow__margin-right + @amasty-navigation-desktop-item-arrow__width;
+
+@amasty-navigation-desktop-bottom-line__height: 2px;
+@amasty-navigation-desktop-bottom-line__style: solid;
+@amasty-navigation-desktop-bottom-line__color: @amtheme__border__color;
+@amasty-navigation-desktop-bottom-line__active__color: @amasty-navigation-desktop__active__color;
+@amasty-navigation-desktop-bottom-line__transition: width .2s linear;
+
+// Second level
+@amasty-navigation-desktop-submenu-top-distance: 10px;
+@amasty-navigation-desktop-submenu__top: @amasty-navigation-desktop-submenu-top-distance + @amasty-navigation-desktop-bottom-line__height;
+@amasty-navigation-desktop-submenu__padding-top: 25px;
+@amasty-navigation-desktop-submenu__padding-left: 20px;
+@amasty-navigation-desktop-submenu__padding: @amasty-navigation-desktop-submenu__top + @amasty-navigation-desktop-submenu__padding-top @amasty-navigation-desktop-submenu__padding-left @amasty-navigation-desktop-submenu__padding-top;
+@amasty-navigation-desktop-submenu__border-radius: @amtheme__border-radius__s;
+@amasty-navigation-desktop-submenu__background: @amtheme__background-secondary__color;
+@amasty-navigation-desktop-submenu-item__min-width: 115px;
+@amasty-navigation-desktop-submenu-item__max-width: 300px;
+@amasty-navigation-desktop-submenu-item__margin: 20px 0 0;
+@amasty-navigation-desktop-submenu-column__margin: 0 30px 0 0;
+@amasty-navigation-desktop-submenu-column__border-right: @amtheme__border;
+@amasty-navigation-desktop-deep-submenu__padding-left: 10px;
+@amasty-navigation-desktop-deep-submenu-item__margin: 10px 0 0;

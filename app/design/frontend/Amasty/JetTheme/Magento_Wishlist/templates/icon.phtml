@@ -1,0 +1,19 @@
+<?php
+/* @var \Magento\Wishlist\Block\Link $block */
+/* @var \Amasty\JetTheme\ViewModel\WishlistViewModel $viewModel */
+
+$viewModel = $block->getViewModel();
+?>
+
+<?php if ($viewModel->isAllowWishlist()): ?>
+    <div class="amtheme-header-icon">
+        <a href="<?= $block->escapeUrl($block->getUrl('wishlist')) ?>"
+           class="amtheme-link"
+           aria-label="<?= $block->escapeHtml(__('My Wish List')) ?>"
+           title="<?= $block->escapeHtml(__('My Wish List')) ?>" >
+            <svg class="amtheme-icon -hover-bg">
+                <use xlink:href="#icon-wishlist" />
+            </svg>
+        </a>
+    </div>
+<?php endif; ?>

@@ -1,0 +1,40 @@
+<?php
+/** @var \Magento\Review\Block\Customer\Recent $block */
+?>
+
+<?php if ($block->getReviews() && count($block->getReviews())): ?>
+<div class="amtheme-card-block amtheme-reviews-dashboard">
+    <div class="amtheme-heading">
+        <span class="amtheme-title">
+            <?= $block->escapeHtml(__('My Recent Reviews')) ?>
+        </span>
+        <a class="action view"
+           title="<?= $block->escapeHtml(__('View All')) ?>"
+           href="<?= $block->escapeUrl($block->getAllReviewsUrl()) ?>">
+            <?= $block->escapeHtml(__('View All')) ?>
+        </a>
+    </div>
+    <div class="amtheme-content">
+        <ol class="amtheme-items">
+        <?php foreach ($block->getReviews() as $_review): ?>
+            <li class="amtheme-item">
+                <a class="product-name" href="<?= $block->escapeUrl($block->getReviewUrl($_review->getReviewId())) ?>">
+                    <?= $block->escapeHtml($_review->getName()) ?>
+                </a>
+                <?php if ($_review->getSum()): ?>
+                    <?php $rating = $_review->getSum() / $_review->getCount() ?>
+                    <div class="rating-summary star-secondary">
+                         <span class="amtheme-label">
+                             <?= $block->escapeHtml(__('Rating')) ?>
+                         </span>
+                         <div class="rating-result" title="<?= $block->escapeHtmlAttr($rating) ?>%">
+                             <span style="width:<?= $block->escapeHtmlAttr($rating) ?>%"></span>
+                         </div>
+                     </div>
+                <?php endif; ?>
+            </li>
+        <?php endforeach; ?>
+        </ol>
+    </div>
+</div>
+<?php endif; ?>

@@ -1,0 +1,58 @@
+<?php
+/**
+ * @var $block Magento\Framework\View\Element\Template
+ * @var $stickyHeaderViewModel Amasty\JetTheme\ViewModel\StickyHeaderViewModel
+ * @var $escaper Magento\Framework\Escaper
+ */
+
+// phpcs:ignore
+$compareHelper = $this->helper(Magento\Catalog\Helper\Product\Compare::class);
+$stickyHeaderViewModel = $block->getStickyHeaderViewModel();
+$offsetElementSelectors = '';
+
+if ($stickyHeaderViewModel->isStickyHeaderEnabled()) {
+    $offsetElementSelectors = $offsetElementSelectors . ' .-sticky-header.-show';
+}
+?>
+
+<div data-role="compare-sticky-link" data-bind="scope: 'compareProducts'">
+    <div class="amtheme-sticky-compare hidden-print"
+         data-bind="css: {'-show': !!compareProducts().count},
+                    mageInit: {
+                        'amStickyCompareLink': {
+                            'referenceElement': '.products .product-items',
+                            'offsetTopElements': '<?= /* @noEscape */ $offsetElementSelectors ?>'
+                         }
+                    }">
+        <div class="amtheme-wrapper -link">
+            <?php $clearButtonTitle = __('Clear Compare List') ?>
+            <a class="amtheme-link"
+               data-bind="attr: {'href': compareProducts().listUrl}"
+               title="<?= $escaper->escapeHtmlAttr(__('Compare Items')) ?>"
+               aria-label="<?= $escaper->escapeHtmlAttr(__('Compare Items')) ?>">
+                <span><?= $escaper->escapeHtml(__('Compare')) ?></span>
+                <span class="amtheme-count"
+                      data-bind="text: '(' + compareProducts().count + ')',
+                                 css: {'-show': !!compareProducts().count}"></span>
+            </a>
+        </div>
+        <div class="amtheme-wrapper -clear">
+            <button id="compare-clear"
+                    class="amtheme-clear button-as-link"
+                    title="<?= $escaper->escapeHtmlAttr($clearButtonTitle) ?>"
+                    aria-label="<?= $escaper->escapeHtmlAttr($clearButtonTitle) ?>"
+                    data-post="<?=$escaper->escapeHtmlAttr($compareHelper->getPostDataClearList()) ?>">
+                <svg class="amtheme-icon">
+                    <use xlink:href="#icon-trash" />
+                </svg>
+            </button>
+        </div>
+    </div>
+</div>
+<script type="text/x-magento-init">
+{
+    "[data-role='compare-sticky-link']": {
+        "Magento_Ui/js/core/app": <?= /* @noEscape */ $block->getJsLayout() ?>
+    }
+}
+</script>

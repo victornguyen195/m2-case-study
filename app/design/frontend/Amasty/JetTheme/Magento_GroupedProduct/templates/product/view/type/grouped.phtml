@@ -1,0 +1,99 @@
+<?php
+/**
+ * Grouped product data template
+ *
+ * @var $block \Magento\Catalog\Block\Product\View\BaseImage
+ * @var $block \Magento\GroupedProduct\Block\Product\View\Type\Grouped
+ */
+
+$block->setPreconfiguredValue();
+$_product = $block->getProduct();
+$_associatedProducts = $block->getAssociatedProducts();
+$_hasAssociatedProducts = count($_associatedProducts) > 0;
+$priceType = \Magento\Catalog\Pricing\Price\TierPrice::PRICE_CODE;
+?>
+
+<div class="table-wrapper grouped">
+    <table class="table data grouped"
+           id="super-product-table"
+           data-mage-init='{ "Magento_GroupedProduct/js/product-ids-resolver": {} }'>
+        <caption class="table-caption"><?= $block->escapeHtml(__('Grouped product items')) ?></caption>
+        <?php if ($_hasAssociatedProducts): ?>
+            <tbody>
+            <?php foreach ($_associatedProducts as $_item): ?>
+            <tr class="row">
+                <td class="col item">
+                    <div class="product-row">
+                        <div class="product">
+                            <span class="product-item-name"><?= $block->escapeHtml($_item->getName()) ?></span>
+
+                            <?php if ($block->getCanShowProductPrice($_product) && $block->getCanShowProductPrice($_item)): ?>
+                                <div class="product-price">
+                                    <?= /* @noEscape */ $block->getProductPrice($_item) ?>
+                                </div>
+                            <?php endif; ?>
+
+                            <?php if ($block->getCanShowProductPrice($_product)
+                                && $block->getCanShowProductPrice($_item)
+                                && trim($block->getProductPriceHtml($_item, $priceType))): ?>
+                                <div class="tier-price">
+                                    <?= $block->getProductPriceHtml($_item, $priceType); ?>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+
+                        <?php if ($_product->isSaleable()): ?>
+                            <?php if ($_item->isSaleable()): ?>
+                            <div class="сontrol qty amtheme-qty-wrap -grouped">
+                                <label class="label amtheme-label">
+                                    <?= $block->escapeHtml(__('Qty')) ?>
+                                </label>
+                                <div class="control amtheme-qty-box -grouped" data-mage-init='{"amQty":{"isGrouped":true}}'>
+                                    <div class="amtheme-minus"
+                                         data-amtheme-js="qty-minus"
+                                         tabindex="0"
+                                         title="<?= $block->escapeHtml(__('Minus')) ?>">
+                                        <svg class="amtheme-icon">
+                                            <use xlink:href="#icon-minus"/>
+                                        </svg>
+                                    </div>
+                                    <div class="amtheme-plus"
+                                         data-amtheme-js="qty-plus"
+                                         tabindex="0"
+                                         title="<?= $block->escapeHtml(__('Plus')) ?>">
+                                        <svg class="amtheme-icon">
+                                            <use xlink:href="#icon-plus"/>
+                                        </svg>
+                                    </div>
+                                    <input type="number"
+                                           name="super_group[<?= $block->escapeHtml($_item->getId()) ?>]"
+                                           data-selector="super_group[<?= $block->escapeHtml($_item->getId()) ?>]"
+                                           value="<?= $block->escapeHtml($_item->getQty() * 1) ?>"
+                                           title="<?= $block->escapeHtml(__('Qty')) ?>"
+                                           min="0"
+                                           class="input-text qty amtheme-qty"
+                                           data-amtheme-js="qty-input"
+                                           tabindex="0"
+                                           data-validate="{'am-validate-grouped-qty':'#super-product-table'}"
+                                           data-errors-message-box="#validation-message-box"/>
+                                </div>
+                            </div>
+                        <?php else: ?>
+                            <div class="stock unavailable" title="<?= $block->escapeHtml(__('Availability')) ?>">
+                                <?= $block->escapeHtml(__('Out of stock')) ?>
+                            </div>
+                        <?php endif; ?>
+                        <?php endif; ?>
+                    </div>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+            </tbody>
+        <?php else: ?>
+        <div class="no-available">
+            <?= $block->escapeHtml(__('No options of this product are available.')) ?>
+        </div>
+        <?php endif; ?>
+    </table>
+</div>
+<div id="validation-message-box"></div>

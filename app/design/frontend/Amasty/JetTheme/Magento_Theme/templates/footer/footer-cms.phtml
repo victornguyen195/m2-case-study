@@ -1,0 +1,12 @@
+<?php
+/**
+ * @var $block Magento\Framework\View\Element\Template
+ * @var $viewModel Amasty\JetTheme\ViewModel\Footer\FooterViewModel
+ */
+
+$viewModel = $block->getViewModel();
+?>
+
+<div class="amtheme-footer-cms">
+    <?= /* @noEscape */ $viewModel->getCustomCmsBlockContent() ?>
+</div>

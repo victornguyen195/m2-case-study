@@ -1,0 +1,76 @@
+<?php
+/** @var \Magento\Bundle\Pricing\Render\FinalPriceBox $block */
+/** @var \Magento\Bundle\Pricing\Price\FinalPrice $finalPriceModel */
+/** @var \Magento\Framework\Pricing\Price\PriceInterface $regularPriceModel */
+
+$idSuffix = $block->getIdSuffix() ? $block->getIdSuffix() : '';
+$finalPriceModel = $block->getPrice();
+$minimalPrice = $finalPriceModel->getMinimalPrice();
+$maximalPrice = $finalPriceModel->getMaximalPrice();
+$regularPriceModel = $block->getPriceType('regular_price');
+$maximalRegularPrice = $regularPriceModel->getMaximalPrice();
+$minimalRegularPrice = $regularPriceModel->getMinimalPrice();
+$regularPriceAttributes = [
+    'display_label'     => __('Regular Price'),
+    'price_id'          => $block->getPriceId('old-price-' . $idSuffix),
+    'include_container' => true,
+    'skip_adjustments'  => true
+];
+$renderMinimalRegularPrice = $block->renderAmount($minimalRegularPrice, $regularPriceAttributes);
+?>
+
+<?php if ($block->getSaleableItem()->getPriceView()): ?>
+    <p class="minimal-price">
+        <?= /* @noEscape */ $block->renderAmount($minimalPrice, [
+            'display_label'     => __('As low as'),
+            'price_id'          => $block->getPriceId('from-'),
+            'include_container' => true
+        ]); ?>
+        <?php if ($minimalPrice < $minimalRegularPrice): ?>
+            <span class="old-price">
+                <?= /* @noEscape */ $renderMinimalRegularPrice ?>
+            </span>
+        <?php endif ?>
+    </p>
+<?php else:  ?>
+    <?php if ($block->showRangePrice()): ?>
+        <p class="price-from">
+            <?= /* @noEscape */ $block->renderAmount($minimalPrice, [
+                'display_label'     => __('From'),
+                'price_id'          => $block->getPriceId('from-'),
+                'price_type'        => 'minPrice',
+                'include_container' => true
+            ]); ?>
+        </p>
+        <p class="price-to">
+            <?= /* @noEscape */ $block->renderAmount($maximalPrice, [
+                'display_label'     => __('To'),
+                'price_id'          => $block->getPriceId('to-'),
+                'price_type'        => 'maxPrice',
+                'include_container' => true
+            ]); ?>
+        </p>
+        <span class="old-price-wrap">
+            <?php if ($minimalPrice < $minimalRegularPrice): ?>
+                <span class="old-price">
+                    <?= /* @noEscape */ $renderMinimalRegularPrice ?>
+                </span>
+            <?php endif ?>
+            <?php if ($maximalPrice < $maximalRegularPrice): ?>
+                <span class="old-price">
+                    <?= /* @noEscape */ $block->renderAmount($maximalRegularPrice, $regularPriceAttributes); ?>
+                </span>
+            <?php endif ?>
+        </span>
+    <?php else:  ?>
+        <?= /* @noEscape */ $block->renderAmount($minimalPrice, [
+            'price_id'          => $block->getPriceId('product-price-'),
+            'include_container' => true
+        ]); ?>
+        <?php if ($minimalPrice < $minimalRegularPrice): ?>
+            <span class="old-price">
+                <?= /* @noEscape */ $renderMinimalRegularPrice ?>
+            </span>
+        <?php endif ?>
+    <?php endif ?>
+<?php endif ?>

@@ -1,0 +1,22 @@
+<?php
+// phpcs:ignore
+$reorderHelper = $this->helper(\Magento\Sales\Helper\Reorder::class);
+//phpcs:ignore
+$postHelper = $this->helper(\Magento\Framework\Data\Helper\PostHelper::class);
+?>
+
+<div class="actions">
+    <?php $_order = $block->getOrder() ?>
+    <?php if ($reorderHelper->canReorder($_order->getEntityId())): ?>
+        <a href="#"
+           data-post='<?= /* @noEscape */ $postHelper->getPostData($block->getReorderUrl($_order)) ?>'
+           class="action order reorder"
+           title="<?= $block->escapeHtml(__('Reorder')) ?>">
+            <?= $block->escapeHtml(__('Reorder')) ?>
+            <svg class="amtheme-icon">
+                <use xlink:href="#icon-arrow-right-min" />
+            </svg>
+        </a>
+    <?php endif ?>
+    <?= $block->getChildHtml() ?>
+</div>

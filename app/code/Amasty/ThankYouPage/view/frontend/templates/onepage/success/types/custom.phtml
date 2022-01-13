@@ -1,0 +1,27 @@
+<?php
+/**
+ * @var Amasty\ThankYouPage\Block\Onepage\Success\Types\CustomAbstract $block
+ * @var Magento\Framework\Escaper $escaper
+ */
+
+try {
+    $background = $escaper->escapeHtml($block->getBackgroundImage());
+} catch (\Magento\Framework\Exception\NoSuchEntityException $e) {
+    return;
+}
+$htmlClass = $background ? 'amtypage-background' : 'amtypage-page';
+$background = $background ? " background-image:url(" . $background . ")" : '';
+?>
+
+<div class="amtyblock <?= $escaper->escapeHtmlAttr($htmlClass) ?>"
+     style="width: <?= $escaper->escapeHtmlAttr($block->getWidth()) . '%' . ';' ?><?= $escaper->escapeHtmlAttr($background); ?>">
+    <?php if (!$block->useCmsBlock()): ?>
+        <h2 class="page-title"><?= $escaper->escapeHtml($block->getTitle()); ?></h2>
+        <p class="subtitle"><?= $escaper->escapeHtml($block->getSubTitle()); ?></p>
+        <p class="text"><?= $escaper->escapeHtml($block->getText()); ?></p>
+    <?php else: ?>
+        <div class="content">
+            <?= /* @noEscape */ $block->getCmsBlockContentHtml(); ?>
+        </div>
+    <?php endif; ?>
+</div>

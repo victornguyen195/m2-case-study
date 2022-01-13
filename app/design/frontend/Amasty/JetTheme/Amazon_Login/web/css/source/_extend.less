@@ -1,0 +1,90 @@
+//
+//  Amazon Login/Registration styles
+//  ____________________________________________
+
+//
+//  Variables
+//  --------------------------------------------
+
+@amazon-login__max-width: 760px;
+
+//
+//  Common
+//  --------------------------------------------
+
+& when (@media-common = true) {
+    .customer-account-create .block.block-amazon-login,
+    .login-container > .block.block-amazon-login {
+        & {
+            float: none;
+            box-sizing: border-box;
+            padding: 20px;
+            max-width: @amazon-login__max-width;
+            border-radius: @amtheme__border-radius__s;
+            background: @amtheme__background-secondary__color;
+        }
+
+        > .block-title {
+            margin-bottom: 5px;
+            font-size: @h3__font-size;
+        }
+
+        > .block-content .actions-toolbar {
+            margin-top: 15px;
+        }
+
+        .amazon-button-container {
+            margin: 0;
+            width: auto;
+        }
+
+        .amazon-button-container .field-tooltip {
+            right: 10px;
+            margin: 0;
+        }
+    }
+
+    .customer-account-create .block.block-amazon-login {
+        margin: 0 auto 35px;
+    }
+
+    .login-container > .block.block-amazon-login {
+        margin: 35px auto 0;
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__xs) {
+    .checkout-shipping-address .amazon-button-container {
+        .field-tooltip-content {
+            right: -48px; // Override tooltip styles
+        }
+    }
+
+    .customer-account-create .block.block-amazon-login,
+    .login-container > .block.block-amazon-login {
+        .amazon-button-container .field-tooltip-content {
+            right: -60px; // Override tooltip styles
+        }
+    }
+}
+
+//
+//  Desktop
+//  --------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .customer-account-create .block.block-amazon-login,
+    .login-container > .block.block-amazon-login {
+        & {
+            text-align: center;
+        }
+
+        > .block-content .actions-toolbar {
+            justify-content: center;
+        }
+    }
+
+    .customer-account-create .block.block-amazon-login {
+        margin: 0 auto 50px;
+    }
+}

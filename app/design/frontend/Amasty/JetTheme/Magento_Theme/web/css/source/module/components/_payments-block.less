@@ -1,0 +1,128 @@
+//
+//  Payments methods styles
+//  _____________________________________________
+
+//
+//  Common
+//  ---------------------------------------------
+
+& when (@media-common = true) {
+    .amtheme-payment-methods {
+        .amtheme-payments-list {
+            .lib-list-reset-styles();
+
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .amtheme-payments-list .amtheme-item {
+            margin-right: @indent__s;
+            margin-bottom: @indent__s;
+        }
+
+        .amtheme-payments-list .amtheme-item:last-child {
+            margin-right: 0;
+        }
+    }
+
+    .amtheme-product-wrap .amtheme-payment-methods {
+        margin: @indent__l 0 0;
+    }
+
+    .cart-summary,
+    .block-minicart {
+        .amtheme-payments-list {
+            justify-content: center;
+        }
+    }
+
+    .block-minicart .amtheme-payment-methods {
+        margin: @indent__s -@minicart-popup-content__padding 0;
+        padding: @indent__s @minicart-popup-content__padding;
+        width: 100%;
+        background: @amtheme__background-secondary__color;
+    }
+
+    .cart-summary .amtheme-payments-list {
+        margin: @indent__l auto;
+    }
+
+    .block-minicart.-sticky-minicart .amtheme-payment-methods {
+        margin-top: 0;
+        padding-top: @indent__base;
+    }
+
+    .amtheme-add-form-bottom.-on-line .amtheme-payment-methods {
+        width: 100%;
+    }
+
+    .-amcaret-active .-on-line .amtheme-payment-methods {
+        order: 10;
+    }
+
+    .product-add-form.-amcaret-active .amtheme-payment-methods {
+        & {
+            max-width: 100%;
+        }
+
+        .amtheme-payments-list {
+            width: 100%;
+        }
+    }
+
+    .amtheme-payment-methods.footer-payments {
+        & {
+            display: flex;
+        }
+
+        .amtheme-payments-list {
+            width: 100%;
+        }
+
+        .amtheme-payments-list.-right {
+            justify-content: flex-end;
+        }
+
+        .amtheme-payments-list.-center {
+            justify-content: center;
+        }
+
+        .amtheme-payments-list.-left {
+            justify-content: flex-start;
+        }
+    }
+}
+
+//
+//  Mobile
+//  ---------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
+    .product-info-main,
+    .footer {
+        .amtheme-payments-list {
+            justify-content: center;
+        }
+    }
+
+    .footer .amtheme-payment-methods {
+        margin-bottom: @indent__l;
+        width: 100%;
+    }
+}
+
+//
+//  Desktop
+//  ---------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .product-info-main .amtheme-payment-methods {
+        max-width: 80%;
+    }
+
+    .footer .amtheme-payment-methods {
+        margin-top: @indent__l;
+        width: 100%;
+    }
+}

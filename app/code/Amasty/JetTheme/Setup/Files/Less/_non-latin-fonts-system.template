@@ -1,0 +1,24 @@
+//
+//  Font system theme
+//  ____________________________________________
+
+//
+//  Variables
+//  -----------------------------------------------
+
+@font-family-name__base: '{{font (non_latin_font)}}';
+@font-family__base: @font-family-name__base, @font-family__sans-serif;
+
+//
+//  Common
+//  ---------------------------------------------
+
+& when (@media-common = true) {
+    .am-lib-font-face(
+        @family-name: @font-family-name__base,
+        @font-path: '@{baseDir}Amasty_JetNonLatinFonts/fonts/{{font (non_latin_font)}}',
+        @font-weight: @font-weight__regular,
+        @font-style: normal,
+        @font-display: swap
+    );
+}

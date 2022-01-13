@@ -1,0 +1,170 @@
+<?php
+/**
+ * Shipping page
+ *
+ * @var $block \Magento\Multishipping\Block\Checkout\Shipping
+ */
+
+//phpcs:ignore
+$isBothPrices = $this->helper(Magento\Tax\Helper\Data::class)->displayShippingBothPrices();
+//phpcs:ignore
+$priceInclTax = $this->helper(Magento\Tax\Helper\Data::class)->displayShippingPriceIncludingTax();
+?>
+
+<form action="<?= $block->escapeUrl($block->getPostActionUrl()) ?>"
+      method="post"
+      id="shipping_method_form"
+      class="form multicheckout shipping">
+    <?php $i = 0; ?>
+    <?php foreach ($block->getAddresses() as $index => $address): ?>
+    <div class="block block-shipping amtheme-collapsible-block" data-mage-init='{
+        "amCollapsible":{
+            "isMobileOnly": true,
+            "isActive": <?= $i == 0 ? 'true' : 'false' ?>
+        }}'>
+        <div class="block-title" data-amcollapsible="title">
+            <?= $block->escapeHtml(__('Address %1 of %2', ($index+1), $block->getAddressCount())) ?>
+            <svg class="amtheme-icon">
+                <use xlink:href="#icon-arrow-bottom"></use>
+            </svg>
+        </div>
+        <div class="block-content amtheme-card-block" data-amcollapsible="content">
+            <div class="box box-shipping-address">
+                <span class="box-title">
+                    <?= $block->escapeHtml(__('Ship To')) ?>
+                </span>
+                <address class="box-content">
+                    <?= /* @noEscape */ $address->format('html') ?>
+                </address>
+                <a href="<?= $block->escapeUrl($block->getAddressEditUrl($address)) ?>"
+                   title="<?= $block->escapeHtml(__('Edit')) ?>"
+                   class="action edit">
+                    <?= $block->escapeHtml(__('Edit')) ?>
+                </a>
+            </div>
+            <div class="box box-shipping-method">
+                <span class="box-title">
+                    <?= $block->escapeHtml(__('Shipping Method')) ?>
+                </span>
+                <div class="box-content">
+                    <?php if (!($shippingRateGroups = $block->getShippingRates($address))): ?>
+                        <p><?= $block->escapeHtml(__('Sorry, no quotes are available for this order right now.')) ?></p>
+                    <?php else: ?>
+                    <dl class="items methods-shipping amtheme-shipping-methods">
+                        <?php $sole = count($shippingRateGroups) == 1; ?>
+                        <?php foreach ($shippingRateGroups as $code => $rates): ?>
+                        <div class="amtheme-item field choice">
+                            <?php $sole = $sole && count($rates) == 1; ?>
+                            <?php foreach ($rates as $rate): ?>
+                                <?php if ($rate->getErrorMessage()): ?>
+                                    <div class="message error">
+                                        <span>
+                                            <?= $block->escapeHtml($rate->getCarrierTitle()) ?>: <?= $block->escapeHtml($rate->getErrorMessage()) ?>
+                                        </span>
+                                    </div>
+                                <?php else: ?>
+                                    <?php if ($sole): ?>
+                                        <input type="radio"
+                                               name="shipping_method[<?= (int) $address->getId() ?>]"
+                                               value="<?= $block->escapeHtmlAttr($rate->getCode()) ?>"
+                                               id="s_method_<?= (int) $address->getId() ?>_<?= $block->escapeHtmlAttr($rate->getCode()) ?>"
+                                               class="radio solo method"
+                                               checked="checked"
+                                        />
+                                    <?php else: ?>
+                                        <input type="radio"
+                                               name="shipping_method[<?= (int) $address->getId() ?>]"
+                                               value="<?= $block->escapeHtmlAttr($rate->getCode()) ?>"
+                                               id="s_method_<?= (int) $address->getId() ?>_<?= $block->escapeHtmlAttr($rate->getCode()) ?>"
+                                            <?= ($rate->getCode()===$block->getAddressShippingMethod($address)) ? ' checked="checked"' : '' ?>
+                                               class="radio"
+                                        />
+                                    <?php endif; ?>
+                                    <label class="amtheme-label" for="s_method_<?= (int) $address->getId() ?>_<?= $block->escapeHtmlAttr($rate->getCode()) ?>">
+                                            <span class="amtheme-title">
+                                                <?= $block->escapeHtml($block->getCarrierName($code)) ?>
+                                                <span class="amtheme-price">
+                                                <?php
+                                                    $excl = $block->getShippingPrice($address, $rate->getPrice(), $priceInclTax);
+                                                    $incl = $block->getShippingPrice($address, $rate->getPrice(), true);
+                                                ?>
+                                                <?php if ($isBothPrices && $incl != $excl): ?>
+                                                    <span class="price-including-tax"
+                                                          data-label="<?= $block->escapeHtmlAttr(__('Incl. Tax')) ?>">
+                                                <?php endif; ?>
+                                                <?= $block->escapeHtml($incl, ['span']) ?>
+                                                <?php if ($isBothPrices && $incl != $excl): ?>
+                                                    </span>
+                                                <?php endif; ?>
+                                                <?php if ($isBothPrices && $incl != $excl): ?>
+                                                    <span class="price-excluding-tax"
+                                                          data-label="<?= $block->escapeHtmlAttr(__('Excl. Tax')) ?>">
+                                                    <?= $block->escapeHtml($excl, ['span']) ?>
+                                                    </span>
+                                                <?php endif; ?>
+                                                </span>
+                                            </span>
+                                        <span class="amtheme-description">
+                                            <?= $block->escapeHtml($rate->getMethodTitle()) ?>
+                                        </span>
+                                    </label>
+                                <?php endif ?>
+                            <?php endforeach; ?>
+                        </div>
+                        <?php endforeach; ?>
+                    </dl>
+                    <?php endif; ?>
+                    <?= /* @noEscape */ $block->getItemsBoxTextAfter($address) ?>
+                </div>
+            </div>
+            <div class="box box-items">
+                <span class="box-title">
+                    <?= $block->escapeHtml(__('Items')) ?>
+                    <a href="<?= $block->escapeUrl($block->getItemsEditUrl($address)) ?>"
+                       title="<?= $block->escapeHtml(__('Edit Items')) ?>"
+                       class="action edit">
+                        <?= $block->escapeHtml(__('Edit')) ?>
+                    </a>
+                </span>
+                <div class="box-content">
+                    <div class="amtheme-cart-items" id="shipping-table-<?= (int) $address->getId() ?>">
+                        <?php foreach ($block->getAddressItems($address) as $item): ?>
+                            <div class="amtheme-item">
+                                <div class="amtheme-name" >
+                                    <?= $block->getItemHtml($item->getQuoteItem()) ?>
+                                </div>
+                                <div class="amtheme-qty">
+                                    <span class="amtheme-label"><?= $block->escapeHtmlAttr(__('Qty:')) ?></span>
+                                    <span class="amtheme-value"><?= $block->escapeHtml($item->getQty()) ?></span>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php $i++ ?>
+    <?php endforeach; ?>
+    <?= $block->getChildHtml('checkout_billing_items') ?>
+    <div class="actions-toolbar -reverse">
+        <div class="primary">
+            <button class="action primary continue"
+                    title="<?= $block->escapeHtml(__('Continue to Billing Information')) ?>"
+                    aria-label="<?= $block->escapeHtml(__('Continue to Billing Information')) ?>"
+                    type="submit">
+                <?= $block->escapeHtml(__('Continue to Billing Information')) ?>
+            </button>
+        </div>
+        <div class="secondary">
+            <a href="<?= $block->escapeUrl($block->getBackUrl()) ?>"
+               title="<?= $block->escapeHtml(__('Back to Select Addresses')) ?>"
+               class="action back">
+                <svg class="amtheme-icon">
+                    <use xlink:href="#icon-arrow-left-min"></use>
+                </svg>
+                <?= $block->escapeHtml(__('Back to Select Addresses')) ?>
+            </a>
+        </div>
+    </div>
+</form>

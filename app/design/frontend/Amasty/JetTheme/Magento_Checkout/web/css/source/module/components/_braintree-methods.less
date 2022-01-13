@@ -1,0 +1,228 @@
+//
+//  Braintree method styles
+//  _____________________________________________
+
+//
+//  Common
+//  ---------------------------------------------
+
+& when (@media-common = true) {
+    .checkout-payment-method .braintree-paypal-actions {
+        &.actions-toolbar {
+            justify-content: space-between;
+        }
+
+        &:before,
+        &:after {
+            display: none;
+        }
+
+        .braintree-paypal-account {
+            & {
+                .am-word-break;
+                .am-padding(10px 0 10px 25px);
+
+                display: flex;
+                flex-wrap: wrap;
+                width: 55%;
+                border: 0;
+            }
+
+            &:before {
+                left: 0;
+            }
+        }
+
+        .payment-method-type {
+            .am-margin-right(15px);
+        }
+
+        .payment-method-description {
+            color: @amtheme__text-secondary__color;
+        }
+    }
+
+    .checkout-payment-method .braintree-paypal-fieldset ~ .field.choice {
+        & {
+            .am-padding(10px);
+
+            position: relative;
+            align-items: center;
+            flex-direction: row;
+            margin-bottom: 30px;
+            border-radius: @amtheme__border-radius__s;
+            background: @amtheme__background-secondary__color;
+        }
+
+        > .label {
+            margin: 0;
+        }
+
+        > .field-tooltip {
+            position: static;
+            z-index: 999;
+            transform: none;
+        }
+
+        .field-tooltip-content {
+            left: 0;
+            margin-top: 5px;
+        }
+    }
+
+    .payment-method-content > .braintree-paypal-actions + .actions-toolbar {
+        justify-content: flex-start;
+    }
+
+    // Override Braintree styles for 2.4.0
+    .payment-method-braintree .payment.ccard.braintree {
+        .hosted-control {
+            .am-padding(10px);
+
+            box-sizing: border-box;
+            height: 4rem;
+            border: @amtheme__border;
+            border-radius: @amtheme__border-radius__s;
+        }
+
+        .hosted-control.braintree-hosted-fields-invalid {
+            border-color: @amtheme__error-text__color;
+        }
+
+        .braintree-card-control > .hosted-control {
+            .am-padding(10px 40px 10px 70px);
+
+            box-sizing: border-box;
+            max-width: inherit;
+            width: 100%;
+            background: @braintree-card-icon__background no-repeat;
+            background-position: calc(~'100% - @{braintree-card-icon__width}') 50%;
+        }
+
+        .braintree-card-control > img {
+            top: 5px;
+            width: 30px;
+            height: 30px;
+        }
+
+        .braintree-credit-card-types {
+            margin-top: 15px;
+        }
+
+        #braintree_expirationDate {
+            width: 110px;
+        }
+
+        .field.cvv .field-tooltip {
+            top: 40%;
+        }
+
+        .field.number {
+            & {
+                display: inline-block;
+                width: 27%;
+                vertical-align: top;
+            }
+
+            &:first-of-type {
+                display: block;
+                width: 100%;
+            }
+        }
+
+        .field.cvv {
+            max-width: inherit;
+            width: 50%;
+        }
+
+        .field.choice {
+            align-items: center;
+            flex-direction: row;
+        }
+
+        .field.choice > label {
+            margin-bottom: 0;
+        }
+
+        .field.choice > .field-tooltip {
+            position: static;
+            display: inline-block;
+            transform: none;
+        }
+    }
+
+    #braintree_paypal_placeholder {
+        min-width: 300px;
+    }
+}
+
+//
+//  Mobile
+//  ---------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__xs) {
+    .checkout-payment-method .payment-method-braintree .payment.braintree .field.cvv {
+        & {
+            display: block;
+        }
+
+        > .control._with-tooltip {
+            position: relative;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .hosted-error {
+            order: 3;
+            width: 100%;
+        }
+
+        .field-tooltip {
+            .am-margin-left(15px);
+
+            position: static;
+            transform: none;
+        }
+
+        .field-tooltip-content {
+            left: 0;
+            margin-top: 10px;
+        }
+    }
+}
+
+//
+//  Tablet
+//  ---------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .checkout-payment-method .braintree-paypal-actions {
+        &.actions-toolbar {
+            align-items: baseline;
+        }
+
+        .braintree-paypal-account {
+            margin-bottom: @indent__base;
+            width: 100%;
+        }
+    }
+}
+
+//
+//  Desktop
+//  ---------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+    .checkout-payment-method .braintree-choice.field.choice {
+        > .field-tooltip {
+            position: relative;
+            top: 0;
+        }
+
+        .field-tooltip-content {
+            left: 35px;
+            margin-top: 0;
+        }
+    }
+}

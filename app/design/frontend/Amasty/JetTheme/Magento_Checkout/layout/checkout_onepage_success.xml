@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="Magento\Framework\View\Element\Template" name="amtheme.checkout.laststep" template="Magento_Checkout::amtheme-last-step.phtml" before="-"/>
+        </referenceContainer>
+        <move element="page.main.title" destination="content" after="amtheme.checkout.laststep" />
+        <move element="checkout.success.print.button" destination="checkout.success" />
+        <referenceBlock name="checkout.success">
+            <arguments>
+                <argument name="view_model" xsi:type="object">Amasty\JetTheme\ViewModel\Checkout\CheckoutSuccessViewModel</argument>
+            </arguments>
+        </referenceBlock>
+    </body>
+</page>

@@ -1,0 +1,111 @@
+//
+//  Swatches base styles
+//  ____________________________________________
+
+//
+//  Common
+//  ---------------------------------------------
+
+& when (@media-common = true) {
+    .swatch-attribute {
+        & {
+            margin: @indent__s 0 @product-swatch__margin-bottom - @product-swatch-option__margin-bottom 0;
+        }
+
+        .swatch-more {
+            margin-top: 6px;
+            line-height: 1.3rem;
+        }
+
+        > .swatch-attribute-options {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .swatch-option:not(.text) {
+            min-width: auto;
+            min-height: @swatch-option-color__size;
+            width: @swatch-option-color__size;
+            height: @swatch-option-color__size;
+        }
+
+        .swatch-option.image {
+            min-width: @swatch-option-color__size;
+            min-height: @swatch-option-color__size;
+        }
+    }
+
+    .swatch-option.color {
+        & {
+            position: relative;
+            box-sizing: border-box;
+            padding: 0;
+            border: 0;
+            border-radius: 50%;
+            box-shadow: @swatch-option-color__box-shadow;
+        }
+
+        &:before {
+            z-index: 10;
+            display: inline-block;
+            min-width: auto;
+            width: @swatch-option-color__size;
+            height: @swatch-option-color__size;
+            border: 1px solid transparent;
+            border-radius: inherit;
+            background-color: transparent;
+            content: '';
+            opacity: 0;
+            transition: all @amtheme__transition__delay @amtheme__transition__func;
+            transform: scale(1.24);
+        }
+
+        &:hover:before {
+            border-color: @swatch-option-color__hover__border-color;
+            opacity: 1;
+        }
+
+        &.selected:before {
+            border-color: @swatch-option-color__active__border-color;
+            opacity: 1;
+        }
+
+        &:focus {
+            ._keyfocus &:before {
+                border-color: @swatch-option-color__active__border-color;
+                opacity: 1;
+            }
+        }
+    }
+}
+
+//
+//  Mobile
+//  -------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .swatch-attribute {
+        .swatch-option:not(.text) {
+            min-height: @swatch-option-color__size__l;
+            width: @swatch-option-color__size__l;
+            height: @swatch-option-color__size__l;
+        }
+
+        .swatch-option.image {
+            min-width: @swatch-option-color__size__l;
+            min-height: @swatch-option-color__size__l;
+        }
+    }
+
+    .swatch-option.color {
+        & {
+            box-shadow: @swatch-option-color__box-shadow__l;
+        }
+
+        &:before {
+            width: @swatch-option-color__size__l;
+            height: @swatch-option-color__size__l;
+            transform: scale(1.17);
+        }
+    }
+}

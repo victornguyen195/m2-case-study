@@ -1,0 +1,47 @@
+<?php
+/**
+ * @var $block Magento\Newsletter\Block\Subscribe
+ * @var $viewModel Amasty\JetTheme\ViewModel\Footer\FooterViewModel
+ * @var $escaper Magento\Framework\Escaper
+ */
+
+$viewModel = $block->getViewModel();
+
+$isSubscriptionEnabled = $viewModel->isSubscriptionBlockEnabled();
+$isSubscriptionMobileEnabled = $viewModel->isSubscriptionBlockMobileEnabled();
+?>
+
+<?php if ($isSubscriptionEnabled): ?>
+    <div class="amtheme-newsletter-block amtheme-subscribe <?= !$isSubscriptionMobileEnabled ? ' -mobile-hidden' : '' ?>">
+        <div class="amtheme-container">
+            <div class="amtheme-content">
+                <form class="amtheme-form subscribe"
+                      action="<?= $escaper->escapeUrl($block->getFormActionUrl()) ?>"
+                      method="post"
+                      data-mage-init='{"validation": {"errorClass": "mage-error"}}'
+                      id="subscribe-validate-detail">
+                    <div class="amtheme-field newsletter">
+                        <label class="amtheme-label" for="subscribe">
+                            <input class="amtheme-input"
+                                   id="subscribe"
+                                   name="email"
+                                   type="email"
+                                   title="<?= $escaper->escapeHtmlAttr(__('Email')) ?>"
+                                   placeholder="<?= $escaper->escapeHtmlAttr($viewModel->getPlaceholderEmail()) ?>"
+                                   data-mage-init='{"mage/trim-input":{}}'
+                                   data-validate="{required:true, 'validate-email':true}"
+                            />
+                        </label>
+                        <?php $buttonTitle = __('Subscribe') ?>
+                        <button class="action subscribe secondary size-s"
+                                title="<?= $escaper->escapeHtmlAttr($buttonTitle) ?>"
+                                type="submit"
+                                aria-label="<?= $escaper->escapeHtmlAttr($buttonTitle) ?>">
+                            <?= $escaper->escapeHtml($buttonTitle) ?>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>

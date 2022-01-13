@@ -1,0 +1,21 @@
+{
+  "@color-black": "#070605",
+  "@color-brown": "#3d3731",
+  "@color-gray": "#a8a69f",
+  "@color-gray-dark": "#4a4948",
+  "@color-gray-light": "#dfdedd",
+  "@color-gray-lighter": "#f5f5f5",
+  "@color-green": "#86af28",
+  "@color-lemon": "#fafce2",
+  "@color-olive": "#536131",
+  "@color-orange": "#ff9a02",
+  "@color-purple": "#6b26fd",
+  "@color-red": "#f23b3b",
+  "@color-white": "#fff",
+  "@amtheme__error__color": "#fce0e0",
+  "@amtheme__error-text__color": "#C01313",
+  "@amtheme__note__color": "#ffd43e",
+  "@amtheme__note-text__color": "#fff",
+  "@amtheme__success__color": "#e8fad5",
+  "@amtheme__success-text__color": "#41710d"
+}

@@ -1,0 +1,30 @@
+<?php
+/**
+ * @var $block \Magento\CatalogSearch\Block\Advanced\Result
+ */
+?>
+
+<div class="amtheme-additional-block">
+    <?php $searchCriterias = $block->getSearchCriterias(); ?>
+    <div class="search summary">
+        <ul class="items">
+            <?php foreach (['left', 'right'] as $side): ?>
+                <?php if (!empty($searchCriterias[$side])): ?>
+                    <?php foreach ($searchCriterias[$side] as $criteria): ?>
+                        <li class="item"><strong class="amtheme-name"><?= $block->escapeHtml(__($criteria['name'])) ?>:</strong> <?= $block->escapeHtml($criteria['value']) ?></li>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+    <?php if ($block->getResultCount()): ?>
+        <div class="amtheme-search-message">
+            <span class="amtheme-text"><?= $block->escapeHtml(__("Don't see what you're looking for?")) ?></span>
+            <a href="<?= $block->escapeUrl($block->getFormUrl()) ?>"
+               title="<?= $block->escapeHtml(__('Modify your search.')) ?>"
+               aria-label="<?= $block->escapeHtml(__('Modify your search.')) ?>"
+            ><?= $block->escapeHtml(__('Modify your search.')) ?></a>
+        </div>
+    <?php endif; ?>
+</div>
+

@@ -1,0 +1,158 @@
+<aside class="modal-popup modal-slide _inner-scroll _show"
+       aria-labelledby="modal-title-1"
+       aria-describedby="modal-content-1"
+       data-role="modal"
+       data-type="popup"
+       tabindex="0"
+       style="z-index: 902;">
+    <div data-role="focusable-start" tabindex="0"></div>
+    <div class="modal-inner-wrap" data-role="focusable-scope">
+        <header class="modal-header">
+            <h1 id="modal-title-1" class="modal-title" data-role="title">
+                Modal Title
+            </h1>
+            <button class="action-close" data-role="closeBtn" type="button">
+                <span>Close</span>
+            </button>
+        </header>
+        <div id="modal-content-1" class="modal-content" data-role="content">
+            <form class="form _am-form-divider"
+                  style="max-width: 100%;"
+                  action="">
+                <fieldset class="fieldset">
+                    <legend class="legend">
+                        fieldset legend
+                    </legend>
+                    <div class="fields -double">
+                        <div class="field">
+                            <label class="label" for="name">
+                                Name
+                            </label>
+                            <div class="control">
+                                <input type="text"
+                                       name="name"
+                                       id="name"
+                                       value=""
+                                       title="Name"
+                                       class="input-text"
+                                />
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label" for="lastname">
+                                Lastname
+                            </label>
+                            <div class="control">
+                                <input type="text"
+                                       name="lastname"
+                                       id="lastname"
+                                       value=""
+                                       title="Lastname"
+                                       class="input-text"
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label" for="addres1">
+                            Address 1
+                        </label>
+                        <div class="control">
+                            <input type="text"
+                                   name="addres1"
+                                   id="addres1"
+                                   value=""
+                                   title="addres1"
+                                   class="input-text"
+                            />
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label" for="addres2">
+                            Address 2
+                        </label>
+                        <div class="control">
+                            <input type="text"
+                                   name="addres2"
+                                   id="addres2"
+                                   value=""
+                                   title="addres2"
+                                   class="input-text"
+                            />
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset class="fieldset">
+                    <div class="fields -double">
+                        <div class="field date field-dob">
+                            <label class="label" for="dob">Date of Birth</label>
+                            <div class="control customer-dob">
+                                <input type="text" name="dob" id="dob" value="7/7/1936"
+                                       class="_has-datepicker"
+                                       autocomplete="on">
+                                <button type="button" class="ui-datepicker-trigger v-middle">
+                                    Select Date
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="field number">
+                            <label class="label" for="number">Age</label>
+                            <div class="control">
+                                <input type="number"
+                                       name="number"
+                                       id="number"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset class="fieldset">
+                    <legend class="legend">
+                        fieldset legend
+                    </legend>
+                    <div class="fields -double">
+                        <div class="field email required">
+                            <label class="label" for="email">
+                                New Email
+                            </label>
+                            <div class="control">
+                                <input type="email"
+                                       name="email"
+                                       id="email"
+                                       value=""
+                                       title="Email"
+                                       class="input-text"
+                                />
+                            </div>
+                        </div>
+                        <div class="field password">
+                            <label class="label" for="current-password">
+                                Password
+                            </label>
+                            <div class="control">
+                                <input type="password"
+                                       class="input-text"
+                                       name="current_password"
+                                       id="current-password"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <footer class="modal-footer">
+            <button class="action primary action-save-address" type="button" data-role="action"><span>Ship here</span>
+            </button>
+            <button class="action secondary action-hide-popup" type="button" data-role="action"><span>Cancel</span>
+            </button>
+        </footer>
+    </div>
+    <div data-role="focusable-end" tabindex="0"></div>
+</aside>
+<div class="modals-overlay" style="z-index: 901;"></div>

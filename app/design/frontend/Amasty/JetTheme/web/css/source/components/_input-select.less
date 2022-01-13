@@ -1,0 +1,441 @@
+//
+//  Input Select component styles
+//  _____________________________________
+
+//
+//  Common
+//  -------------------------------------
+
+& when (@media-common = true) {
+    .amtheme-select-block {
+        & {
+            display: inline-flex;
+            flex-direction: column;
+        }
+
+        &.-active {
+            z-index: 7;
+        }
+
+        &,
+        & * {
+            box-sizing: border-box;
+        }
+
+        .amtheme-placeholder:focus {
+            border-color: @amtheme-select__border-color__active;
+            box-shadow: none;
+        }
+
+        .amtheme-title {
+            .am-ellipsis(1);
+        }
+    }
+
+    .amtheme-select-block.-active {
+        .amtheme-select-options {
+            visibility: visible;
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .amtheme-placeholder {
+            border-color: @amtheme-select__border-color__active;
+            color: @amtheme__text-primary__color;
+        }
+
+        .amtheme-placeholder:after {
+            .set-color-mode(@amtheme__icons__mode, darken);
+
+            top: calc(~'50% - 2px');
+            transform: rotate(225deg);
+        }
+    }
+
+    .amtheme-select-block.-multiple {
+        .amtheme-option {
+            & {
+                flex-wrap: wrap;
+                justify-content: flex-start;
+                .am-padding-left(@indent__l);
+            }
+
+            &:before {
+                position: absolute;
+                top: 11px;
+                left: @amtheme-select-option__padding;
+                box-sizing: border-box;
+                min-width: @form-element-checkbox-icon__height;
+                width: @form-element-checkbox-icon__height;
+                height: @form-element-checkbox-icon__height;
+                border: @form-element-choice__border;
+                border-radius: @form-element-checkbox__border-radius;
+                background-color: @form-element-choice__background;
+                content: '';
+            }
+
+            &:after {
+                position: absolute;
+                top: 11px;
+                left: 8px;
+                display: block;
+                box-sizing: border-box;
+                min-width: @form-element-checkbox-icon__height;
+                width: @form-element-checkbox-icon__height;
+                height: @form-element-checkbox-icon__height;
+                background: @form-element-checkbox__checked__background-image center/@form-element-checkbox-icon__height no-repeat;
+                content: none;
+            }
+        }
+
+        .amtheme-option:hover {
+            background-color: @amtheme-select-option__background-color__hover;
+        }
+
+        .amtheme-option:hover:before {
+            border-color: @form-element-choice__hover__border-color;
+        }
+
+        .amtheme-option > .amtheme-value {
+            .am-margin(0 0 0 auto);
+        }
+
+        .amtheme-option.-selected {
+            & {
+                background-color: transparent;
+                color: @amtheme__text-primary__color;
+            }
+
+            &:before {
+                border-color: @form-element-choice__hover__border-color;
+                background-color: @form-element-checkbox__active__background;
+            }
+
+            &:after {
+                content: '';
+            }
+        }
+
+        &.-active > .amtheme-placeholder {
+            & {
+                .am-cross-icon();
+            }
+
+            &:before,
+            &:after {
+                right: 12px;
+                border: 0;
+                background: @amtheme__system-icon__color;
+            }
+        }
+    }
+
+    .amtheme-select-block.-no-border > .amtheme-placeholder {
+        & {
+            border-color: transparent;
+            color: @amtheme__text-primary__color;
+        }
+
+        &:focus,
+        &.focus-visible {
+            border-color: @amtheme__border__active__color;
+        }
+    }
+
+    .amtheme-select-options {
+        & {
+            position: absolute;
+            z-index: 15;
+            display: block;
+            visibility: hidden;
+            overflow: auto;
+            margin: calc(~'@{form-element-input__height} + 3px') 0 0;
+            padding: 0;
+            max-height: 300px;
+            border: @amtheme__border__width solid @amtheme-select__border-color__active;
+            border-radius: @amtheme-select__border__radius;
+            background: @amtheme__background-primary__color;
+            list-style-type: none;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        > .amtheme-option {
+            & {
+                .am-word-break;
+
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin: 0;
+                padding: @amtheme-select-option__padding;
+                color: @amtheme__text-secondary__color;
+                cursor: pointer;
+            }
+
+            &:not([disabled]):hover {
+                background-color: @amtheme-select-option__background-color__hover;
+                color: @amtheme__text-primary__color;
+            }
+
+            &.-selected {
+                background-color: darken(@amtheme-select-option__background-color__hover, 5%);
+                color: @amtheme__text-primary__color;
+            }
+
+            &[disabled],
+            &[disabled] * {
+                color: @color-gray;
+            }
+
+            & * {
+                pointer-events: none;
+                user-select: none;
+            }
+        }
+
+        > .amtheme-option .amtheme-title,
+        > .amtheme-option .amtheme-value {
+            pointer-events: none;
+        }
+
+        > .amtheme-option:not(:hover):not(.-selected) .amtheme-value {
+            color: @amtheme__text-primary__color;
+        }
+    }
+
+    .amtheme-select-block > .amtheme-placeholder {
+        & {
+            position: relative;
+            z-index: @amtheme-select__placeholder-zindex;
+            display: flex;
+            align-items: center;
+            padding: @amtheme-select__placeholder__padding;
+            height: @form-element-input__height;
+            border: @amtheme__border;
+            border-radius: @amtheme-select__border__radius;
+            background: @amtheme__background-primary__color;
+            color: @amtheme__text-placeholder__color;
+            letter-spacing: @letter-spacing__base;
+            font-size: @amtheme-select__placeholder__font-size;
+            line-height: 1.2;
+            cursor: pointer;
+        }
+
+        > .amtheme-content {
+            & {
+                .am-ellipsis(0);
+            }
+
+            .ie11 & {
+                display: block;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+        }
+
+        > .amtheme-value:before {
+            padding: 0 20px;
+            color: @amtheme__text-placeholder__color;
+            content: '|';
+        }
+
+        &:after {
+            .set-color-mode(@amtheme__icons__mode, default);
+
+            position: absolute;
+            top: calc(~'50% - 5px');
+            right: 15px;
+            display: block;
+            width: @amtheme-select__placeholder-icon__size;
+            height: @amtheme-select__placeholder-icon__size;
+            border-width: 0 @amtheme__border__width @amtheme__border__width 0;
+            border-style: solid;
+            content: '';
+            transform: rotate(45deg);
+        }
+
+        &.-selected {
+            color: @amtheme__text-primary__color;
+        }
+    }
+
+    .amtheme-select:-webkit-autofill + .amtheme-select-block > .amtheme-placeholder {
+        background: rgba(232, 240, 254, .32); // Standard google autofill background with opacity
+        color: contrast(@amtheme__background-primary__color);
+    }
+
+    .amtheme-delete-button {
+        & {
+            .am-cross-icon(@amtheme__system-icon__color, @amtheme__system-icon__color);
+
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: block;
+            padding: 0;
+            min-width: @amtheme-delete-button__size;
+            width: @amtheme-delete-button__size;
+            height: 100%;
+            border: 0;
+            border-radius: 0 @amtheme-tags__border-radius @amtheme-tags__border-radius 0;
+            background: none;
+            box-shadow: none;
+            color: inherit;
+            font-size: 0;
+            line-height: 1;
+        }
+
+        &:before,
+        &:after {
+            right: 7px;
+        }
+
+        &:not(.primary) {
+            box-shadow: none;
+        }
+
+        &:hover,
+        &:focus,
+        &:active {
+            border: 0;
+            background: none;
+            color: inherit;
+        }
+
+        &:focus {
+            & {
+                background: @color-black;
+            }
+
+            &:before,
+            &:after {
+                background: @color-white;
+            }
+        }
+    }
+
+    .mage-error:not([generated]) ~ .amtheme-select-block .amtheme-placeholder {
+        &,
+        &:before,
+        &:after {
+            border-color: @amtheme__error-text__color;
+        }
+    }
+
+    .amtheme-tags-block {
+        & {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        > .amtheme-option {
+            & {
+                .am-text-uppercase;
+                .am-word-break;
+
+                position: relative;
+                display: flex;
+                align-items: center;
+                overflow: hidden;
+                .am-margin(5px 5px 0 0);
+                padding: @amtheme-tags__padding;
+                max-width: 300px;
+                border: @amtheme__border__width solid @amtheme-tags__primary__color;
+                border-radius: @amtheme-tags__border-radius;
+                background: @amtheme-tags__primary__color;
+                color: @amtheme__text-secondary__color;
+                letter-spacing: @amtheme-tags__letter-spacing;
+                line-height: 1;
+                transition: all .1s @amtheme__transition__func;
+            }
+
+            &:focus {
+                border-color: @amtheme-select__border-color__active;
+                box-shadow: none;
+            }
+
+            &:focus-within {
+                border-color: @amtheme-select__border-color__active;
+            }
+        }
+
+        > .amtheme-option > .amtheme-value {
+            padding: @amtheme-tags__padding 0;
+            color: @amtheme__text-secondary__color;
+            font-weight: @font-weight__bold;
+            line-height: 1;
+        }
+
+        .price-container .weee:before {
+            text-transform: none;
+        }
+
+        .price-container .weee + .price-final {
+            margin: 0 0 0 5px;
+            width: 100%;
+        }
+    }
+
+    .field.-select-field {
+        .control {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    // IE11 fix
+    .ie11 {
+        .amtheme-select-options {
+            margin-top: 3px;
+        }
+
+        .amtheme-select-block.-multiple.-active .amtheme-select-options {
+            max-width: 100%;
+        }
+    }
+
+    .amtheme-select-block,
+    .amtheme-tags-block {
+        .price-box {
+            padding: 0;
+        }
+    }
+
+    .amtheme-tags-block .amtheme-option {
+        .price-wrapper {
+            text-transform: none;
+            font-size: inherit;
+            line-height: @amtheme-select__placeholder__line-height;
+        }
+
+        .price-wrapper .price {
+            font-size: inherit;
+            line-height: @amtheme-select__placeholder__line-height;
+        }
+
+        .price-including-tax + .price-excluding-tax:before,
+        .price-container .price-including-tax + .price-excluding-tax .price {
+            line-height: @amtheme-select__placeholder__line-height;
+        }
+    }
+}
+
+//
+//  Mobile
+//  ---------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .amtheme-select-block {
+        width: 100%;
+    }
+
+    .amtheme-select-options {
+        max-width: 100%;
+        width: 100%;
+    }
+}

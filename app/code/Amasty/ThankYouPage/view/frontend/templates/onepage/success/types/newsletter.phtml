@@ -1,0 +1,60 @@
+<?php
+/**
+ * @var Amasty\ThankYouPage\Block\Onepage\Success\Types\Newsletter $block
+ * @var Magento\Framework\Escaper $escaper
+ */
+?>
+
+<?php if ($block->isAlreadySubscribed()): ?>
+    <?= $escaper->escapeHtml($block->getAlreadySubscribedText()); ?>
+<?php else: ?>
+<div class="amtyblock amtyblock-newsletter" style="width: <?= /* @noEscape */ $block->getWidth() . '%' ?>">
+    <div class="block newsletter" id="newsletter-thankyoupage">
+        <?php if ($title = $block->getTitle()): ?>
+            <h2 class="page-title"><?= $escaper->escapeHtml($title); ?></h2>
+        <?php endif; ?>
+        <?php if ($subTitle = $block->getSubTitle()): ?>
+            <h3 class="subtitle"><?= $escaper->escapeHtml($subTitle); ?></h3>
+        <?php endif; ?>
+        <span class="title amtypage-title"><?= $escaper->escapeHtml(__('Newsletter')) ?></span>
+        <div class="content">
+            <form id="newsletter-thankyoupage-form"
+                  class="container-form form subscribe"
+                  novalidate
+                  action="<?= $escaper->escapeUrl($block->getFormActionUrl()) ?>"
+                  method="post"
+                  data-mage-init='{
+                      "validation": {
+                          "errorClass": "mage-error"
+                      },
+                      "amThankYouPageSubscribeToNewsletter": {
+                          "successContainerSelector": "#newsletter-thankyoupage .container-success"
+                      }
+                  }'>
+                <div class="field newsletter">
+                    <label class="label" for="newsletter">
+                        <?= $escaper->escapeHtml(__('Sign Up for Our Newsletter:')) ?>
+                    </label>
+                    <div class="control">
+                        <input name="email" type="email" id="newsletter-thankyoupage"
+                               placeholder="<?= $escaper->escapeHtmlAttr(__('Enter your email address')) ?>"
+                               value="<?= $escaper->escapeHtmlAttr($block->getOrderEmail()) ?>"
+                               data-validate="{required:true, 'validate-email':true}"/>
+                    </div>
+                </div>
+                <div class="actions">
+                    <button class="action subscribe primary"
+                            title="<?= $escaper->escapeHtmlAttr(__('Subscribe')) ?>"
+                            aria-label="<?= $escaper->escapeHtmlAttr(__('Subscribe')) ?>"
+                            type="submit">
+                        <?= $escaper->escapeHtml(__('Subscribe')) ?>
+                    </button>
+                </div>
+            </form>
+            <div class="container-success" style="display: none">
+                <?= /* @noEscape */ $block->getConfirmationMessage(); ?>
+            </div>
+        </div>
+    </div>
+</div>
+<?php endif; ?>

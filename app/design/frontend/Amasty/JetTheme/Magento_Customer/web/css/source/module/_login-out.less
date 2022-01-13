@@ -1,0 +1,175 @@
+//
+//  Customer Login/Registration Pages
+//  ____________________________________________
+
+//
+//  Helpers
+//  --------------------------------------------
+
+._block-title {
+    margin: 0 auto @indent__base;
+    max-width: @account-form__s__max-width;
+    font-weight: @font-weight__bold;
+    font-size: @h1__font-size;
+    line-height: @h1__font-size;
+}
+
+._block-subtitle {
+    display: block;
+    margin: 0 0 @indent__base;
+    font-weight: @font-weight__regular;
+    font-size: 1.6rem;
+}
+
+//
+//  Common
+//  --------------------------------------------
+
+& when (@media-common = true) {
+    .customer-account-create {
+        .page-title {
+            &:extend(._block-title all);
+        }
+
+        .form-create-account {
+            margin: auto;
+        }
+    }
+
+    .form-create-account {
+        .fieldset.create.account {
+            & {
+                .lib-form-hasrequired(bottom);
+            }
+
+            &:after {
+                margin-top: @indent__base;
+            }
+        }
+
+        .field.choice + .field {
+            margin-top: @indent__base;
+        }
+    }
+
+    .customer-account-login .page-title-wrapper {
+        display: none;
+    }
+
+    .login-container {
+        & {
+            margin: 40px auto 25px;
+        }
+
+        .block:not(:first-of-type) {
+            margin-top: 35px;
+        }
+
+        .block-customer-login {
+            padding-bottom: 35px;
+            border-bottom: @amtheme__border;
+        }
+
+        .field .tooltip.wrapper {
+            padding-left: @indent__s;
+        }
+    }
+
+    .block.block-customer-login,
+    .block.block-new-customer {
+        & {
+            margin: auto;
+        }
+
+        .block-title {
+            &:extend(._block-title all);
+        }
+
+        .block-subtitle {
+            &:extend(._block-subtitle all);
+
+            margin-top: 10px;
+        }
+    }
+
+    .block.block-new-customer div.block-title {
+        margin-bottom: 10px;
+    }
+
+    .customer-account-forgotpassword .page-title,
+    .customer-account-confirmation .page-title,
+    .customer-account-createpassword .page-title,
+    .multishipping-checkout-register .page-title {
+        &:extend(._block-title all);
+    }
+
+    .multishipping-checkout-register .form.create.account {
+        .am-margin-right(auto);
+        .am-margin-left(auto);
+    }
+
+    .form.password.forget,
+    .form.send.confirmation,
+    .form.password.reset {
+        & {
+            margin: 0 auto 50px;
+        }
+
+        fieldset > .field:last-child {
+            margin-bottom: 0;
+        }
+
+        .field.note {
+            &:extend(._block-subtitle all);
+
+            margin-top: 0;
+        }
+    }
+}
+
+//
+//  Tablet
+//  --------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    // Helpers
+    ._block-title {
+        margin: 0 0 @indent__l;
+        max-width: 100%;
+        text-align: center;
+    }
+
+    ._block-subtitle {
+        margin: 0 0 @indent__l;
+        text-align: center;
+    }
+    // (END) Helpers
+
+    .customer-account-create .page-title,
+    .customer-account-confirmation .page-title,
+    .customer-account-forgotpassword .page-title,
+    .customer-account-createpassword .page-title,
+    .multishipping-checkout-register .page-title,
+    .block.block-customer-login .block-title,
+    .block.block-new-customer .block-title {
+        & {
+            &:extend(._block-title all);
+        }
+    }
+
+    .customer-account-forgotpassword .page-title,
+    .customer-account-confirmation .page-title {
+        margin: @indent__xl auto 10px;
+    }
+
+    .customer-account-createpassword .page-title {
+        margin: @indent__xl auto 30px;
+    }
+
+    .form.password.forget,
+    .form.send.confirmation {
+        .field.note {
+            &:extend(._block-subtitle all);
+        }
+    }
+}

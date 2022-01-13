@@ -1,0 +1,56 @@
+//
+//  Order List Styles
+//  _____________________________________________
+//
+//  Common
+//  ---------------------------------------------
+
+& when (@media-common = true) {
+    .table-wrapper .table.table-order-items {
+        th.price,
+        td.price {
+            display: table-cell;
+        }
+
+        .col.id > a,
+        .col.name .product.name {
+            font-weight: @font-weight__regular;
+        }
+
+        .col.total,
+        .col.price,
+        .col.subtotal {
+            font-weight: @font-weight__bold;
+        }
+
+        .col.total,
+        .col.total ~ .col,
+        .col.price,
+        .col.price ~ .col {
+            text-align: right;
+        }
+
+        .amtheme-status {
+            &:extend(.am-status-indicator all);
+        }
+    }
+}
+
+//
+//  Mobile
+//  ---------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
+    .table-wrapper .table.table-order-items {
+        .col.total,
+        .col.total ~ .col,
+        .col.price,
+        .col.price ~ .col {
+            text-align: left;
+        }
+
+        .col.actions > a {
+            font-weight: @font-weight__bold;
+        }
+    }
+}

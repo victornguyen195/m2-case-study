@@ -1,0 +1,67 @@
+//
+//  Messages
+//  _____________________________________________
+
+//
+//  Base variables
+//  ---------------------------------------------
+
+@message__padding: @indent__sm;
+@message__color: @amtheme__text-primary__color;
+@message__font-size: 1.4rem;
+@message__border-radius: @amtheme__border-radius__s;
+@message-icon__top: 7px;
+@message-icon__left: 7px;
+@message-icon__inner-padding-left: @message-icon__left + @message-icon__width + @message__text-margin-left;
+@message-icon__font-size: @message__font-size - .2;
+@message-icon__font-line-height: calc(~'@{message-icon__font-size} + @{message__padding} * 2');
+
+//
+//  Information message
+//  ---------------------------------------------
+
+@message-info__color: @message__color;
+@message-info__background: lighten(@amtheme__note__color, 13%);
+@message-info-icon: @am-emoji__round-pushpin;
+@message-info-icon__width: @message-icon__width;
+@message-info-icon__text-align: @message-icon__text-align;
+
+//
+//  Warning message
+//  ---------------------------------------------
+
+@message-warning__color: @message__color;
+@message-warning__background: @amtheme__note__color;
+@message-warning-icon: @am-emoji__triangular_flag;
+@message-warning-icon__width: @message-icon__width;
+@message-warning-icon__text-align: @message-icon__text-align;
+
+//
+//  Error message
+//  ---------------------------------------------
+
+@message-error__color: @message__color;
+@message-error__background: @amtheme__error__color;
+@message-error-icon: @am-emoji__cross-mark;
+@message-error-icon__width: @message-icon__width;
+@message-error-icon__text-align: @message-icon__text-align;
+
+//
+//  Success message
+//  ---------------------------------------------
+
+@message-success__color: @message__color;
+@message-success__background: @amtheme__success__color;
+@message-success-icon: @am-emoji__thumbs-up;
+@message-success-icon__width: @message-icon__width;
+@message-success-icon__text-align: @message-icon__text-align;
+
+//
+//  Notice message
+//  ---------------------------------------------
+
+@message-notice__color: @message__color;
+@message-notice__background: @message-info__background;
+@message-notice-icon: @am-emoji__construction;
+@message-notice-icon__width: @message-icon__width;
+@message-notice-icon__text-align: @message-icon__text-align;

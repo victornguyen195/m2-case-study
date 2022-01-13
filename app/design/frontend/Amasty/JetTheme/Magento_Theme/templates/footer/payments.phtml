@@ -1,0 +1,31 @@
+<?php
+/**
+ * @var $block Magento\Framework\View\Element\Template
+ * @var $paymentViewModel Amasty\JetTheme\ViewModel\PaymentViewModel
+ * @var $footerViewModel Amasty\JetTheme\ViewModel\Footer\FooterViewModel
+ * @var $escaper Magento\Framework\Escaper
+ */
+
+$paymentViewModel = $block->getPaymentViewModel();
+$footerViewModel = $block->getFooterViewModel() ? $block->getFooterViewModel() : null;
+$paymentAlignmentClass = '';
+
+if ($footerViewModel) {
+    $paymentAlignmentClass = '-'.$footerViewModel->getAlignPaymentMethodsBlock();
+}
+
+?>
+<div class="amtheme-payment-methods footer-payments <?= $escaper->escapeHtmlAttr($block->getData('css_class'))?>">
+    <ul class="amtheme-payments-list <?= $escaper->escapeHtmlAttr($paymentAlignmentClass)?>">
+        <?php foreach ($paymentViewModel->getPaymentLinks() as $paymentMethod): ?>
+            <li class="amtheme-item">
+                <?php if (!$paymentMethod->getDefaultIcon()): ?>
+                    <img src="<?= $escaper->escapeHtmlAttr($paymentViewModel->getPaymentImage($paymentMethod->getIcon())); ?>"
+                         alt="<?= $escaper->escapeHtmlAttr($paymentMethod->getTitle()); ?>">
+                <?php else: ?>
+                    <?= /* @noEscape */ $paymentMethod->getDefaultIconContent()?>
+                <?php endif; ?>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+</div>

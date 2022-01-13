@@ -1,0 +1,14 @@
+<?php
+/** @var \Magento\Wishlist\Block\Customer\Wishlist\Button $block */
+?>
+
+<?php if ($block->getWishlist()->getItemsCount()): ?>
+<div class="amtheme-update-box">
+    <button type="submit" name="do" title="<?= $block->escapeHtmlAttr(__('Update Wish List')) ?>" class="action update amtheme-update">
+        <svg class="amtheme-icon -left">
+            <use xlink:href="#icon-update"/>
+        </svg>
+        <span class="amtheme-label"><?= $block->escapeHtml(__('Update')) ?></span>
+    </button>
+</div>
+<?php endif;?>

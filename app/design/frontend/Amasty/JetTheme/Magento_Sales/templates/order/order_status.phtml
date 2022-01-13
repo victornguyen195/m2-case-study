@@ -1,0 +1,8 @@
+<?php /** @var $block \Magento\Sales\Block\Order\Info */ ?>
+
+<span class="order-status amtheme-order-status">
+    <span class="amtheme-label"><?= $block->escapeHtml(__('Status')) ?></span>
+    <span class="amtheme-status -<?= $block->escapeHtml($block->getOrder()->getState()) ?>">
+        <?= $block->escapeHtml($block->getOrder()->getStatusLabel()) ?>
+    </span>
+</span>

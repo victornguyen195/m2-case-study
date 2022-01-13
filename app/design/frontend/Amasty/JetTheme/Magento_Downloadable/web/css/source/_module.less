@@ -1,0 +1,190 @@
+//
+//  Downloadable product styles
+//  _____________________________________________
+
+//
+//  Variables
+//  ---------------------------------------------
+
+@download__border-color: @amtheme__border__color;
+@download__hover__border-color: @amtheme__border__hover__color;
+@download__active__border-color: @amtheme__border__active__color;
+@download__active__background: @amtheme__background-secondary__color;
+@download__border-radius: @amtheme__border-radius__s;
+@download-no-separately-icon__background: ~'url("../svg/@{amtheme__icons__color-mode-prefix}/@{amtheme__icons__mode}/check.svg") center / 15px no-repeat';
+
+@download-product-icon__size: 18px;
+@download-product-icon__margin-right: 5px;
+@download-product-icon__margin-left: 10px;
+@download-product-icon__background: ~'@{color-yellow} url("../svg/@{amtheme__icons__color-mode-prefix}/@{amtheme__icons__mode}/arrow-right.svg") center / 75% no-repeat';
+
+//
+//  Common
+//  ---------------------------------------------
+
+& when (@media-common = true) {
+    .page-product-downloadable .amtheme-product-info {
+        .product.attribute.overview {
+            margin-bottom: 20px;
+        }
+
+        .samples-item-title,
+        .box-tocart.qty {
+            display: none;
+        }
+
+        .items.samples,
+        .field.downloads > .control {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .samples .samples-item {
+            margin: 0 20px 20px 0;
+        }
+
+        .downloads .field.choice:not(.downloads-all) > .label {
+            min-width: 130px;
+        }
+
+        .samples .samples-item-link,
+        .downloads:not(.downloads-no-separately) .field.choice:not(.downloads-all) > .label {
+            & {
+                display: inline-block;
+                padding: 10px;
+                border: 1px solid @download__border-color;
+                border-radius: @download__border-radius;
+                transition: @amtheme__transition;
+                transition-property: border-color, background;
+            }
+
+            &:hover {
+                border-color: @download__hover__border-color;
+            }
+        }
+
+        .downloads > .label {
+            margin-bottom: 15px;
+            color: @amtheme__text-secondary__color;
+            font-weight: @font-weight__bold;
+        }
+
+        .downloads .field.choice {
+            margin: 0;
+        }
+
+        .field.choice .price-container {
+            & {
+                align-items: center;
+                margin-top: 5px;
+            }
+
+            &:before {
+                display: inline;
+                .am-margin-right(5px);
+                content: '+';
+            }
+        }
+
+        .downloads .field.choice:not(.downloads-all) input[type='checkbox'] {
+            &:checked + .label {
+                border-color: @download__active__border-color;
+                background: @download__active__background;
+            }
+        }
+
+        .downloads .field.choice > .label {
+            & {
+                margin: 0 20px 20px 0;
+            }
+
+            &:before,
+            &:after {
+                display: none;
+            }
+        }
+
+        .downloads-all {
+            width: 100%;
+        }
+
+        .downloads-all .label {
+            .am-text-uppercase;
+
+            margin: 0;
+            padding: 0;
+            color: @amtheme__text-secondary__color;
+        }
+
+        .downloads-no-separately .control {
+            flex-direction: column;
+        }
+
+        .downloads-no-separately .field.choice > .label:before {
+            display: inline-block;
+            width: 12px;
+            height: 8px;
+            background: @download-no-separately-icon__background;
+            content: '';
+            vertical-align: middle;
+        }
+    }
+
+    ._keyfocus .downloads .field.choice:not(.downloads-all) input[type='checkbox'] {
+        &:focus + .label {
+            box-shadow: @focus__box-shadow;
+        }
+    }
+
+    .table-downloadable-products {
+        .col.id a {
+            font-weight: @font-weight__regular;
+        }
+    }
+}
+
+//
+//  Tablet
+//  ---------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__s) {
+    .table-downloadable-products {
+        .action.download {
+            & {
+                position: relative;
+                margin: 0 0 0 @download-product-icon__margin-left;
+                .am-padding-left(@download-product-icon__size + @download-product-icon__margin-right);
+                white-space: nowrap;
+            }
+
+            &:before {
+                position: absolute;
+                top: 50%;
+                left: 0;
+                display: inline-block;
+                width: @download-product-icon__size;
+                height: @download-product-icon__size;
+                border-radius: 50%;
+                background: @download-product-icon__background;
+                content: '';
+                transform: translateY(-50%) rotate(90deg);
+            }
+        }
+    }
+}
+
+//
+//  Desktop
+//  ---------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .page-product-downloadable .amtheme-product-info {
+        .samples .samples-item {
+            margin: 0 10px 15px 0;
+        }
+
+        .downloads .field.choice > .label {
+            margin: 0 10px 15px 0;
+        }
+    }
+}

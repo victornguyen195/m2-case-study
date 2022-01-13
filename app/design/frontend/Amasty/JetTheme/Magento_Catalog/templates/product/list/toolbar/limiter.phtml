@@ -1,0 +1,60 @@
+<?php
+/**
+ * @var $block \Magento\Catalog\Block\Product\ProductList\Toolbar
+ */
+
+$availableLimit = $block->getAvailableLimit();
+?>
+
+<div class="field limiter">
+    <label class="label" for="limiter">
+        <?= $block->escapeHtml(__('Show')) ?>
+    </label>
+    <div class="control">
+        <select id="limiter"
+                data-role="limiter"
+                class="limiter-options amtheme-select"
+                tabindex="-1"
+        >
+            <?php foreach ($availableLimit as $key => $limit): ?>
+                <option value="<?= $block->escapeHtmlAttr($key) ?>"
+                    <?php if ($block->isLimitCurrent($key)): ?>
+                        selected="selected"
+                    <?php endif ?>
+                >
+                    <?= $block->escapeHtml($limit) ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+        <div class="amtheme-select-block -no-border"
+             data-mage-init='{"amSelect": {"selectId": "limiter"}}'
+             data-amselect-js="select">
+            <span role="button"
+                  tabindex="0"
+                  class="amtheme-placeholder"
+                  data-amselect-js="placeholder">
+                <span class="amtheme-content"
+                      data-amselect-js="placeholder-content">
+                    <?= $block->escapeHtml($block->getLimit()) ?>
+                </span>
+            </span>
+            <ul role="list"
+                class="amtheme-select-options"
+                data-amselect-js="options">
+                <?php foreach ($availableLimit as $key => $limit): ?>
+                    <li class="amtheme-option"
+                        tabindex="0"
+                        data-amselect-js="item"
+                        data-amselect-value="<?= $block->escapeHtmlAttr($key) ?>"
+                        <?php if ($block->isLimitCurrent($key)): ?>
+                            selected="selected"
+                        <?php endif ?>
+                    >
+                        <span class="amtheme-title"><?= $block->escapeHtml($limit) ?></span>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+    </div>
+    <span class="limiter-text"><?= $block->escapeHtml(__('per page')) ?></span>
+</div>

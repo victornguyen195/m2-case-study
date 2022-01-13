@@ -1,0 +1,85 @@
+//
+//  Block Search autocomplete styles
+//  _____________________________________________
+
+//
+//  Variables
+//  --------------------------------------------
+
+@search-autocomplete__z-index: 11;
+@search-autocomplete__background-color: @amtheme__background-secondary__color;
+@search-autocomplete__border-radius: 0 0 20px 20px;
+@search-autocomplete__color: @amtheme__text-secondary__color;
+@search-autocomplete__padding: @search-form-desktop__height 0 @indent__base;
+@search-autocomplete__offset-top: @search-form-desktop__height/2;
+@search-autocomplete-mobile__background-color: @amtheme__background-primary__color;
+@search-autocomplete-mobile__offset-top: @indent__base;
+@search-autocomplete-mobile__offset-horizontal: @indent__base;
+@search-autocomplete-mobile__border-width: @amtheme__border__width;
+
+//
+//  Common
+//  ---------------------------------------------
+
+& when (@media-common = true) {
+    .search-autocomplete {
+        & {
+            z-index: @search-autocomplete__z-index;
+            background: @search-autocomplete-mobile__background-color;
+            color: @search-autocomplete__color;
+        }
+
+        > ul {
+            &:extend(.abs-reset-list  all);
+        }
+
+        li {
+            & {
+                display: flex;
+                justify-content: space-between;
+                padding: 7px 0;
+                cursor: pointer;
+            }
+
+            &:hover {
+                background: @amtheme__background-tertiary__color;
+            }
+        }
+
+        .selected {
+            background: @amtheme__background-tertiary__color;
+        }
+    }
+}
+
+//
+//  Desktop
+//  ---------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .search-autocomplete {
+        & {
+            position: absolute;
+            top: @search-autocomplete__offset-top;
+            padding: @search-autocomplete__padding;
+            border-radius: @search-autocomplete__border-radius;
+            background: @search-autocomplete__background-color;
+        }
+
+        li {
+            padding: 7px @indent__base;
+        }
+    }
+}
+
+//
+//  Mobile
+//  ---------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .search-autocomplete {
+        &:extend(.am-no-display-mobile);
+        margin: 0 -@search-form-mobile__padding-horizontal;
+        padding: @search-form-mobile__offset-top @search-form-mobile__padding-horizontal;
+    }
+}

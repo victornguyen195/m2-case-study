@@ -1,0 +1,37 @@
+//
+//  Newsletter subscription page styles
+//  ____________________________________________
+
+//
+//  Common
+//  --------------------------------------------
+
+& when (@media-common = true) {
+    .form.form-newsletter-manage {
+        br {
+            display: none;
+        }
+
+        .field.choice {
+            &:extend(form .fields.-am-block all);
+
+            margin-top: 5px;
+        }
+    }
+}
+
+//
+//  Tablet
+//  --------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .form.form-newsletter-manage {
+        & {
+            max-width: @account-form__l__max-width;
+        }
+
+        .field.choice {
+            &:extend(form .fields.-am-block all);
+        }
+    }
+}

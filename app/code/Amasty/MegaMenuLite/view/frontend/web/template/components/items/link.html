@@ -1,0 +1,35 @@
+<a if="item.isVisible"
+   data-bind="
+        event: {
+            mouseenter: function() {
+                item.isHover(true);
+            },
+            mouseleave: function() {
+                item.isHover(false);
+            }
+        },
+        style: {
+            color: item.color() ? item.color() : ''
+        },
+        attr: { href: item.url ? item.url : '#', class: 'ammenu-link' },
+        css: {
+            '-current': item.current
+        }">
+    <!-- ko if: uiClass.is_icons_available -->
+        <!-- ko template: { name: uiClass.root_templates.icon, data: { item: item } } --><!-- /ko-->
+    <!-- /ko -->
+
+   <p class="ammenu-text-block">
+       <span class="ammenu-text" data-bind="i18n: item.name"></span>
+
+       <span class="ammenu-label"
+              if="item.label"
+              data-bind="
+                   style: {
+                        background: item.label.label_background_color || '',
+                        color: item.label.label_text_color || ''
+                   },
+                   i18n: item.label.label">
+       </span>
+   </p>
+</a>

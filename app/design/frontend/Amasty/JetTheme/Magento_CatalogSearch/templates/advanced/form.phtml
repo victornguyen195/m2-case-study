@@ -1,0 +1,133 @@
+<?php
+/** @var $block \Magento\CatalogSearch\Block\Advanced\Form */
+
+// phpcs:disable PSR2.ControlStructures.SwitchDeclaration
+// phpcs:ignore
+$maxQueryLength = $this->helper(\Magento\CatalogSearch\Helper\Data::class)->getMaxQueryLength();
+?>
+
+<form class="form search advanced"
+      action="<?= $block->escapeUrl($block->getSearchPostUrl()) ?>"
+      method="get"
+      data-mage-init='{"amAdvancedSearchValidation":{}}'
+      id="form-validate">
+    <fieldset class="fieldset">
+        <legend class="legend">
+            <?= $block->escapeHtml(__('Search Settings')) ?>
+        </legend>
+        <?php foreach ($block->getSearchableAttributes() as $attribute): ?>
+            <?php $code = $attribute->getAttributeCode() ?>
+            <div class="field <?= $block->escapeHtmlAttr($code) ?>">
+                <label class="label" for="<?= $block->escapeHtmlAttr($code) ?>">
+                    <?= $block->escapeHtml(__($block->getAttributeLabel($attribute))) ?>
+                    <?php if ($block->getAttributeInputType($attribute) === 'price'): ?>
+                        <span class="label-addon">
+                            <?= $block->escapeHtml($block->getCurrency($attribute)) ?>
+                        </span>
+                    <?php endif; ?>
+                </label>
+                <div class="control">
+                    <?php switch ($block->getAttributeInputType($attribute)):
+                    case 'number': ?>
+                        <div class="range fields group group-2">
+                            <div class="field no-label">
+                                <div class="control">
+                                    <input type="text"
+                                           name="<?= $block->escapeHtmlAttr($code) ?>[from]"
+                                           value="<?= $block->escapeHtmlAttr($block->getAttributeValue($attribute, 'from')) ?>"
+                                           id="<?= $block->escapeHtmlAttr($code) ?>"
+                                           title="<?= $block->escapeHtmlAttr($block->getAttributeLabel($attribute)) ?>"
+                                           class="input-text"
+                                           maxlength="<?= $block->escapeHtmlAttr($maxQueryLength) ?>"
+                                           data-validate="{number:true, 'less-than-equals-to':'#<?= $block->escapeHtmlAttr($code) ?>_to'}"
+                                    />
+                                </div>
+                            </div>
+                            <div class="field no-label">
+                                <div class="control">
+                                    <input type="text"
+                                           name="<?= $block->escapeHtmlAttr($code) ?>[to]"
+                                           value="<?= $block->escapeHtmlAttr($block->getAttributeValue($attribute, 'to')) ?>"
+                                           id="<?= $block->escapeHtmlAttr($code) ?>_to"
+                                           title="<?= $block->escapeHtmlAttr($block->getAttributeLabel($attribute)) ?>"
+                                           class="input-text"
+                                           maxlength="<?= $block->escapeHtmlAttr($maxQueryLength) ?>"
+                                           data-validate="{number:true, 'greater-than-equals-to':'#<?= $block->escapeHtmlAttr($code) ?>'}"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    <?php break;
+                    case 'price': ?>
+                        <div class="range price fields group group-2">
+                            <div class="field no-label">
+                                <div class="control">
+                                    <input name="<?= $block->escapeHtmlAttr($code) ?>[from]"
+                                           value="<?= $block->escapeHtmlAttr($block->getAttributeValue($attribute, 'from')) ?>"
+                                           id="<?= $block->escapeHtmlAttr($code) ?>"
+                                           title="<?= $block->escapeHtmlAttr($block->getAttributeLabel($attribute)) ?>"
+                                           class="input-text"
+                                           type="text"
+                                           maxlength="<?= $block->escapeHtmlAttr($maxQueryLength) ?>"
+                                           data-validate="{number:true, 'less-than-equals-to':'#<?= $block->escapeHtmlAttr($code) ?>_to'}"
+                                    />
+                                </div>
+                            </div>
+                            <div class="field no-label">
+                                <div class="control">
+                                    <input name="<?= $block->escapeHtmlAttr($code) ?>[to]"
+                                           value="<?= $block->escapeHtmlAttr($block->getAttributeValue($attribute, 'to')) ?>"
+                                           id="<?= $block->escapeHtmlAttr($code) ?>_to"
+                                           title="<?= $block->escapeHtmlAttr($block->getAttributeLabel($attribute)) ?>"
+                                           class="input-text"
+                                           type="text"
+                                           maxlength="<?= $block->escapeHtmlAttr($maxQueryLength) ?>"
+                                           data-validate="{number:true, 'greater-than-equals-to':'#<?= $block->escapeHtmlAttr($code) ?>'}"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    <?php break;
+                    case 'select': ?>
+                        <?= /* @noEscape */ $block->getAttributeSelectElement($attribute) ?>
+                    <?php break;
+                    case 'yesno': ?>
+                        <?= /* @noEscape */ $block->getAttributeYesNoElement($attribute) ?>
+                    <?php break;
+                    case 'date': ?>
+                        <div class="range dates fields group group-2">
+                            <div class="field date no-label">
+                                <div class="control">
+                                    <?= /* @noEscape */ $block->getDateInput($attribute, 'from') ?>
+                                </div>
+                            </div>
+                            <div class="field date no-label">
+                                <div class="control">
+                                    <?= /* @noEscape */ $block->getDateInput($attribute, 'to') ?>
+                                </div>
+                            </div>
+                        </div>
+                    <?php break; default: ?>
+                    <input type="text"
+                           name="<?= $block->escapeHtmlAttr($code) ?>"
+                           id="<?= $block->escapeHtmlAttr($code) ?>"
+                           value="<?= $block->escapeHtmlAttr($block->getAttributeValue($attribute)) ?>"
+                           title="<?= $block->escapeHtmlAttr($block->getAttributeLabel($attribute)) ?>"
+                           class="input-text <?= $block->escapeHtmlAttr($block->getAttributeValidationClass($attribute)) ?>"
+                           maxlength="<?= $block->escapeHtmlAttr($maxQueryLength) ?>"
+                    />
+                <?php endswitch; ?>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </fieldset>
+    <div class="actions-toolbar">
+      <div class="primary">
+        <button type="submit"
+                class="action search primary"
+                title="<?= $block->escapeHtmlAttr(__('Search')) ?>">
+            <?= $block->escapeHtml(__('Search')) ?>
+        </button>
+      </div>
+    </div>
+</form>

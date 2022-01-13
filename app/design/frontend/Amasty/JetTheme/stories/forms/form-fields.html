@@ -1,0 +1,121 @@
+<form action="#" method="post">
+    <h2>Text input</h2>
+    <div class="flex-wrap">
+        <div class="field">
+            <label class="label" for="name">Normal Text Input:</label>
+            <input type="text" name="name" id="name" value="" tabindex="0" />
+        </div>
+
+        <div class="field">
+            <label class="label" for="name1">Error Text Input:</label>
+            <input class="mage-error" type="text" name="name1" id="name1" value="" tabindex="0" />
+            <div for="name1" generated="true" class="mage-error" id="name1-error">This is a required field.</div>
+        </div>
+    </div>
+
+    <h2>Textarea</h2>
+    <div class="flex-wrap">
+        <div class="field">
+            <label class="label" for="textarea">Label</label>
+            <textarea cols="55" rows="3" name="textarea" id="textarea"></textarea>
+        </div>
+
+        <div class="field">
+            <label class="label" for="textarea1">Label error</label>
+            <textarea class="mage-error" cols="55" rows="3" name="textarea1" id="textarea1"></textarea>
+            <div generated="true" class="mage-error">This is a required field.</div>
+        </div>
+    </div>
+
+    <h2>Datepicker</h2>
+    <div class="flex-wrap">
+        <div class="field date field-dob">
+            <label class="label" for="dob">Date of Birth</label>
+            <div class="control customer-dob">
+                <input type="text" name="dob" id="dob" value="7/7/1936"
+                       class="_has-datepicker"
+                       autocomplete="on">
+                <button type="button" class="ui-datepicker-trigger v-middle">
+                    Select Date
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <h2>File</h2>
+    <div class="flex-wrap">
+        <div class="field file">
+            <label class="label">
+                type File
+            </label>
+            <div class="control" id="input-box-option_1_file">
+                <input type="file"
+                       name="option_1_file"
+                       id="option_1_file"
+                       tabindex="-1"
+                       class="amtheme-file product-custom-option required"
+                       aria-required="true">
+                <div class="amtheme-wrapper">
+                    <label class="action outline"
+                           tabindex="0"
+                           title="select"
+                           aria-label="select"
+                           data-amtheme-js="input-trigger"
+                           for="option_1_file"
+                           id="option_1_file-label">
+                        <svg class="amtheme-icon">
+                            <use xlink:href="#icon-plus"></use>
+                        </svg>
+                        select
+                    </label>
+                    <span class="amtheme-file-output">
+                    <span data-amtheme-js="file-output" class="-has-content">some-file.png</span>
+                    <button type="button"
+                            title="Remove"
+                            aria-label="Remove"
+                            class="amtheme-clear-input -icon-action"
+                            data-amtheme-js="clear-output">
+                        <svg class="amtheme-icon">
+                            <use xlink:href="#icon-close"></use>
+                        </svg>
+                    </button>
+                </span>
+                </div>
+                <input type="hidden" name="option_1_file_action" value="save_new" aria-required="true">
+            </div>
+            <p class="note">
+                Compatible file extensions to upload: png, jpg, gif
+            </p>
+            <p class="note">
+                Maximum image width: 1000px.
+            </p>
+            <p class="note">
+                Maximum image height: 400px.
+            </p>
+        </div>
+    </div>
+</form>
+
+<hr style="margin-top: 50px;">
+<h2>Source code</h2>
+<div class="source-wrap">
+    <h3>Datepicker</h3>
+    <xmp class="source-code">
+        <script>
+            require([
+                'jquery',
+                'mage/translate',
+                'mage/calendar'
+            ], function ($, $t) {
+                $('#example-date').calendar({
+                    changeMonth: true,
+                    changeYear: true,
+                    showButtonPanel: true,
+                    currentText: $t('Go Today'),
+                    closeText: $t('Close'),
+                    showWeek: true
+                });
+            })
+        </script>
+    </xmp>
+</div>

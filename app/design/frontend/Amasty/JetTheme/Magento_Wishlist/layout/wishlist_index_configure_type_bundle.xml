@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <move element="product.info" destination="product.info.main" after="-"/>
+        <move element="product.info.price" destination="product.info.main" before="amtheme.bundle.actions" />
+
+        <referenceBlock name="product.info.form.options">
+            <container name="bundle.product.options.wrapper" htmlTag="div" htmlClass="bundle-options-wrapper"/>
+        </referenceBlock>
+
+        <move element="product.info.options.wrapper" destination="bundle.product.options.wrapper" before="-" />
+        <move element="product.info.options.wrapper.bottom" destination="bundle.product.options.wrapper" after="product.info.options.wrapper" />
+        <move element="bundle.summary" as="form_bottom" destination="product.info" />
+
+        <referenceContainer name="product.info.main">
+            <container name="amtheme.bundle.actions" htmlTag="div" htmlClass="amtheme-actions-wrap" after="product.info.price">
+                <container name="amtheme.bundle.social" label="Product social links container" htmlTag="div" htmlClass="product-social-links">
+                    <block class="Magento\Catalog\Block\Product\View"
+                           name="product.bundle.addto"
+                           as="addto_bundle"
+                           template="Magento_Catalog::product/view/addto.phtml">
+                        <block class="Magento\Catalog\Block\Product\View\AddTo\Compare"
+                               name="bundle.addto.compare"
+                               template="Magento_Catalog::product/view/addto/compare.phtml" >
+                            <arguments>
+                                <argument name="amAjaxViewModel" xsi:type="object">Amasty\JetTheme\ViewModel\Catalog\Ajax</argument>
+                                <argument name="amLayoutViewModel" xsi:type="object">Amasty\JetTheme\ViewModel\ProductPage\ProductPageViewModel</argument>
+                            </arguments>
+                        </block>
+                        <block class="Magento\Wishlist\Block\Catalog\Product\View\AddTo\Wishlist"
+                               name="bundle.product.addto.wishlist"
+                               before="-"
+                               template="Magento_Wishlist::catalog/product/view/addto/wishlist.phtml">
+                            <arguments>
+                                <argument name="amLayoutViewModel" xsi:type="object">Amasty\JetTheme\ViewModel\ProductPage\ProductPageViewModel</argument>
+                            </arguments>
+                        </block>
+                    </block>
+                    <block class="Magento\Catalog\Block\Product\View" name="bundle.info.mailto" template="Magento_Catalog::product/view/mailto.phtml"/>
+                </container>
+            </container>
+        </referenceContainer>
+
+        <move element="customize.button" destination="amtheme.bundle.actions" before="-" />
+
+        <referenceBlock name="product.info.addtocart.additional" remove="true"/>
+        <move element="product.info.addtocart.bundle" as="add_to_cart_button" destination="product.info" before="-" />
+
+        <referenceBlock name="product.info.addto.bundle" remove="true"/>
+        <move element="bundle.info.mailto" destination="product.bundle.addto" after="-" />
+
+        <referenceBlock name="product.info.bundle.options.radio">
+            <arguments>
+                <argument name="view_model" xsi:type="object">Amasty\JetTheme\ViewModel\ProductCaret\ProductCaretConfigurationViewModel</argument>
+            </arguments>
+        </referenceBlock>
+        <referenceBlock name="product.info.bundle.options.checkbox">
+            <arguments>
+                <argument name="view_model" xsi:type="object">Amasty\JetTheme\ViewModel\ProductCaret\ProductCaretConfigurationViewModel</argument>
+            </arguments>
+        </referenceBlock>
+    </body>
+</page>

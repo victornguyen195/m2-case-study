@@ -1,0 +1,163 @@
+//
+//  Sales Module Styles
+//  _____________________________________________
+
+//
+//  General styles
+//  ---------------------------------------------
+
+.email-intro .greeting {
+    margin-bottom: 0;
+    font-weight: @font-weight__regular;
+}
+
+.email-summary {
+    h1 {
+        margin: @email-table-cells-indent__l 0 @email-table-cells-indent__s;
+        letter-spacing: @h1__letter-spacing;
+    }
+}
+
+//
+//  Items Table
+//  ----------------------------------------------
+
+.email-items {
+    & {
+        .lib-table(
+            @_table-width: @table__width,
+            @_cell-padding-vertical: @email-items-table-cells__padding-vertical,
+            @_cell-padding-horizontal: @email-items-table-cells__padding-horizontal
+        );
+    }
+
+    > thead > tr > th,
+    > tbody > tr > td {
+        border-bottom: @amtheme__border;
+    }
+
+    > tbody > tr {
+        > th,
+        > td {
+            & {
+                padding-bottom: @email-items-table-cells-items__padding-bottom;
+            }
+
+            p {
+                margin-bottom: @email-items-table-cells-items-paragraph__margin-bottom;
+            }
+        }
+    }
+
+    > tfoot > tr {
+        > th,
+        > td {
+            padding-bottom: 0;
+        }
+    }
+
+    thead th {
+        &:extend(._am-email-title);
+    }
+
+    .product-name {
+        font-weight: @font-weight__regular;
+    }
+
+    .item-qty,
+    .item-price,
+    .item-subtotal {
+        text-align: right;
+    }
+
+    .item-info {
+        dt,
+        dd {
+            float: left;
+        }
+
+        dt {
+            clear: both;
+            margin-right: 5px;
+        }
+
+        dt em {
+            font-style: normal;
+        }
+    }
+
+    .order-totals {
+        > tr > th {
+            text-align: left;
+            font-weight: @font-weight__regular;
+        }
+
+        > tr > td {
+            text-align: right;
+        }
+
+        > .grand_total {
+            font-weight: @font-weight__bold;
+            font-size: @h1__font-size;
+        }
+    }
+}
+
+//
+//  Shipment Tracking
+//  ----------------------------------------------
+
+// Custom shipment track wrapper
+.amtheme-shipment-track {
+    padding: @email-table-cells-indent__l - @email-table-cells-indent__base @email-table-cells-indent__base;
+    background: @amtheme__background-secondary__color;
+}
+
+.shipment-track {
+    & {
+        .lib-table(@table__width, 0);
+    }
+
+    thead,
+    tbody {
+        > tr > th,
+        > tr > td {
+            padding: @email-table-cells-indent__base 0;
+            width: 50%;
+        }
+
+        > tr > th {
+            &:extend(._am-email-title);
+        }
+
+        > tr > td {
+            border-top: @amtheme__border;
+        }
+    }
+}
+
+//
+//  Order Summary
+//  ----------------------------------------------
+
+.order-details {
+    & {
+        .lib-table(@table__width, 0);
+    }
+
+    tr > .address-details,
+    tr > .method-info {
+        & {
+            padding: 0 @email-table-cells-indent__base 0 0;
+            width: 50%;
+        }
+
+        h3 {
+            text-transform: uppercase;
+        }
+
+        dt {
+            font-weight: @font-weight__regular;
+        }
+    }
+}

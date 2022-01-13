@@ -1,0 +1,12 @@
+<?php
+/**
+ * @var Amasty\ThankYouPage\Block\Onepage\Success\Types\OrderReview $block
+ * @var Magento\Framework\Escaper $escaper
+ */
+
+$width = $block->getWidth();
+?>
+
+<div class="amtyblock amtyblock-order-review" style="width: <?= $escaper->escapeHtmlAttr($width) ?>%">
+    <?= /* @noEscape */ $block->getReviewBlockHtml(); ?>
+</div>

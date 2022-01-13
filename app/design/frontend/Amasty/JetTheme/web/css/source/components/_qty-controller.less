@@ -1,0 +1,86 @@
+//
+//  Qty controller styles
+//  _____________________________________________
+
+//
+//  Common
+//  ---------------------------------------------
+
+& when (@media-common = true) {
+    .amtheme-qty-box {
+        & {
+            position: relative;
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+        > .amtheme-qty {
+            & {
+                padding: 10px @product-qty-icon__min-width;
+                width: @product-qty__width;
+                height: @product-qty__height;
+                border: @product-qty__border-width solid @product-qty__border-color;
+                border-radius: 80px;
+                text-align: center;
+                transition: border @amtheme__transition;
+            }
+
+            &:not([disabled]):hover {
+                border-color: @product-qty__hover__border-color;
+            }
+
+            &:focus {
+                box-shadow: none;
+            }
+        }
+
+        > .amtheme-qty.mage-error {
+            border-width: 1px;
+            border-color: @amtheme__error-text__color;
+        }
+
+        > .amtheme-minus .amtheme-icon,
+        > .amtheme-plus .amtheme-icon {
+            width: @product-qty-icon__size;
+            height: @product-qty-icon__size;
+        }
+
+        > .amtheme-minus,
+        > .amtheme-plus {
+            & {
+                position: absolute;
+                top: 0;
+                display: flex;
+                align-items: center;
+                min-width: @product-qty-icon__min-width;
+                height: @product-qty__height;
+                border-radius: 80px 0 0 80px;
+                cursor: pointer;
+                user-select: none;
+            }
+
+            &:focus {
+                box-shadow: none;
+            }
+
+            ._keyfocus &:focus .amtheme-icon {
+                border: 1px solid @focus__color;
+                border-radius: 50%;
+            }
+
+            &:hover ~ .amtheme-qty {
+                border-color: @product-qty__hover__border-color;
+            }
+        }
+
+        > .amtheme-plus {
+            left: @product-qty__width - @product-qty-icon__min-width - @product-qty__border-width;
+            justify-content: flex-start;
+        }
+
+        > .amtheme-minus {
+            left: @product-qty__border-width;
+            justify-content: flex-end;
+        }
+    }
+}

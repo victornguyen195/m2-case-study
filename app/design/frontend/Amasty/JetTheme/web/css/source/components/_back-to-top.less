@@ -1,0 +1,79 @@
+//
+// Back to top button default styles
+// _________________________________________
+
+//
+//  Common
+//  ----------------------------------------
+
+& when (@media-common = true) {
+    .amtheme-backtotop-wrap {
+        & {
+            .am-margin(20px 0);
+            .am-padding(15px 25px);
+            background: @amtheme-backtotop__mobile_background;
+            text-align: center;
+            font-size: 1.8rem;
+        }
+
+        > .amtheme-icon {
+            display: none;
+        }
+    }
+}
+
+//
+//  Desktop
+//  ---------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .amtheme-backtotop-wrap {
+        & {
+            position: fixed;
+            right: 30px;
+            bottom: 100px;
+            z-index: 11;
+            margin: 0;
+            .am-padding(8px);
+            border: @amtheme-backtotop__border;
+            border-radius: @amtheme-backtotop__border-radius;
+            background: @amtheme-backtotop__background;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        &:hover,
+        &:focus {
+            & {
+                border-color: @amtheme-backtotop__hover__color;
+            }
+
+            .amtheme-icon {
+                fill: @amtheme-backtotop__hover__color;
+            }
+        }
+
+        &.-fix {
+            position: absolute;
+            bottom: inherit;
+        }
+
+        &.-animate {
+            transition: @amtheme-backtotop__transition;
+        }
+
+        &.-show {
+            opacity: 1;
+        }
+
+        > .amtheme-label {
+            display: none;
+        }
+
+        > .amtheme-icon {
+            display: block;
+            fill: @amtheme-backtotop-icon__fill;
+            transform: rotate(90deg);
+        }
+    }
+}

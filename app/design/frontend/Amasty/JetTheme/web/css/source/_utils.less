@@ -1,0 +1,199 @@
+//
+//  Jet theme utils
+//  _____________________________________________
+
+//
+// Variables
+// -----------------------------------------------
+
+@amtheme-fade__background: linear-gradient(270deg, @amtheme__background-primary__color 0%, fade(@amtheme__background-primary__color, 65%) 44.32%, fade(@amtheme__background-primary__color, 0) 92.5%);
+
+//
+// Helpers
+// -----------------------------------------------
+
+.am-opacity-clear {
+    z-index: 10;
+    opacity: 0;
+}
+
+.am-vertical-center {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.am-no-display-desktop {
+    &:extend(.abs-visually-hidden-desktop all);
+}
+
+.am-visually-hidden {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    margin: 0;
+    padding: 0;
+    width: 0;
+    height: 0;
+    border: 0;
+    opacity: 0;
+}
+
+.am-visually-hidden-reset {
+    position: static;
+    overflow: visible;
+    clip: auto;
+    margin: 0;
+    width: auto;
+    height: auto;
+    opacity: 1;
+}
+
+.am-custom-scrollbar {
+    & {
+        overflow: auto;
+
+        // Firefox Custom Scrollbar Styles
+        scrollbar-color: @color-gray-light @color-white;
+        scrollbar-width: thin;
+        // (END) Firefox Custom Scrollbar Styles
+
+        // IE Custom Scrollbar Styles
+        scrollbar-face-color: @color-gray-light;
+        scrollbar-highlight-color: @color-gray-light;
+        scrollbar-shadow-color: @color-gray-light;
+        scrollbar-track-color: @color-white;
+        // (END) IE Custom Scrollbar Styles
+    }
+
+    // Webkit Custom Scrollbar Styles
+    &::-webkit-scrollbar {
+        width: @amtheme-scrollbar__size;
+        height: @amtheme-scrollbar__size;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: transparent;
+        box-shadow: none;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        border-radius: 12px;
+        background: @color-gray-light;
+    }
+    // (END) Webkit Custom Scrollbar Styles
+
+    > * {
+        max-width: none;
+    }
+}
+
+.am-text-uppercase {
+    text-transform: uppercase;
+    letter-spacing: @h3__letter-spacing * 2;
+    font-weight: @font-weight__bold;
+    font-size: 1.2rem;
+}
+
+.am-float-clear {
+    clear: both;
+}
+
+.am-word-break {
+    & {
+        word-wrap: break-word;
+        word-break: break-word;
+    }
+
+    .ie11 & {
+        word-break: break-all;
+    }
+}
+
+.am-overflow-fade {
+    & {
+        position: relative;
+        padding: 0;
+    }
+
+    &:after {
+        position: absolute;
+        top: 0;
+        left: calc(~'100% - 22px');
+        width: 32px;
+        height: 100%;
+        content: '';
+        pointer-events: none;
+        user-select: none;
+    }
+}
+
+.no-display {
+    display: none;
+}
+
+//
+//  Messages with inner icon
+//  ---------------------------------------------
+
+._am-message-icon-inner {
+    > *:first-child:before {
+        width: @message-icon__width;
+        text-align: @message-icon__text-align;
+    }
+}
+
+//
+//  Product Options List
+//  ---------------------------------------------
+
+.am-product-options {
+    dt {
+        float: left;
+        clear: both;
+        margin-right: 5px;
+        font-weight: @font-weight__regular;
+    }
+
+    dt:after {
+        display: inline-block;
+        content: ':';
+    }
+
+    dt + dd {
+        float: left;
+    }
+}
+
+//
+// Helpers Mobile
+// -----------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .am-no-display-mobile {
+        @abs-no-display();
+    }
+}
+
+//
+// Layout offset
+// -----------------------------------------------
+
+.am-layout-negative-offset {
+    @media only screen and (max-width: @screen__xs) {
+        & {
+            .am-margin-right(-@layout__width-xs-indent);
+            .am-margin-left(-@layout__width-xs-indent);
+            .am-padding-right(@layout__width-xs-indent);
+            .am-padding-left(@layout__width-xs-indent);
+        }
+    }
+
+    @media only screen and (max-width: @screen__m) {
+        & {
+            .am-margin-right(-@layout__width-m-indent);
+            .am-margin-left(-@layout__width-m-indent);
+            .am-padding-right(@layout__width-m-indent);
+            .am-padding-left(@layout__width-m-indent);
+        }
+    }
+}

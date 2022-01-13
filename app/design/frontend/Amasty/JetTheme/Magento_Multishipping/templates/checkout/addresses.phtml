@@ -1,0 +1,149 @@
+<?php
+/**
+ * Ship to multiple address template
+ *
+ * @var $block \Magento\Multishipping\Block\Checkout\Addresses
+ */
+?>
+
+<form id="checkout_multishipping_form"
+      data-mage-init='{
+          "multiShipping":{},
+          "cartUpdate": {
+               "validationURL": "<?= $block->escapeUrl($block->getUrl('multishipping/checkout/checkItems')) ?>",
+               "eventName": "updateMulticartItemQty"
+          }}'
+      action="<?= $block->escapeUrl($block->getPostActionUrl()) ?>"
+      method="post"
+      class="multicheckout address form">
+    <div class="title">
+        <?= $block->escapeHtml(__('Please select a shipping address for applicable items.')) ?>
+    </div>
+    <input type="hidden" name="continue" value="0" id="can_continue_flag"/>
+    <input type="hidden" name="new_address" value="0" id="add_new_address_flag"/>
+    <div class="table-wrapper">
+        <table class="items data table" id="multiship-addresses-table">
+            <caption class="table-caption">
+                <?= $block->escapeHtml(__('Please select a shipping address for applicable items.')) ?>
+            </caption>
+            <thead>
+                <tr>
+                    <th class="col product" scope="col"><?= $block->escapeHtml(__('Product')) ?></th>
+                    <th class="col qty" id="qty-column-header" scope="col"><?= $block->escapeHtml(__('Qty')) ?></th>
+                    <th class="col address" id="address-column-header" scope="col">
+                        <?= $block->escapeHtml(__('Send To')) ?>
+                    </th>
+                    <th class="col actions" scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($block->getItems() as $_index => $_item): ?>
+                <?php if ($_item->getQuoteItem()): ?>
+                    <tr>
+                        <td class="col product" data-th="<?= $block->escapeHtmlAttr(__('Product')) ?>">
+                            <?= $block->getItemHtml($_item->getQuoteItem()) ?>
+                            <div class="am-float-clear"></div>
+                        </td>
+                        <td class="col qty" data-th="<?= $block->escapeHtmlAttr(__('Qty')) ?>">
+                            <div class="field qty">
+                                <div class="control amtheme-qty-box" data-mage-init='{"amQty":{}}'>
+                                    <div class="amtheme-minus"
+                                         data-amtheme-js="qty-minus"
+                                         tabindex="0"
+                                         title="<?= $block->escapeHtml(__('Minus')) ?>">
+                                        <svg class="amtheme-icon">
+                                            <use xlink:href="#icon-minus"/>
+                                        </svg>
+                                    </div>
+                                    <div class="amtheme-plus"
+                                         data-amtheme-js="qty-plus"
+                                         tabindex="0"
+                                         title="<?= $block->escapeHtml(__('Plus')) ?>">
+                                        <svg class="amtheme-icon">
+                                            <use xlink:href="#icon-plus"/>
+                                        </svg>
+                                    </div>
+                                    <input type="number"
+                                           data-multiship-item-id="<?= $block->escapeHtmlAttr($_item->getSku()) ?>"
+                                           id="ship-<?= $block->escapeHtml($_index) ?>-<?= $block->escapeHtml($_item
+                                               ->getQuoteItemId()) ?>-qty"
+                                           name="ship[<?= $block->escapeHtml($_index) ?>][<?= $block->escapeHtml($_item
+                                               ->getQuoteItemId()) ?>][qty]"
+                                           value="<?= $block->escapeHtmlAttr($_item->getQty()) ?>"
+                                           size="2"
+                                           min="0"
+                                           class="input-text qty amtheme-qty"
+                                           data-validate="{
+                                               number: true,
+                                               required:true,
+                                               'validate-greater-than-zero':true
+                                           }"
+                                           data-amtheme-js="qty-input"
+                                           aria-labelledby="qty-column-header" />
+                                </div>
+                            </div>
+                        </td>
+                        <td class="col address" data-th="<?= $block->escapeHtmlAttr(__('Send To')) ?>">
+                            <?php if ($_item->getProduct()->getIsVirtual()): ?>
+                                <div class="applicable">
+                                    <?= $block->escapeHtml(__('A shipping selection is not applicable.')) ?>
+                                </div>
+                            <?php else: ?>
+                                <div class="field address">
+                                    <div class="control" aria-labelledby="address-column-header">
+                                        <?= $block->getAddressesHtmlSelect($_item, $_index) ?>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+                        </td>
+                        <td class="col actions" data-th="<?= $block->escapeHtmlAttr(__('Actions')) ?>">
+                            <a href="<?= $block->escapeUrl($block->getItemDeleteUrl($_item)) ?>"
+                               title="<?= $block->escapeHtmlAttr(__('Remove Item')) ?>"
+                               class="action delete"
+                               data-multiship-item-remove="">
+                                <?= $block->escapeHtml(__('Remove')) ?>
+                            </a>
+                        </td>
+                    </tr>
+                <?php endif; ?>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+    <div class="actions-toolbar">
+        <a href="<?= $block->escapeUrl($block->getBackUrl()) ?>"
+           class="action back"
+           title="<?= $block->escapeHtml(__('Back to Shopping Cart')) ?>">
+            <svg class="amtheme-icon">
+                <use xlink:href="#icon-arrow-left-min"></use>
+            </svg>
+            <?= $block->escapeHtml(__('Back to Cart')) ?>
+        </a>
+        <button type="submit"
+                data-multiship-item-update=""
+                class="action update"
+                data-role="can-continue"
+                data-flag="0">
+            <svg class="amtheme-icon">
+                <use xlink:href="#icon-update"/>
+            </svg>
+            <?= $block->escapeHtml(__('Update Qty &amp; Addresses')) ?>
+        </button>
+        <button type="button"
+                title="<?= $block->escapeHtmlAttr(__('Enter a New Address')) ?>"
+                class="action add outline"
+                data-role="add-new-address">
+            <?= $block->escapeHtml(__('New Address')) ?>
+        </button>
+        <button type="submit"
+                title="<?= $block->escapeHtmlAttr(__('Go to Shipping Information')) ?>"
+                class="action primary continue<?= $block->isContinueDisabled() ? ' disabled' : '' ?>"
+                data-role="can-continue"
+                data-flag="1"
+            <?php if ($block->isContinueDisabled()): ?>
+                disabled="disabled"
+            <?php endif; ?>>
+            <?= $block->escapeHtml(__('Go to Shipping Information')) ?>
+        </button>
+    </div>
+</form>

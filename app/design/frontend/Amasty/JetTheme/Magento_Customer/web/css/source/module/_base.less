@@ -1,0 +1,289 @@
+//
+//  Customer Base Styles
+//  ____________________________________________
+
+//
+//  Common
+//  --------------------------------------------
+
+& when (@media-common = true) {
+    .amtheme-recaptcha-block {
+        & {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .nested {
+            order: -1;
+        }
+
+        .captcha-image > * {
+            vertical-align: middle;
+        }
+
+        .captcha-reload {
+            .lib-button-as-link();
+            .am-text-uppercase;
+
+            .am-margin-left(10px);
+        }
+    }
+
+    .form.password.reset,
+    .form.send.confirmation,
+    .form.password.forget,
+    .form.create.account,
+    .form.search.advanced,
+    .form.form-orders-search,
+    .block.block-customer-login,
+    .block.block-new-customer {
+        & {
+            margin-bottom: 50px;
+            max-width: @account-form__s__max-width;
+            width: 100%;
+        }
+
+        > fieldset {
+            & {
+                margin-bottom: @indent__m;
+            }
+
+            &:not(:last-of-type) {
+                padding-bottom: @indent__m;
+                border-bottom: @amtheme__border;
+            }
+        }
+
+        legend + br {
+            display: none;
+        }
+
+        .field.captcha .control.captcha {
+            &:extend(.amtheme-recaptcha-block all);
+        }
+
+        .control.captcha .nested {
+            margin-bottom: @indent__xs;
+        }
+    }
+
+    .account .toolbar {
+        &,
+        .pager {
+            align-items: center;
+        }
+
+        .pager .toolbar-amount {
+            display: block;
+        }
+    }
+
+    .form.contact .field.captcha .control.captcha {
+        &:extend(.amtheme-recaptcha-block all);
+    }
+
+    .field.password .control {
+        & {
+            .lib-vendor-prefix-display();
+            .lib-vendor-prefix-flex-direction();
+        }
+
+        .mage-error {
+            .lib-vendor-prefix-order(2);
+        }
+
+        .input-text {
+            .lib-vendor-prefix-order(0);
+        }
+    }
+
+    .amtheme-account-actions {
+        & {
+            margin: 40px 0 0;
+        }
+
+        .amtheme-fields {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+
+        > .actions-toolbar {
+            margin: 0;
+        }
+
+        > .actions-toolbar .primary > .action {
+            margin: 0;
+        }
+
+        .choice:last-of-type {
+            & {
+                position: relative;
+                .am-margin-left(20px);
+                .am-padding-left(20px);
+            }
+
+            &:before {
+                position: absolute;
+                left: 0;
+                width: 2px;
+                height: 100%;
+                background: @amtheme__border__color;
+                content: '';
+            }
+        }
+    }
+
+    .amtheme-card-block {
+        & {
+            box-sizing: border-box;
+            padding: @customer-address__padding__m @layout__width-m-indent;
+            background: @amtheme__background-secondary__color;
+        }
+
+        > .amtheme-heading {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        > .amtheme-heading > .action {
+            letter-spacing: @h3__letter-spacing;
+            font-weight: @h3__font-weight;
+            font-size: 1.6rem;
+        }
+
+        > .amtheme-heading > .amtheme-title,
+        > .amtheme-title {
+            margin: 0;
+            letter-spacing: .01em;
+            font-weight: @h3__font-weight;
+            font-size: @h3__font-size;
+        }
+    }
+
+    .amtheme-card-block.-with-table {
+        & {
+            background: @amtheme__background-tertiary__color;
+        }
+
+        > .amtheme-heading {
+            margin-bottom: 15px;
+            padding-bottom: 20px;
+            border-bottom: @amtheme__border;
+        }
+
+        .table-wrapper {
+            margin-bottom: 0;
+        }
+    }
+
+    .fieldset .fullname.field > .label {
+        &:extend(.am-visually-hidden all);
+    }
+}
+
+//
+//  Mobile
+//  --------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__xs) {
+    .amtheme-card-block {
+        margin: 0 -@layout__width-xs-indent 20px;
+        .am-padding-right(@layout__width-xs-indent);
+        .am-padding-left(@layout__width-xs-indent);
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .amtheme-card-block {
+        & {
+            margin: 0 -@layout__width-m-indent 20px;
+        }
+
+        > .amtheme-heading {
+            margin-bottom: 20px;
+        }
+    }
+
+    .account .toolbar {
+        &,
+        .pager {
+            flex-direction: column;
+        }
+    }
+}
+
+//
+//  Tablet -
+//  --------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__s) {
+    .amtheme-account-actions {
+        & {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 35px 0 0;
+        }
+
+        .amtheme-fields {
+            justify-content: flex-start;
+            margin-bottom: 0;
+        }
+
+        > .actions-toolbar {
+            display: flex;
+            flex-direction: row-reverse;
+        }
+
+        > .actions-toolbar .primary {
+            width: auto;
+        }
+
+        > .actions-toolbar .primary > .action {
+            margin: 0 0 0 5px;
+        }
+    }
+
+    .amtheme-card-block.-with-table {
+        > .amtheme-heading {
+            margin-bottom: 5px;
+        }
+    }
+}
+
+//
+//  Tablet
+//  --------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .form.password.reset,
+    .form.send.confirmation,
+    .form.password.forget,
+    .form.create.account,
+    .form.search.advanced,
+    .form.form-orders-search,
+    .block.block-customer-login,
+    .block.block-new-customer {
+        max-width: @account-form__m__max-width;
+    }
+
+    .amtheme-card-block {
+        margin-bottom: 30px;
+        padding: @customer-address__padding__m;
+        border-radius: @amtheme__border-radius__m;
+    }
+
+    .account .toolbar {
+        &,
+        .pager {
+            flex-direction: row;
+        }
+
+        .pager .toolbar-amount {
+            margin-bottom: 0;
+        }
+    }
+}

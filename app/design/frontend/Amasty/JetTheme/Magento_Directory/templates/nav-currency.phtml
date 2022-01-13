@@ -1,0 +1,42 @@
+<?php
+/**
+ * @var \Magento\Directory\Block\Currency $block
+ */
+?>
+
+<?php if ($block->getCurrencyCount() > 1): ?>
+    <?php $currencies = $block->getCurrencies();
+          $currentCurrencyCode = $block->getCurrentCurrencyCode();
+          $id = $block->getIdModifier() ? '-' . $block->getIdModifier() : ''; ?>
+    <div class="amtheme-nav-currency amtheme-item-bottom"
+         data-mage-init='{
+                "collapsible": {
+                    "collapsible": true,
+                    "animate": {"duration": 200, "easing": "linear"}
+            }}'>
+        <div class="amtheme-currency-title section-item-title amtheme-item -bottom"
+             data-role="title"
+             id="switcher-currency<?= $block->escapeHtml($id) ?>">
+            <svg class="amtheme-icon" focusable="false">
+                <use xlink:href="#icon-currency"/>
+            </svg>
+            <span class="title"><?= $block->escapeHtml(__('Currency:')) ?></span>
+            <span class="current language-<?= $block->escapeHtml($block->getCurrentCurrencyCode()) ?>">
+                <?= $block->escapeHtml($currentCurrencyCode) ?>
+            </span>
+        </div>
+        <ul data-role="content" class="section-item-content">
+            <?php foreach ($currencies as $_code => $_name): ?>
+                <?php if ($_code != $currentCurrencyCode): ?>
+                    <li class="currency-<?= $block->escapeHtml($_code) ?> switcher-option">
+                        <a href="#"
+                           data-post='<?= /* @noEscape */ $block->getSwitchCurrencyPostData($_code) ?>'
+                           aria-label="<?= $block->escapeHtml($_name) ?>">
+                            <?= $block->escapeHtml($_code) ?> - <?= $block->escapeHtml($_name) ?>
+                        </a>
+                    </li>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+<?php endif; ?>

@@ -1,0 +1,94 @@
+//
+//  Multishipping Billing Addresses Styles
+//  _____________________________________________
+
+//
+//  Variables
+//  ---------------------------------------------
+
+@amtheme-multishipping-address-select-item__min-width: 280px;
+@amtheme-multishipping-address-select-item__gap: @indent__sm;
+
+//
+//  Common
+//  ---------------------------------------------
+
+& when (@media-common = true) {
+    .multishipping-checkout_address-selectbilling {
+        .block-billing {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(@amtheme-multishipping-address-select-item__min-width, 1fr));
+            grid-gap: @amtheme-multishipping-address-select-item__gap;
+            align-items: start;
+        }
+
+        .block-billing .actions-toolbar {
+            margin-top: 0;
+        }
+
+        .actions-toolbar .action.back {
+            display: inline;
+        }
+    }
+
+    .multishipping-checkout_address-selectbilling .box-billing-address {
+        & {
+            box-sizing: border-box;
+            padding: @indent__sm;
+            border: @amtheme__border__width solid @color-black;
+            border-radius: @amtheme__border-radius__s;
+        }
+
+        .box-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: @indent__m;
+        }
+
+        .action {
+            .am-text-uppercase;
+        }
+
+        .action.select {
+            color: @amtheme__secondary__color;
+        }
+    }
+
+    .amtheme-default-mark {
+        & {
+            display: flex;
+            margin-top: @indent__sm;
+            padding: 8px 0;
+            border: @amtheme__border;
+            border-radius: @amtheme__border-radius__s;
+            font-size: 1.4rem;
+        }
+
+        .amtheme-mark {
+            flex-basis: 50%;
+            box-sizing: border-box;
+            padding: 0 10px;
+            text-align: center;
+        }
+
+        .amtheme-mark:not(:last-of-type) {
+            .am-border-right(@amtheme__border);
+        }
+    }
+
+    // IE11 styles
+    .ie11 .multishipping-checkout_address-selectbilling {
+        .block-billing {
+            display: flex;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .box-billing-address {
+            margin: 0 @amtheme-multishipping-address-select-item__gap @amtheme-multishipping-address-select-item__gap 0;
+            min-width: @amtheme-multishipping-address-select-item__min-width;
+            width: calc(~'(100% - @{indent__sm} * 4) / 4');
+        }
+    }
+    // (END) IE11 styles
+}

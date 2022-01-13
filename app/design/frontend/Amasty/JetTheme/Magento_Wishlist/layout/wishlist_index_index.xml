@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="page.main.title">
+            <action method="setPageTitle">
+                <argument translate="true" name="title" xsi:type="string">My Wish List</argument>
+            </action>
+        </referenceBlock>
+
+        <move element="customer.wishlist.button.update" destination="customer.wishlist.item.inner" after="customer.wishlist.item.comment" />
+        <move element="customer.wishlist.item.remove" destination="customer.wishlist.item.cart" />
+
+        <referenceBlock name="customer.wishlist.item.actions">
+            <arguments>
+                <argument name="css_class" xsi:type="string">product-item-actions -edit</argument>
+            </arguments>
+        </referenceBlock>
+
+        <referenceBlock name="customer.wishlist.item.inner">
+            <block class="Magento\Framework\View\Element\Template"
+                   name="amtheme.wishlist.more"
+                   template="Magento_Wishlist::item/column/more-button.phtml"
+                   before="-"/>
+        </referenceBlock>
+
+        <referenceBlock name="customer.wishlist.item.cart">
+            <arguments>
+                <argument name="amAjaxViewModel" xsi:type="object">Amasty\JetTheme\ViewModel\Catalog\Ajax</argument>
+            </arguments>
+        </referenceBlock>
+
+        <move element="customer.wishlist.item.options" destination="customer.wishlist.item.inner" after="amtheme.wishlist.more" />
+
+        <referenceContainer name="content">
+            <block class="Magento\Framework\View\Element\Template" name="wishlist.sharing" template="Magento_Wishlist::sharingPopup.phtml">
+                <arguments>
+                    <argument name="view_model" xsi:type="object">Amasty\JetTheme\ViewModel\Wishlist\SharingViewModel</argument>
+                </arguments>
+                <block class="Magento\Captcha\Block\Captcha" name="captcha" after="-" cacheable="false">
+                    <action method="setFormId">
+                        <argument name="formId" xsi:type="string">share_wishlist_form</argument>
+                    </action>
+                    <action method="setImgWidth">
+                        <argument name="width" xsi:type="string">230</argument>
+                    </action>
+                    <action method="setImgHeight">
+                        <argument name="width" xsi:type="string">230</argument>
+                    </action>
+                </block>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

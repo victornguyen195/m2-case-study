@@ -1,0 +1,67 @@
+<?php
+/** @var \Magento\Wishlist\Block\Customer\Wishlist $block */
+
+// phpcs:ignore
+$_helper = $this->helper(\Magento\Wishlist\Helper\Data::class);
+?>
+
+<?php if ($_helper->isAllow()): ?>
+    <?= ($block->getChildHtml('wishlist.rss.link')) ?>
+    <form class="form-wishlist-items"
+          id="wishlist-view-form"
+          data-mage-init='{"wishlist": {
+              "addToCartUrl":<?= /* @noEscape */ $block->getItemAddToCartParams("%item%") ?>,
+              "addAllToCartUrl":<?= /* @noEscape */ $block->getAddAllToCartParams() ?>,
+              "commentString":""},
+              "validation": {}}'
+          action="<?= $block->escapeUrl($block->getUrl('wishlist/index/update', ['wishlist_id' => $block->getWishlistInstance()->getId()])) ?>"
+          method="post">
+        <?= $block->getChildHtml('top') ?>
+        <?php if ($block->hasWishlistItems()): ?>
+            <?= $block->getBlockHtml('formkey') ?>
+            <?php $block->getChildBlock('items')->setItems($block->getWishlistItems()); ?>
+            <?= $block->getChildHtml('items') ?>
+        <?php else: ?>
+            <div class="toolbar-action -no-item">
+                <div class="secondary">
+                    <a href="<?= $block->escapeUrl($block->getBackUrl()) ?>"
+                       class="back amtheme-sliding-icon"
+                       aria-label="<?= $block->escapeHtml(__('Back')) ?>"
+                       title="<?= $block->escapeHtml(__('Back')) ?>">
+                        <svg class="amtheme-icon -left">
+                            <use xlink:href="#icon-arrow-left-min"/>
+                        </svg>
+                        <?= $block->escapeHtml(__('Back')) ?>
+                    </a>
+                </div>
+            </div>
+            <div class="message info empty">
+                <span class="text"><?= $block->escapeHtml(__('You have no items in your wish list.')) ?></span>
+            </div>
+        <?php endif ?>
+        <?= $block->getChildHtml('bottom') ?>
+        <div class="toolbar wishlist-toolbar">
+            <?= $block->getChildHtml('wishlist_item_pager'); ?>
+        </div>
+        <div class="actions-toolbar">
+            <div class="primary">
+                <?= $block->getChildHtml('control_buttons') ?>
+            </div>
+        </div>
+    </form>
+    <script id="form-tmpl" type="text/x-magento-template">
+      <form id="wishlist-hidden-form" method="post" action="<%- data.url %>" class="no-display">
+          <% if (data.qty) { %>
+          <input name="qty" value="<%- data.qty %>">
+          <% } %>
+
+          <% if (data.item) { %>
+          <input name="item" value="<%- data.item %>">
+          <% } %>
+
+          <% if (data.entity) { %>
+          <input name="entity" value="<%- data.entity %>">
+          <% } %>
+      </form>
+    </script>
+<?php endif ?>

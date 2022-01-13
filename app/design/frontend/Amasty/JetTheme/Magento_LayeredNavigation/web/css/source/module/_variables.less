@@ -1,0 +1,72 @@
+//
+//  Variables
+//  ____________________________________________
+
+//
+//  Base
+//  --------------------------------------------
+
+@filter-title__font-weight: @font-weight__regular;
+@filter-content-hide__offset: @am-layout-column__left-width__l + @am-gutter-3columns__width__l;
+@filter-content-show__offset: 0;
+@filter-content-hide__3-columns__offset: @am-layout-column__left-width__l + @am-gutter-3columns__width__l;
+@filter-content-left__transition: margin-left @amtheme__transition__delay @amtheme__transition__func,
+    opacity @amtheme__transition__delay;
+@filter-content-right__transition: margin-right @amtheme__transition__delay @amtheme__transition__func,
+    opacity @amtheme__transition__delay;
+
+//  Filter options
+@filter-options-icon__width: 20px;
+@filter-options-icon__height: @filter-options-icon__width;
+@filter-options-item__color: @amtheme__text-primary__color;
+@filter-options-count__color: @amtheme__text-placeholder__color;
+@filter-options-count__hover__color: @amtheme__secondary__color;
+
+//  Filter actions
+@filter-actions__border-color: @amtheme__border__active__color;
+
+//  Filter current
+@filter-current-title__font-size: 1.4rem;
+@filter-current-item__color: @amtheme__text-secondary__color;
+@filter-current-item__text-transform: uppercase;
+@filter-current-item__font-size: 1.2rem;
+@filter-current-item__line-height: 1.5rem;
+
+//  Filter Sidebar
+@filter-sidebar-subtitle__font-size: 1.8rem;
+@filter-sidebar-subtitle__line-height: 2.5rem;
+@filter-sidebar-clear__color: @amtheme__text-placeholder__color;
+
+//  Toolbar
+@page-with-filter-toolbar__3-columns__max-width: @am-layout-column-main__width-2-left;
+@page-with-filter-toolbar__3-columns__max-width__xl: ~'calc(100% - @{am-layout-column__left-width__l} - @{am-gutter-3columns__width__l})';
+@page-with-filter-toolbar__3-columns__padding: ~'calc(@{am-layout-column__left-width} + @{am-gutter-3columns__width})';
+@page-with-filter-toolbar__3-columns__padding__xl: ~'calc(@{am-layout-column__left-width__l} + @{am-gutter-3columns__width__l})';
+@page-with-filter-toolbar__max-width__xl: @am-layout-column-main__width-2-left__l;
+@page-with-filter-toolbar__max-width__l: @am-layout-column-main__width-2-left;
+@page-with-filter-toolbar__max-width__m: @am-layout-column-main__width-2-left;
+
+//
+//  Mobile
+//  --------------------------------------------
+
+@filter-icon-mobile__height: 20px;
+@filter-icon-mobile__width: @filter-icon-mobile__height;
+@filter-icon-active-mobile__height: 15px;
+@filter-icon-active-mobile__width: @filter-icon-active-mobile__height;
+
+//  Filter Sidebar
+@filter-sidebar-mobile__translateX: 110%;
+@filter-sidebar-mobile__active__translateX: 0;
+
+//
+//  Desktop
+//  --------------------------------------------
+
+@filter-title-desktop__color: @amtheme__text-secondary__color;
+@filter-icon-desktop__height: 25px;
+@filter-icon-desktop__width: @filter-icon-desktop__height;
+@filter-title-desktop__line-height: @filter-icon-desktop__height;
+@filter-title-desktop__max-width__l: @am-layout-column__left-width__l;
+@filter-title-desktop__max-width__m: @am-layout-column__left-width;
+@filter-toolbar__offset-top: 75px;

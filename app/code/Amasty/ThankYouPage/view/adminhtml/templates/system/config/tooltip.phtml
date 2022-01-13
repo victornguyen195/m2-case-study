@@ -1,0 +1,16 @@
+<?php
+/**
+ * @var $block Amasty\ThankYouPage\Block\Adminhtml\System\Config\Tooltip
+ * @var $escaper Magento\Framework\Escaper
+ */
+?>
+
+<div class="admin__field-tooltip amtypage-tooltip">
+    <a class="admin__field-tooltip-action action-help"
+       title="<?= $escaper->escapeHtml(
+           __('You need to save your config first to see a relevant preview of Thank You page.
+           Preview will be generated based on the most recent order in the system. If there are no orders, the page will be blank.
+           Preview generation may take some time.')
+       ) ?>">
+    </a>
+</div>

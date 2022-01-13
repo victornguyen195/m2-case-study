@@ -1,0 +1,77 @@
+<?php
+/**
+ * @var $block \Magento\Sales\Block\Reorder\Sidebar
+ * @var $escaper Magento\Framework\Escaper
+ */
+?>
+<div class="amtheme-sidebar-block amtheme-sidebar-reorder" data-bind="scope: 'lastOrderedItems'">
+    <div class="amtheme-heading">
+        <span class="amtheme-title no-display"
+              role="heading"
+              data-bind="css: {'no-display': !lastOrderedItems().items || lastOrderedItems().items.length === 0}"
+              aria-level="2">
+            <?= $block->escapeHtml(__('Recently Ordered')) ?>
+        </span>
+    </div>
+
+    <div class="block-content no-display"
+         data-bind="css: {'no-display': !lastOrderedItems().items || lastOrderedItems().items.length === 0}"
+         aria-labelledby="block-reorder-heading">
+        <form method="post"
+              class="form reorder"
+              action="<?= $block->escapeUrl($block->getFormActionUrl()) ?>"
+              data-mage-init='{"amReorderValidation":{}}'
+              id="reorder-validate-detail">
+            <ul id="cart-sidebar-reorder"
+                class="amtheme-items"
+                data-bind="foreach: lastOrderedItems().items">
+                <li class="amtheme-item">
+                    <input type="checkbox" name="order_items[]"
+                           data-bind="attr: {
+                                        id: 'reorder-item-' + id,
+                                        value: id
+                                   },
+                                   disable: !is_saleable"
+                           class="checkbox"
+                           data-validate='{"validate-one-checkbox-required-by-name": true}'
+                    />
+                    <label class="label"
+                           title="<?= $block->escapeHtml(__('Add to Cart')) ?>"
+                           data-bind="attr: {'for': 'reorder-item-' + id}">
+                        <?= $block->escapeHtml(__('Add to Cart')) ?>
+                    </label>
+                    <a data-bind="attr: {href: url}, text: name" target="_blank" class="amtheme-name"></a>
+                </li>
+            </ul>
+            <div data-amtheme-js="reorder-advice"></div>
+            <div class="amtheme-actions">
+                <button type="submit"
+                        aria-label="<?= $block->escapeHtml(__('Buy')) ?>"
+                        title="<?= $block->escapeHtml(__('Buy')) ?>"
+                        class="size-s tocart"
+                        data-bind="css: {'no-display': typeof isShowAddToCart !== 'undefined' ? !isShowAddToCart : false}">
+                    <?= $block->escapeHtml(__('Buy')) ?>
+                </button>
+
+                <a class="action view"
+                   title="<?= $escaper->escapeHtml(__('View All')) ?>"
+                   href="<?= $escaper->escapeUrl($block->getUrl('sales/order/history')) ?>">
+                    <?= $escaper->escapeHtml(__('View All')) ?>
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+<script type="text/x-magento-init">
+{
+    "*": {
+        "Magento_Ui/js/core/app": {
+            "components": {
+                "lastOrderedItems": {
+                    "component": "Magento_Sales/js/view/last-ordered-items"
+                }
+            }
+        }
+    }
+}
+</script>

@@ -1,0 +1,25 @@
+<a class="product name product-item-name"
+   href="<?= $block->escapeUrl($block->getProductUrl()) ?>"
+   title="<?= $block->escapeHtml($block->getProductName()) ?>">
+    <?= $block->escapeHtml($block->getProductName()) ?></a>
+<?php if ($options = $block->getOptionList()): ?>
+    <dl class="item-options">
+        <?php foreach ($options as $option): ?>
+            <?php $formatedOptionValue = $block->getFormatedOptionValue($option) ?>
+            <dt><?= $block->escapeHtml($option['label']) ?></dt>
+            <dd<?= (isset($formatedOptionValue['full_view']) ? ' class="tooltip wrapper"' : '') ?>>
+                <?= $block->escapeHtml($formatedOptionValue['value'], ['span']) ?>
+                <?php if (isset($formatedOptionValue['full_view'])): ?>
+                    <dl class="item options tooltip content">
+                        <dt><?= $block->escapeHtml($option['label']) ?></dt>
+                        <dd><?= $block->escapeHtml($formatedOptionValue['full_view'], ['span']) ?></dd>
+                    </dl>
+                <?php endif; ?>
+            </dd>
+        <?php endforeach; ?>
+    </dl>
+<?php endif; ?>
+<?php if ($addtInfoBlock = $block->getProductAdditionalInformationBlock()): ?>
+    <?= $addtInfoBlock->setItem($block->getItem())->toHtml() ?>
+<?php endif; ?>
+<div class="am-float-clear"></div>

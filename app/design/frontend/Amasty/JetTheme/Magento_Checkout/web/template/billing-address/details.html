@@ -1,0 +1,31 @@
+<div if="isAddressDetailsVisible() && currentBillingAddress()" class="billing-address-details">
+    <p class="name item">
+        <text args="currentBillingAddress().prefix"/>
+        <text args="currentBillingAddress().firstname"/>
+        <text args="currentBillingAddress().middlename"/>
+        <text args="currentBillingAddress().lastname"/>
+        <text args="currentBillingAddress().suffix"/>
+    </p>
+    <p class="address item">
+        <text args="_.values(currentBillingAddress().street).join(', ')"/>,
+        <text args="currentBillingAddress().city "/>
+        <span text="currentBillingAddress().region"></span>
+        <text args="currentBillingAddress().postcode"/>,
+        <text args="getCountryName(currentBillingAddress().countryId)"/>
+    </p>
+    <p if="currentBillingAddress().telephone" class="tel item" text="currentBillingAddress().telephone"></p>
+
+    <each args="data: currentBillingAddress().customAttributes, as: 'element'">
+        <text args="$parent.getCustomAttributeLabel(element)"/>
+        <br/>
+    </each>
+
+    <button visible="!isAddressSameAsShipping()"
+            type="button"
+            data-bind="attr: {title: $t('Edit')}"
+            class="action action-edit-address am-text-uppercase"
+            click="editAddress">
+        <span translate="'Edit'"></span>
+    </button>
+</div>
+

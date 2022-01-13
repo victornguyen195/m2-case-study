@@ -1,0 +1,163 @@
+//
+//  Compare Links styles
+//  _____________________________________________
+
+//
+//  Variables
+//  --------------------------------------------
+
+@amtheme-compare-link-icon__size: 20px;
+@amtheme-compare-link__hover__color: lighten(@amtheme__system-icon__color, 22%);
+
+@amtheme-compare-link-sticky__z-index: 10;
+@amtheme-compare-link-sticky__padding: 12px;
+@amtheme-compare-link-sticky__background: @amtheme__link__color;
+@amtheme-compare-link-sticky__hover__background: @link__hover__color;
+@amtheme-compare-link-sticky-separator__width: 2px;
+@amtheme-compare-link-sticky-separator__color: darken(@amtheme__link__color, 5%);
+
+//
+//  Common
+//  --------------------------------------------
+
+& when (@media-common = true) {
+    .amtheme-compare-link {
+        > .amtheme-link {
+            display: none;
+            align-items: center;
+            .am-margin-right(@layout-indent__width);
+            font-weight: @font-weight__regular;
+        }
+
+        > .amtheme-link.-show {
+            display: flex;
+        }
+
+        .amtheme-icon {
+            .am-margin(0 5px 0 0);
+            width: @amtheme-compare-link-icon__size;
+            height: @amtheme-compare-link-icon__size;
+            color: transparent;
+        }
+
+        .amtheme-counter {
+            align-self: flex-start;
+            margin: 0 0 0 5px;
+            font-weight: @font-weight__bold;
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+
+        &:hover {
+            > .amtheme-link {
+                color: @amtheme-compare-link__hover__color;
+                transition: all @amtheme__fast__transition;
+            }
+
+            .amtheme-icon {
+                fill: @amtheme-compare-link__hover__color;
+            }
+        }
+    }
+
+    .amtheme-sticky-compare {
+        & {
+            position: absolute;
+            right: 0;
+            z-index: @amtheme-compare-link-sticky__z-index;
+            display: none;
+            overflow: hidden;
+            margin: 0;
+            border-radius: @amtheme__border-radius__s 0 0 @amtheme__border-radius__s ;
+            cursor: pointer;
+        }
+
+        &.-show {
+            display: flex;
+        }
+
+        > .amtheme-wrapper {
+            & {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: @amtheme-compare-link-sticky__padding;
+                background: @amtheme-compare-link-sticky__background;
+                transition: background @amtheme__fast__transition;
+            }
+
+            &:hover {
+                background: @amtheme-compare-link-sticky__hover__background;
+            }
+        }
+
+        > .amtheme-wrapper.-link {
+            .am-padding-right(0);
+        }
+
+        > .amtheme-wrapper.-clear {
+            padding: @amtheme-compare-link-sticky__padding 15px;
+        }
+
+        &.-fixed {
+            position: fixed;
+        }
+
+        .amtheme-link {
+            & {
+                position: relative;
+                display: inline-block;
+                margin: 0;
+                padding: 0 13px 0 0;
+                color: @color-white;
+            }
+
+            &:hover,
+            &:active,
+            &:focus {
+                color: @color-white;
+            }
+
+            &:after {
+                position: absolute;
+                top: 0;
+                right: @amtheme-compare-link-sticky-separator__width / 2 * -1; // design
+                display: inline-block;
+                height: 100%;
+                .am-border-right(@amtheme-compare-link-sticky-separator__width solid @amtheme-compare-link-sticky-separator__color);
+                content: '';
+            }
+        }
+
+        .amtheme-link > .amtheme-count {
+            display: none;
+        }
+
+        .amtheme-link > .amtheme-count.-show {
+            display: inline;
+        }
+
+        .amtheme-clear {
+            line-height: 1;
+        }
+
+        .amtheme-icon {
+            width: 16px;
+            height: 18px;
+            fill: @color-white;
+        }
+    }
+}
+
+//
+//  Mobile
+//  ---------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .amtheme-sticky-compare {
+        &,
+        &.-show {
+            display: none;
+        }
+    }
+}

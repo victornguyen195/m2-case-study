@@ -1,0 +1,24 @@
+.amtheme-palette .amtheme-row {
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.amtheme-palette .amtheme-label {
+    flex: 0 0 30%;
+}
+
+.amtheme-palette .amtheme-color {
+    flex: 1 1 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+}
+
+.amtheme-palette .amtheme-variable {
+    display: block;
+    color: #333;
+    line-height: 30px;
+}
+
+.amtheme-palette .amtheme-text {
+    color: #333;
+    line-height: 30px;
+}

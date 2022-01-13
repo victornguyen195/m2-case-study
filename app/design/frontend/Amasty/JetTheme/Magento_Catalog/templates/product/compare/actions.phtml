@@ -1,0 +1,29 @@
+<?php
+/* @var $block \Magento\Catalog\Block\Product\Compare\ListCompare */
+
+$total = $block->getItems()->getSize();
+// phpcs:ignore
+$compareHelper = $this->helper(Magento\Catalog\Helper\Product\Compare::class);
+?>
+<?php if ($total):?>
+    <div class="amtheme-compare-actions">
+        <?php $printButtonTitle = __('Print Page') ?>
+        <button class="action button-as-link print hidden-print"
+                title="<?= $block->escapeHtml($printButtonTitle) ?>"
+                aria-label="<?= $block->escapeHtml($printButtonTitle) ?>"
+                data-amtheme-js="print-page">
+            <span><?= $block->escapeHtml($printButtonTitle) ?></span>
+        </button>
+        <?php $clearButtonTitle = __('Clear List') ?>
+        <button id="compare-clear-all"
+                class="action button-as-link clear hidden-print"
+                title="<?= $block->escapeHtml($clearButtonTitle) ?>"
+                aria-label="<?= $block->escapeHtml($clearButtonTitle) ?>"
+                data-post="<?=$block->escapeHtml($compareHelper->getPostDataClearList()) ?>">
+            <svg class="amtheme-icon">
+                <use xlink:href="#icon-trash" />
+            </svg>
+            <span><?= $block->escapeHtml($clearButtonTitle) ?></span>
+        </button>
+    </div>
+<?php endif ?>

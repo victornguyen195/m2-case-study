@@ -1,0 +1,26 @@
+<?php
+/* @var $block \Magento\Theme\Block\Html\Title */
+
+$titleIdHtml = ($block->getTitleId()) ? ' id="' . $block->escapeHtml($block->getTitleId()) . '"' : '';
+$titleClass = ($block->getTitleClass()) ? ' ' . $block->getTitleClass() : '';
+$title = $block->getPageTitle();
+?>
+
+<div class="amtheme-compare-header page-title-wrapper<?= $block->escapeHtml($titleClass) ?>">
+    <div data-role="compare-products-title" data-bind="scope: 'compareProducts'">
+        <h1 class="page-title"
+            <?= /* @noEscape */ $titleIdHtml ?>
+            data-bind="attr: {'compare-counter': compareProducts().count}">
+            <?= $block->escapeHtml($title) ?>
+        </h1>
+    </div>
+    <?= $block->getChildHtml() ?>
+</div>
+
+<script type="text/x-magento-init">
+{
+    "[data-role='compare-products-title']": {
+        "Magento_Ui/js/core/app": <?= /* @noEscape */ $block->getJsLayout() ?>
+    }
+}
+</script>

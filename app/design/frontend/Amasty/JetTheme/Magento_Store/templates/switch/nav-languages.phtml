@@ -1,0 +1,40 @@
+<?php
+/** @var \Magento\Store\Block\Switcher $block */
+?>
+
+<?php if (count($block->getStores()) > 1): ?>
+    <?php $id = $block->getIdModifier() ? '-' . $block->getIdModifier() : '' ?>
+    <div class="amtheme-nav-language amtheme-item-bottom"
+         data-mage-init='{
+           "collapsible": {
+               "collapsible": true,
+               "animate": {"duration": 200, "easing": "linear"}
+          }}'>
+        <div class="section-item-title amtheme-item -bottom amtheme-language-title"
+             data-role="title"
+             id="switcher-language<?= $block->escapeHtml($id) ?>">
+            <svg class="amtheme-icon" focusable="false">
+               <use xlink:href="#icon-language"/>
+            </svg>
+            <span class="title"><?= $block->escapeHtml(__('Language:')) ?></span>
+            <span class="current view-<?= $block->escapeHtml($block->getCurrentStoreCode()) ?>">
+               <?= $block->escapeHtml($block->getStoreName()) ?>
+            </span>
+        </div>
+        <div data-role="content" class="section-item-content">
+            <ul>
+               <?php foreach ($block->getStores() as $_lang): ?>
+                   <?php if ($_lang->getId() != $block->getCurrentStoreId()): ?>
+                       <li class="view-<?= $block->escapeHtml($_lang->getCode()) ?> switcher-option">
+                           <a href="#"
+                              data-post='<?= /* @noEscape */ $block->getTargetStorePostData($_lang) ?>'
+                              title="<?= $block->escapeHtml($_lang->getName()) ?>">
+                              <?= $block->escapeHtml($_lang->getName()) ?>
+                           </a>
+                      </li>
+                   <?php endif; ?>
+               <?php endforeach; ?>
+            </ul>
+        </div>
+    </div>
+<?php endif; ?>

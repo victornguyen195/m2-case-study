@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="column.filter.action">
+            <block class="Magento\Framework\View\Element\Template" name="catalog.filter.action" before="-" template="Magento_LayeredNavigation::layer/action.phtml">
+                <arguments>
+                    <argument name="view_model" xsi:type="object">Amasty\JetTheme\ViewModel\Catalog\FilterStatusViewModel\Category</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+        <referenceContainer name="before.body.end">
+            <block class="Magento\Framework\View\Element\Js\Components" name="amtheme-scripts-one-column" as="amtheme-scripts-one-column" template="Magento_LayeredNavigation::scripts-one-column.phtml" after="-" />
+        </referenceContainer>
+    </body>
+</page>

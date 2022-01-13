@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="footer-container">
+            <container name="amtheme.custom.footer" htmlTag="div" htmlClass="footer content">
+                <block class="Amasty\JetTheme\Block\Footer\Layout"
+                       name="amtheme.custom.footer.container"
+                       before="-"
+                       ifconfig="amasty_jettheme/custom_footer/enable_custom_layout"/>
+            </container>
+        </referenceContainer>
+    </body>
+</page>
