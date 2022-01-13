@@ -1,9 +1,9 @@
 <?php
 
-namespace Dev\Banner\ViewModel\LowStock;
+namespace Nri\LowStock\ViewModel\LowStock;
 
 use Magento\Framework\Registry;
-use Dev\Banner\Helper\LowStock as LowStockHelper;
+use Nri\LowStock\Helper\LowStock as LowStockHelper;
 use Magento\InventorySalesAdminUi\Model\GetSalableQuantityDataBySku;
 
 class LowStock implements \Magento\Framework\View\Element\Block\ArgumentInterface
@@ -49,6 +49,7 @@ class LowStock implements \Magento\Framework\View\Element\Block\ArgumentInterfac
     {
         $currentProduct = $this->_registry->registry('current_product');
         $lowStockQuantity = $this->lowStockHelper->getLowStockConfigValue();
+        // Using salable quantity instead of normal quantity
         $salableQuantity = $this->getSalableQuantityDataBySku->execute($currentProduct->getSku());
         $quantity = 0;
         if (isset($salableQuantity[0]['qty']) && $salableQuantity[0]['qty']) {

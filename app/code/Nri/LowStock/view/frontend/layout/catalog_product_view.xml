@@ -1,0 +1,11 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="product.info.form.content">
+            <block name="low-stock-message" template="Nri_LowStock::low_stock_message.phtml" before="product.info.addtocart">
+                <arguments>
+                    <argument name="view_model" xsi:type="object">Nri\LowStock\ViewModel\LowStock\LowStock</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>
