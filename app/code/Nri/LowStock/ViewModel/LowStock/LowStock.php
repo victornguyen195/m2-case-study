@@ -60,7 +60,7 @@ class LowStock implements \Magento\Framework\View\Element\Block\ArgumentInterfac
             return self::OUT_OF_STOCK_MESSAGE;
         }
 
-        if ($quantity < $lowStockQuantity) {
+        if ($quantity <= $lowStockQuantity) {
             return self::LOW_STOCK_MESSAGE;
         }
 
