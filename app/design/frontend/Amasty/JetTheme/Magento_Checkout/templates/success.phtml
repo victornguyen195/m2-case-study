@@ -1,0 +1,72 @@
+<?php
+/** @var $block \Magento\Checkout\Block\Onepage\Success */
+/** @var \Amasty\JetTheme\ViewModel\Checkout\CheckoutSuccessViewModel $viewModel */
+$viewModel = $block->getViewModel();
+$order = $viewModel->getOrder();
+$viewModel->fixOrderCustomerNames($order);
+?>
+
+<div class="checkout-success <?= $viewModel->isPaypalBillingAgreement() ? 'amtheme-paypal-express' : '' ?>">
+    <?php if ($block->getOrderId()): ?>
+        <?php if ($block->getCanViewOrder()): ?>
+            <p class="amtheme-order">
+                <?= $block->escapeHtml(__('Your Order is: %1', sprintf('<a href="%s" title="%s" class="order-number">%s</a>', $block->escapeUrl($block->getViewOrderUrl()), $block->escapeHtml(__('Your order number')), $block->getOrderId())), ['a', 'strong']) ?>
+            </p>
+        <?php else:?>
+            <p class="amtheme-order">
+                <?= $block->escapeHtml(__('Your Order is: <span>%1</span>', $block->getOrderId()), ['span']) ?>
+            </p>
+        <?php endif;?>
+            <p class="amtheme-text">
+                <?= $block->escapeHtml(__('We\'ll email you an order confirmation with details and tracking info.')) ?>
+            </p>
+            <div class="amtheme-success-order">
+                <p class="amtheme-title">
+                    <?= $block->escapeHtml(__('Contact'))?>
+                </p>
+                <p class="amtheme-content">
+                    <span class="amtheme-name">
+                        <?= $block->escapeHtml($order->getCustomerFirstname()); ?>
+                        <?= $block->escapeHtml($order->getCustomerMiddlename()); ?>
+                        <?= $block->escapeHtml($order->getCustomerLastname()); ?>
+                    </span>
+                    <span class="amtheme-divider"></span>
+                    <span class="amtheme-email">
+                        <?= $block->escapeHtml($order->getCustomerEmail()); ?>
+                    </span>
+                </p>
+                <?php if ($order->getIsNotVirtual()): ?>
+                    <p class="amtheme-title">
+                        <?= $block->escapeHtml(__('Ship to'))?>
+                    </p>
+                    <p class="amtheme-content">
+                        <?= /* @noEscape */ $viewModel->getFormattedAddress($order->getShippingAddress()) ?>
+                    </p>
+                <?php endif; ?>
+
+                <p class="amtheme-title">
+                    <?= $block->escapeHtml(__('Date'))?>
+                </p>
+                <p class="amtheme-content">
+                    <?= /* @noEscape */ $block->formatDate($order->getCreatedAt(), \IntlDateFormatter::LONG); ?>
+                </p>
+            </div>
+    <?php endif;?>
+
+    <div class="amtheme-additional-content">
+        <?= /* @noEscape */ $block->getAdditionalInfoHtml() ?>
+    </div>
+
+    <div class="actions-toolbar">
+        <a class="action outline continue"
+           href="<?= $block->escapeUrl($block->getContinueUrl()) ?>"
+           title="<?= $block->escapeHtml(__('Continue Shopping')) ?>">
+            <?= $block->escapeHtml(__('Continue Shopping')) ?>
+            <svg class="amtheme-icon">
+                 <use xlink:href="#icon-arrow-right"/>
+             </svg>
+        </a>
+    </div>
+</div>
+
+<?= /* @noEscape */ $block->getChildHtml('checkout.success.print.button') ?>

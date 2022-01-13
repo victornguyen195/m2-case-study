@@ -1,0 +1,119 @@
+//
+//  Multishipping Billing Styles
+//  _____________________________________________
+
+//
+//  Common
+//  ---------------------------------------------
+
+& when (@media-common = true) {
+    .multishipping-checkout-billing {
+        .loading-mask .loader-image {
+            position: absolute;
+        }
+    }
+
+    .amtheme-address-method {
+        & {
+            &:extend(.amtheme-card-block all);
+
+            display: flex;
+            flex-direction: column;
+            border-radius: @amtheme__border-radius__s;
+        }
+
+        .box-title {
+            display: block;
+        }
+
+        .address {
+            margin-bottom: 50px;
+        }
+
+        .box-title {
+            margin-bottom: @indent__base;
+        }
+
+        .action.edit {
+            .am-text-uppercase;
+
+            display: block;
+            margin-top: 25px;
+        }
+    }
+
+    .multishipping-checkout-billing .box-billing-method {
+        .box-title {
+            margin-bottom: 5px;
+        }
+    }
+
+    .multishipping-checkout-billing .checkout-payment-method {
+        & {
+            margin-bottom: 0;
+        }
+
+        > div {
+            padding: 15px 0;
+        }
+
+        > div:not(:last-of-type) {
+            border-bottom: @amtheme__border;
+        }
+
+        .item-title {
+            margin-bottom: 0;
+        }
+
+        .item-title label {
+            font-weight: @font-weight__regular;
+        }
+
+        .item-content {
+            margin-top: 25px;
+        }
+    }
+
+    .multicheckout.billing.form .actions-toolbar {
+        &:before,
+        &:after {
+            display: none;
+        }
+
+        > .secondary {
+            margin-top: 20px;
+        }
+
+        > .secondary .action.back {
+            display: inline;
+        }
+    }
+}
+
+//
+//  Tablet
+//  --------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .amtheme-address-method {
+        & {
+            flex-direction: row;
+            padding: @indent__l @indent__base @indent__base;
+        }
+
+        .address {
+            margin: 0 60px 0 0;
+            width: 25%;
+        }
+
+        .method {
+            width: 35%;
+        }
+    }
+
+    .multicheckout.billing.form .actions-toolbar {
+        > .secondary {
+            margin: 0 40px 0 0;
+        }
+    }
+}

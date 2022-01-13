@@ -1,0 +1,26 @@
+<?php
+/**
+ * @var \Magento\Framework\View\Element\Template $block
+ * @var \Magento\Framework\Escaper $escaper
+ * @var \Amasty\MegaMenuLite\ViewModel\Store\Menu $viewModel
+ */
+
+$viewModel = $block->getViewModel();
+$colorSettings = $viewModel->getColorSettings();
+$isIconsAvailable = $block->getParentBlock()->getJsConfig()['is_icons_available'] ?? false;
+?>
+
+<section class="ammenu-nav-sections -topmenu <?= /* @noEscape */ $viewModel->isHamburger() ? '-hamburger' : '' ?>"
+         data-bind="css: {
+                        '-sticky': $data.isSticky() && ($data.isOpen ? !$data.isOpen() : true)
+                    }">
+    <nav class="ammenu-main-container"
+         data-action="navigation"
+         style="background: <?= $escaper->escapeHtmlAttr($colorSettings['menu_background']) ?>; color: <?= $escaper->escapeHtmlAttr($colorSettings['menu_text']) ?>;">
+        <ul class="ammenu-items -root">
+            <?php foreach ($block->getItems() as $key => $item): ?>
+                <?= $block->getChildBlock('ammenu.top.menu.item')->setData('item', $item)->setData('key', $key)->setData('isIconsAvailable', $isIconsAvailable)->toHtml() ?>
+            <?php endforeach; ?>
+        </ul>
+    </nav>
+</section>

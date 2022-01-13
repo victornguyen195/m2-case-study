@@ -1,0 +1,94 @@
+<?php
+$order = $block->getOrder();
+$creditmemo = $block->getCreditmemo();
+
+if ($creditmemo) {
+    $creditmemos = [$creditmemo];
+} else {
+    $creditmemos = $order->getCreditmemosCollection();
+}
+
+foreach ($creditmemos as $creditmemo): ?>
+<div class="order-details-items creditmemo">
+    <div class="order-title">
+        <?= $block->escapeHtml(__('Refund #%1', $creditmemo->getIncrementId())) ?>
+    </div>
+    <div class="table-wrapper order-items-creditmemo">
+        <table class="data table table-order-items creditmemo" id="my-refund-table-<?= (int) $creditmemo->getId() ?>">
+            <caption class="table-caption"><?= $block->escapeHtml(__('Items Refunded')) ?></caption>
+            <thead>
+                <tr>
+                    <th class="col name"><?= $block->escapeHtml(__('Product Name')) ?></th>
+                    <th class="col sku"><?= $block->escapeHtml(__('SKU')) ?></th>
+                    <th class="col price"><?= $block->escapeHtml(__('Price')) ?></th>
+                    <th class="col qty"><?= $block->escapeHtml(__('Qty')) ?></th>
+                    <th class="col subtotal"><?= $block->escapeHtml(__('Subtotal')) ?></th>
+                    <th class="col discount"><?= $block->escapeHtml(__('Discount Amount')) ?></th>
+                    <th class="col rowtotal"><?= $block->escapeHtml(__('Row Total')) ?></th>
+                </tr>
+            </thead>
+            <?php $items = $creditmemo->getAllItems(); ?>
+            <?php foreach ($items as $item): ?>
+                <?php if (!$item->getOrderItem()->getParentItem()): ?>
+                    <tbody>
+                        <?= $block->getItemHtml($item) ?>
+                    </tbody>
+                <?php endif; ?>
+            <?php endforeach; ?>
+            <tfoot>
+                <?= $block->getTotalsHtml($creditmemo) ?>
+            </tfoot>
+        </table>
+    </div>
+    <div class="block block-order-details-view">
+        <div class="block-title">
+            <?= $block->escapeHtml(__('Order Information')) ?>
+        </div>
+        <div class="block-content">
+            <?php if (!$order->getIsVirtual()): ?>
+                <div class="box column -address box-order-shipping-address">
+                    <div class="box-title">
+                        <strong><?= $block->escapeHtml(__('Shipping Address')) ?></strong>
+                    </div>
+                    <address class="box-content">
+                        <?php $shipping = $creditmemo->getShippingAddress() ?>
+                        <?= /* @noEscape */ $block->formatAddress($shipping, 'html') ?>
+                    </address>
+                </div>
+            <?php endif; ?>
+
+            <div class="box column -address box-order-billing-address">
+                <div class="box-title">
+                    <strong><?= $block->escapeHtml(__('Billing Address')) ?></strong>
+                </div>
+                <address class="box-content">
+                    <?php $billing = $creditmemo->getbillingAddress() ?>
+                    <?= /* @noEscape */ $block->formatAddress($order->getBillingAddress(), 'html') ?>
+                </address>
+            </div>
+
+            <div class="column -methods">
+                <?php if (!$order->getIsVirtual()): ?>
+                    <div class="box box-order-shipping-method">
+                        <div class="box-title">
+                            <strong><?= $block->escapeHtml(__('Shipping Method')) ?></strong>
+                        </div>
+                        <div class="box-content">
+                            <?= $block->escapeHtml($order->getShippingDescription()) ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
+
+                <div class="box box-order-billing-method<?= $order->getIsVirtual() ? ' -fullwidth' : ''?>">
+                    <div class="box-title">
+                        <strong><?= $block->escapeHtml(__('Payment Method')) ?></strong>
+                    </div>
+                    <div class="box-content">
+                        <?= $block->getPaymentInfoHtml() ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php endforeach; ?>

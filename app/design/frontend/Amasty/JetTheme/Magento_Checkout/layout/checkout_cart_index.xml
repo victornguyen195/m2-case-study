@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="checkout.cart.container">
+             <container name="checkout.cart.form.wrapper" label="Cart form wrapper" htmlTag="div" htmlClass="amtheme-form-wrapper">
+                 <container name="cart.discount" label="Cart Discount Container" htmlTag="div" htmlClass="cart-discount" after="-" />
+             </container>
+        </referenceContainer>
+        <referenceContainer name="cart.summary">
+            <block class="Magento\Framework\View\Element\Template"
+                   name="amtheme.cart.payment.methods.block"
+                   template="Magento_Theme::html/payments.phtml"
+                   after="-"
+                   ifconfig="amasty_jettheme/payment_links/show_payment_links_block_cart_page">
+                <arguments>
+                    <argument name="payment_view_model" xsi:type="object">Amasty\JetTheme\ViewModel\PaymentViewModel</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+        <move element="checkout.cart.form" destination="checkout.cart.form.wrapper" before="-"/>
+        <move element="checkout.cart.coupon" destination="cart.discount" />
+    </body>
+</page>

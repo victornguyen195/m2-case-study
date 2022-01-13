@@ -1,0 +1,42 @@
+.story-utils .am-custom-scrollbar {
+    height: 300px;
+}
+
+.story-utils h2 {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.story-utils h3 > span {
+    color: #808080;
+    font-weight: 400;
+}
+
+.story-utils form {
+    max-width: 500px;
+}
+
+.story-utils .limiter select {
+    width: auto;
+}
+
+.story-utils .product-item {
+    height: 100px;
+    background-color: #0a6c9f;
+}
+
+.story-utils > .item {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.story-utils > .item > h3 {
+    margin: 0;
+}
+
+.story-utils > .item > span {
+    padding: 0 0 0 5px;
+    color: #808080;
+}

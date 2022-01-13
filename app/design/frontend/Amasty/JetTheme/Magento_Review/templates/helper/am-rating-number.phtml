@@ -1,0 +1,14 @@
+<?php
+/** @var Magento\Catalog\Block\Product\View $block */
+
+$rating = $block->getProduct()->getRatingSummary();
+if (is_object($rating)) {
+    $rating = $rating->getRatingSummary();
+}
+?>
+
+<?php if ($rating): ?>
+    <div class="amtheme-rating-number">
+        <?= $block->escapeHtml(round($rating / 20, 1)) ?>
+    </div>
+<?php endif;?>

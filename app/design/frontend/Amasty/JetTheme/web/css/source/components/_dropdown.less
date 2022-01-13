@@ -1,0 +1,89 @@
+//
+//  Amtheme Dropdown styles
+//  _____________________________________________
+
+//
+//  Common
+//  ---------------------------------------------
+
+& when (@media-common = true) {
+    .amtheme-dropdown-block {
+        & {
+            position: relative;
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+        > .action.toggle {
+            & {
+                position: relative;
+                display: block;
+                padding: @indent__s 25px @indent__s 0;
+                cursor: pointer;
+            }
+
+            &:after {
+                .am-vertical-center;
+
+                position: absolute;
+                right: 0;
+                display: block;
+                width: @amtheme-dropdown-icon__width;
+                height: @amtheme-dropdown-icon__height;
+                background: ~'@{amtheme-dropdown-icon__background} no-repeat 100% / contain';
+                content: '';
+                transition: @amtheme-dropdown-icon__transition;
+            }
+        }
+
+        > .dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            z-index: 10;
+            display: none;
+            margin-top: 5px;
+            padding: 5px;
+            max-width: @amtheme-dropdown-list__max-width;
+            width: 100%;
+            border: @amtheme-dropdown-list__border;
+            border-radius: @amtheme__border-radius__m;
+            background: @amtheme-dropdown__background;
+            word-break: break-word;
+        }
+
+        > .dropdown .item {
+            & {
+                margin: 0;
+                padding: @amtheme-dropdown-item__padding;
+                text-align: left;
+            }
+
+            &:hover {
+                background: @amtheme-dropdown-item-hover__background;
+                cursor: pointer;
+            }
+        }
+
+        > .dropdown .item > .action.new {
+            color: @amtheme__link__color;
+            text-transform: uppercase;
+            font-weight: @font-weight__bold;
+            font-size: 1.2rem;
+        }
+
+        &.active > .action.toggle:after {
+            transform: translateY(-50%) rotate(-180deg);
+        }
+
+        &.active > .dropdown {
+            display: block;
+        }
+    }
+
+    .amtheme-dropdown-block.-static > .dropdown {
+        position: static;
+        max-width: none;
+        border: none;
+    }
+}

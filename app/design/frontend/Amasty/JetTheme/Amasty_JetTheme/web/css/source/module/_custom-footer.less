@@ -1,0 +1,96 @@
+//
+//  Custom footer styles
+//  ____________________________________________
+
+//
+//  Common
+//  --------------------------------------------
+
+& when (@media-common = true) {
+    .amtheme-custom-footer {
+        display: flex;
+        width: 100%;
+    }
+}
+
+//
+//  Mobile
+//  --------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .amtheme-custom-footer {
+        flex-direction: column;
+    }
+}
+
+//
+//  Desktop
+//  --------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .amtheme-custom-footer {
+        &.-two-columns .footer-column {
+            flex-basis: 50%;
+            max-width: 50%;
+        }
+
+        &.-three-columns .footer-column {
+            flex-basis: 33%;
+            max-width: 33%;
+        }
+
+        .footer-column {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-column:last-child {
+            align-items: flex-end;
+        }
+
+        &.-three-columns .footer.links {
+            column-count: 2;
+        }
+
+        .footer-column {
+            padding: @indent__base;
+        }
+
+        .footer-column > *:not(:last-child) {
+            margin-bottom: 20px;
+        }
+
+        .footer-column .logo {
+            display: inline-flex;
+            flex: 0;
+        }
+
+        .amtheme-socials-list {
+            flex: 0;
+            justify-content: flex-start;
+            margin-right: -@indent__s;
+            margin-left: -@indent__s;
+        }
+
+        .amtheme-newsletter-block.amtheme-subscribe {
+            flex-basis: auto;
+            margin-top: 0;
+        }
+
+        .amtheme-newsletter-block.amtheme-subscribe .amtheme-container {
+            justify-content: flex-start;
+        }
+
+        .amtheme-newsletter-block.amtheme-subscribe .amtheme-content {
+            flex-basis: 80%;
+        }
+
+        .amtheme-payment-methods.custom-footer-payments {
+            width: auto;
+        }
+
+        .amtheme-payment-methods {
+            margin-top: 0;
+        }
+    }
+}

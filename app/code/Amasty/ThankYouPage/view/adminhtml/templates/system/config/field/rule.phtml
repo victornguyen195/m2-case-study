@@ -1,0 +1,30 @@
+<?php
+/**
+ * @var Magento\Framework\View\Element\Template $block
+ * @var Magento\Framework\Escaper $escaper
+ */
+
+$htmlId = $block->getHtmlId();
+$selectorOptions = $block->getSelectedOptions();
+$selectedRuleName = $block->getSelectedRuleName();
+$textElementHtml = $block->getTextElementHtml();
+
+// @codingStandardsIgnoreLine
+$jsonHelper = $this->helper(\Magento\Framework\Json\Helper\Data::class);
+?>
+
+<div class="am-rules-wrapper"
+     data-mage-init='{"ruleSuggest": {
+            "htmlId": "#<?= $escaper->escapeHtml($htmlId) ?>",
+            "widgetOptions": <?= /* @noEscape */ $jsonHelper->jsonEncode($selectorOptions) ?>,
+            "ruleName": ".rule-name"
+        }
+     }'>
+    <?= /* @noEscape */ $textElementHtml ?>
+    <div id="<?= $escaper->escapeHtmlAttr($htmlId) ?>-selected"
+         style="display: <?= $selectedRuleName ? 'block' : 'none' ?>">
+        <i><?= $escaper->escapeHtml(__('Selected Rule: ')); ?></i>
+        <span class="rule-name"><?= $escaper->escapeHtml($selectedRuleName); ?></span>
+        <a class="action delete" href="#">[x]</a>
+    </div>
+</div>

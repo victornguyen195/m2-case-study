@@ -1,0 +1,28 @@
+<?php
+/**
+ * @var $block Magento\Framework\View\Element\Template
+ * @var $viewModel Amasty\JetTheme\ViewModel\StickyHeaderViewModel
+ */
+
+$viewModel = $block->getViewModel();
+$isAlwaysDisplay = $viewModel->isAlwaysDisplayStickyHeader();
+$isDisplayOnScrollDown = $viewModel->isDisplayOnScrollDown();
+$hideOnScrollDown = $viewModel->hideStickyHeaderOnScrollDownValue();
+$isDisplayOnScrollUp = $viewModel->isDisplayOnScrollUp();
+?>
+
+<?php if ($viewModel->isStickyHeaderEnabled()): ?>
+    <script type="text/x-magento-init">
+        {
+            "header.page-header": {
+                "amStickyHeader": {
+                    "isStickyHeaderEnabled": <?= /* @noEscape */ (int)$viewModel->isStickyHeaderEnabled() ?>,
+                    "isAlwaysDisplay": <?= /* @noEscape */ (int)$isAlwaysDisplay ?>,
+                    "isDisplayOnScrollDown": <?= /* @noEscape */ (int)$isDisplayOnScrollDown ?>,
+                    "hideOnScrollDownOffset": "<?= /* @noEscape */ $hideOnScrollDown ?>",
+                    "isDisplayOnScrollUp": <?= /* @noEscape */ (int)$isDisplayOnScrollUp ?>
+                }
+            }
+        }
+    </script>
+<?php endif; ?>

@@ -1,0 +1,34 @@
+<?php
+/**
+ * Multishipping other items
+ */
+?>
+
+<?php if ($block->getQuote()->hasVirtualItems()): ?>
+<div class="block block-other">
+    <div class="block-title">
+        <?= $block->escapeHtml(__('Other items in your order')) ?>
+        <a href="<?= $block->escapeUrl($block->getVirtualProductEditUrl()) ?>"
+           title="<?= $block->escapeHtml(__('Edit Items')) ?>"
+           class="action edit">
+            <?= $block->escapeHtml(__('Edit')) ?>
+        </a>
+    </div>
+    <div class="block-content amtheme-card-block">
+        <p class="amtheme-text"><?= $block->escapeHtml(__('Shipping is not applicable.')) ?></p>
+        <div class="amtheme-cart-items" id="unavailable-shipping-table">
+            <?php foreach ($block->getVirtualQuoteItems() as $_item): ?>
+                <div class="amtheme-item">
+                    <div class="amtheme-name" >
+                        <?= $block->getItemHtml($_item) ?>
+                    </div>
+                    <div class="amtheme-qty">
+                        <span class="amtheme-label"><?= $block->escapeHtmlAttr(__('Qty:')) ?></span>
+                        <span class="amtheme-value"><?= $block->escapeHtml($_item->getQty()) ?></span>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</div>
+<?php endif; ?>

@@ -1,0 +1,166 @@
+//
+//  Account Order Details Page Styles
+//  _____________________________________________
+
+//
+//  Variables
+//  ---------------------------------------------
+
+@amtheme-order-reorder-arrow__size: 15px;
+
+//
+//  Common
+//  ---------------------------------------------
+
+& when (@media-common = true) {
+    [class*='magento_rma'] .page-title-wrapper,
+    [class*='sales-guest-'] .page-title-wrapper,
+    .account[class*='sales-'] .page-title-wrapper {
+        & {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        > .page-title,
+        > .amtheme-info {
+            flex-basis: 100%;
+        }
+
+        .amtheme-info {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        > .amtheme-info > * {
+            .am-margin(0 30px 15px 0);
+        }
+
+        > .actions {
+            align-self: center;
+            margin-bottom: @h1__margin-bottom;
+            text-align: right;
+            text-transform: uppercase;
+            font-size: 1.2rem;
+        }
+
+        > .actions .print {
+            display: none;
+        }
+
+        > .actions-toolbar {
+            align-self: flex-start;
+            margin: 0;
+        }
+    }
+
+    .amtheme-order-status {
+        & {
+            display: inline-block;
+            padding: 10px 12px;
+            border-radius: @amtheme__border-radius__s;
+            background: @amtheme__background-secondary__color;
+        }
+
+        > * {
+            vertical-align: middle;
+        }
+
+        .amtheme-label {
+            .am-text-uppercase;
+
+            margin-right: 10px;
+            color: @amtheme__text-secondary__color;
+        }
+
+        .amtheme-status {
+            font-weight: @font-weight__bold;
+        }
+    }
+
+    .amtheme-order-date {
+        & {
+            display: inline-block;
+        }
+
+        > * {
+            vertical-align: middle;
+        }
+
+        .label {
+            .am-text-uppercase;
+        }
+
+        .date {
+            .am-margin-left(10px);
+        }
+    }
+
+    [class*='magento_rma'] .page-title-wrapper .reorder,
+    [class*='sales-guest-'] .page-title-wrapper .reorder,
+    .account[class*='sales-'] .page-title-wrapper .reorder {
+        & {
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .amtheme-icon {
+            .am-margin-left(10px);
+            width: @amtheme-order-reorder-arrow__size;
+            height: @amtheme-order-reorder-arrow__size;
+            fill: @amtheme__link__color;
+            transition: right @amtheme__transition;
+        }
+
+        &:hover .amtheme-icon {
+            right: 2px;
+            fill: @link__hover__color;
+        }
+    }
+
+    .order-actions-toolbar > .actions {
+        & {
+            display: flex;
+        }
+
+        .action {
+            display: flex;
+            align-items: center;
+        }
+
+        .action:not(:first-child):before {
+            display: inline-block;
+            margin: 0 20px;
+            width: 2px;
+            height: 20px;
+            background: @amtheme__border__color;
+            content: '';
+            vertical-align: middle;
+        }
+    }
+}
+
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    [class*='sales-guest-']:not(.sales-guest-form) .page-title-wrapper,
+    .account[class*='sales-'] .page-title-wrapper {
+        > .page-title {
+            flex-basis: 70%;
+        }
+
+        > .actions {
+            flex-basis: 30%;
+        }
+
+        > .amtheme-info > * {
+            .am-margin-right(50px);
+        }
+
+        > .actions .print {
+            display: inline-block;
+        }
+    }
+}

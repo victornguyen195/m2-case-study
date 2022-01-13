@@ -1,0 +1,40 @@
+<?php
+/**
+ * @var Magento\Framework\View\Element\Template $block
+ * @var Magento\Framework\Escaper $escaper
+ */
+?>
+
+<?php if (!$block->getMarkup()): ?>
+<table class="amthankyoublocks-sort-order"
+       id="amthankyoublocks-sort-order"
+       data-mage-init='{"mageSortable": {
+            "axis": "y",
+            "handle": ".item-position",
+            "items": "tr",
+            "tolerance":"pointer"
+        }
+    }'>
+    <?php foreach ($block->getBlocks() as $id => $itemBlock): ?>
+        <tr>
+            <th></th>
+            <td class="item-position">
+                <?= $escaper->escapeHtml($itemBlock['title']); ?>
+                <div class="draggable"></div>
+                <input type="hidden"
+                       name="<?= $escaper->escapeHtmlAttr($block->getElementName() . '[]') ?>"
+                       value="<?= $escaper->escapeHtmlAttr($id); ?>">
+            </td>
+            <th class="hidden"></th>
+        </tr>
+    <?php endforeach; ?>
+</table>
+<?php else: ?>
+    <span>
+        <?= $escaper->escapeHtml(
+            __('To access simplified block sorting,'
+            .'please disable Thank You Page Markup Editor in the Advanced Layout Management section.')
+        ) ?>
+    </span>
+<?php endif; ?>
+

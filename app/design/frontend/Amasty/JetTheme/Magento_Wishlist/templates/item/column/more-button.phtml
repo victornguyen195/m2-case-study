@@ -1,0 +1,13 @@
+<?php
+/* More button for wishlist item on mobile view */
+
+/* @var \Magento\Framework\View\Element\Template $block */
+?>
+
+<button class="amtheme-more-button button-as-link"
+        data-amtheme-js="wishlist-more"
+        title="<?= $block->escapeHtml(__('Show details')) ?>"
+        aria-label="<?= $block->escapeHtml(__('Show details')) ?>"
+        data-mage-init='{"amJetShowMore":{}}'>
+    <?= $block->escapeHtml(__('More')) ?>
+</button>

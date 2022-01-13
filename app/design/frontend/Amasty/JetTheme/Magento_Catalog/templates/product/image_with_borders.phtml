@@ -1,0 +1,17 @@
+<?php /** @var $block \Magento\Catalog\Block\Product\Image */ ?>
+
+<span class="product-image-container"
+      style="width:<?= $block->escapeHtml($block->getWidth()) ?>px;">
+    <span class="product-image-wrapper"
+          style="padding-bottom: <?= $block->escapeHtml(($block->getRatio() * 100)) ?>%;">
+        <img class="<?= $block->escapeHtml($block->getClass()) ?>"
+        <?php if (is_array($block->getCustomAttributes())): ?>
+            <?php foreach ($block->getCustomAttributes() as $name => $value): ?>
+             <?= $block->escapeHtmlAttr($name) ?>="<?= $block->escapeHtmlAttr($value) ?>"
+            <?php endforeach; ?>
+        <?php else: ?>
+            <?= $block->escapeHtmlAttr($block->getCustomAttributes()) ?>
+        <?php endif;?>
+            src="<?= $block->escapeUrl($block->getImageUrl()) ?>"
+            alt="<?= $block->escapeHtml($block->stripTags($block->getLabel(), null, true)) ?>"/></span>
+</span>

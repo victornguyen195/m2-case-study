@@ -1,0 +1,104 @@
+<?php
+/** @var  $block \Magento\Shipping\Block\Items */
+
+// phpcs:ignore
+$dataHelper = $this->helper(Magento\Shipping\Helper\Data::class);
+$order = $block->getOrder();
+?>
+
+<div class="actions-toolbar">
+    <?php if ($order->getTracksCollection()->count()): ?>
+        <?= $block->getChildHtml('track-all-link') ?>
+    <?php endif; ?>
+    <a href="<?= $block->escapeUrl($block->getPrintAllShipmentsUrl($order)) ?>"
+       class="action print"
+       title="<?= $block->escapeHtml(__('Print All Shipments')) ?>"
+       target="_blank"
+       rel="noopener">
+        <?= $block->escapeHtml(__('Print All Shipments')) ?>
+    </a>
+</div>
+<?php foreach ($order->getShipmentsCollection() as $shipment): ?>
+    <div class="order-title">
+        <strong>
+            <?= $block->escapeHtml(__('Shipment #')) ?><?= $block->escapeHtml($shipment->getIncrementId()) ?>
+        </strong>
+        <a href="<?= $block->escapeUrl($block->getPrintShipmentUrl($shipment)) ?>"
+           class="action print"
+           title="<?= $block->escapeHtml(__('Print Shipment')) ?>"
+           target="_blank"
+           rel="noopener">
+            <?= $block->escapeHtml(__('Print Shipment')) ?>
+        </a>
+        <a href="#"
+           data-mage-init='{"popupWindow": {
+               "windowURL":"<?= $block->escapeUrl($dataHelper->getTrackingPopupUrlBySalesModel($shipment)) ?>",
+               "windowName":"trackshipment",
+               "width":800,
+               "height":600,
+               "top":0,
+               "left":0,
+               "resizable":1,
+               "scrollbars":1}}'
+           title="<?= $block->escapeHtmlAttr(__('Track this shipment')) ?>"
+           class="action track">
+            <?= $block->escapeHtml(__('Track this shipment')) ?>
+        </a>
+    </div>
+    <?php $tracks = $shipment->getTracksCollection(); ?>
+    <?php  if ($tracks->count()): ?>
+        <dl class="order-tracking" id="my-tracking-table-<?= (int) $shipment->getId() ?>">
+            <dt class="tracking-title">
+                <?= $block->escapeHtml(__('Tracking Number(s):')) ?>
+            </dt>
+            <dd class="tracking-content">
+                <?php
+                $i = 1;
+                $size = $tracks->count();
+                foreach ($tracks as $track): ?>
+                    <?php if ($track->isCustom()): ?>
+                        <span class="track number"><?= $block->escapeHtml($track->getNumber()) ?></span>
+                    <?php else: ?>
+                        <a href="#"
+                            data-mage-init='{"popupWindow": {
+                                "windowURL":"<?= $block
+                                    ->escapeUrl($dataHelper->getTrackingPopupUrlBySalesModel($track)) ?>",
+                                "windowName":"trackorder",
+                                "width":800,"height":600,
+                                "left":0,
+                                "top":0,
+                                "resizable":1,
+                                "scrollbars":1}}'
+                            class="action track number"
+                            title="<?= $block->escapeHtml(__('Tracking Number'))?>">
+                            <?= $block->escapeHtml($track->getNumber()) ?>
+                        </a>
+                    <?php endif; ?>
+                    <?php $i++;
+                endforeach; ?>
+            </dd>
+        </dl>
+    <?php  endif; ?>
+    <div class="table-wrapper order-items-shipment">
+        <table class="data table table-order-items shipment" id="my-shipment-table-<?= (int) $shipment->getId() ?>">
+            <caption class="table-caption"><?= $block->escapeHtml(__('Items Shipped')) ?></caption>
+            <thead>
+                <tr>
+                    <th class="col name"><?= $block->escapeHtml(__('Product Name')) ?></th>
+                    <th class="col sku"><?= $block->escapeHtml(__('SKU')) ?></th>
+                    <th class="col qty"><?= $block->escapeHtml(__('Qty Shipped')) ?></th>
+                </tr>
+            </thead>
+            <?php
+            $items = $shipment->getAllItems();
+            foreach ($items as $item): ?>
+                <?php if (!$item->getOrderItem()->getParentItem()): ?>
+                    <tbody>
+                        <?= $block->getItemHtml($item) ?>
+                    </tbody>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        </table>
+    </div>
+    <?= $block->getCommentsHtml($shipment) ?>
+<?php endforeach; ?>

@@ -1,0 +1,106 @@
+//
+//  Account Order Links Styles
+//  _____________________________________________
+
+//
+//  Common
+//  ---------------------------------------------
+
+& when (@media-common = true) {
+    [class*='sales-guest-'] .items.order-links,
+    .account .items.order-links {
+        & {
+            margin: 15px 0;
+            border-bottom: @amtheme__border;
+        }
+
+        .nav.item {
+            display: inline-block;
+            margin: 0;
+            padding: 20px 0;
+        }
+
+        .nav.item:not(:last-of-type) {
+            .am-margin-right(30px);
+        }
+
+        .nav.item.current {
+            margin-bottom: -1px;
+            border-bottom: @amtheme__border__width solid @amtheme__border__active__color;
+        }
+
+        .nav.item.current > * {
+            color: @amtheme__text-primary__color;
+        }
+
+        .nav.item > * {
+            color: @amtheme__text-secondary__color;
+            font-weight: @font-weight__regular;
+        }
+
+        .nav.item:hover > * {
+            color: @amtheme__text-primary__color;
+        }
+    }
+}
+
+//
+//  Mobile
+//  ---------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__xs) {
+    [class*='sales-guest-'] .items.order-links,
+    .account .items.order-links {
+        & {
+            display: flex;
+            flex-direction: column;
+            margin: 25px -@layout__width-xs-indent 0;
+            border: none;
+        }
+
+        .nav.item > * {
+            display: block;
+            padding: 15px @layout__width-xs-indent;
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    [class*='sales-guest-'] .items.order-links,
+    .account .items.order-links {
+        & {
+            display: flex;
+            flex-direction: column;
+            margin: 25px -@layout__width-m-indent 0;
+            border: none;
+        }
+
+        .nav.item {
+            padding: 0;
+            border-top: @amtheme__border;
+            background: @amtheme__background-secondary__color;
+            color: @amtheme__text-primary__color;
+        }
+
+        .nav.item.current {
+            order: 1;
+            border-bottom: none;
+            background: none;
+        }
+
+        .nav.item > * {
+            display: block;
+            padding: 15px @layout__width-m-indent;
+        }
+
+        .nav.item.current > * {
+            padding-top: 25px;
+            font-weight: @font-weight__bold;
+            font-size: @h1__font-size;
+        }
+
+        .nav.item:not(:last-of-type) {
+            .am-margin-right(0);
+        }
+    }
+}

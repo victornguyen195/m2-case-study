@@ -1,0 +1,41 @@
+<?php
+/**
+ * @var \Amasty\MegaMenuLite\Block\Container $block
+ * @var \Magento\Framework\Escaper $escaper
+ * @var \Amasty\MegaMenuLite\ViewModel\Store\Menu $viewModel
+ */
+
+$viewModel = $block->getViewModel();
+?>
+
+<?php if ($viewModel->isHamburger() || $viewModel->isMobile()): ?>
+    <script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "hamburger_toggle": {
+                        "component": "Amasty_MegaMenuLite/js/components/hamburger_toggle"
+                    }
+                }
+            }
+        }
+    }
+    </script>
+
+    <!-- ko scope: 'index = hamburger_toggle' -->
+        <button id="toggle_button"
+                class="ammenu-button -hamburger"
+                type="button"
+                data-bind="
+                    style: {
+                        color: color_settings().toggle_icon_color
+                    },
+                    event: {
+                        click: toggling
+                    },
+                    title: $t('Toggling menu')">
+            <span class="ammenu-line"></span>
+        </button>
+    <!-- /ko -->
+<?php endif; ?>

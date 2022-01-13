@@ -1,0 +1,52 @@
+//
+//  Shipping info styles
+//  _____________________________________________
+
+//  Common
+//  ---------------------------------------------
+
+& when (@media-common = true) {
+    .opc-wrapper .shipping-information {
+        & {
+            .am-margin(0 0 45px);
+        }
+
+        .shipping-information-title {
+            margin-bottom: @indent__s;
+            color: @amtheme__text-secondary__color;
+            font-size: 1.4rem;
+        }
+
+        .shipping-information-content {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            .am-margin(0 0 @indent__m);
+        }
+
+        .shipping-information-content > .content {
+            .am-word-break;
+            .am-margin-right(@indent__xl);
+        }
+
+        .shipping-information-content > .content > .delimiter {
+            .am-margin(0 2px);
+            vertical-align: middle;
+            line-height: 1;
+        }
+
+        .action-edit {
+            & {
+                .lib-button-reset();
+                .am-text-uppercase;
+
+                color: @amtheme__text-placeholder__color;
+                line-height: 2rem;
+            }
+
+            &:hover {
+                color: @amtheme__text-secondary__color;
+            }
+        }
+    }
+}

@@ -1,0 +1,66 @@
+//
+//  ThankYou Page styles
+//  ____________________________________________
+
+//
+//  Variables
+//  ____________________________________________
+
+@am-sort-order__background: #efefef;
+@am-sort-order__border: 1px solid #fff;
+@am-sort-order__color: #adadad;
+
+//
+//  Common
+//  --------------------------------------------
+
+& when (@media-common = true) {
+    #amthankyoublocks-sort-order {
+        tr td, tr th {
+            background: @am-sort-order__background;
+            border-bottom: @am-sort-order__border;
+
+            .draggable {
+                color: @am-sort-order__color;
+            }
+
+            .hidden {
+                min-width: 69px;
+                visibility: hidden;
+            }
+        }
+
+        tr td {
+            &:hover {
+                cursor: move
+            }
+
+            &:before {
+                content: @icon-grid__content;
+                font-family: @icons-admin__font-name
+            }
+
+            &.item-position {
+                padding: 1rem;
+                max-width: 87px;
+            }
+        }
+    }
+
+    .amtypage-tooltip {
+        width: inherit;
+        margin: 0 16px 0 .2em;
+    }
+
+    .amtypage-tooltip .action-help {
+        margin: 11px 0 0 0;
+    }
+
+    .amtypage-tooltip .action-help:before {
+        font-size: 15px;
+    }
+
+    .page-actions-buttons .amtypage-preview-button.preview {
+        padding-right: 0;
+    }
+}

@@ -1,0 +1,143 @@
+//
+//  Swatches base styles
+//  ____________________________________________
+
+//
+//  Common
+//  ---------------------------------------------
+
+& when (@media-common = true) {
+    input.swatch-input {
+        .am-visually-hidden;
+    }
+
+    .swatch-attribute,
+    .swatch-attribute-options {
+        &:focus {
+            & {
+                box-shadow: none;
+            }
+
+            ._keyfocus & {
+                box-shadow: none;
+            }
+        }
+    }
+
+    .swatch-wrapper.-square .swatch-option,
+    .swatch-opt.-square .swatch-option {
+        border-radius: @amtheme__border-radius__s;
+    }
+
+    .swatch-attribute {
+        & {
+            margin-top: @indent__xs;
+        }
+
+        .swatch-more {
+            .am-ellipsis(1);
+
+            display: inline-block;
+            margin-top: 13px;
+            max-width: @swatch-more__max-width;
+            color: @swatch-more__color;
+            vertical-align: top;
+            text-transform: uppercase;
+            font-size: @swatch-more__font-size;
+            line-height: @swatch-more__line-height;
+        }
+    }
+
+    .swatch-option {
+        & {
+            display: inline-block;
+            .am-margin(0 8px 8px 0);
+            .am-padding(8px);
+            min-width: 40px;
+            min-height: 40px;
+            border: 2px solid @swatch-option__border-color;
+            border-radius: 80px;
+            text-align: center;
+            cursor: pointer;
+            transition: all @amtheme__transition__delay @amtheme__transition__func;
+        }
+
+        &:hover {
+            border-color: @swatch-option__hover__border-color;
+            color: @swatch-option__hover__color;
+        }
+
+        &:focus {
+            & {
+                box-shadow: none;
+            }
+
+            ._keyfocus & {
+                border-color: @swatch-option__hover__border-color;
+                box-shadow: none;
+            }
+        }
+
+        &.selected {
+            border-color: @swatch-option__hover__border-color;
+            background: @swatch-option__active__color;
+        }
+
+        &.disabled {
+            border-color: @swatch-option__disabled__border-color;
+            color: @swatch-option__disabled__color;
+            pointer-events: none;
+        }
+
+        *,
+        &,
+        *:before,
+        &:before,
+        *:after,
+        &:after {
+            box-sizing: border-box;
+        }
+    }
+
+    .swatch-layered {
+        .swatch-attribute-options {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .swatch-option-link-layered {
+            & {
+                display: inline-block;
+                overflow: visible;
+                .am-margin(0 @indent__s @indent__s 0);
+            }
+
+            ._keyfocus &:focus {
+                box-shadow: none;
+            }
+
+            ._keyfocus &:focus .swatch-option {
+                border-color: @swatch-option__hover__border-color;
+                box-shadow: none;
+            }
+
+            ._keyfocus &:focus .swatch-option.color:before {
+                border-color: @swatch-option-color__active__border-color;
+                opacity: 1;
+            }
+
+            .swatch-option {
+                margin: 0;
+            }
+
+            *,
+            &,
+            *:before,
+            &:before,
+            *:after,
+            &:after {
+                box-sizing: border-box;
+            }
+        }
+    }
+}

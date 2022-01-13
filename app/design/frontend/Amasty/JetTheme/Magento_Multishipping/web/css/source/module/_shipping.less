@@ -1,0 +1,193 @@
+//
+//  Shipping page styles
+//  _____________________________________________
+
+//
+//  Common
+//  ---------------------------------------------
+
+& when (@media-common = true) {
+    .multicheckout.shipping .block-shipping > .amtheme-card-block {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .multicheckout.shipping .block-shipping > .amtheme-card-block > .box {
+        & {
+            width: 100%;
+        }
+
+        .box-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            letter-spacing: .01em;
+            font-weight: @h3__font-weight;
+            font-size: @h3__font-size;
+            line-height: @h3__line-height;
+        }
+
+        .box-title .action {
+            .am-text-uppercase;
+        }
+
+        .box-content {
+            .am-word-break;
+        }
+    }
+
+    .multicheckout.shipping .actions-toolbar > .secondary .action.back {
+        display: inline-block;
+    }
+
+    .multicheckout.shipping .block-other > .block-title {
+        & {
+            display: flex;
+            align-items: baseline;
+            margin-bottom: 10px;
+            letter-spacing: .01em;
+            font-weight: @h3__font-weight;
+            font-size: @h3__font-size;
+            line-height: @h3__line-height;
+        }
+
+        > .action {
+            .am-text-uppercase;
+            .am-margin-left(20px);
+        }
+    }
+
+    .multicheckout.shipping .block-other {
+        & {
+            margin-top: 35px;
+        }
+
+        > .amtheme-card-block > .amtheme-text {
+            .am-word-break;
+
+            margin-bottom: 30px;
+        }
+
+        .amtheme-cart-items .product-item-name {
+            font-weight: @font-weight__bold;
+        }
+    }
+}
+
+//
+//  Mobile
+//  ---------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .multicheckout.shipping .block-shipping > .amtheme-card-block > .box {
+        &:not(:last-of-type) {
+            margin-bottom: 80px;
+        }
+    }
+
+    .multicheckout.shipping {
+        .actions-toolbar .action.secondary,
+        .actions-toolbar .secondary,
+        .actions-toolbar .secondary > .action {
+            margin: 0;
+            padding: 0;
+        }
+
+        .actions-toolbar .secondary {
+            margin-top: 35px;
+        }
+
+        .actions-toolbar .action.back {
+            .am-padding-left(30px);
+        }
+    }
+
+    .multicheckout.shipping .block-other > .block-title {
+        justify-content: space-between;
+    }
+}
+
+//
+//  Tablet
+//  ---------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .multicheckout.shipping .block-shipping > .amtheme-card-block {
+        > .box {
+            & {
+                margin-bottom: 50px;
+                width: 50%;
+            }
+
+            &:first-of-type {
+                .am-padding-right(20px);
+            }
+
+            &:last-of-type {
+                margin-bottom: 0;
+                width: 100%;
+            }
+        }
+    }
+
+    .multicheckout.shipping .block-other > .amtheme-card-block {
+        & {
+            display: flex;
+            align-items: flex-start;
+        }
+
+        > .amtheme-text {
+            margin-bottom: 10px;
+            .am-padding-right(40px);
+        }
+
+        > .amtheme-cart-items {
+            flex-grow: 1;
+        }
+    }
+}
+
+//
+//  Desktop
+//  ---------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+    .multicheckout.shipping .block-shipping > .amtheme-card-block {
+        > .box {
+            &,
+            &:last-of-type {
+                margin-bottom: 0;
+                width: calc(~'100% / 3');
+            }
+
+            &:first-of-type {
+                .am-padding-right(45px);
+            }
+
+            &:last-of-type {
+                .am-padding-left(45px);
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__xl) {
+    .multicheckout.shipping .block-shipping > .amtheme-card-block {
+        > .box {
+            &:first-of-type {
+                .am-padding-right(60px);
+            }
+
+            &:last-of-type {
+                .am-padding-left(60px);
+            }
+        }
+    }
+
+    .multicheckout.shipping .block-other > .amtheme-card-block {
+        > .amtheme-text {
+            .am-padding-right(60px);
+        }
+    }
+}

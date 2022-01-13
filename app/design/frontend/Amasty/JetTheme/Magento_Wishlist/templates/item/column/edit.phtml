@@ -1,0 +1,20 @@
+<?php
+/** @var \Magento\Wishlist\Block\Customer\Wishlist\Item\Column\Edit $block */
+/** @var \Magento\Wishlist\Model\Item $item */
+/** @var Magento\Framework\Escaper $escaper */
+
+$item = $block->getItem();
+$product = $item->getProduct();
+?>
+
+<?php if ($product->isVisibleInSiteVisibility()): ?>
+    <a class="action edit amtheme-circle-icon"
+       href="<?= $escaper->escapeUrl($block->getItemConfigureUrl($item)) ?>"
+       title="<?= $escaper->escapeHtml(__('Edit')) ?>"
+       aria-label="<?= $escaper->escapeHtml(__('Edit')) ?>">
+        <span class="text"><?= $escaper->escapeHtml(__('Edit')) ?></span>
+        <svg class="amtheme-icon" focusable="false">
+            <use xlink:href="#icon-edit" />
+        </svg>
+    </a>
+<?php endif ?>

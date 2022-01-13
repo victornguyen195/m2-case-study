@@ -1,0 +1,21 @@
+{
+    "name": "amasty/jet-non-latin-fonts",
+    "description": "Jet Non Latin Fonts Pack module by Amasty",
+    "require": {
+        "php": "^7.1.0",
+        "amasty/jet-theme": "*"
+    },
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "license": [
+        "Commercial"
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Amasty\\JetNonLatinFonts\\": ""
+        }
+    }
+}

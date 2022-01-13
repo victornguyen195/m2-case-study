@@ -1,0 +1,102 @@
+//
+//  Base Paypal styles
+//  _____________________________________________
+
+//
+//  Variables
+//  ---------------------------------------------
+
+@amtheme-create-agreement-select-desktop__width: 290px;
+
+//
+//  Common
+//  ---------------------------------------------
+
+& when (@media-common = true) {
+    .table-billing-agreements {
+        .col.status > .status.-active {
+            .am-status-indicator(@color-green);
+        }
+
+        .col.status > .status.-canceled {
+            .am-status-indicator(@color-red);
+        }
+    }
+
+    .form-new-agreement {
+        .note {
+            color: @amtheme__text-primary__color;
+            font-size: 1.6rem;
+        }
+
+        .content-wrapper {
+            display: flex;
+            margin-top: @indent__sm;
+        }
+
+        .action.create {
+            display: flex;
+            align-items: center;
+            margin: 0 0 0 15px;
+            padding: 0 12px;
+            height: @form-element-input__height;
+        }
+
+        .action.create .amtheme-icon {
+            .am-margin-left(10px);
+            width: @arrowed-button-arrow__size;
+            height: @arrowed-button-arrow__size;
+            fill: @amtheme__outline__color;
+        }
+
+        .amtheme-select-block {
+            width: @amtheme-create-agreement-select-desktop__width;
+        }
+    }
+
+    .block-billing-agreements-view .amtheme-info {
+        margin-bottom: 45px;
+    }
+
+    .block.block-billing-agreements-view,
+    .block.block-billing-orders-view {
+        .block-title {
+            font-size: @h3__font-size;
+        }
+    }
+
+    .amtheme-cancel-agreement {
+        & {
+            position: relative;
+            .am-padding-right(25px);
+            font-weight: @font-weight__bold;
+            font-size: 1.6rem;
+        }
+
+        .amtheme-icon {
+            .am-vertical-center;
+
+            position: absolute;
+            right: 7px;
+            width: @amtheme-order-reorder-arrow__size;
+            height: @amtheme-order-reorder-arrow__size;
+            fill: @amtheme__link__color;
+            transition: right @amtheme__transition;
+        }
+
+        &:hover .amtheme-icon {
+            right: 2px;
+            fill: @link__hover__color;
+        }
+    }
+}
+
+//
+//  Mobile
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__xs) {
+    .form-new-agreement .amtheme-select-block {
+        width: auto;
+    }
+}

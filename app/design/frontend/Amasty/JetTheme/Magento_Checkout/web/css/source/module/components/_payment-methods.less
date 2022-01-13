@@ -1,0 +1,214 @@
+//
+//  Payment methods styles
+//  _____________________________________________
+
+//
+//  Variables
+//  ---------------------------------------------
+
+@checkout-payment-method-title__border: @amtheme__border;
+@checkout-payment-option-title__color: @amtheme__text-secondary__color;
+@checkout-payment-option-title__padding: 15px;
+@checkout-payment-option-title__border: none;
+@checkout-payment-option-form__width_l: 220px;
+@checkout-payment-option-content__padding__xl: 0;
+
+//
+//  Common
+//  ---------------------------------------------
+
+& when (@media-common = true) {
+    .checkout-payment-method {
+        .opc-payment .payment-methods {
+            margin: 0 0 30px;
+        }
+
+        .form.payments .fieldset > hr {
+            display: none;
+        }
+
+        .form.payments .legend + br {
+            display: none;
+        }
+
+        .payment-methods .step-title {
+            margin-bottom: 15px;
+        }
+
+        .payment-method-content .fieldset > .field-number.field {
+            margin: 0 0 30px;
+        }
+    }
+
+    .checkout-payment-method .payment-method {
+        > .payment-method-title {
+            padding: 20px 0;
+        }
+
+        > .payment-method-title .label {
+            box-sizing: border-box;
+            margin: 0;
+        }
+
+        .payment-method-content {
+            padding: 0 0 30px;
+        }
+
+        .payment-method-content > .actions-toolbar {
+            margin: 0;
+        }
+
+        .payment-method-content > .actions-toolbar.amtheme-agreement {
+            margin-top: 20px;
+        }
+
+        .actions-toolbar.-paypal-express {
+            align-items: baseline;
+        }
+
+        .klarna-kp-iframe {
+            margin-bottom: 20px;
+        }
+
+        .amazon-button-container {
+            margin: 0;
+            width: auto;
+        }
+
+        .amazon-button-container .field-tooltip {
+            margin: -7px 0 0; // Override Amazon styles
+        }
+    }
+
+    .checkout-payment-method .payment-method-title > .label {
+        & {
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        > .img,
+        > img {
+            order: 2;
+            margin: 0 0 0 auto;
+            max-height: 30px;
+        }
+
+        > .title {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            order: 1;
+        }
+
+        > .title > .text {
+            margin: 0 10px 2px 0;
+        }
+
+        > .klarna-title {
+            padding: 0;
+        }
+
+        .action-help {
+            .am-text-uppercase;
+
+            margin: 2px 10px 0;
+        }
+
+        &[for^='payflow_express'],
+        &[for^='braintree'],
+        &[for='paypal_express'],
+        &[for='klarna_pay_later'] {
+            &:before,
+            &:after {
+                .am-vertical-center;
+
+                margin: 0;
+            }
+        }
+    }
+
+    .checkout-payment-method .payment-option-title {
+        & {
+            cursor: pointer;
+        }
+
+        .action-toggle {
+            .am-text-uppercase;
+        }
+    }
+
+    .checkout-payment-method .payment-option-content {
+        .actions-toolbar {
+            & {
+                flex-direction: row-reverse;
+                justify-content: space-between;
+                margin: 0;
+            }
+
+            &:before,
+            &:after {
+                display: none;
+            }
+        }
+
+        .primary .action,
+        .secondary .action {
+            .lib-button-as-link();
+            .am-text-uppercase;
+
+            float: none;
+        }
+    }
+
+    .paypal-button-context-iframe {
+        max-width: 260px;
+    }
+
+    .co-transparent-form-braintree > .fieldset {
+        &,
+        > .field.type {
+            margin: 0 0 @indent__l;
+        }
+    }
+
+    .opc-wrapper .fieldset.ccard.braintree > .field.required > label {
+        .am-padding-right(0);
+    }
+}
+
+//
+//  Desktop
+//  --------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .checkout-payment-method {
+        .payment-methods .step-title {
+            margin-bottom: 13px;
+        }
+
+        .payment-method .payment-method-content {
+            padding: 0 0 30px;
+        }
+    }
+
+    .checkout-payment-method .payment-option-content .secondary {
+        .am-margin-left(0);
+    }
+
+    .checkout-payment-method .payment-option-content > form {
+        max-width: @checkout-payment-option-form__width_l;
+    }
+
+    .payment-method-content > .actions-toolbar {
+        & {
+            justify-content: flex-end;
+        }
+
+        &#paypal-express-in-context-button,
+        &.-paypal,
+        &.-paypal-express {
+            justify-content: flex-start;
+        }
+    }
+}

@@ -1,0 +1,79 @@
+<?php
+/**
+ * @var $block Magento\Bundle\Block\Catalog\Product\View\Type\Bundle\Option\Checkbox
+ * @var $viewModel Amasty\JetTheme\ViewModel\ProductCaret\ProductCaretConfigurationViewModel
+ */
+
+$_option = $block->getOption();
+$_selections = $_option->getSelections();
+$viewModel = $block->getViewModel();
+$isProductCaretEnabled = $viewModel ? $viewModel->isProductCaretEnabled() : false;
+$hasTierPriceRender = (bool) $block->getTierPriceRenderer();
+?>
+
+<div class="field option <?= ($_option->getRequired()) ? 'required': '' ?> <?= $isProductCaretEnabled ? 'amtheme-collapsible-block' : '' ?>"
+    <?php if ($isProductCaretEnabled): ?>
+        data-amcollapsible="block"
+        data-mage-init='{
+            "amCollapsible":{
+                "isMobileOnly": false,
+                "isActive": true,
+                "isDisabled": true
+            }}'
+    <?php endif; ?>
+>
+    <label class="label <?= $isProductCaretEnabled ? 'block-title' : '' ?>"
+        <?php if ($isProductCaretEnabled): ?>
+            data-amcollapsible="title"
+        <?php endif; ?>
+    >
+        <?= $block->escapeHtml($_option->getTitle()) ?>
+        <?php if ($isProductCaretEnabled): ?>
+            <svg class="amtheme-icon">
+                <use xlink:href="#icon-arrow-bottom"></use>
+            </svg>
+        <?php endif; ?>
+    </label>
+    <div class="control"
+        <?php if ($isProductCaretEnabled): ?>
+            data-amcollapsible="content"
+        <?php endif; ?>
+    >
+        <div class="nested options-list">
+            <?php if ($block->showSingle()): ?>
+                <div class="amtheme-item-text">
+                    <?= /* @noEscape */ $block->getSelectionQtyTitlePrice($_selections[0]) ?>
+                    <?php if ($hasTierPriceRender): ?>
+                        <?= /* @noEscape */ $block->getTierPriceRenderer()->renderTierPrice($_selections[0]) ?>
+                    <?php endif; ?>
+                    <input type="hidden"
+                           class="bundle-option-<?= $block->escapeHtml($_option->getId()) ?> product bundle option"
+                           name="bundle_option[<?= $block->escapeHtml($_option->getId()) ?>]"
+                           value="<?= $block->escapeHtml($_selections[0]->getSelectionId()) ?>"/>
+                </div>
+            <?php else:?>
+                <?php foreach ($_selections as $_selection): ?>
+                    <div class="field choice amtheme-bundle-choice">
+                        <input class="bundle-option-<?= $block->escapeHtml($_option->getId()) ?> checkbox product bundle option change-container-classname"
+                               id="bundle-option-<?= $block->escapeHtml($_option->getId()) ?>-<?= $block->escapeHtml($_selection->getSelectionId()) ?>"
+                               type="checkbox"
+                               <?php if ($_option->getRequired()) { echo 'data-validate="{\'validate-one-required-by-name\':\'input[name^=&quot;bundle_option[' . $block->escapeHtml($_option->getId()) . ']&quot;]:checked\'}"'; } ?>
+                               name="bundle_option[<?= $block->escapeHtml($_option->getId()) ?>][<?= $block->escapeHtml($_selection->getId()) ?>]"
+                               data-selector="bundle_option[<?= $block->escapeHtml($_option->getId()) ?>][<?= $block->escapeHtml($_selection->getId()) ?>]"
+                               <?php if ($block->isSelected($_selection)) { echo ' checked="checked"'; } ?>
+                               <?php if (!$_selection->isSaleable()) { echo ' disabled="disabled"'; } ?>
+                               value="<?= $block->escapeHtml($_selection->getSelectionId()) ?>"/>
+                        <label class="label amtheme-label amtheme-item-text"
+                               for="bundle-option-<?= $block->escapeHtml($_option->getId()) ?>-<?= $block->escapeHtml($_selection->getSelectionId()) ?>">
+                            <?= /* @noEscape */ $block->getSelectionQtyTitlePrice($_selection) ?>
+                            <?php if ($hasTierPriceRender): ?>
+                                <?= /* @noEscape */ $block->getTierPriceRenderer()->renderTierPrice($_selection) ?>
+                            <?php endif; ?>
+                        </label>
+                    </div>
+                <?php endforeach; ?>
+                <div id="bundle-option-<?= $block->escapeHtml($_option->getId()) ?>-container"></div>
+            <?php endif; ?>
+        </div>
+    </div>
+</div>

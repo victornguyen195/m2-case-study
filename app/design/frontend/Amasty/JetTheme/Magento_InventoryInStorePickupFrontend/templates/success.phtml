@@ -1,0 +1,78 @@
+<?php
+/** @var $escaper Magento\Framework\Escaper */
+/** @var \Amasty\JetTheme\ViewModel\Checkout\CheckoutSuccessViewModel $viewModel */
+$viewModel = $block->getViewModel();
+$order = $viewModel->getOrder();
+$viewModel->fixOrderCustomerNames($order);
+?>
+
+<div class="checkout-success">
+    <?php if ($block->getOrderId()): ?>
+        <?php if ($block->getCanViewOrder()): ?>
+            <p class="amtheme-order">
+                <?= $escaper->escapeHtml(__('Your Order is: %1', sprintf('<a href="%s" title="%s" class="order-number">%s</a>', $escaper->escapeUrl($block->getViewOrderUrl()), $escaper->escapeHtml(__('Your order number')), $block->getOrderId())), ['a']) ?>
+            </p>
+        <?php else: ?>
+            <p class="amtheme-order">
+                <?= $escaper->escapeHtml(__('Your order is: <span>%1</span>', $block->getOrderId()), ['span']) ?>
+            </p>
+        <?php endif; ?>
+        <?php if ($block->getIsOrderStorePickup()->execute()): ?>
+            <p class="amtheme-text">
+                <?= $escaper->escapeHtml(__('We\'ll email you an order and pick-up confirmation with details.')) ?>
+            </p>
+        <?php else: ?>
+            <p class="amtheme-text">
+                <?= $escaper->escapeHtml(__('We\'ll email you an order confirmation with details and tracking info.')) ?>
+            </p>
+        <?php endif; ?>
+        <div class="amtheme-success-order">
+            <p class="amtheme-title">
+                <?= $escaper->escapeHtml(__('Contact'))?>
+            </p>
+            <p class="amtheme-content">
+                <span class="amtheme-name">
+                    <?= $escaper->escapeHtml($order->getCustomerFirstname()); ?>
+                    <?= $escaper->escapeHtml($order->getCustomerMiddlename()); ?>
+                    <?= $escaper->escapeHtml($order->getCustomerLastname()); ?>
+                </span>
+                <span class="amtheme-divider"></span>
+                <span class="amtheme-email">
+                    <?= $escaper->escapeHtml($order->getCustomerEmail()); ?>
+                </span>
+            </p>
+            <?php if ($order->getIsNotVirtual()): ?>
+                <p class="amtheme-title">
+                    <?= $escaper->escapeHtml(__('Ship to'))?>
+                </p>
+                <p class="amtheme-content">
+                    <?= /* @noEscape */ $viewModel->getFormattedAddress($order->getShippingAddress()) ?>
+                </p>
+            <?php endif; ?>
+
+            <p class="amtheme-title">
+                <?= $escaper->escapeHtml(__('Date'))?>
+            </p>
+            <p class="amtheme-content">
+                <?= /* @noEscape */ $block->formatDate($order->getCreatedAt(), \IntlDateFormatter::LONG); ?>
+            </p>
+        </div>
+    <?php endif; ?>
+
+    <div class="amtheme-additional-content">
+        <?= /* @noEscape */ $block->getAdditionalInfoHtml() ?>
+    </div>
+
+    <div class="actions-toolbar">
+        <a class="action outline continue"
+           href="<?= $escaper->escapeUrl($block->getContinueUrl()) ?>"
+           title="<?= $escaper->escapeHtml(__('Continue Shopping')) ?>">
+            <?= $escaper->escapeHtml(__('Continue Shopping')) ?>
+            <svg class="amtheme-icon">
+                 <use xlink:href="#icon-arrow-right"/>
+             </svg>
+        </a>
+    </div>
+</div>
+
+<?= /* @noEscape */ $block->getChildHtml('checkout.success.print.button') ?>

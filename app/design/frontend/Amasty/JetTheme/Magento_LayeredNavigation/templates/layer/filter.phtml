@@ -1,0 +1,46 @@
+<?php
+/**
+ * Template for filter items block
+ *
+ * @var $block \Magento\LayeredNavigation\Block\Navigation\FilterRenderer
+ * @var $filterItems array
+ */
+
+// phpcs:ignore
+$helper = $this->helper(\Magento\Catalog\Helper\Data::class);
+?>
+
+<ol class="items">
+    <?php foreach ($filterItems as $filterItem): ?>
+        <li class="item">
+            <?php if ($filterItem->getCount() > 0): ?>
+                <a href="<?= $block->escapeUrl($filterItem->getUrl()) ?>"
+                   title="<?= $block->escapeHtml($filterItem->getLabel()) ?>"
+                   aria-label="<?= $block->escapeHtml($filterItem->getLabel()) ?>"
+                >
+                    <span class="amtheme-name"><?= /* @noEscape */ $filterItem->getLabel() ?> </span>
+                    <?php if ($helper->shouldDisplayProductCountOnLayer()): ?>
+                        <span class="count"><?= (int)$filterItem->getCount() ?><span class="filter-count-label">
+                            <?php if ($filterItem->getCount() == 1):
+                                echo $block->escapeHtml(__('item'));
+                            else:
+                                echo $block->escapeHtml(__('items'));
+                            endif; ?>
+                        </span></span>
+                    <?php endif; ?>
+                </a>
+            <?php else:?>
+                <span class="amtheme-title"><?= /* @noEscape */ $filterItem->getLabel() ?></span>
+                <?php if ($helper->shouldDisplayProductCountOnLayer()): ?>
+                    <span class="count"><?= (int)$filterItem->getCount() ?><span class="filter-count-label">
+                        <?php if ($filterItem->getCount() == 1):
+                            echo $block->escapeHtml(__('item'));
+                        else:
+                            echo $block->escapeHtml(__('items'));
+                        endif; ?>
+                    </span></span>
+                <?php endif; ?>
+            <?php endif; ?>
+        </li>
+    <?php endforeach ?>
+</ol>

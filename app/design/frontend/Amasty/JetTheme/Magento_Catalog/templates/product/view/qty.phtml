@@ -1,0 +1,47 @@
+<?php
+/** @var $block \Magento\Catalog\Block\Product\View */
+?>
+
+<?php $_product = $block->getProduct(); ?>
+<?php $buttonTitle = __('Add to Cart'); ?>
+
+<?php if ($_product->isSaleable() && $block->shouldRenderQuantity()):?>
+    <div class="box-tocart qty <?= !$block->hasOptions()? '-without-options': ''; ?>">
+        <div class="fieldset">
+            <div class="field qty amtheme-qty-wrap">
+                <label class="label amtheme-label" for="qty">
+                    <?= $block->escapeHtml(__('Qty')) ?>
+                </label>
+                <div class="control amtheme-qty-box" data-mage-init='{"amQty":{}}'>
+                    <div class="amtheme-minus"
+                         data-amtheme-js="qty-minus"
+                         tabindex="0"
+                         title="<?= $block->escapeHtml(__('Minus')) ?>">
+                        <svg class="amtheme-icon">
+                            <use xlink:href="#icon-minus"/>
+                        </svg>
+                    </div>
+                    <div class="amtheme-plus"
+                         data-amtheme-js="qty-plus"
+                         tabindex="0"
+                         title="<?= $block->escapeHtml(__('Plus')) ?>">
+                        <svg class="amtheme-icon">
+                            <use xlink:href="#icon-plus"/>
+                        </svg>
+                    </div>
+                    <input type="number"
+                           name="qty"
+                           id="qty"
+                           min="0"
+                           class="input-text qty amtheme-qty"
+                           value="<?= $block->getProductDefaultQty() * 1 ?>"
+                           title="<?= $block->escapeHtml(__('Qty')) ?>"
+                           data-amtheme-js="qty-input"
+                           tabindex="0"
+                           data-validate="<?= $block->escapeHtml(json_encode($block->getQuantityValidators())) ?>"
+                           />
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>

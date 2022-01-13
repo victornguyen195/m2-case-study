@@ -1,0 +1,35 @@
+@media (min-width: 1024px) {
+    .flex-wrap .field {
+        margin: 0 20px;
+    }
+    .flex-wrap {
+        display: flex;
+    }
+}
+
+.form {
+    max-width: 600px;
+}
+
+.form .field.margin {
+    margin-bottom: 180px;
+}
+
+.source-wrap {
+    padding: 0 20px;
+    border: 1px solid;
+}
+
+.source-code {
+    background: #eee;
+    color: #000;
+}
+
+.amtheme-select-block.-active .amtheme-select-options {
+    max-width: 100%;
+    width: 140px;
+}
+
+.field-dob {
+    max-width: 220px;
+}

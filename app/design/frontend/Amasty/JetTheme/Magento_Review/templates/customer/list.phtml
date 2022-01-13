@@ -1,0 +1,69 @@
+<?php
+/** @var \Magento\Review\Block\Customer\ListCustomer $block */
+?>
+
+<?php if ($block->getReviews() && count($block->getReviews())): ?>
+    <div class="amtheme-reviews-list" id="my-reviews-list">
+        <?php foreach ($block->getReviews() as $review): ?>
+            <div class="amtheme-item">
+                <div class="amtheme-content">
+                    <div class="amtheme-wrapper">
+                        <div class="amtheme-date">
+                            <?= $block->escapeHtml($block->dateFormat($review->getReviewCreatedAt())) ?>
+                        </div>
+                        <a class="amtheme-productname" href="<?= $block->escapeUrl($block->getProductUrl($review)) ?>">
+                            <?= $block->escapeHtml($review->getName()) ?>
+                        </a>
+                        <div class="amtheme-summary">
+                            <?php if ($review->getSum()): ?>
+                                <?php $rating = (int)$review->getSum() / (int)$review->getCount() ?>
+                                <div class="rating-summary star-secondary">
+                                    <span class="label">
+                                        <?= $block->escapeHtml(__('Rating')) ?>:
+                                    </span>
+                                    <div class="rating-result"
+                                         title="<?= /* @noEscape */ $rating ?>%">
+                                        <span style="width:<?= /* @noEscape */ $rating ?>%;">
+                                            <span><?= /* @noEscape */ $rating ?>%</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                    <div class="amtheme-description">
+                        <?= $block->escapeHtml($review->getDetail()) ?>
+                    </div>
+                </div>
+                <div class="amtheme-actions">
+                    <a href="<?= $block->escapeUrl($block->getReviewUrl($review)) ?>"
+                       title="<?= $block->escapeHtml(__('See Details')) ?>"
+                       aria-label="<?= $block->escapeHtml(__('See Details')) ?>"
+                       class="action more">
+                        <?= $block->escapeHtml(__('See Details')) ?>
+                    </a>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+
+    <?php if ($block->getToolbarHtml()): ?>
+        <div class="toolbar products-reviews-toolbar bottom">
+            <?= $block->getToolbarHtml() ?>
+        </div>
+    <?php endif; ?>
+<?php else: ?>
+    <div class="message info empty">
+        <span><?= $block->escapeHtml(__('You have submitted no reviews.')) ?></span>
+    </div>
+<?php endif; ?>
+<div class="actions-toolbar">
+    <div class="secondary">
+        <a class="action back"
+           title="<?= $block->escapeHtml(__('Back')) ?>"
+           aria-label="<?= $block->escapeHtml(__('Back')) ?>"
+           href="<?= $block->escapeUrl($block->getBackUrl()) ?>">
+            <?= $block->escapeHtml(__('Back')) ?>
+        </a>
+    </div>
+</div>

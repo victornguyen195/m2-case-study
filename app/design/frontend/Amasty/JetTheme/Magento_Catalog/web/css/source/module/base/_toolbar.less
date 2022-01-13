@@ -1,0 +1,71 @@
+//
+//  Toolbar styles for category and search pages
+//  _____________________________________________
+
+//
+//  Common
+//  --------------------------------------------
+
+& when (@media-common = true) {
+    .catalogsearch-result-index .products.wrapper ~ .toolbar,
+    .catalogsearch-advanced-result .products.wrapper ~ .toolbar,
+    .catalog-category-view .products.wrapper ~ .toolbar {
+        &,
+        .pager {
+            margin: @indent__base 0;
+        }
+
+        .toolbar-sorter,
+        .modes {
+            display: none;
+        }
+
+        .pages {
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    .catalogsearch-result-index .top-toolbar > .toolbar,
+    .catalogsearch-advanced-result .top-toolbar > .toolbar,
+    .catalog-category-view .top-toolbar > .toolbar {
+        &,
+        .pager {
+            display: flex;
+            flex-direction: row;
+        }
+    }
+
+    .catalogsearch-result-index .toolbar-products,
+    .catalogsearch-advanced-result .toolbar-products,
+    .catalog-category-view .toolbar-products {
+        .pages,
+        .limiter {
+            display: none;
+        }
+    }
+}
+
+//
+//  Desktop
+//  ---------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .catalogsearch-result-index,
+    .catalogsearch-advanced-result,
+    .catalog-category-view {
+        .products.wrapper ~ .toolbar .limiter {
+            display: flex;
+            .am-margin-right(auto);
+        }
+    }
+
+    .catalogsearch-result-index .top-toolbar > .toolbar.toolbar-products,
+    .catalogsearch-advanced-result .top-toolbar > .toolbar.toolbar-products,
+    .catalog-category-view .top-toolbar > .toolbar.toolbar-products {
+        &,
+        .pager {
+            margin-top: 0;
+        }
+    }
+}

@@ -1,0 +1,185 @@
+//
+//  Gift message extend styles
+//  _____________________________________________
+
+//
+//  Variables
+//  --------------------------------------------
+
+@gift-message-arrow-icon__size: 20px;
+@gift-message-indent__margin: 15px;
+
+//
+//  Common
+//  ---------------------------------------------
+
+& when (@media-common = true) {
+    .amtheme-gift-options {
+        .title {
+            display: inline-block;
+            margin: @indent__s 0;
+            color: @color-gray;
+        }
+
+        .fieldset {
+            &:extend(form fieldset all);
+        }
+
+        .fieldset > .fields {
+            &:extend(form .fields.-am-block all);
+        }
+
+        .actions-toolbar {
+            display: flex;
+            flex-basis: 100%;
+            justify-content: flex-end;
+            margin-top: 0;
+        }
+
+        .actions-toolbar .action-update {
+            order: 2;
+        }
+
+        .actions-toolbar .action-cancel {
+            &:extend(.button-as-link all);
+        }
+    }
+
+    .amtheme-action-gift {
+        & {
+            cursor: pointer;
+        }
+
+        &:after {
+            display: inline-block;
+            margin: 0 @indent__s;
+            width: @gift-message-arrow-icon__size;
+            height: @gift-message-arrow-icon__size;
+            background: ~'url("../svg/@{amtheme__icons__color-mode-prefix}/@{amtheme__icons__mode}/arrow-bottom.svg") no-repeat 100% / contain';
+            content: '';
+            vertical-align: middle;
+            transition: transform @amtheme__transition__delay / 2 @amtheme__transition__func;
+        }
+
+        &.-active:after {
+            transform: rotateZ(180deg);
+        }
+    }
+
+    .amtheme-gift-content .amtheme-gift-summary {
+        .actions-toolbar {
+            justify-content: flex-end;
+            margin-top: @gift-message-indent__margin;
+        }
+
+        .action {
+            & {
+                .am-text-uppercase;
+
+                margin: 0 0 0 20px;
+                color: @color-gray;
+            }
+
+            &:hover {
+                color: lighten(@color-gray, 13%);
+            }
+        }
+    }
+
+    .amtheme-cart-gift-item {
+        margin-bottom: 25px;
+        padding-bottom: 25px;
+        border-bottom: @amtheme__border;
+    }
+
+    .amtheme-gift-content {
+        & {
+            display: none;
+            margin: 10px 0 20px;
+        }
+
+        &.-active {
+            display: block;
+        }
+
+        .amtheme-gift-summary {
+            margin-top: @gift-message-indent__margin;
+        }
+    }
+
+    .cart.item .actions-toolbar > .gift-options-cart-item {
+        order: 2;
+        margin-top: 15px;
+        width: 100%;
+    }
+
+    .gift-options-cart-item .gift-summary .action {
+        margin: 0;
+    }
+
+    .amtheme-gift-message .fieldset {
+        &:extend(form fieldset all);
+    }
+
+    .amtheme-gift-message .fieldset .label {
+        display: inline-block;
+        margin-bottom: 10px;
+    }
+}
+
+//
+//  Mobile
+//  --------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .amtheme-gift-options {
+        .amtheme-gift-wrapping + .amtheme-gift-message {
+            margin-top: @gift-message-indent__margin;
+            padding-top: @gift-message-indent__margin;
+            border-top: @amtheme__border;
+        }
+    }
+
+    .amtheme-gift-summary .actions-toolbar {
+        flex-direction: row;
+        margin-top: @gift-message-indent__margin;
+    }
+
+    .amtheme-gift-options .actions-toolbar {
+        & {
+            flex-direction: row;
+        }
+
+        .action {
+            margin-top: 0;
+        }
+
+        .secondary {
+            .am-margin-left(@gift-message-indent__margin);
+        }
+    }
+}
+
+//
+//  Desktop
+//  --------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .amtheme-gift-options {
+        & {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .amtheme-gift-wrapping,
+        .amtheme-gift-message {
+            flex: 1 0 45%;
+        }
+
+        .amtheme-gift-wrapping + .amtheme-gift-message {
+            .am-margin-left(@gift-message-indent__margin);
+            .am-padding-left(@gift-message-indent__margin);
+            .am-border-left(@amtheme__border);
+        }
+    }
+}

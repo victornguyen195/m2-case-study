@@ -1,0 +1,13 @@
+<ul class="ammenu-items -root -accordion" data-bind="foreach: $data.elems">
+    <li data-bind="
+            visible: $data.isVisible,
+            attr: {
+                class: 'ammenu-item category-item' + ' ' + $data.navLevelSelector
+            }">
+        <!-- ko template: { name: $parent.root_templates.mobile_link, data: { item: $data, uiClass: $parent } } --><!-- /ko -->
+
+        <!-- ko if: $data.isSubmenuVisible -->
+            <!-- ko template: { name: $parent.templates.itemsAccordion, data: { uiClass: $parent, elems: $data.elems } } --><!-- /ko -->
+        <!-- /ko -->
+    </li>
+</ul>

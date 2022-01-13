@@ -1,0 +1,39 @@
+<?php
+/**
+ * @var $block Magento\Wishlist\Block\Item\Configure
+ * @var $escaper Magento\Framework\Escaper
+ */
+
+// phpcs:ignore
+$_helper = $this->helper(\Magento\Wishlist\Helper\Data::class);
+// phpcs:ignore
+$_jsonHelper = $this->helper(\Magento\Framework\Json\Helper\Data::class);
+?>
+
+<?php if ($_helper->isAllow()): ?>
+    <div class="towishlist-wrap">
+        <a href="#"
+           data-post='<?= /* @noEscape */ $block->getUpdateParams() ?>'
+           class="action towishlist updated"
+           title="<?= $escaper->escapeHtml(__('Update Wish List')) ?>"
+           aria-label="<?= $escaper->escapeHtml(__('Update Wish List')) ?>"
+           data-action="add-to-wishlist">
+            <span class="amtheme-circle-icon">
+                <svg class="amtheme-icon -hover-bg -selected">
+                    <use xlink:href="#icon-wishlist"/>
+                </svg>
+            </span>
+            <span class="amtheme-title">
+                <?= $escaper->escapeHtml(__('Update Wish List')) ?>
+            </span>
+        </a>
+    </div>
+<?php endif; ?>
+
+<script type="text/x-magento-init">
+    {
+        "body": {
+            "addToWishlist": <?= /* @noEscape */ $_jsonHelper->jsonEncode($block->getWishlistOptions()) ?>
+        }
+    }
+</script>

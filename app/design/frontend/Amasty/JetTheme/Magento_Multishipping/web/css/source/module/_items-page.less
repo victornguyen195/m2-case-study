@@ -1,0 +1,286 @@
+//
+//  Multishipping Items Table Styles
+//  _____________________________________________
+
+//
+//  Variables
+//  ---------------------------------------------
+
+@amtheme-multishipping-to-cart-arrow__size: 20px;
+@amtheme-multishipping-update-icon__size: 13px;
+
+//
+//  Common
+//  ---------------------------------------------
+
+& when (@media-common = true) {
+    .multishipping-checkout-addresses {
+        .page-title {
+            margin-bottom: @indent__s;
+        }
+    }
+
+    .multicheckout.address.form .table.items {
+        > tbody > tr > td {
+            background: @amtheme__background-secondary__color;
+        }
+
+        > tbody > tr:not(:last-of-type) > td {
+            border-bottom: @indent__base solid @amtheme__background-primary__color;
+        }
+
+        > tbody > tr > td,
+        > thead > tr > th {
+            padding: 20px;
+        }
+
+        > thead > tr > th {
+            padding-bottom: 25px;
+        }
+
+        .field {
+            margin: 0;
+        }
+
+        .field.address {
+            width: 100%;
+        }
+
+        .product-item-name {
+            font-weight: @font-weight__regular;
+        }
+
+        .product-item-name {
+            color: @amtheme__text-primary__color;
+            font-weight: @font-weight__regular;
+        }
+
+        .item-options {
+            .am-product-options;
+
+            margin: 20px 0 0;
+            color: @amtheme__text-secondary__color;
+        }
+
+        .amtheme-qty-box {
+            min-width: 94px;
+        }
+
+        .action.delete {
+            .am-text-uppercase;
+
+            line-height: @form-element-input__height;
+        }
+    }
+
+    .multicheckout.address.form .actions-toolbar {
+        & {
+            flex-flow: row wrap;
+        }
+
+        &:before,
+        &:after {
+            display: none;
+        }
+
+        .action.back {
+            display: inline;
+        }
+
+        .action.update {
+            .lib-button-reset();
+
+            color: @amtheme__text-secondary__color;
+            text-align: right;
+            font-weight: @font-weight__bold;
+            font-size: 1.6rem;
+        }
+
+        .action.update .amtheme-icon {
+            margin-right: 8px;
+            width: @amtheme-multishipping-update-icon__size;
+            height: @amtheme-multishipping-update-icon__size;
+        }
+    }
+}
+
+//
+//  Mobile
+//  --------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__xs) {
+    .multicheckout.address.form .table.items {
+        .field.address {
+            display: block;
+            margin-top: @indent__s;
+            max-width: unset;
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
+    .multicheckout.address.form .table.items {
+        & {
+            margin-top: @indent__base;
+        }
+
+        > tbody > tr:not(:last-of-type) > td {
+            border-bottom: none;
+        }
+
+        .col.actions:before {
+            display: none;
+        }
+
+        .field {
+            display: inline-block;
+            max-width: 65%;
+        }
+    }
+
+    .multicheckout.address.form .actions-toolbar {
+        & {
+            flex-direction: column;
+        }
+
+        .action.back,
+        .action.update {
+            width: auto;
+        }
+
+        .action.update {
+            margin-top: @indent__base;
+        }
+
+        .action.back {
+            order: 5;
+            margin-top: 35px;
+        }
+    }
+}
+
+//
+//  Tablet -
+//  --------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .multicheckout.address.form .actions-toolbar {
+        & {
+            margin-top: @indent__base;
+        }
+
+        .action {
+            box-sizing: border-box;
+            margin: @indent__base 0 0;
+        }
+
+        .action.continue,
+        .action.add {
+            width: 100%;
+        }
+
+        .action.back,
+        .action.update {
+            margin-top: 35px;
+            width: 50%;
+        }
+
+        .action.continue {
+            order: 0;
+            margin-top: 0;
+        }
+
+        .action.add {
+            order: 1;
+        }
+
+        .action.back {
+            order: 2;
+        }
+
+        .action.update {
+            order: 3;
+        }
+    }
+}
+
+//
+//  Tablet
+//  --------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__s) {
+    .multicheckout.address.form {
+        .col.product {
+            width: 25%;
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .multishipping-checkout-addresses {
+        .field.address,
+        .action.delete {
+            display: inline-block;
+        }
+    }
+
+    .multicheckout.address.form .actions-toolbar {
+        & {
+            align-items: flex-start;
+            justify-content: flex-end;
+        }
+
+        .action.back {
+            margin-bottom: 35px;
+        }
+
+        .action.back,
+        .action.update {
+            flex-basis: 50%;
+            box-sizing: border-box;
+        }
+
+        .action.continue {
+            .am-margin-left(@indent__base);
+        }
+    }
+}
+
+//
+//  Desktop
+//  --------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+    .multicheckout.address.form .actions-toolbar {
+        & {
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        .action:not(:first-of-type) {
+            .am-margin-left(@indent__base);
+        }
+
+        .action.back {
+            margin: 0 auto 0 0;
+        }
+
+        .action.back,
+        .action.update {
+            flex-basis: auto;
+        }
+    }
+}
+
+//
+//  Desktop +
+//  --------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__xl) {
+    .multicheckout.address.form .table.items {
+        .field.address,
+        .action.delete {
+            display: inline-block;
+        }
+    }
+}

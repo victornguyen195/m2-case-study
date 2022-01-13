@@ -1,0 +1,96 @@
+<?php
+/**
+ * Category layered navigation
+ *
+ * @var $block Magento\LayeredNavigation\Block\Navigation
+ * @var $escaper Magento\Framework\Escaper
+ */
+
+$isActiveFilters = $block->getLayer()->getState()->getFilters();
+?>
+
+<?php if ($block->canShowBlock()): ?>
+    <div class="block filter"
+         data-mage-init='{
+            "collapsible": {
+                "openedState": "active",
+                "collapsible": true,
+                "active": false,
+                "collateral": {
+                    "openedState": "filter-active",
+                    "element": "body"
+                }
+            },
+            "amLayeredNavigationMobile":{}
+         }'>
+        <button class="action button-as-link amtheme-close"
+                type="button"
+                data-amtheme-js="layered-close"
+                aria-label="<?= $escaper->escapeHtmlAttr(__('Close filter')) ?>"
+                title="<?= $escaper->escapeHtmlAttr(__('Close filter')) ?>">
+            <svg class="amtheme-icon -close" aria-label="<?= $escaper->escapeHtmlAttr(__('Close filter')) ?>">
+                <use xlink:href="#icon-close"/>
+            </svg>
+        </button>
+        <?php $filtered = count($block->getLayer()->getState()->getFilters()) ?>
+        <div class="block-title filter-title" data-role="title" data-count="<?= /* @noEscape */ $filtered ?>">
+            <?= $escaper->escapeHtml(__('Shop By')); ?>
+        </div>
+        <div class="block-content filter-content">
+        <?= $block->getChildHtml('state') ?>
+        <?php if ($isActiveFilters): ?>
+            <div class="block-actions filter-actions">
+                <a href="<?= $escaper->escapeUrl($block->getClearUrl()) ?>"
+                   class="action clear filter-clear"
+                   title="<?= $escaper->escapeHtmlAttr(__('Clear All')) ?>"
+                   aria-label="<?= $escaper->escapeHtmlAttr(__('Clear All')) ?>"
+                >
+                    <?= $escaper->escapeHtml(__('Clear All')) ?>
+                </a>
+            </div>
+        <?php endif; ?>
+        <?php $wrapOptions = false; ?>
+        <strong role="heading"
+                aria-level="2"
+                class="block-subtitle filter-subtitle">
+            <?= $escaper->escapeHtml(__('Filters')) ?>
+        </strong>
+        <?php foreach ($block->getFilters() as $filter): ?>
+            <?php if ($filter->getItemsCount()):  ?>
+                <?php if (!$wrapOptions): ?>
+                    <div class="filter-options"
+                         id="narrow-by-list"
+                         data-role="content"
+                         data-amtheme-js="navigation-filter"
+                         data-mage-init='{
+                         "accordion":
+                            {
+                                 "openedState": "-active",
+                                 "collapsible": true,
+                                 "active": false,
+                                 "animate": {
+                                    "duration": 200
+                                 },
+                                "multipleCollapsible": false
+                             }}'>
+                <?php $wrapOptions = true;
+                endif; ?>
+                <div data-role="collapsible"
+                     class="filter-options-item"
+                     data-amtheme-js="navigation-filter-item"
+                >
+                    <div data-role="title" class="filter-options-title">
+                        <?= $escaper->escapeHtml(__($filter->getName())) ?>
+                    </div>
+                    <div data-role="content" class="filter-options-content">
+                        <?= /* @noEscape */ $block->getChildBlock('renderer')->render($filter) ?>
+                    </div>
+                </div>
+            <?php endif; ?>
+        <?php endforeach; ?>
+        <?php if ($wrapOptions): ?>
+            </div>
+        <?php endif; ?>
+        </div>
+    </div>
+<?php endif; ?>

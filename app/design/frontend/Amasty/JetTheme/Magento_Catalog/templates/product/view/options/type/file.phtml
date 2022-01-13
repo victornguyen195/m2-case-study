@@ -1,0 +1,105 @@
+<?php
+/* @var $block \Magento\Catalog\Block\Product\View\Options\Type\File */
+
+$option = $block->getOption();
+$fileInfo = $block->getFileInfo();
+$fileExists = $fileInfo->hasData();
+$fileName = 'options_' . $option->getId() . '_file';
+$fieldNameAction = $fileName . '_action';
+$fieldValueAction = $fileExists ? 'save_old' : 'save_new';
+$fileNamed = $fileName . '_name';
+$class = ($option->getIsRequire()) ? 'required' : '';
+?>
+
+<div class="field file <?= $block->escapeHtml($class) ?>">
+    <label class="label">
+        <?= $block->escapeHtml($option->getTitle()) ?>
+        <?= /* @noEscape */ $block->getFormattedPrice() ?>
+    </label>
+    <?php if ($fileExists): ?>
+    <div class="control">
+        <span class="<?= $block->escapeHtml($fileNamed) ?>"><?= $block->escapeHtml($fileInfo->getTitle()) ?></span>
+        <a href="javascript:void(0)"
+           class="label"
+           title="<?= $block->escapeHtml(__('Change')) ?>"
+           aria-label="<?= $block->escapeHtml(__('Change')) ?>"
+           id="change-<?= $block->escapeHtml($fileName) ?>" >
+            <?= $block->escapeHtml(__('Change')) ?>
+        </a>
+        <?php if (!$option->getIsRequire()): ?>
+            <input type="checkbox" id="delete-<?= $block->escapeHtml($fileName) ?>" />
+            <label for="delete-<?= $block->escapeHtml($fileName) ?>"
+                   title="<?= $block->escapeHtml(__('Delete')) ?>"
+                   aria-label="<?= $block->escapeHtml(__('Delete')) ?>"
+                   class="label">
+                <?= $block->escapeHtml(__('Delete')) ?>
+            </label>
+        <?php endif; ?>
+    </div>
+    <?php endif; ?>
+    <div class="control" id="input-box-<?= $block->escapeHtml($fileName) ?>"
+         data-mage-init='{
+         "amFileUpload": {},
+         "priceOptionFile":{
+            "fileName":"<?= $block->escapeHtml($fileName) ?>",
+            "fileNamed":"<?= $block->escapeHtml($fileNamed) ?>",
+            "fieldNameAction":"<?= $block->escapeHtml($fieldNameAction) ?>",
+            "changeFileSelector":"#change-<?= $block->escapeHtml($fileName) ?>",
+            "deleteFileSelector":"#delete-<?= $block->escapeHtml($fileName) ?>"}
+         }'
+        <?= $fileExists ? 'style="display:none"' : '' ?>>
+        <input type="file"
+               name="<?= $block->escapeHtml($fileName) ?>"
+               id="<?= $block->escapeHtml($fileName) ?>"
+               tabindex="-1"
+               data-amtheme-js="input-field"
+               class="amtheme-file product-custom-option<?= $option->getIsRequire() ? ' required' : '' ?>"
+            <?= $fileExists ? 'disabled="disabled"' : '' ?>
+        />
+        <div class="amtheme-wrapper">
+            <label class="action outline"
+                   tabindex="0"
+                   title="<?= $block->escapeHtml(__('select')) ?>"
+                   aria-label="<?= $block->escapeHtml(__('select')) ?>"
+                   data-amtheme-js="input-trigger"
+                   for="<?= $block->escapeHtml($fileName) ?>"
+                   id="<?= $block->escapeHtml($fileName) ?>-label">
+                <svg class="amtheme-icon">
+                    <use xlink:href="#icon-plus"/>
+                </svg>
+                <?= $block->escapeHtml(__('select')) ?>
+            </label>
+            <span class="amtheme-file-output">
+                <span data-amtheme-js="file-output"></span>
+                <button type="button"
+                        title="<?= $block->escapeHtml(__('Remove')) ?>"
+                        aria-label="<?= $block->escapeHtml(__('Remove')) ?>"
+                        class="amtheme-clear-input -icon-action"
+                        data-amtheme-js="clear-output">
+                    <svg class="amtheme-icon" >
+                        <use xlink:href="#icon-close"/>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <input type="hidden"
+               name="<?= $block->escapeHtml($fieldNameAction) ?>"
+               value="<?= $block->escapeHtml($fieldValueAction) ?>"
+        />
+    </div>
+    <?php if ($option->getFileExtension()): ?>
+        <p class="note">
+            <?= $block->escapeHtml(__('Compatible file extensions to upload: %1', $option->getFileExtension())) ?>
+        </p>
+    <?php endif; ?>
+    <?php if ($option->getImageSizeX() > 0): ?>
+        <p class="note">
+            <?= $block->escapeHtml(__('Maximum image width: %1px.', (int)$option->getImageSizeX())) ?>
+        </p>
+    <?php endif; ?>
+    <?php if ($option->getImageSizeY() > 0): ?>
+        <p class="note">
+            <?= $block->escapeHtml(__('Maximum image height: %1px.', (int)$option->getImageSizeY())) ?>
+        </p>
+    <?php endif; ?>
+</div>

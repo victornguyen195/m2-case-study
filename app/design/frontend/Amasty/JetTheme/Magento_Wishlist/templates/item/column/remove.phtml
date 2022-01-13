@@ -1,0 +1,13 @@
+<?php
+/* @var \Magento\Wishlist\Block\Customer\Wishlist\Item\Column\Remove $block */
+?>
+
+<a href="#"
+   data-role="remove"
+   data-post-remove='<?= /* @noEscape */ $block->getItemRemoveParams($block->getItem()) ?>'
+   title="<?= $block->escapeHtmlAttr(__('Remove Item')) ?>"
+   aria-label="<?= $block->escapeHtmlAttr(__('Remove Item')) ?>"
+   data-amtheme-content="<?= $block->escapeHtmlAttr(__('from list')) ?>"
+   class="btn-remove action delete">
+    <?= $block->escapeHtml(__('Delete')) ?>
+</a>

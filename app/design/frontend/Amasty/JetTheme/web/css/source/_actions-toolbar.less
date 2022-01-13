@@ -1,0 +1,103 @@
+//
+//  Actions Toolbar
+//  _____________________________________________
+
+//
+//  Common
+//  ---------------------------------------------
+
+& when (@media-common = true) {
+    .actions-toolbar {
+        & {
+            display: flex;
+            align-items: center;
+            margin-top: @indent__l;
+        }
+
+        .action.primary,
+        .primary > .action {
+            .lib-button();
+
+            border-radius: @button__border-radius;
+        }
+
+        .action.secondary,
+        .secondary > .action {
+            order: 0;
+            float: none;
+            line-height: @button__line-height;
+        }
+
+        > .secondary {
+            .am-margin-left(25px);
+        }
+
+        > .secondary .action.back,
+        .action.back {
+            .am-back-button();
+
+            display: none;
+        }
+    }
+}
+
+//
+//  Tablet -
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .actions-toolbar {
+        & {
+            flex-direction: column;
+        }
+
+        .action.primary,
+        .primary,
+        .primary > .action {
+            width: 100%;
+        }
+
+        a.action.primary {
+            text-align: center;
+        }
+
+        .action.secondary,
+        .secondary,
+        .secondary > .action {
+            .am-padding(15px);
+            margin: 10px 0 0;
+        }
+    }
+}
+
+//
+//  Tablet
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .actions-toolbar {
+        & {
+            .lib-actions-toolbar();
+        }
+
+        > .primary,
+        > .secondary {
+            float: none;
+        }
+    }
+
+    .actions-toolbar.-reverse {
+        & {
+            flex-direction: row-reverse;
+        }
+
+        .primary .action {
+            .am-margin(0 0 0 5px);
+        }
+
+        > .secondary {
+            .am-margin-right(25px);
+            .am-margin-left(0);
+        }
+    }
+}

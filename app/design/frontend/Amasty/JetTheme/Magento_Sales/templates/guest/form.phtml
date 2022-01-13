@@ -1,0 +1,132 @@
+<form class="form form-orders-search amtheme-search-form"
+      id="oar-widget-orders-and-returns-form"
+      data-mage-init='{"ordersReturns":{}, "validation":{}}'
+      action="<?= $block->escapeUrl($block->getActionUrl()) ?>"
+      method="post"
+      name="guest_post">
+    <fieldset class="fieldset">
+        <legend class="legend"><?= $block->escapeHtml(__('Order Information')) ?></legend>
+        <div class="field id required">
+            <label class="label"
+                   id="oar-order-id-label"
+                   for="oar-order-id">
+                <?= $block->escapeHtml(__('Order ID')) ?>
+            </label>
+            <div class="control">
+                <input type="text"
+                       class="input-text"
+                       id="oar-order-id"
+                       name="oar_order_id"
+                       title="<?= $block->escapeHtml(__('Order ID')) ?>"
+                       data-validate="{required:true}"
+                />
+            </div>
+        </div>
+        <div class="field lastname required">
+            <label class="label"
+                   id="oar-billing-lastname-label"
+                   for="oar-billing-lastname">
+                <?= $block->escapeHtml(__('Billing Last Name')) ?>
+            </label>
+            <div class="control">
+                <input type="text"
+                       class="input-text"
+                       id="oar-billing-lastname"
+                       name="oar_billing_lastname"
+                       title="<?= $block->escapeHtml(__('Billing Last Name')) ?>"
+                       data-validate="{required:true}"
+                />
+            </div>
+        </div>
+        <div class="field find required">
+            <label id="quick-search-type-id-label"
+                   class="label"
+                   for="quick-search-type-id">
+                <?= $block->escapeHtml(__('Find Order By')) ?>
+            </label>
+            <div class="control">
+                <select name="oar_type"
+                        class="amtheme-select"
+                        tabindex="-1"
+                        id="quick-search-type-id"
+                        title="<?= $block->escapeHtml(__('Find Order By')) ?>">
+                    <option value="email"><?= $block->escapeHtml(__('Email')) ?></option>
+                    <option value="zip"><?= $block->escapeHtml(__('ZIP Code')) ?></option>
+                </select>
+
+                <div class="amtheme-select-block"
+                     data-mage-init='{"amSelect": {"selectId": "quick-search-type-id"}}'
+                     data-amselect-js="select">
+                        <span role="button"
+                              tabindex="0"
+                              class="amtheme-placeholder"
+                              data-amselect-js="placeholder">
+                            <span class="amtheme-content"
+                                  data-amselect-js="placeholder-content">
+                                <?= $block->escapeHtml(__('Email')) ?>
+                            </span>
+                        </span>
+                    <ul role="list"
+                        class="amtheme-select-options"
+                        data-amselect-js="options">
+                        <li class="amtheme-option"
+                            tabindex="0"
+                            selected="selected"
+                            data-amselect-js="item"
+                            data-amselect-value="email">
+                            <span class="amtheme-title"><?= $block->escapeHtml(__('Email')) ?></span>
+                        </li>
+                        <li class="amtheme-option"
+                            tabindex="0"
+                            data-amselect-js="item"
+                            data-amselect-value="zip">
+                            <span class="amtheme-title"><?= $block->escapeHtml(__('ZIP Code')) ?></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="oar-zip" style="display: none;" class="field zip required">
+            <label class="label"
+                   id="oar_zip-label"
+                   for="oar_zip">
+                <?= $block->escapeHtml(__('Billing ZIP Code')) ?>
+            </label>
+            <div class="control">
+                <input type="text"
+                       class="input-text"
+                       id="oar_zip"
+                       name="oar_zip"
+                       title="<?= $block->escapeHtml(__('Billing ZIP Code')) ?>"
+                       data-validate="{required:true}"
+                />
+            </div>
+        </div>
+        <div id="oar-email" class="field email required">
+            <label class="label"
+                   id="oar_email-label"
+                   for="oar_email">
+                <?= $block->escapeHtml(__('Email')) ?>
+            </label>
+            <div class="control">
+                <input type="email"
+                       class="input-text"
+                       id="oar_email"
+                       name="oar_email"
+                       title="<?= $block->escapeHtml(__('Email')) ?>"
+                       data-validate="{required:true, 'validate-email':true}"
+                />
+            </div>
+        </div>
+    </fieldset>
+    <div class="actions-toolbar">
+        <div class="primary">
+            <button class="action submit secondary"
+                    type="submit"
+                    title="<?= $block->escapeHtmlAttr(__('Continue')) ?>"
+                    aria-label="<?= $block->escapeHtmlAttr(__('Continue')) ?>">
+                <?= $block->escapeHtml(__('Continue')) ?>
+            </button>
+        </div>
+    </div>
+</form>

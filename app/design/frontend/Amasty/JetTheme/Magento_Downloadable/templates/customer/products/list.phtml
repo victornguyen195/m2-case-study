@@ -1,0 +1,71 @@
+<?php
+/**
+ * @var $block \Magento\Downloadable\Block\Customer\Products\ListProducts
+ */
+$items = $block->getItems();
+$linkStatusAvailable = \Magento\Downloadable\Model\Link\Purchased\Item::LINK_STATUS_AVAILABLE;
+?>
+<?php if (count($items)): ?>
+    <div class="table-wrapper downloadable-products">
+        <table id="my-downloadable-products-table" class="data table table-downloadable-products">
+            <caption class="table-caption"><?= $block->escapeHtml(__('Downloadable Products')) ?></caption>
+            <thead>
+                <tr>
+                    <th scope="col" class="col id"><?= $block->escapeHtml(__('Order #')) ?></th>
+                    <th scope="col" class="col date"><?= $block->escapeHtml(__('Date')) ?></th>
+                    <th scope="col" class="col title"><?= $block->escapeHtml(__('Title')) ?></th>
+                    <th scope="col" class="col status"><?= $block->escapeHtml(__('Status')) ?></th>
+                    <th scope="col" class="col remaining"><?= $block->escapeHtml(__('Remaining Downloads')) ?></th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($items as $item): ?>
+                <tr>
+                    <td data-th="<?= $block->escapeHtmlAttr(__('Order #')) ?>" class="col id">
+                        <a href="<?= $block->escapeUrl($block->getOrderViewUrl($item->getPurchased()->getOrderId())) ?>"
+                           title="<?= $block->escapeHtmlAttr(__('View Order')) ?>">
+                            <?= $block->escapeHtml($item->getPurchased()->getOrderIncrementId()) ?>
+                        </a>
+                    </td>
+                    <td data-th="<?= $block->escapeHtmlAttr(__('Date')) ?>"
+                        class="col date">
+                        <?= $block->escapeHtml($block->formatDate($item->getPurchased()->getCreatedAt())) ?>
+                    </td>
+                    <td data-th="<?= $block->escapeHtmlAttr(__('Title')) ?>" class="col title">
+                        <?= $block->escapeHtml($item->getPurchased()->getProductName()) ?>
+                    </td>
+                    <td data-th="<?= $block->escapeHtmlAttr(__('Status')) ?>"
+                        class="col status">
+                        <?= $block->escapeHtml(__(ucfirst($item->getStatus()))) ?>
+                    </td>
+                    <td data-th="<?= $block->escapeHtmlAttr(__('Remaining Downloads')) ?>"
+                        class="col remaining">
+                        <?= $block->escapeHtml($block->getRemainingDownloads($item)) ?>
+                    </td>
+                    <?php if ($item->getStatus() == $linkStatusAvailable): ?>
+                        <td class="col">
+                            <a href="<?= $block->escapeUrl($block->getDownloadUrl($item)) ?>"
+                               title="<?= $block->escapeHtmlAttr(__('Start Download')) ?>"
+                               class="action download"
+                                <?= /* @noEscape */ $block->getIsOpenInNewWindow()
+                                    ? 'onclick="this.target=\'_blank\'"'
+                                    : '' ?>>
+                                <?= $block->escapeHtml(__('Download')) ?>
+                            </a>
+                        </td>
+                    <?php endif; ?>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+    <?php if ($block->getChildHtml('pager')): ?>
+        <div class="toolbar downloadable-products-toolbar bottom">
+            <?= $block->getChildHtml('pager') ?>
+        </div>
+    <?php endif; ?>
+<?php else: ?>
+    <div class="message info empty">
+        <span><?= $block->escapeHtml(__('You have not purchased any downloadable products yet.')) ?></span>
+    </div>
+<?php endif; ?>

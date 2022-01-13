@@ -1,0 +1,14 @@
+<?php
+/** @var $viewModel \Amasty\JetTheme\ViewModel\Catalog\FilterStatusViewModel */
+
+$viewModel = $block->getViewModel();
+?>
+
+<?php if ($viewModel->canShowBlock()): ?>
+    <button class="amtheme-filter-action" aria-pressed="false" data-mage-init='{"amLayeredNavigationToggle":{}}'>
+        <svg class="amtheme-icon -hover" focusable="false">
+            <use xlink:href="#icon-filter"/>
+        </svg>
+        <strong class="amtheme-title" data-amtheme-js="filter-title-text" ><?= $block->escapeHtml(__('Hide Filters')) ?></strong>
+    </button>
+<?php endif;?>

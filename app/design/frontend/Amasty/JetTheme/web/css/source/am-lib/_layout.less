@@ -1,0 +1,254 @@
+//
+//  Amasty columns layout
+//  Responsive + fixed sidebar width for tablet and desktop
+//  _________________________________________________________
+
+#amasty-layout-columns() {
+    .wrap (
+        @_flex: false
+    ) {
+        & when (@_flex = true) {
+            .lib-vendor-prefix-display(flex);
+            .lib-vendor-prefix-flex-wrap(wrap);
+            justify-content: space-between;
+            box-sizing: border-box;
+        }
+
+        & when (@_flex = false) {
+            & {
+                display: block;
+            }
+
+            &:after {
+                display: block;
+                visibility: hidden;
+                clear: both;
+                overflow: hidden;
+                height: 0;
+                content: '';
+            }
+        }
+    }
+
+    .main(
+        @_flex: false,
+        @_size: normal
+    ) {
+        .@{am-layout-class-1column} & {
+            ._set-column-width(1, 2, @am-layout-column-main__width-1, @_flex);
+        }
+        .@{am-layout-class-2columns__left} & {
+            ._set-column-width(2, 2, @am-layout-column-main__width-2-left, @_flex);
+        }
+        .@{am-layout-class-2columns__right} & {
+            ._set-column-width(2, 1, @am-layout-column-main__width-2-right, @_flex);
+        }
+
+        & when (@_size = large) {
+            .@{am-layout-class-3columns} & {
+                ._set-column-width(3, 2, @am-layout-column-main__width-3__l, @_flex);
+            }
+            .@{am-layout-class-2columns__left} & {
+                ._set-column-width(2, 2, @am-layout-column-main__width-2-left__l, @_flex);
+            }
+            .@{am-layout-class-2columns__right} & {
+                ._set-column-width(2, 1, @am-layout-column-main__width-2-right__l, @_flex);
+            }
+        }
+    }
+
+    .left(
+        @_flex: false,
+        @_size: normal
+    ) {
+        .@{am-layout-class-2columns__left} & {
+            ._set-column-width(2, 1, @am-layout-column__left-width, @_flex);
+        }
+        .@{am-layout-class-2columns__right} & {
+            ._set-column-width(2, 1, @am-layout-column__left-width, @_flex);
+        }
+
+        & when (@_size = large) {
+            .@{am-layout-class-3columns} & {
+                ._set-column-width(3, 1, @am-layout-column__left-width__l, @_flex);
+                ._float-gutter-l();
+            }
+            .@{am-layout-class-2columns__left} & {
+                ._set-column-width(2, 1, @am-layout-column__left-width__l, @_flex);
+            }
+            .@{am-layout-class-2columns__right} & {
+                ._set-column-width(2, 1, @am-layout-column__left-width__l, @_flex);
+            }
+        }
+    }
+
+    .right(
+        @_flex: false,
+        @_size: normal
+    ) {
+        .@{am-layout-class-2columns__left} & {
+            ._set-column-width(2, 2, @am-layout-column__right-width, @_flex);
+        }
+        .@{am-layout-class-2columns__right} & {
+            ._set-column-width(2, 2, @am-layout-column__right-width, @_flex);
+        }
+
+        & when (@_size = large) {
+            .@{am-layout-class-3columns} & {
+                ._set-column-width(3, 3, @am-layout-column__right-width__l, @_flex);
+            }
+            .@{am-layout-class-2columns__left} & {
+                ._set-column-width(2, 2, @am-layout-column__right-width__l, @_flex);
+            }
+            .@{am-layout-class-2columns__right} & {
+                ._set-column-width(2, 2, @am-layout-column__right-width__l, @_flex);
+            }
+        }
+    }
+
+    // From Tablet to Desktop 3 columns show as 2 columns
+    .tablet-3column(
+        @_use: true,
+        @_flex: false,
+        @_main-column: main,
+        @_left-column: sidebar-main,
+        @_right-column: sidebar-additional
+    ) {
+        & when (@_flex = true) {
+            .@{am-layout-class-3columns} & {
+                display: block;
+            }
+        }
+
+        & when (@_use = true) {
+            .@{am-layout-class-3columns} {
+                .@{_main-column} {
+                    .lib-css(width, @am-layout-column-main__width-2-left);
+                    ._clear-right();
+                }
+
+                .@{_left-column},
+                .@{_right-column} {
+                    ._clear-left();
+                }
+
+                .@{_left-column} {
+                    ._set-width(@am-layout-column__left-width);
+                    ._float-gutter();
+                }
+
+                .@{_right-column} {
+                    ._set-width(@am-layout-column__right-width);
+                }
+            }
+        }
+
+        & when (@_flex = true) and (@_use = false) {
+            display: flex;
+        }
+
+        & when (@_use = false) {
+            .@{am-layout-class-3columns} {
+                .@{_main-column} {
+                    ._set-column-width(3, 2, @am-layout-column-main__width-3, @_flex);
+                    ._no-clear();
+                }
+
+                .@{_left-column} {
+                    ._set-position(3, 1, @_flex);
+                }
+
+                .@{_right-column} {
+                    ._set-position(3, 3, @_flex);
+                    clear: right;
+                }
+            }
+        }
+    }
+
+    .clear-left(
+        @_flex: false
+    ) {
+        & when (@_flex = false) {
+            .@{am-layout-class-2columns__left} & {
+                ._clear-left();
+            }
+        }
+
+        & when (@_flex = true) {
+            .@{am-layout-class-2columns__left} & {
+                display: none;
+            }
+        }
+    }
+
+    .clear-right(
+        @_flex: false
+    ) {
+        & when (@_flex = false) {
+            .@{am-layout-class-2columns__right} & {
+                ._clear-right();
+            }
+        }
+
+        & when (@_flex = true) {
+            .@{am-layout-class-2columns__right} & {
+                display: none;
+            }
+        }
+    }
+}
+
+._set-column-width(@_total-columns, @_order, @_width, @_flex) {
+    ._set-width(@_width);
+    ._set-position(@_total-columns, @_order, @_flex);
+}
+
+._set-width(@_width) {
+    .lib-css(width, @_width);
+}
+
+._set-position(@_total-columns, @_order, @_flex) {
+    & when (@_flex = false) {
+        ._float-position(@_total-columns, @_order);
+    }
+
+    & when (@_flex = true) {
+        .lib-vendor-prefix-order(@_order);
+    }
+}
+
+._float-position(@_total-columns, @_order) when (@_order = 1) {
+    float: left;
+}
+
+._float-position(@_total-columns, @_order) when (@_order = @_total-columns) {
+    float: right;
+}
+
+._float-position(@_total-columns, @_order) when (@_total-columns = 3) and (@_order = 2) {
+    display: inline-block;
+}
+
+._float-gutter() {
+    .am-margin-right(@am-gutter-3columns__width);
+}
+
+._float-gutter-l() {
+    .am-margin-right(@am-gutter-3columns__width__l);
+}
+
+._clear-left() {
+    float: left;
+    clear: left;
+}
+
+._clear-right() {
+    float: right;
+    clear: right;
+}
+
+._no-clear() {
+    float: none;
+    clear: none;
+}

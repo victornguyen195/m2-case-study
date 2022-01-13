@@ -1,0 +1,50 @@
+//
+//  Navigation menu styles
+//  _____________________________________________
+
+//
+//  Common
+//  ---------------------------------------------
+
+& when (@media-common = true) {
+    .amtheme-nav-icon();
+}
+
+//
+//  Mobile
+//  ---------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__xs) {
+    .nav-before-open .amtheme-menustatic-wrapper {
+        .am-padding-right(@layout__width-xs-indent);
+        .am-padding-left(@layout__width-xs-indent);
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .amasty-main-navigation();
+}
+
+//
+//  Desktop
+//  ---------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .nav-toggle,
+    .nav-sections-item-title {
+        display: none;
+    }
+
+    .nav-sections-item-content {
+        > *,
+        .header.links {
+            display: none;
+        }
+
+        > .navigation {
+            display: block;
+        }
+    }
+
+    .amasty-main-navigation-desktop();
+}

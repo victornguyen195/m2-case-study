@@ -1,0 +1,14 @@
+<?php
+// Progress bar - Last step for success page
+
+/** @var $block \Magento\Framework\View\Element\Template */
+?>
+
+<ul class="opc-progress-bar -success">
+    <li class="opc-progress-bar-item -no-item _complete">
+        ...
+    </li>
+    <li class="opc-progress-bar-item -last-step _complete">
+        <?= $block->escapeHtml(__('Overview')); ?>
+    </li>
+</ul>

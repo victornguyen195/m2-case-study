@@ -1,0 +1,9 @@
+<?php
+/** @var \Magento\Framework\View\Element\Template $block */
+?>
+
+<?= $block->escapeHtml(__(
+    'You added %1 to <a href="%2">compare</a>.',
+    $block->getData('product_name'),
+    $block->getData('compare_url')
+), ['a']);

@@ -1,0 +1,57 @@
+//
+//  Base styles theme Amasty
+//  _____________________________________
+
+//
+//  Common
+//  -------------------------------------
+
+& when (@media-common = true) {
+    body {
+        background-color: @page__background-color;
+    }
+
+    .cookie-status-message {
+        display: none;
+    }
+
+    a,
+    button {
+        ._keyfocus &:focus {
+            border-radius: @focus__border-radius;
+        }
+
+        .ie11 ._keyfocus &:focus {
+            box-shadow: @focus-ie__box-shadow;
+        }
+    }
+
+    .page-wrapper {
+        display: flex;
+        flex-direction: column;
+        overflow-x: hidden;
+        min-height: 100vh;
+    }
+
+    .page-main {
+        flex-grow: 1;
+    }
+
+    .action.skip:not(:focus) {
+        &:extend(.abs-visually-hidden all);
+    }
+
+    .grecaptcha-badge {
+        z-index: 100; // Compatibility with captcha
+    }
+}
+
+//
+//  Mobile
+//  --------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .nav-open .page-wrapper {
+        overflow: visible;
+    }
+}

@@ -1,0 +1,106 @@
+//
+// Jet Theme email base styles
+// ______________________________________________
+
+body {
+    letter-spacing: @letter-spacing__base;
+}
+
+a {
+    word-wrap: break-word;
+    word-break: break-word;
+    font-weight: @font-weight__bold;
+}
+
+.main {
+    & {
+        overflow: hidden;
+        border-radius: @email-main__border-radius;
+    }
+
+    .closing {
+        &:extend(._am-email-title);
+
+        text-align: center;
+    }
+}
+
+.amtheme-email-element.-indent.-top {
+    margin-top: @email-body__padding;
+}
+
+.email-non-inline() {
+    u + #body a { // Gmail default link styles fix
+        color: @email-link__color;
+        text-decoration: none;
+        font-weight: @font-weight__bold;
+        font-size: inherit;
+        font-family: inherit;
+        line-height: inherit;
+    }
+}
+
+//
+//  Buttons
+//  ---------------------------------------------
+
+.button {
+    & > tr > td {
+        padding: @email-body__padding @email-body__padding 0;
+    }
+
+    .inner-wrapper td {
+        & {
+            border-radius: 0;
+        }
+
+        a {
+            box-sizing: border-box;
+            max-width: 100%;
+            border: 1px solid @email-button-primary__background; // Outlook link paddings fix
+            background: none;
+        }
+    }
+
+    &.-secondary .inner-wrapper td {
+        & {
+            border-radius: @amtheme__border-radius__s;
+            background: @email-button-secondary__background;
+        }
+
+        a {
+            border: 1px solid @email-button-secondary__background;
+            font-weight: @font-weight__regular;
+        }
+    }
+}
+
+.email-non-inline() { // Gmail default link styles fix
+    .button.-secondary .inner-wrapper {
+        td:hover {
+            background-color: @button__hover__background !important; //override magento button background
+        }
+
+        a {
+            font-weight: @font-weight__regular !important; //override magento button text font-weight
+        }
+    }
+}
+
+//
+//  Messages
+//  ---------------------------------------------
+
+.message-info,
+.message-gift {
+    td {
+        & {
+            padding: @email-table-cells-indent__l;
+            background: @email-custom__background;
+        }
+
+        h3 {
+            font-size: @h1__font-size;
+        }
+    }
+}

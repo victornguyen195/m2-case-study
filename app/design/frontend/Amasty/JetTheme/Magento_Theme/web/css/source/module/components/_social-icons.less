@@ -1,0 +1,76 @@
+//
+//  Social icons styles
+//  _____________________________________________
+
+//
+//  Common
+//  ---------------------------------------------
+
+& when (@media-common = true) {
+    .amtheme-socials-list {
+        & {
+            &:extend(.abs-reset-list all);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .amtheme-item {
+            margin-bottom: @indent__base;
+            padding: 0 @indent__s;
+        }
+
+        .amtheme-action {
+            & {
+                display: inline-block;
+                box-sizing: border-box;
+                padding: @indent__s;
+                width: @amtheme-social-icons__width;
+                height: @amtheme-social-icons__height;
+                border-radius: 50%;
+                background: @amtheme-social-icons__background;
+                vertical-align: top;
+                transition: all @amtheme__transition;
+            }
+
+            &:hover {
+                background: @amtheme-social-icons__hover__background;
+            }
+
+            &.facebook {
+                padding: 0;
+            }
+
+            &.facebook > svg {
+                margin: 1px 0 0 -4px;
+            }
+        }
+
+        .amtheme-icon:focus {
+            ._keyfocus &,
+            .ie11 ._keyfocus & {
+                border-radius: 50%;
+            }
+        }
+
+        .amtheme-action > svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .amtheme-action path {
+            fill: @amtheme-social-icons__fill;
+        }
+    }
+}
+
+//
+//  Desktop
+//  ---------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .amtheme-socials-list {
+        flex: 1 0 30%;
+        justify-content: flex-end;
+    }
+}

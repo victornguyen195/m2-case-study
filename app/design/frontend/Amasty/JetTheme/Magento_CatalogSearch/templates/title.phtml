@@ -1,0 +1,30 @@
+<?php
+/**
+ * @var $block Magento\Theme\Block\Html\Title
+ * @var $viewModel Amasty\JetTheme\ViewModel\Search\ResultViewModel
+ * @var $escaper Magento\Framework\Escaper
+ */
+
+$viewModel = $block->getViewModel();
+$cssClass = $block->getCssClass() ? ' ' . $block->getCssClass(): '';
+$title = $escaper->escapeHtml($viewModel->getQueryText());
+$baseAttributeAria = $block->getAddBaseAttributeAria();
+?>
+<?php if ($title): ?>
+    <div class="page-title-wrapper amtheme-title-search <?= $escaper->escapeHtml($cssClass) ?>">
+        <h1 class="amtheme-title" data-ui-id="page-title-wrapper"
+            <?= $escaper->escapeHtml($block->getAddBaseAttribute()); ?>
+            <?php if ($block->getId()): ?>
+                id="<?= $escaper->escapeHtml($block->getId()) ?>"
+            <?php endif; ?>
+            <?php if ($baseAttributeAria): ?>
+                aria-labelledby="<?= $escaper->escapeHtml($baseAttributeAria) ?>"
+            <?php endif; ?>>
+            <span class="amtheme-label">
+                <?= $escaper->escapeHtml(__('Search for:')); ?>
+            </span>
+            <?= /* @noEscape */ $title ?>
+        </h1>
+        <?= $block->getChildHtml() ?>
+    </div>
+<?php endif; ?>

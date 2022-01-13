@@ -1,0 +1,16 @@
+<?php
+/**
+ * @var $block \Magento\CatalogSearch\Block\Advanced\Result
+ */
+?>
+
+<?php if ($results = $block->getResultCount()): ?>
+    <span class="amtheme-found">
+        <?php if ($results == 1): ?>
+            <?= $block->escapeHtml(__('%1 item were found using the following search criteria', $results)) ?>
+        <?php else: ?>
+            <?= $block->escapeHtml(__('%1 items were found using the following search criteria', $results)) ?>
+        <?php endif; ?>
+    </span>
+<?php endif; ?>
+

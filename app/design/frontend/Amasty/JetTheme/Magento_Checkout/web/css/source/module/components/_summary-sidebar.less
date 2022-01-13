@@ -1,0 +1,174 @@
+//
+//  Cart summary sidebar styles
+//  ____________________________________________
+
+//
+//  Variables
+//  --------------------------------------------
+
+@cart-shipping-tax-arrow-icon__size: 20px;
+
+//
+//  Common
+//  --------------------------------------------
+
+& when (@media-common = true) {
+    .cart-summary {
+        & {
+            .am-layout-negative-offset;
+
+            background: @amtheme__background-tertiary__color;
+        }
+
+        > .title {
+            display: block;
+            font-size: @h3__font-size;
+        }
+
+        > .block.shipping {
+            margin-top: 30px;
+        }
+
+        > .cart-totals > .table-wrapper {
+            margin-bottom: @indent__sm;
+        }
+    }
+
+    // Estimate Shipping and Tax Block
+    .cart-summary > .block.shipping {
+        > .title {
+            cursor: pointer;
+        }
+
+        > .title:after {
+            display: inline-block;
+            margin-left: 5px;
+            width: @cart-shipping-tax-arrow-icon__size;
+            height: @cart-shipping-tax-arrow-icon__size;
+            background: ~'url("../svg/@{amtheme__icons__color-mode-prefix}/@{amtheme__icons__mode}/arrow-bottom.svg") no-repeat 100% / contain';
+            content: '';
+            vertical-align: middle;
+        }
+
+        &.active > .title:after {
+            transform: rotate(180deg);
+        }
+
+        > .title > strong {
+            vertical-align: middle;
+            font-weight: @font-weight__regular;
+        }
+
+        > .content .fieldset legend + br {
+            display: none;
+        }
+
+        .fieldset.estimate > .field.note {
+            margin-bottom: 10px;
+        }
+
+        .items.methods .item-title {
+            .am-word-break;
+        }
+    }
+    // (END) Estimate Shipping and Tax Block
+
+    // Totals Table
+    .cart-summary > .cart-totals {
+        &:extend(.abs-sidebar-totals all);
+    }
+
+    .cart-summary > .cart-totals .table.totals {
+        tr > th,
+        tr > td {
+            & {
+                font-weight: @font-weight__regular;
+            }
+
+            &:first-child {
+                .am-padding-left(0);
+            }
+
+            &:last-child {
+                .am-padding-right(0);
+            }
+        }
+
+        tr.grand.totals > th,
+        tr.grand.totals > td {
+            font-weight: @font-weight__bold;
+            font-size: @h3__font-size;
+        }
+
+        tr.grand.totals.-first > th,
+        tr.grand.totals.-first > td {
+            border-top: @amtheme__border;
+        }
+
+        .amount {
+            text-align: right;
+        }
+
+        .totals-tax-summary .amount .price:after {
+            .am-vertical-center;
+
+            right: 0;
+            width: 20px;
+        }
+    }
+    // (END) Totals Table
+
+    // Checkout Methods Block
+    .cart-summary > .checkout.methods {
+        > .item {
+            & {
+                margin-bottom: @indent__base;
+                text-align: center;
+            }
+
+            &:last-of-type {
+                margin-bottom: 0;
+            }
+        }
+
+        > .item .paypal.checkout.after > input {
+            display: block;
+            margin: 0 auto 10px;
+            text-align: center;
+        }
+
+        .paypal-button-context-iframe {
+            max-width: none;
+        }
+
+        .action.checkout {
+            width: 100%;
+        }
+    }
+    // (END) Checkout Methods Block
+}
+
+//
+//  Mobile
+//  --------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .cart-summary {
+        margin-top: 30px;
+        padding-top: 20px;
+    }
+}
+
+//
+//  Desktop
+//  --------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .cart-summary {
+        position: relative;
+        padding: @indent__base;
+        width: 100%;
+        border: @amtheme__border;
+        border-radius: @amtheme__border-radius__m;
+    }
+}

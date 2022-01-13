@@ -1,0 +1,85 @@
+//
+//  Jet Theme email footer styles
+//  _____________________________________________
+
+//
+//  General
+//  ---------------------------------------------
+
+.amtheme-email-closing {
+    padding: @email-table-cells-indent__m @email-body__padding;
+}
+
+.amtheme-social-footer {
+    & {
+        padding: @email-footer__padding;
+        background: @email-footer__background;
+    }
+
+    > table {
+        margin: 0 auto;
+    }
+
+    table {
+        color: @email-footer-text__color;
+    }
+
+    > table > tbody > tr > td.amtheme-store-phone {
+        &,
+        & + .amtheme-social-links {
+            width: 50%;
+            vertical-align: middle;
+        }
+    }
+
+    .amtheme-link {
+        & {
+            color: @email-footer-link__color;
+        }
+
+        &:hover,
+        &:focus,
+        &:active,
+        &:visited {
+            color: lighten(@email-footer-link__color, 13%) !important; //override default link styles
+        }
+    }
+
+    .amtheme-nomargin {
+        margin: 0;
+    }
+}
+
+.amtheme-social-links {
+    td {
+        padding: 5px;
+        text-align: center;
+    }
+
+    .amtheme-icon {
+        & {
+            display: inline-block;
+            box-sizing: border-box;
+            margin: 0 5px 10px;
+            padding: 8px;
+            width: @email-footer-icon__size;
+            height: @email-footer-icon__size;
+            border-radius: 50%;
+            background: @email-footer-icon__background;
+            vertical-align: middle;
+        }
+
+        &.facebook {
+            padding: 0;
+        }
+    }
+
+    .amtheme-icon > img {
+        max-width: 100%;
+    }
+
+    .amtheme-icon.facebook > img {
+        .am-margin(1px 0 0 -8px);
+        max-width: 96%;
+    }
+}

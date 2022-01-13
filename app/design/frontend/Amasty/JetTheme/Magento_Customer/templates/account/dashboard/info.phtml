@@ -1,0 +1,59 @@
+<?php
+/** @var \Magento\Customer\Block\Account\Dashboard\Info $block */
+?>
+
+<div class="block amtheme-dashboard-info">
+    <div class="amtheme-content">
+        <div class="amtheme-card-block amtheme-information">
+            <span class="amtheme-title">
+                <?= $block->escapeHtml(__('Contact Information')) ?>
+            </span>
+            <ul class="amtheme-content">
+                <li class="amtheme-item">
+                    <span class="amtheme-customer-name">
+                        <?= $block->escapeHtml($block->getName()) ?>
+                    </span>
+                    <span class="amtheme-customer-email">
+                        <?= $block->escapeHtml($block->getCustomer()->getEmail()) ?>
+                    </span>
+                </li>
+                <li class="amtheme-item">
+                     <?= $block->getChildHtml('customer.account.dashboard.info.extra'); ?>
+                </li>
+            </ul>
+            <div class="amtheme-actions">
+                <a class="action edit"
+                   title="<?= $block->escapeHtml(__('Edit')) ?>"
+                   href="<?= $block->escapeUrl($block->getUrl('customer/account/edit')) ?>">
+                    <?= $block->escapeHtml(__('Edit')) ?>
+                </a>
+                <a href="<?= $block->escapeUrl($block->getChangePasswordUrl()) ?>"
+                   title="<?= $block->escapeHtml(__('Change Password')) ?>"
+                   class="action change-password">
+                    <?= $block->escapeHtml(__('Change Password')) ?>
+                </a>
+            </div>
+        </div>
+        <?php if ($block->isNewsletterEnabled()): ?>
+            <div class="amtheme-card-block amtheme-newsletter">
+                <span class="amtheme-title">
+                    <?= $block->escapeHtml(__('Newsletters')) ?>
+                </span>
+                <div class="amtheme-content">
+                    <?php if ($block->getIsSubscribed()): ?>
+                        <?= $block->escapeHtml(__('You are subscribed to "General Subscription".')) ?>
+                    <?php else: ?>
+                        <?= $block->escapeHtml(__('You aren\'t subscribed to our newsletter.')) ?>
+                    <?php endif; ?>
+                </div>
+                <div class="amtheme-actions">
+                    <a class="action edit"
+                       title="<?= $block->escapeHtml(__('Edit')) ?>"
+                       href="<?= $block->escapeUrl($block->getUrl('newsletter/manage')) ?>">
+                        <?= $block->escapeHtml(__('Edit')) ?>
+                    </a>
+                </div>
+            </div>
+        <?php endif; ?>
+    </div>
+</div>

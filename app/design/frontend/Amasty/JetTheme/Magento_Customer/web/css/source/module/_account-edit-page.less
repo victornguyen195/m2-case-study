@@ -1,0 +1,52 @@
+//
+//  Customer Edit Page Styles
+//  ____________________________________________
+
+//
+//  Common
+//  --------------------------------------------
+
+& when (@media-common = true) {
+    .form.form-edit-account {
+        & {
+            ._am-form-divider;
+
+            margin-bottom: @account-form__gap;
+            width: 100%;
+        }
+
+        .field.password-info {
+            margin-bottom: 20px;
+        }
+
+        > .fieldset.password {
+            display: none;
+        }
+    }
+
+    .customer-account-edit .page-title {
+        margin-bottom: 10px;
+    }
+}
+
+//
+//  Tablet -
+//  --------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__s) {
+    .form.form-edit-account {
+        .field.password-info {
+            margin-bottom: 45px;
+        }
+    }
+}
+
+//
+//  Tablet
+//  --------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .form.form-edit-account {
+        max-width: @account-form__l__max-width;
+    }
+}

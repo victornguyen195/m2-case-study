@@ -1,0 +1,126 @@
+//
+//  Billing address styles
+//  _____________________________________________
+
+//
+//  Common
+//  ---------------------------------------------
+
+& when (@media-common = true) {
+    .checkout-payment-method .checkout-billing-address {
+        & {
+            .am-margin(0 0 @indent__l);
+        }
+
+        > .field.choice {
+            .am-margin(0 0 @indent__sm);
+        }
+
+        .field-select-billing {
+            .am-margin(@indent__base 0);
+        }
+
+        .actions-toolbar {
+            justify-content: flex-end;
+            .am-margin(0 0 @indent__base);
+        }
+
+        .actions-toolbar > .primary {
+            display: flex;
+            align-items: center;
+        }
+
+        .action-update {
+            order: 2;
+            padding: 12px 25px;
+        }
+
+        .actions-toolbar .action-cancel {
+            & {
+                .lib-button-reset();
+
+                order: 1;
+                .am-margin(0 @indent__l 0 0);
+                color: @amtheme__text-secondary__color;
+                letter-spacing: .03em;
+                font-weight: @font-weight__bold;
+                font-size: 1.6rem;
+            }
+
+            &:hover {
+                color: @amtheme__text-primary__color;
+            }
+        }
+
+        .new-billing-address-button {
+            .lib-button-reset();
+            .lib-button-as-link();
+
+            text-transform: uppercase;
+            font-weight: @link__font-weight;
+            font-size: 1.2rem;
+        }
+    }
+
+    .checkout-billing-address .billing-address-details {
+        > .item {
+            .am-margin(0);
+        }
+
+        > .item.name {
+            .am-margin(0 0 @indent__s);
+        }
+
+        > .action-edit-address {
+            .lib-button-as-link();
+        }
+    }
+
+    .checkout-payment-method .payment-method-content .checkout-billing-address {
+        & {
+            .am-margin(0 0 @indent__base);
+        }
+
+        .field.field-select-billing {
+            .am-margin(@indent__base 0);
+        }
+
+        .choice.field {
+            margin-top: @indent__s;
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .checkout-payment-method .checkout-billing-address {
+        .billing-address-details {
+            padding: 0;
+        }
+    }
+}
+
+//
+//  Desktop
+//  --------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .checkout-payment-method .checkout-billing-address {
+        & {
+            padding: 15px;
+            border-radius: @amtheme__border-radius__s;
+            background: @amtheme__background-tertiary__color;
+        }
+
+        > .field.choice {
+            .am-margin(0 0 @indent__s);
+        }
+
+        .billing-address-details > .item.name {
+            .am-margin(0);
+        }
+
+        .new-billing-address-button {
+            padding: @checkout-billing-address-details__padding;
+        }
+    }
+}

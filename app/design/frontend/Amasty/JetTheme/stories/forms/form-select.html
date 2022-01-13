@@ -1,0 +1,245 @@
+<form action="#" method="post">
+    <h2>Standart Select</h2>
+    <div class="flex-wrap">
+        <div class="field">
+            <label class="label" for="select-choice-test">Standart Select Dropdown:</label>
+            <select class="" name="select-choice-test" id="select-choice-test" tabindex="-1">
+                <option value="">Please select</option>
+                <option value="1">Choice 1</option>
+                <option value="2">Choice 2</option>
+                <option value="3">Choice 3</option>
+            </select>
+        </div>
+        <div class="field">
+            <label class="label" for="multiselect-choice-test">Standart Multiselect Dropdown Choice:</label>
+            <select class="" name="multiselect-choice-test" id="multiselect-choice-test" multiple="multiple" tabindex="-1">
+                <option value="choice-1">Choice 1</option>
+                <option value="choice-2">Choice 2</option>
+                <option value="choice-3">Choice 3</option>
+            </select>
+        </div>
+    </div>
+
+    <h2>Custom Select</h2>
+    <div class="flex-wrap">
+        <div class="field">
+            <label class="label">Normal Custom Select </label>
+            <div class="amtheme-select-block" data-amselect-js="select">
+                <span role="button" tabindex="0" class="amtheme-placeholder" data-amselect-js="placeholder">Please select</span>
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">Error Custom Select </label>
+            <div class="mage-error"></div>
+            <div generated="true" class="mage-error" >This is a required field.</div>
+            <div class="amtheme-select-block" data-amselect-js="select">
+                <span role="button" tabindex="0" class="amtheme-placeholder" data-amselect-js="placeholder">Please select</span>
+            </div>
+        </div>
+
+        <div class="field margin">
+            <label class="label">Active Custom Select </label>
+            <div class="amtheme-select-block -active" data-amselect-js="select">
+                <span role="button" tabindex="0" class="amtheme-placeholder" data-amselect-js="placeholder">Please select</span>
+                <ul role="list" class="amtheme-select-options" data-amselect-js="options" >
+                    <li class="amtheme-option"
+                        tabindex="0"
+                        aria-label="Please select"
+                        data-amselect-js="item">
+                        Please select
+                    </li>
+                    <li class="amtheme-option"
+                        tabindex="0"
+                        data-amselect-js="item"
+                        data-amtheme-value="1"
+                    >
+                        <span class="amtheme-title">option 1</span>
+                    </li>
+                    <li class="amtheme-option"
+                        tabindex="0"
+                        data-amselect-js="item"
+                        data-amtheme-value="2"
+                    >
+                        <span class="amtheme-title">option 2</span>
+                    </li>
+                    <li class="amtheme-option"
+                        tabindex="0"
+                        data-amselect-js="item"
+                        data-amtheme-value="3"
+                    >
+                        <span class="amtheme-title">option 3</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="field margin">
+            <label class="label">Custom MultiSelect</label>
+            <div class="amtheme-select-block -multiple -active" data-amselect-js="select">
+                <span role="button" tabindex="0" class="amtheme-placeholder" data-amselect-js="placeholder">Please select</span>
+                <ul role="list" class="amtheme-select-options" data-amselect-js="options">
+                    <li class="amtheme-option" tabindex="0" data-amselect-js="item" data-amtheme-value="choice-1">
+                        <span class="amtheme-title">Lorem ipsum dolor sit amet, consectetur adipisicingadipisicingadipisicingadipisicingadipisicingadipisicingadipisicingadipisicingadipisicingadipisicingadipisicingadipisicingadipisicingadipisicingadipisicingadipisicingadipisicingv elit. Dolore ex fuga hic incidunt nesciunt possimus quod sed sint velit voluptatibus. Ab at eaque eligendi excepturi facilis molestiae, porro praesentium ut. Aliquam autem beatae dicta id minima quae quam? Accusamus ad inventore minima molestias nam necessitatibus nesciunt nobis quidem sequi ut?</span>
+                    </li>
+                    <li class="amtheme-option -selected" tabindex="0" data-amselect-js="item" data-amtheme-value="choice-2">
+                        <span class="amtheme-title">option 2</span>
+                    </li>
+                    <li class="amtheme-option" tabindex="0" data-amselect-js="item" data-amtheme-value="choice-3">
+                        <span class="amtheme-title">option 3</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">Custom MultiSelect Added</label>
+            <div class="amtheme-select-block -multiple" data-amselect-js="select">
+                <span role="button" tabindex="0" class="amtheme-placeholder" data-amselect-js="placeholder">Please select</span>
+                <ul role="list" class="amtheme-select-options" data-amselect-js="options">
+                    <li class="amtheme-option" tabindex="0" data-amselect-js="item" data-amtheme-value="choice-1">
+                        <span class="amtheme-title">Lorem ipsum dolor sit amet, consectetur adipisicingadipisicingadipisicingadipisicingadipisicingadipisicingadipisicingadipisicingadipisicingadipisicingadipisicingadipisicingadipisicingadipisicingadipisicingadipisicingadipisicingv elit. Dolore ex fuga hic incidunt nesciunt possimus quod sed sint velit voluptatibus. Ab at eaque eligendi excepturi facilis molestiae, porro praesentium ut. Aliquam autem beatae dicta id minima quae quam? Accusamus ad inventore minima molestias nam necessitatibus nesciunt nobis quidem sequi ut?</span>
+                    </li>
+                    <li class="amtheme-option -selected" tabindex="0" data-amselect-js="item" data-amtheme-value="choice-2">
+                        <span class="amtheme-title">option 2</span>
+                    </li>
+                    <li class="amtheme-option" tabindex="0" data-amselect-js="item" data-amtheme-value="choice-3">
+                        <span class="amtheme-title">option 3</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!--   Tags generates by js   -->
+            <ul class="amtheme-tags-block" data-amselect-js="tags">
+                <li class="amtheme-option -selected" tabindex="-1" data-amselect-js="item" data-amtheme-value="choice-1">
+                    <span class="amtheme-title">Lorem ipsum siseus</span>
+                    <button class="amtheme-delete-button"
+                            aria-label="delete"
+                            type="button"
+                            tabindex="0">delete</button>
+                </li>
+                <li class="amtheme-option -selected" tabindex="-1" data-amselect-js="item" data-amtheme-value="choice-3">
+                    <span class="amtheme-title">option 3</span>
+                    <button class="amtheme-delete-button"
+                            type="button"
+                            aria-label="delete"
+                            tabindex="0">delete</button>
+                </li>
+            </ul>
+            <!--  END Tags generates by js   -->
+        </div>
+    </div>
+
+    <hr style="margin-top: 150px;">
+    <h2>Source code</h2>
+    <div class="source-wrap">
+        <h3>Custom select</h3>
+        <xmp class="source-code">
+            <div class="field">
+                <label class="label" for="select-choice">Select Dropdown Choice:</label>
+                <select required="true"
+                        class="amtheme-select"
+                        name="select-choice"
+                        id="select-choice"
+                        tabindex="-1">
+                    <option value="">Please select</option>
+                    <option value="1">Choice 1</option>
+                    <option value="2">Choice 2</option>
+                    <option value="3">Choice 3</option>
+                </select>
+
+                <div class="amtheme-select-block"
+                     data-mage-init='{"amSelect": {"selectId": "select-choice"}}'
+                     data-amselect-js="select">
+                    <span role="button"
+                          tabindex="0"
+                          class="amtheme-placeholder"
+                          data-amselect-js="placeholder">
+                        <span class="amtheme-content"
+                              data-amselect-js="placeholder-content">
+                            Please select
+                        </span>
+                    </span>
+                    <ul role="list"
+                        class="amtheme-select-options"
+                        data-amselect-js="options">
+                        <li class="amtheme-option"
+                            tabindex="0"
+                            data-amselect-js="item">
+                            Please select
+                        </li>
+                        <li class="amtheme-option"
+                            tabindex="0"
+                            data-amselect-js="item"
+                            data-amselect-value="1">
+                            <span class="amtheme-title">option 1</span>
+                        </li>
+                        <li class="amtheme-option"
+                            tabindex="0"
+                            data-amselect-js="item"
+                            data-amselect-value="2">
+                            <span class="amtheme-title">option 2</span>
+                        </li>
+                        <li class="amtheme-option"
+                            tabindex="0"
+                            data-amselect-js="item"
+                            data-amselect-value="3">
+                            <span class="amtheme-title">option 3</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </xmp>
+        <h3>Custom multiselect</h3>
+        <xmp class="source-code">
+            <div class="field">
+                <label class="label" for="multiselect-choice">Multiselect Dropdown Choice:</label>
+                <select required="true"
+                        class="amtheme-select"
+                        name="multiselect-choice"
+                        id="multiselect-choice"
+                        multiple="multiple" tabindex="-1">
+                    <option value="choice-1">Choice 1</option>
+                    <option value="choice-2">Choice 2</option>
+                    <option value="choice-3">Choice 3</option>
+                </select>
+
+                <div class="amtheme-select-block"
+                     data-mage-init='{"amSelect": {"selectId": "multiselect-choice", "selectType": "multiple"}}'
+                     data-amselect-js="select">
+                    <span role="button"
+                          tabindex="0"
+                          class="amtheme-placeholder"
+                          data-amselect-js="placeholder">
+                        <span class="amtheme-content"
+                              data-amselect-js="placeholder-content">
+                            Please select
+                        </span>
+                    </span>
+                    <ul role="list"
+                        class="amtheme-select-options"
+                        data-amselect-js="options">
+                        <li class="amtheme-option"
+                            tabindex="0"
+                            data-amselect-js="item"
+                            data-amselect-value="choice-1">
+                            <span class="amtheme-title">Lorem ipsum dolorequi ut?</span>
+                        </li>
+                        <li class="amtheme-option"
+                            tabindex="0"
+                            data-amselect-js="item"
+                            data-amselect-value="choice-2">
+                            <span class="amtheme-title">option 2</span>
+                        </li>
+                        <li class="amtheme-option"
+                            tabindex="0"
+                            data-amselect-js="item"
+                            data-amselect-value="choice-3">
+                            <span class="amtheme-title">option 3</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </xmp>
+    </div>
+</form>

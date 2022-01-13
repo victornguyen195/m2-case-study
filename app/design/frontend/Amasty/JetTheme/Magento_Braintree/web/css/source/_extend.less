@@ -1,0 +1,134 @@
+//
+//  Braintree method styles
+//  _____________________________________________
+
+//
+//  Variables
+//  ---------------------------------------------
+
+@braintree-card-icon__background: ~'url("../svg/@{amtheme__icons__color-mode-prefix}/@{amtheme__icons__mode}/braintree-card.svg")';
+@braintree-card-icon__width: 14px;
+@braintree-card-month__width: 45px;
+@braintree-card-year__width: 55px;
+@braintree-card-cid__width: 70px;
+@braintree-card-cvv__width: 205px;
+@braintree-card-date__width: 130px;
+
+//
+//  Common
+//  ---------------------------------------------
+
+& when (@media-common = true) {
+    .payment-method-braintree .ccard.braintree {
+        .field.type {
+            align-items: flex-end;
+            margin-bottom: @indent__l;
+        }
+
+        .credit-card-types img {
+            .lib-css(filter, none, 1);
+        }
+
+        .field.card-number .hosted-control {
+            .am-padding-right(40px);
+            width: 100%;
+            background: @braintree-card-icon__background no-repeat;
+            background-position: calc(~'100% - @{braintree-card-icon__width}') 50%;
+        }
+
+        .hosted-control {
+            border-color: @amtheme__border__color;
+        }
+
+        .hosted-control.braintree-hosted-fields-focused {
+            border-color: @amtheme__border__active__color;
+        }
+
+        .hosted-control.hosted-date:first-of-type:after {
+            top: 0;
+            right: -15px;
+        }
+
+        .hosted-error {
+            color: @amtheme__error-text__color;
+        }
+
+        .hosted-date.-month {
+            margin-right: @indent__base;
+            width: @braintree-card-month__width;
+        }
+
+        .hosted-date.-year {
+            width: @braintree-card-year__width;
+        }
+
+        .hosted-cid {
+            width: @braintree-card-cid__width;
+        }
+
+        .field.cvv {
+            display: inline-block;
+            margin-bottom: 30px;
+            width: @braintree-card-cvv__width;
+        }
+
+        .cvv .field-tooltip {
+            left: calc(~'@{braintree-card-cid__width} + 10px');
+        }
+
+        .field.exp-date {
+            display: inline-block;
+            .am-margin(0 @indent__base @indent__base 0);
+            width: @braintree-card-date__width;
+            vertical-align: top;
+        }
+    }
+
+    .payment-method-braintree .field.choice.-save {
+        & {
+            margin: 0;
+            padding: 10px;
+            border-radius: @amtheme__border-radius__s;
+            background: @amtheme__background-secondary__color;
+        }
+
+        .label {
+            margin: 0;
+            line-height: 1;
+        }
+
+        .field-tooltip {
+            top: auto;
+            vertical-align: bottom;
+            transform: none;
+        }
+
+        .field-tooltip-content {
+            left: -190px; // Override tooltip styles
+        }
+    }
+}
+
+//
+//  Mobile
+//  ---------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .payment-method-braintree .field.cvv {
+        .field-tooltip .field-tooltip-content {
+            left: -176px; // Override tooltips style
+        }
+    }
+}
+
+//
+//  Desktop
+//  ---------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+    .payment-method-braintree .field.choice.-save {
+        .field-tooltip-content {
+            left: @checkout-tooltip-content__left;
+        }
+    }
+}

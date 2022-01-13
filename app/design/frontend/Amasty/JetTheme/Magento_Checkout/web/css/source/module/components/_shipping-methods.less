@@ -1,0 +1,71 @@
+//
+//  Shipping methods styles
+//  _____________________________________________
+
+//
+//  Common
+//  ---------------------------------------------
+
+& when (@media-common = true) {
+    .amtheme-shipping-method {
+        & {
+            margin-top: @indent__base;
+        }
+
+        > .amtheme-item {
+            margin: 0 0 @indent__m;
+            padding: 0 0 @indent__m;
+            border-bottom: @amtheme__border;
+        }
+
+        > .amtheme-item:last-child {
+            border: 0;
+        }
+
+        .amtheme-method {
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+
+    .amtheme-shipping-method .amtheme-method {
+        > .amtheme-info {
+            .am-margin-right(10px);
+        }
+
+        .amtheme-title {
+            margin: 0 0 5px;
+        }
+
+        .amtheme-description {
+            margin: 0;
+            color: @amtheme__text-placeholder__color;
+            font-size: 1.4rem;
+        }
+
+        .amtheme-price {
+            text-align: right;
+            font-weight: @price__font-weight;
+        }
+    }
+}
+
+//
+//  Desktop
+//  --------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .amtheme-shipping-method {
+        margin-top: 35px;
+    }
+
+    .methods-shipping .actions-toolbar {
+        & {
+            justify-content: flex-end;
+        }
+
+        .button.action {
+            margin-right: 0;
+        }
+    }
+}

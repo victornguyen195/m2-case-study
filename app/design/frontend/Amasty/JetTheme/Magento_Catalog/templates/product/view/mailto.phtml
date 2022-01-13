@@ -1,0 +1,26 @@
+<?php
+/**
+ * @var $block Magento\Catalog\Block\Product\View
+ * @var $escaper Magento\Framework\Escaper
+ */
+
+$_product = $block->getProduct();
+// phpcs:ignore
+$url = $this->helper(Magento\Catalog\Helper\Product::class)->getEmailToFriendUrl($_product);
+?>
+
+<?php if ($block->canEmailToFriend()): ?>
+    <a href="<?= $escaper->escapeUrl($url) ?>"
+        class="action mailto friend"
+        title="<?= $escaper->escapeHtmlAttr(__('Email')) ?>"
+        aria-label="<?= $escaper->escapeHtmlAttr(__('Email')) ?>">
+        <span class="amtheme-circle-icon">
+            <svg class="amtheme-icon -hover-bg">
+                <use xlink:href="#icon-mail"/>
+            </svg>
+        </span>
+        <span class="amtheme-title">
+            <?= $escaper->escapeHtml(__('Email')) ?>
+        </span>
+    </a>
+<?php endif; ?>

@@ -1,0 +1,88 @@
+//
+//  Footer styles
+//  _____________________________________________
+
+//
+//  Common
+//  ---------------------------------------------
+
+& when (@media-common = true) {
+    .page-footer {
+        .logo {
+            display: none;
+        }
+
+        .amtheme-footer-section {
+            display: flex;
+        }
+    }
+}
+
+//
+//  Mobile
+//  ---------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .page-footer {
+        .amtheme-socials-list {
+            padding: @indent__base 0;
+        }
+
+        .amtheme-footer-section {
+            flex-direction: column;
+        }
+
+        .amtheme-socials-list {
+            order: 1;
+        }
+    }
+}
+
+//
+//  Desktop
+//  ---------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .page-footer {
+        .logo {
+            display: flex;
+            align-items: center;
+            flex: 1 0 8%;
+        }
+
+        .logo-image {
+            max-width: 90px;
+        }
+
+        .content {
+            display: flex;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding-top: 50px;
+            padding-bottom: 45px;
+        }
+
+        .content > .links:not(.footer) {
+            max-width: 300px;
+        }
+
+        .content .amtheme-newsletter-block {
+            flex-basis: 100%;
+        }
+
+        .amtheme-socials-list {
+            align-items: center;
+        }
+
+        .amtheme-footer-section {
+            flex: 1 0 80%;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .amtheme-footer-section .footer.links {
+            max-width: 67%;
+        }
+    }
+}

@@ -1,0 +1,34 @@
+<?php
+/**
+ * @var Magento\Framework\View\Element\Template $block
+ * @var Magento\Framework\Escaper $escaper
+ * @var Amasty\JetTheme\ViewModel\SocialViewModel $viewModel
+ */
+$viewModel = $block->getViewModel();
+?>
+<?php if ($viewModel->isShowLinksBlock()): ?>
+    <td class="amtheme-social-links">
+        <table align="right">
+            <tbody>
+                <tr>
+                    <td>
+                        <?php foreach ($viewModel->getSocialLinks() as $socialLink): ?>
+                            <a class="amtheme-icon <?= $escaper->escapeHtmlAttr($socialLink->getDefaultIcon()) ?>"
+                               href="<?= $escaper->escapeUrl($socialLink->getLink()) ?>"
+                               title="<?= $escaper->escapeHtmlAttr($socialLink->getTitle()) ?>"
+                               target="_blank">
+                                <?php if (!$socialLink->getDefaultIcon()): ?>
+                                    <img src="<?= $escaper->escapeHtmlAttr($viewModel->getSocialImage($socialLink->getIcon())); ?>"
+                                <?php else: ?>
+                                    <img src="<?= $escaper->escapeUrl($block->getViewFileUrl('images/email/social_icons/' . $socialLink->getDefaultIcon() . '.png')) ?>"
+                                <?php endif; ?>
+                                     class="<?= $escaper->escapeHtmlAttr($socialLink->getKey()) ?>"
+                                     alt="<?= $escaper->escapeHtmlAttr($socialLink->getTitle()) ?>"/>
+                            </a>
+                        <?php endforeach; ?>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </td>
+<?php endif; ?>

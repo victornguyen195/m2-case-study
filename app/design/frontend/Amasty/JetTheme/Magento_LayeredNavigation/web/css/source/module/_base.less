@@ -1,0 +1,52 @@
+//
+//  Amasty Layered Base
+//  ____________________________________________
+
+//
+//  Common
+//  --------------------------------------------
+
+& when (@media-common = true) {
+    .toolbar-sorter .amtheme-filter-wrap {
+        flex: 1;
+    }
+
+    .toolbar-sorter .amtheme-filter-button {
+        & {
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 0;
+            min-height: @toolbar-mobile__height;
+            height: 1px;
+            cursor: pointer;
+        }
+
+        .filter-title-text {
+            font-weight: @filter-title__font-weight;
+            font-size: 1.6rem;
+        }
+
+        .amtheme-icon {
+            margin-right: @indent__xs;
+            width: @filter-icon-mobile__width;
+            height: @filter-icon-mobile__height;
+            background: none;
+        }
+
+        .amtheme-icon.-active {
+            width: @filter-icon-active-mobile__width;
+            height: @filter-icon-active-mobile__height;
+        }
+    }
+}
+
+//
+//  Desktop
+//  --------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .toolbar-sorter .amtheme-filter-wrap {
+        display: none;
+        min-height: @toolbar__height;
+    }
+}

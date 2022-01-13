@@ -1,0 +1,22 @@
+//
+//  Login as Customer styles extend
+//  ____________________________________________
+
+//
+//  Common
+//  ---------------------------------------------
+
+& when (@media-common = true) {
+    // Override Magento styles
+    .lac-notification .top-container {
+        & {
+            display: flex;
+        }
+
+        .lac-notification-links {
+            justify-self: flex-end;
+            .am-margin-left(auto);
+        }
+    }
+    // (END) Override Magento
+}

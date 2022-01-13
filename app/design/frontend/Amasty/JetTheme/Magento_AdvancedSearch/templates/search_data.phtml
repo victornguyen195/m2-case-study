@@ -1,0 +1,28 @@
+<?php
+/**
+ * @var \Magento\AdvancedSearch\Block\SearchData $block
+ * @var \Magento\Search\Model\QueryResult[] $data
+ */
+
+$data = $block->getItems();
+?>
+
+<?php if (count($data)): ?>
+    <dl class="amtheme-search-terms">
+        <dt class="amtheme-title"><?= $block->escapeHtml(__($block->getTitle())) ?></dt>
+        <?php foreach ($data as $additionalInfo): ?>
+            <dd class="amtheme-item">
+                <a class="amtheme-link"
+                   href="<?= $block->escapeUrl($block->getLink($additionalInfo->getQueryText())) ?>"
+                   aria-label="<?= $block->escapeHtml($additionalInfo->getQueryText()) ?>"
+                   title="<?= $block->escapeHtml($additionalInfo->getQueryText()) ?>"
+                >
+                    <?= $block->escapeHtml($additionalInfo->getQueryText()) ?>
+                    <?php if ($block->isShowResultsCount()): ?>
+                        <span class="amtheme-count"><?= (int)$additionalInfo->getResultsCount() ?></span>
+                    <?php endif; ?>
+                </a>
+            </dd>
+        <?php endforeach; ?>
+    </dl>
+<?php endif; ?>

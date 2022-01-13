@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="page.main.title">
+            <container name="order.title.info" htmlTag="div" htmlClass="amtheme-info">
+                <block class="Magento\Sales\Block\Order\Info" name="order.status" template="Magento_Sales::order/order_status.phtml"/>
+                <block class="Magento\Sales\Block\Order\Info" name="order.date" template="Magento_Sales::order/order_date.phtml"/>
+            </container>
+            <block class="Magento\Sales\Block\Order\Info\Buttons" name="sales.order.info.title.print" template="Magento_Sales::order/print.phtml" before="-" />
+        </referenceContainer>
+        <move element="order.actions.container" destination="order.title.info" after="-"/>
+    </body>
+</page>

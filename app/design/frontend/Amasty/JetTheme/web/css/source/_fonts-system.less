@@ -1,0 +1,48 @@
+//
+//  Font system theme
+//  ____________________________________________
+
+//
+//  Variables
+//  -----------------------------------------------
+
+@font-family-name__base: 'Roboto';
+@font-family__base: @font-family-name__base, @font-family__sans-serif;
+
+//
+//  Common
+//  ---------------------------------------------
+
+& when (@media-common = true) {
+    .am-lib-font-face(
+        @family-name: @font-family-name__base,
+        @font-path: '@{baseDir}fonts/roboto/regular/Roboto-400',
+        @font-weight: @font-weight__regular,
+        @font-style: normal,
+        @font-display: swap
+    );
+
+    .am-lib-font-face(
+        @family-name: @font-family-name__base,
+        @font-path: '@{baseDir}fonts/roboto/regular/Roboto-400-italic',
+        @font-weight: @font-weight__regular,
+        @font-style: italic,
+        @font-display: swap
+    );
+
+    .am-lib-font-face(
+        @family-name: @font-family-name__base,
+        @font-path: '@{baseDir}fonts/roboto/bold/Roboto-700',
+        @font-weight: @font-weight__bold,
+        @font-style: normal,
+        @font-display: swap
+    );
+
+    .am-lib-font-face(
+        @family-name: @font-family-name__base,
+        @font-path: '@{baseDir}fonts/roboto/bold/Roboto-700-italic',
+        @font-weight: @font-weight__bold,
+        @font-style: italic,
+        @font-display: swap
+    );
+}

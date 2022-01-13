@@ -1,0 +1,39 @@
+//
+//  Account Pages Tables
+//  ____________________________________________
+
+//
+//  Common
+//  --------------------------------------------
+
+& when (@media-common = true) {
+    .account table {
+        & {
+            border-radius: @amtheme__border-radius__m;
+            background: @amtheme__background-tertiary__color;
+        }
+
+        .col.actions {
+            white-space: nowrap;
+        }
+
+        .col.actions .action:not(:first-of-type) {
+            .am-margin-left(20px);
+        }
+    }
+}
+
+//
+//  Mobile
+//  --------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
+    .account table.table:not(.cart):not(.totals):not(.table-comparison) > tbody > tr { // override magento responsive table styles
+        td,
+        th {
+            &[data-th].col.actions:before {
+                display: none;
+            }
+        }
+    }
+}

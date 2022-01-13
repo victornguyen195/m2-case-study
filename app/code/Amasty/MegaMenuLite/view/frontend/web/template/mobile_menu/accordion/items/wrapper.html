@@ -1,0 +1,17 @@
+<!-- ko scope: 'index = mobile_submenu_wrapper' -->
+    <!-- ko template: { name: getTemplate(), data: $parents[1] } --><!-- /ko -->
+<!-- /ko -->
+
+<ul class="ammenu-items" if="elems.length" data-bind="visible: $parent.isActive, foreach: elems">
+    <li class="ammenu-item"
+        data-bind="
+            attr: {
+                class: 'ammenu-item category-item' + ' ' + $data.navLevelSelector
+            }">
+        <!-- ko template: { name: $parent.uiClass.root_templates.mobile_link, data: { item: $data, uiClass: $parent.uiClass } } --><!-- /ko -->
+
+        <!-- ko if: $data.isSubmenuVisible -->
+            <!-- ko template: { name: $parent.uiClass.templates.itemsAccordion, data: { uiClass: $parent.uiClass, elems: $data.elems } } --><!-- /ko -->
+        <!-- /ko -->
+    </li>
+</ul>

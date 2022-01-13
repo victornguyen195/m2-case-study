@@ -1,0 +1,48 @@
+//
+//  Category description styles
+//  _____________________________________
+
+//
+//  Common
+//  -------------------------------------
+
+& when (@media-common = true) {
+    .catalog-category-view {
+        .page-title {
+            margin-bottom: @indent__s;
+        }
+
+        .category-view {
+            margin-bottom: 15px;
+        }
+
+        .wrapper-description {
+            box-sizing: border-box;
+            .am-margin(@indent__base auto);
+            padding-top: @indent__base;
+            padding-bottom: @indent__base;
+            width: 100%;
+        }
+    }
+}
+
+//
+//  Desktop
+//  ---------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .catalog-category-view {
+        .page-title {
+            margin-bottom: @indent__xs;
+        }
+
+        .category-view {
+            margin-bottom: @indent__base;
+        }
+
+        .wrapper-description {
+            margin-top: 0;
+            width: 100%;
+        }
+    }
+}

@@ -1,0 +1,61 @@
+<?php
+
+/** @var \Magento\Review\Block\Customer\View $block */
+
+$product = $block->getProductData();
+$reviewDate = $block->dateFormat($block->getReviewData()->getCreatedAt());
+?>
+
+<?php if ($product->getId()): ?>
+<div class="amtheme-customer-review view">
+    <div class="product-media product-item">
+        <a class="product-photo" href="<?= $block->escapeUrl($product->getProductUrl()) ?>">
+            <?php /* customer_account_product_review_page */ ?>
+            <?= $block->getImage($block->getProductData(), 'customer_account_product_review_page')->toHtml() ?>
+        </a>
+    </div>
+    <div class="amtheme-content">
+        <div class="product-info">
+            <h2 class="product-name">
+                <?= $block->escapeHtml($product->getName()) ?>
+            </h2>
+            <?php if ($block->getRating() && $block->getRating()->getSize()): ?>
+                <?= $block->getReviewsSummaryHtml($product) ?>
+            <?php endif; ?>
+        </div>
+        <div class="review-details">
+            <div class="review-title"><?= $block->escapeHtml($block->getReviewData()->getTitle()) ?></div>
+            <?php if ($block->getRating() && $block->getRating()->getSize()): ?>
+                <div class="customer-review-rating star-secondary">
+                    <?php foreach ($block->getRating() as $rating): ?>
+                        <?php if ($rating->getPercent()): ?>
+                            <?php $rating = ceil($rating->getPercent()) ?>
+                            <div class="rating-summary item">
+                                <div class="rating-result" title="<?= $block->escapeHtmlAttr($rating) ?>%">
+                                    <span style="width:<?= $block->escapeHtmlAttr($rating) ?>%"></span>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
+            <div class="review-date">
+                <?= $block->escapeHtml(__('Submitted on %1', '<time class="date">' . $reviewDate . '</time>'), ['time']) ?>
+            </div>
+            <div class="review-content">
+                <?= /* @noEscape */ nl2br($block->escapeHtml($block->getReviewData()->getDetail())) ?>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="actions-toolbar">
+    <div class="secondary">
+        <a class="action back"
+           href="<?= $block->escapeUrl($block->getBackUrl()) ?>"
+           title="<?= $block->escapeHtml(__('Back to My Reviews')) ?>"
+           aria-label="<?= $block->escapeHtml(__('Back to My Reviews')) ?>">
+            <?= $block->escapeHtml(__('Back to My Reviews')) ?>
+        </a>
+    </div>
+</div>
+<?php endif; ?>

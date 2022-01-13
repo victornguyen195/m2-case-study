@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_layout.xsd">
+    <referenceContainer name="amtheme.product.info.wrap" remove="true"/>
+    <referenceContainer name="product.info.details.wrapper" remove="true"/>
+
+    <referenceContainer name="columns">
+        <container name="amtheme.product.info.details.wrapper"
+                   htmlTag="div"
+                   htmlClass="amtheme-productinfo-wrap"
+                   after="column.main"/>
+    </referenceContainer>
+
+    <referenceContainer name="product.info.details.after.wrapper.main" htmlClass="amtheme-productaside-wrap">
+        <container name="amtheme.full.width.product.info.description"
+                   htmlTag="div"
+                   htmlClass="product-full-width-section"
+                   before="-"/>
+    </referenceContainer>
+
+    <move element="product.info.details.after.wrapper.main" destination="amtheme.product.info.details.wrapper" before="-"/>
+    <move element="product.info.description" destination="amtheme.full.width.product.info.description" before="-"/>
+</layout>

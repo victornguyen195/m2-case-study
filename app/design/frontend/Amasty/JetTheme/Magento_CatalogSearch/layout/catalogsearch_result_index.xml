@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="page.main.title">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">Magento_CatalogSearch::title.phtml</argument>
+            </action>
+            <arguments>
+                <argument name="view_model" xsi:type="object">Amasty\JetTheme\ViewModel\Search\ResultViewModel</argument>
+            </arguments>
+        </referenceBlock>
+        <referenceBlock name="product_list_toolbar">
+            <arguments>
+                <argument name="view_model" xsi:type="object">Amasty\JetTheme\ViewModel\Catalog\FilterStatusViewModel\Search</argument>
+            </arguments>
+        </referenceBlock>
+        <referenceBlock name="search_result_list">
+            <arguments>
+                <argument name="ajax_view_model" xsi:type="object">Amasty\JetTheme\ViewModel\Catalog\Ajax</argument>
+                <argument name="layout_view_model" xsi:type="object">Amasty\JetTheme\ViewModel\CategoryPage\CategoryPageViewModel</argument>
+            </arguments>
+        </referenceBlock>
+        <referenceBlock name="catalogsearch.product.addto.compare">
+            <arguments>
+                <argument name="amAjaxViewModel" xsi:type="object">Amasty\JetTheme\ViewModel\Catalog\Ajax</argument>
+            </arguments>
+        </referenceBlock>
+        <referenceBlock name="catalogsearch.product.addto">
+            <block class="Magento\Catalog\Block\Product\ProductList\Item\Container"
+                   name="amtheme.catalogsearch.product.actions.links"
+                   template="Magento_Catalog::product/list/actions-wrap.phtml">
+                <block class="Magento\Catalog\Block\Product\ProductList\Item\Block"
+                       as="amtheme.quick.view"
+                       name="amtheme.catalogsearch.quick.view"
+                       template="Magento_Catalog::product/list/quick-view.phtml">
+                    <arguments>
+                        <argument name="amAjaxViewModel" xsi:type="object">Amasty\JetTheme\ViewModel\Catalog\Ajax</argument>
+                    </arguments>
+                </block>
+                <arguments>
+                    <argument name="amViewModel" xsi:type="object">Amasty\JetTheme\ViewModel\CategoryPage\CategoryPageViewModel</argument>
+                    <argument name="amAjaxViewModel" xsi:type="object">Amasty\JetTheme\ViewModel\Catalog\Ajax</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+        <move element="catalogsearch.product.addto.wishlist" as="amtheme.wishlist" destination="amtheme.catalogsearch.product.actions.links"/>
+        <move element="catalogsearch.product.addto.compare" as="amtheme.compare" destination="amtheme.catalogsearch.product.actions.links"/>
+        <move element="catalogsearch.product.addto.requisition" as="amtheme.requisition" destination="amtheme.catalogsearch.product.actions.links"/>
+        <move element="page.main.title" destination="additional" before="-" />
+    </body>
+</page>

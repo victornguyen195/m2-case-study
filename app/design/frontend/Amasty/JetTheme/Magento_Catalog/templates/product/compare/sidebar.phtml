@@ -1,0 +1,65 @@
+<?php
+/* @var $block \Magento\Framework\View\Element\Template */
+
+// phpcs:ignore
+$PostDataClearList = $this->helper(Magento\Catalog\Helper\Product\Compare::class)->getPostDataClearList();
+?>
+
+<div class="amtheme-sidebar-block amtheme-sidebar-compare" data-bind="scope: 'compareProducts'" data-role="compare-products-sidebar">
+    <div class="amtheme-heading">
+        <span class="amtheme-title"
+              role="heading"
+              aria-level="2">
+            <?= $block->escapeHtml(__('Compare Products')) ?>
+        </span>
+        <!-- ko if: compareProducts().count -->
+            <button id="compare-clear-all"
+                    class="clear -icon-action -hidden"
+                    title="<?= $block->escapeHtmlAttr(__('Clear')) ?>"
+                    aria-label="<?= $block->escapeHtmlAttr(__('Clear')) ?>"
+                    data-post="<?= $block->escapeHtmlAttr($PostDataClearList) ?>"
+                    data-bind="css: {'-hidden': !compareProducts().count}">
+                <?= $block->escapeHtml(__('Clear')) ?>
+            </button>
+        <!-- /ko -->
+    </div>
+    <!-- ko if: compareProducts().count -->
+    <div class="amtheme-content no-display"
+         aria-labelledby="block-compare-heading"
+         data-bind="css: {'no-display': !compareProducts().count}">
+        <ul id="compare-items"
+            class="amtheme-items"
+            data-bind="foreach: compareProducts().items">
+            <li class="amtheme-item">
+                <input type="hidden" class="compare-item-id" data-bind="value: id"/>
+                <a data-bind="attr: {href: product_url}, html: name" class="amtheme-name"></a>
+                <button data-bind="attr: {'data-post': remove_url}"
+                        title="<?= $block->escapeHtmlAttr(__('Delete')) ?>"
+                        aria-label="<?= $block->escapeHtmlAttr(__('Delete')) ?>"
+                        class="delete -icon-action">
+                    <svg class="amtheme-icon" focusable="false">
+                        <use xlink:href="#icon-close"></use>
+                    </svg>
+                </button>
+            </li>
+        </ul>
+        <div class="amtheme-actions">
+            <a data-bind="attr: {'href': compareProducts().listUrl}"
+               aria-label="<?= $block->escapeHtmlAttr(__('Compare')) ?>"
+               title="<?= $block->escapeHtmlAttr(__('Compare')) ?>"
+               class="compare button-as-link amtheme-sliding-icon">
+                <?= $block->escapeHtml(__('Compare')) ?>
+                <svg class="amtheme-icon" focusable="false">
+                    <use xlink:href="#icon-arrow-right-min"></use>
+                </svg>
+            </a>
+        </div>
+    </div>
+    <!-- /ko -->
+    <!-- ko ifnot: compareProducts().count -->
+    <div class="amtheme-empty"><?= $block->escapeHtml(__('You have no items to compare.')) ?></div>
+    <!-- /ko -->
+</div>
+<script type="text/x-magento-init">
+    {"[data-role=compare-products-sidebar]": {"Magento_Ui/js/core/app": <?= /* @noEscape */ $block->getJsLayout() ?>}}
+</script>

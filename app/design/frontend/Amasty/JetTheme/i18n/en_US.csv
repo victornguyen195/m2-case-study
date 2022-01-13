@@ -1,0 +1,599 @@
+Item,Item
+Price,Price
+"See price before order confirmation.","See price before order confirmation."
+"What's this?","What's this?"
+"Incl. Tax","Incl. Tax"
+"Excl. Tax","Excl. Tax"
+Qty,Qty
+Minus,Minus
+Plus,Plus
+"Move to Wish List","Move to Wish List"
+"Edit item parameters","Edit item parameters"
+Edit,Edit
+"Remove item","Remove item"
+Delete,Delete
+"Products Requiring Attention","Products Requiring Attention"
+"Remove All","Remove All"
+"Add to Cart","Add to Cart"
+File,File
+"Choose File","Choose File"
+"No file selected.","No file selected."
+Remove,Remove
+"File extensions allowed: .csv","File extensions allowed: .csv"
+"Your csv file must include ""sku"" and ""qty"" columns.","Your csv file must include ""sku"" and ""qty"" columns."
+"Order by SKU","Order by SKU"
+"Add Row","Add Row"
+SKU,SKU
+"Go back to product details","Go back to product details"
+None,None
+"Choose a selection...","Choose a selection..."
+"Regular Price","Regular Price"
+"As low as","As low as"
+From,From
+To,To
+"Print Page","Print Page"
+"Clear List","Clear List"
+"Compare Products","Compare Products"
+Compare,Compare
+Product,Product
+"Remove Product","Remove Product"
+"Add to Wishlist","Add to Wishlist"
+"In stock","In stock"
+"Out of stock","Out of stock"
+"You have no items to compare.","You have no items to compare."
+Clear,Clear
+"Clear Compare List","Clear Compare List"
+"Compare Items","Compare Items"
+"We can't find products matching the selection.","We can't find products matching the selection."
+"Add to Compare","Add to Compare"
+"Related Products","Related Products"
+"We found other products you might like!","We found other products you might like!"
+"More Choices:","More Choices:"
+"A few recommendations","A few recommendations"
+"New Products","New Products"
+"Quick View","Quick View"
+Show,Show
+"per page","per page"
+Filters,Filters
+"Sort By","Sort By"
+"Set Ascending Direction","Set Ascending Direction"
+"Set Descending Direction","Set Descending Direction"
+"View as","View as"
+"Buy %1 for: ","Buy %1 for: "
+"Click for price","Click for price"
+"<strong class=""benefit"">save<span class=""percent tier-%3"">&nbsp;%4</span>%</strong> buy %1 for %2 each","<strong class=""benefit"">save<span class=""percent tier-%3"">&nbsp;%4</span>%</strong> buy %1 for %2 each"
+"Buy %1 for %2 each","Buy %1 for %2 each"
+Close,Close
+"Customer Reviews","Customer Reviews"
+"Ratings & Reviews","Ratings & Reviews"
+"Be the first to review this product","Be the first to review this product"
+"Share your thoughts with other customers","Share your thoughts with other customers"
+"Write review","Write review"
+"See All","See All"
+Email,Email
+Change,Change
+select,select
+"Compatible file extensions to upload: %1","Compatible file extensions to upload: %1"
+"Maximum image width: %1px.","Maximum image width: %1px."
+"Maximum image height: %1px.","Maximum image height: %1px."
+"-- Please Select --","-- Please Select --"
+"Please Select","Please Select"
+name,name
+"Don't see what you're looking for?","Don't see what you're looking for?"
+"Modify your search.","Modify your search."
+"Search Settings","Search Settings"
+Search,Search
+"We can't find any items matching these search criteria.","We can't find any items matching these search criteria."
+"%1 item were found using the following search criteria","%1 item were found using the following search criteria"
+"%1 items were found using the following search criteria","%1 items were found using the following search criteria"
+"Your search returned no results.","Your search returned no results."
+"Search for:","Search for:"
+Overview,Overview
+"Do you Have discount code?","Do you Have discount code?"
+"Enter discount code","Enter discount code"
+"Apply Discount","Apply Discount"
+Apply,Apply
+"Cancel Coupon","Cancel Coupon"
+Cancel,Cancel
+"%1 %2","%1 %2"
+" in Cart"," in Cart"
+"Update Shopping Cart","Update Shopping Cart"
+Update,Update
+"Continue Shopping","Continue Shopping"
+"Clear Shopping Cart","Clear Shopping Cart"
+"Clear all","Clear all"
+"Shopping Cart Items","Shopping Cart Items"
+Subtotal,Subtotal
+"Update Cart","Update Cart"
+"My Cart","My Cart"
+"Proceed to Checkout","Proceed to Checkout"
+Checkout,Checkout
+"Your Order is: %1","Your Order is: %1"
+"Your Order is: <span>%1</span>","Your Order is: <span>%1</span>"
+"We'll email you an order confirmation with details and tracking info.","We'll email you an order confirmation with details and tracking info."
+Contact,Contact
+"Ship to","Ship to"
+Date,Date
+"Please select a region, state or province.","Please select a region, state or province."
+"Company Information","Company Information"
+"Company Name","Company Name"
+"Company Legal Name","Company Legal Name"
+"Company Email","Company Email"
+"VAT/TAX ID","VAT/TAX ID"
+"Re-seller ID","Re-seller ID"
+"Legal Address","Legal Address"
+"Street Address","Street Address"
+City,City
+Country,Country
+State/Province,State/Province
+"ZIP/Postal Code","ZIP/Postal Code"
+"Phone Number","Phone Number"
+"Company Administrator","Company Administrator"
+"Job Title","Job Title"
+Submit,Submit
+Company,Company
+"Create an Account","Create an Account"
+"My Account","My Account"
+"Address Book","Address Book"
+"Manage Addresses","Manage Addresses"
+"Default Billing Address","Default Billing Address"
+"Edit Address","Edit Address"
+"Default Shipping Address","Default Shipping Address"
+"Contact Information","Contact Information"
+"Change Password","Change Password"
+Newsletters,Newsletters
+"You are subscribed to ""General Subscription"".","You are subscribed to ""General Subscription""."
+"You aren't subscribed to our newsletter.","You aren't subscribed to our newsletter."
+"Hi, ","Hi, "
+or,or
+"You have no default billing address in your address book.","You have no default billing address in your address book."
+"You have no default shipping address in your address book.","You have no default shipping address in your address book."
+"* Required Fields","* Required Fields"
+Address,Address
+"Street Address %1","Street Address %1"
+"It's a default billing address.","It's a default billing address."
+"Use as default billing address","Use as default billing address"
+"It's a default shipping address.","It's a default shipping address."
+"Use as default shipping address","Use as default shipping address"
+"Save Address","Save Address"
+Save,Save
+"Go back","Go back"
+"Additional Address","Additional Address"
+"Add New Address","Add New Address"
+"Add New","Add New"
+"First Name","First Name"
+"Last Name","Last Name"
+State,State
+"Zip/Postal Code","Zip/Postal Code"
+Phone,Phone
+"Delete Address","Delete Address"
+"You have no other address entries in your address book.","You have no other address entries in your address book."
+Back,Back
+"Account Information","Account Information"
+"Change Email and Password","Change Email and Password"
+"New Email","New Email"
+Password,Password
+"New Password","New Password"
+"Password Strength","Password Strength"
+"No Password","No Password"
+Confirm,Confirm
+"Change Email","Change Email"
+"Already Registered?","Already Registered?"
+"If you have an account, sign in with your email address.","If you have an account, sign in with your email address."
+"Sign In","Sign In"
+"Forgot Your Password?","Forgot Your Password?"
+"Don’t have an Account?","Don’t have an Account?"
+"Create an account","Create an account"
+"Creating an account","Creating an account"
+" has many benefits: check out faster, keep more than one address, track orders and more."," has many benefits: check out faster, keep more than one address, track orders and more."
+Balance,Balance
+"Your balance is:","Your balance is:"
+"Balance History","Balance History"
+Action,Action
+"Balance Change","Balance Change"
+Fax,Fax
+"Current Password","Current Password"
+"Confirm New Password","Confirm New Password"
+Currency,Currency
+Currency:,Currency:
+"Downloadable Products","Downloadable Products"
+"Order #","Order #"
+Title,Title
+Status,Status
+"Remaining Downloads","Remaining Downloads"
+"View Order","View Order"
+"Start Download","Start Download"
+Download,Download
+"You have not purchased any downloadable products yet.","You have not purchased any downloadable products yet."
+"Redeem Gift Card","Redeem Gift Card"
+"Have a gift card?","Have a gift card?"
+"Click here","Click here"
+"to redeem it.","to redeem it."
+"Shipping Address","Shipping Address"
+"Select a shipping address from your address book or enter a new address.","Select a shipping address from your address book or enter a new address."
+"Gift Registry","Gift Registry"
+Note,Note
+"Added On","Added On"
+"Qty Fulfilled","Qty Fulfilled"
+"Update Gift Registry","Update Gift Registry"
+"This gift registry has no items.","This gift registry has no items."
+Name,Name
+Sender,Sender
+Message,Message
+Invitee,Invitee
+"Maximum %1 email addresses.","Maximum %1 email addresses."
+"Add Invitee","Add Invitee"
+"Share Gift Registry","Share Gift Registry"
+%1,%1
+"Registrant Information","Registrant Information"
+"Maximum %1 registrants.","Maximum %1 registrants."
+"Add Registrant","Add Registrant"
+Type:,Type:
+"General Information","General Information"
+Event,Event
+"Privacy Settings","Privacy Settings"
+label,label
+"This won't take long . . .","This won't take long . . ."
+"Required Fields","Required Fields"
+"Search Options","Search Options"
+"Gift Registry Type","Gift Registry Type"
+"For better search results, first choose a gift registry type. By default, we search all registry types.","For better search results, first choose a gift registry type. By default, we search all registry types."
+"Type Specific Options","Type Specific Options"
+"Registrant Email","Registrant Email"
+"Gift Registry ID","Gift Registry ID"
+"Search Results","Search Results"
+Location,Location
+Type,Type
+"Event Date","Event Date"
+Actions,Actions
+View,View
+"Gift Registry Items","Gift Registry Items"
+"Product Name","Product Name"
+Requested,Requested
+Fulfilled,Fulfilled
+Remaining,Remaining
+"Unit Price","Unit Price"
+"Add to Gift Registry","Add to Gift Registry"
+"Grouped product items","Grouped product items"
+Availability,Availability
+"No options of this product are available.","No options of this product are available."
+"Your order is: <span>%1</span>","Your order is: <span>%1</span>"
+"We'll email you an order and pick-up confirmation with details.","We'll email you an order and pick-up confirmation with details."
+"Invite your friends by entering their email addresses","Invite your friends by entering their email addresses"
+"Maximum %1 email addresses allowed.","Maximum %1 email addresses allowed."
+"Add Email","Add Email"
+"Send Invitations","Send Invitations"
+"Back to Invitations","Back to Invitations"
+"Email Address","Email Address"
+"Enter Email","Enter Email"
+"You cannot send more invitations","You cannot send more invitations"
+"Hide Filters","Hide Filters"
+item,item
+items,items
+"Now Shopping by","Now Shopping by"
+Previous,Previous
+"Close filter","Close filter"
+"Shop By","Shop By"
+"Clear All","Clear All"
+Tooltip,Tooltip
+"Delete Wish List","Delete Wish List"
+"You must select items to add to the cart.","You must select items to add to the cart."
+Owner,Owner
+Updated,Updated
+"Wish List Items","Wish List Items"
+"Add to","Add to"
+"Create New Wish List","Create New Wish List"
+Wishlist,Wishlist
+"Copy to Wish List","Copy to Wish List"
+"Select Item","Select Item"
+"Owner Email","Owner Email"
+"Wish List Name","Wish List Name"
+"Wish List","Wish List"
+"Create Wish List","Create Wish List"
+"Edit Wish List","Edit Wish List"
+"Public Wish List","Public Wish List"
+"Private Wish List","Private Wish List"
+"Select All","Select All"
+"Move Selected to Wish List","Move Selected to Wish List"
+"Copy Selected to Wish List","Copy Selected to Wish List"
+"Wish List Search","Wish List Search"
+"Search By","Search By"
+"Please enter at least two letters.","Please enter at least two letters."
+"Default Billing","Default Billing"
+"Default Shipping","Default Shipping"
+"Select Address","Select Address"
+"Back to Billing Information","Back to Billing Information"
+"Please select a shipping address for applicable items.","Please select a shipping address for applicable items."
+"Send To","Send To"
+"A shipping selection is not applicable.","A shipping selection is not applicable."
+"Remove Item","Remove Item"
+"Back to Shopping Cart","Back to Shopping Cart"
+"Back to Cart","Back to Cart"
+"Update Qty &amp; Addresses","Update Qty &amp; Addresses"
+"Enter a New Address","Enter a New Address"
+"New Address","New Address"
+"Go to Shipping Information","Go to Shipping Information"
+Loading...,Loading...
+"Billing Address","Billing Address"
+"Change Billing Address","Change Billing Address"
+"Payment Method","Payment Method"
+"Go to Review Your Order","Go to Review Your Order"
+"Back to Shipping Information","Back to Shipping Information"
+"Other items in your order","Other items in your order"
+"Edit Items","Edit Items"
+"Shipping is not applicable.","Shipping is not applicable."
+Qty:,Qty:
+"Please see","Please see"
+"Error Details","Error Details"
+"details below","details below"
+"Billing Information","Billing Information"
+"Change Payment Method","Change Payment Method"
+"Shipping Information / Address %1 of %2","Shipping Information / Address %1 of %2"
+"Change Shipping Address","Change Shipping Address"
+"Shipping Method","Shipping Method"
+"Change Shipping Method","Change Shipping Method"
+Items,Items
+"Order Review","Order Review"
+"Grand Total:","Grand Total:"
+"Place Order","Place Order"
+"Submitting order information...","Submitting order information..."
+"Address %1 of %2","Address %1 of %2"
+"Ship To","Ship To"
+"Sorry, no quotes are available for this order right now.","Sorry, no quotes are available for this order right now."
+"Continue to Billing Information","Continue to Billing Information"
+"Back to Select Addresses","Back to Select Addresses"
+"For successfully order items, you'll receive a confirmation email including order numbers, tracking information and more details.","For successfully order items, you'll receive a confirmation email including order numbers, tracking information and more details."
+"Your Order is:","Your Order is:"
+"Order Id","Order Id"
+"Ship to:","Ship to:"
+"No shipping required.","No shipping required."
+"Newsletter image","Newsletter image"
+Join,Join
+"Are you sure you want to do this?","Are you sure you want to do this?"
+"Agreement Information","Agreement Information"
+"Reference ID:","Reference ID:"
+Status:,Status:
+Created:,Created:
+Updated:,Updated:
+"Payment Method:","Payment Method:"
+"Related Orders","Related Orders"
+"Order Total","Order Total"
+"Order Status","Order Status"
+"Billing Agreements","Billing Agreements"
+"Reference ID","Reference ID"
+"Created At","Created At"
+"Updated At","Updated At"
+"View Billing Agreement","View Billing Agreement"
+"There are no billing agreements yet.","There are no billing agreements yet."
+"New Billing Agreement","New Billing Agreement"
+"You will be redirected to the payment system website.","You will be redirected to the payment system website."
+"Create Billing Agreement","Create Billing Agreement"
+Create,Create
+"Price change alert! We wanted you to know that prices have changed for these products:","Price change alert! We wanted you to know that prices have changed for these products:"
+"Click here to stop alerts for this product.","Click here to stop alerts for this product."
+Unsubscribe,Unsubscribe
+"Unsubscribe from all price alerts","Unsubscribe from all price alerts"
+"In stock alert! We wanted you to know that these products are now available:","In stock alert! We wanted you to know that these products are now available:"
+"Create New Requisition List","Create New Requisition List"
+Rename,Rename
+"Delete Requisition List","Delete Requisition List"
+"Rename Requisition List","Rename Requisition List"
+"in requisition list","in requisition list"
+"Update List","Update List"
+"You have no items in this requisition list.","You have no items in this requisition list."
+Select,Select
+"product(s) require your attention","product(s) require your attention"
+Rating,Rating
+"See Details","See Details"
+"You have submitted no reviews.","You have submitted no reviews."
+"My Recent Reviews","My Recent Reviews"
+"View All","View All"
+"Submitted on %1","Submitted on %1"
+"Back to My Reviews","Back to My Reviews"
+"Write your review","Write your review"
+"About the ","About the "
+"You're reviewing:","You're reviewing:"
+"Your Rating","Your Rating"
+Nickname,Nickname
+Summary,Summary
+Review,Review
+"Send Review","Send Review"
+"Only registered users can write reviews. Please <a href=""%1"">Sign in</a> or <a href=""%2"">create an account</a>","Only registered users can write reviews. Please <a href=""%1"">Sign in</a> or <a href=""%2"">create an account</a>"
+Reviews,Reviews
+"Add Review","Add Review"
+"Add Your Review","Add Your Review"
+Amount,Amount
+Points,Points
+Reason,Reason
+"Expires on %1","Expires on %1"
+"There is no balance history.","There is no balance history."
+"Reward points balance Information","Reward points balance Information"
+"Learn more","Learn more"
+"Your balance is %1.","Your balance is %1."
+"Current exchange rates:","Current exchange rates:"
+"%1 = %2","%1 = %2"
+"%1 spent = %2 earned","%1 spent = %2 earned"
+"Balance limit is %1.","Balance limit is %1."
+"Maximum balance is reached","Maximum balance is reached"
+"Minimum Balance in order to redeem: %1.","Minimum Balance in order to redeem: %1."
+"You need a higher balance to use your rewards points.","You need a higher balance to use your rewards points."
+"Each earned reward points award expires in %1 days.","Each earned reward points award expires in %1 days."
+"Refer to reward points history to see when a specific record expires.","Refer to reward points history to see when a specific record expires."
+"Email Notification Settings","Email Notification Settings"
+"Subscribe for Balance Updates","Subscribe for Balance Updates"
+"Subscribe for Points Expiration Notifications","Subscribe for Points Expiration Notifications"
+"Save Subscription Settings","Save Subscription Settings"
+"Return items","Return items"
+Sub-items,Sub-items
+"Remaining Qty","Remaining Qty"
+"Quantity To Return","Quantity To Return"
+"Remaining Quantity:","Remaining Quantity:"
+"New Return for Order %1","New Return for Order %1"
+"Order ID","Order ID"
+"Customer Name","Customer Name"
+"Order Shipping Address","Order Shipping Address"
+"Return Items Information","Return Items Information"
+"Add Item To Return","Add Item To Return"
+Comments,Comments
+"Request Information","Request Information"
+ID,ID
+"Date Requested","Date Requested"
+"Contact Email Address","Contact Email Address"
+"Shipping and Tracking Information","Shipping and Tracking Information"
+"Track this shipment","Track this shipment"
+"Print Shipping Label","Print Shipping Label"
+"Show Packages","Show Packages"
+Carrier,Carrier
+Number,Number
+Add,Add
+"Items Return Requested For","Items Return Requested For"
+Condition,Condition
+Resolution,Resolution
+"Request Qty","Request Qty"
+"Hide Details","Hide Details"
+"Show Details","Show Details"
+"Questions and Answers","Questions and Answers"
+Questions,Questions
+Answers,Answers
+"Customer Service","Customer Service"
+"Leave Comment","Leave Comment"
+"Submit Comment","Submit Comment"
+"Shipped By","Shipped By"
+"Tracking Number","Tracking Number"
+"Shipment Tracking Number","Shipment Tracking Number"
+"Order Information","Order Information"
+"Billing Last Name","Billing Last Name"
+"Find Order By","Find Order By"
+"ZIP Code","ZIP Code"
+"Billing ZIP Code","Billing ZIP Code"
+Continue,Continue
+Orders,Orders
+Reorder,Reorder
+"You have placed no orders.","You have placed no orders."
+"No shipping information available","No shipping information available"
+"Order Date","Order Date"
+"Print Order","Print Order"
+"Refund #%1","Refund #%1"
+"Items Refunded","Items Refunded"
+"Discount Amount","Discount Amount"
+"Row Total","Row Total"
+"Invoice #","Invoice #"
+"Items Invoiced","Items Invoiced"
+"Qty Invoiced","Qty Invoiced"
+"Shipment #%1","Shipment #%1"
+"Qty Shipped","Qty Shipped"
+"Recent Orders","Recent Orders"
+"Recently Ordered","Recently Ordered"
+Buy,Buy
+"Search entire store here...","Search entire store here..."
+Reset,Reset
+"Print All Shipments","Print All Shipments"
+"Shipment #","Shipment #"
+"Print Shipment","Print Shipment"
+"Tracking Number(s):","Tracking Number(s):"
+"Items Shipped","Items Shipped"
+Language,Language
+Language:,Language:
+"Back to Top","Back to Top"
+"Welcome, %1!","Welcome, %1!"
+"Toggle Nav","Toggle Nav"
+"Items %1 to %2 of %3 total","Items %1 to %2 of %3 total"
+"%1 Item","%1 Item"
+"%1 Item(s)","%1 Item(s)"
+Pagination,Pagination
+Page,Page
+"You're currently reading page","You're currently reading page"
+Next,Next
+"Share Wish List","Share Wish List"
+"Update Wish List","Update Wish List"
+"Add to Wish List","Add to Wish List"
+"Product Image","Product Image"
+Comment,Comment
+"View Product","View Product"
+"My Wish List","My Wish List"
+"Show details","Show details"
+More,More
+"from list","from list"
+"Options Details","Options Details"
+"Wish List Sharing","Wish List Sharing"
+"Sharing Information","Sharing Information"
+"Email addresses, separated by commas","Email addresses, separated by commas"
+"Check here to link an RSS feed to your Wish List.","Check here to link an RSS feed to your Wish List."
+Share,Share
+"Go to Wish List","Go to Wish List"
+"You have no items in your wish list.","You have no items in your wish list."
+"Credit Card Information","Credit Card Information"
+"Card Number","Card Number"
+"Please, enter valid Credit Card Number","Please, enter valid Credit Card Number"
+"Expiration Date","Expiration Date"
+"Please, enter valid Expiration Date","Please, enter valid Expiration Date"
+CVV,CVV
+"Please, enter valid Card Verification Number","Please, enter valid Card Verification Number"
+"Save for later use.","Save for later use."
+"Already have an account?","Already have an account?"
+"Log in","Log in"
+"Log In","Log In"
+"Save in address book","Save in address book"
+"You can create an account after checkout.","You can create an account after checkout."
+"You already have an account with us. Sign in or continue as guest.","You already have an account with us. Sign in or continue as guest."
+Login,Login
+"View and Edit Cart","View and Edit Cart"
+Details,Details
+"You can track your order status by","You can track your order status by"
+"creating an account","creating an account"
+Method,Method
+edit,edit
+"Order Summary","Order Summary"
+"View Details","View Details"
+"Welcome to %store_name","Welcome to %store_name"
+"%name,","%name,"
+"Welcome to %store_name.","Welcome to %store_name."
+"To sign in to our site, use these credentials during checkout or on the
+        <a href=""%customer_url"" title=""%customer_page_title"" aria-label=""%customer_page_title"">My Account</a> page:","To sign in to our site, use these credentials during checkout or on the
+        <a href=""%customer_url"" title=""%customer_page_title"" aria-label=""%customer_page_title"">My Account</a> page:"
+Email:,Email:
+Password:,Password:
+"Password you set when creating account","Password you set when creating account"
+"Forgot your account password? Click <a href=""%reset_url"" title=""%reset_title"" aria-label=""%reset_title"""">here</a> to reset it.","Forgot your account password? Click <a href=""%reset_url"" title=""%reset_title"" aria-label=""%reset_title"""">here</a> to reset it."
+"When you sign in to your account, you will be able to:","When you sign in to your account, you will be able to:"
+"Proceed through checkout faster","Proceed through checkout faster"
+"Check the status of orders","Check the status of orders"
+"View past orders","View past orders"
+"Store alternative addresses (for shipping to multiple family members and friends)","Store alternative addresses (for shipping to multiple family members and friends)"
+"Thank you for confirming your %store_name account.","Thank you for confirming your %store_name account."
+"Forgot your account password? Click <a href=""%reset_url"" title=""%reset_title"" aria-label=""%reset_title"">here</a> to reset it.","Forgot your account password? Click <a href=""%reset_url"" title=""%reset_title"" aria-label=""%reset_title"">here</a> to reset it."
+"Reset your %store_name password","Reset your %store_name password"
+"There was recently a request to change the password for your account.","There was recently a request to change the password for your account."
+"If you requested this change, set a new password here:","If you requested this change, set a new password here:"
+"Set a New Password","Set a New Password"
+"If you did not make this request, you can ignore this email and your password will remain the same.","If you did not make this request, you can ignore this email and your password will remain the same."
+"Checkout using your account","Checkout using your account"
+"Checkout as a new customer","Checkout as a new customer"
+"has many benefits: check out faster, track orders and more.","has many benefits: check out faster, track orders and more."
+Footer,Footer
+"Thank you, %store_name","Thank you, %store_name"
+Header,Header
+"Store Logo","Store Logo"
+"Gift Message (optional)","Gift Message (optional)"
+To:,To:
+From:,From:
+Message:,Message:
+"Gift options","Gift options"
+"Pick a paper of your choice (optional)","Pick a paper of your choice (optional)"
+"No image","No image"
+"Gift Receipt","Gift Receipt"
+"Printed card","Printed card"
+"Do you have discount code?","Do you have discount code?"
+"Cancel coupon","Cancel coupon"
+"Take a look at %customer_name's Wish List","Take a look at %customer_name's Wish List"
+"%customer_name wants to share this Wish List from %store_name with you:","%customer_name wants to share this Wish List from %store_name with you:"
+"View all Wish List items","View all Wish List items"
+Adding...,Adding...
+Added,Added
+"Please enter a valid price range.","Please enter a valid price range."
+"New shipping address","New shipping address"
+"Add to:","Add to:"
+"Account Menu","Account Menu"
+Account,Account
+"Show Filters","Show Filters"
+"Hide Filters","Hide Filters"

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="header.icons">
+            <block class="Magento\Customer\Block\Account\AuthorizationLink" name="wish-list-icon" template="Magento_Wishlist::icon.phtml" before="-" >
+                <arguments>
+                    <argument name="view_model" xsi:type="object">Amasty\JetTheme\ViewModel\WishlistViewModel</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+        <!-- Removed wishlist link from the panel. We have this link in header -->
+        <referenceBlock name="wish-list-link" remove="true" />
+    </body>
+</page>

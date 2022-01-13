@@ -1,0 +1,13 @@
+<?php
+/** @var \Magento\Wishlist\Block\Customer\Wishlist\Button $block */
+?>
+
+<?php if ($block->getWishlist()->getItemsCount() &&
+    $block->getWishlist()->getShared() < $block->getConfig()->getSharingEmailLimit()): ?>
+    <button title="<?= $block->escapeHtmlAttr(__('Share Wish List')) ?>"
+            aria-label="<?= $block->escapeHtmlAttr(__('Share Wish List')) ?>"
+            class="action share"
+            data-amtheme-js="review-form-open">
+        <?= $block->escapeHtml(__('Share Wish List')) ?>
+    </button>
+<?php endif;?>

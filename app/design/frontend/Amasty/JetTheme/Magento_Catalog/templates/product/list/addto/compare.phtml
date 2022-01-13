@@ -1,0 +1,39 @@
+<?php
+/**
+ * @var $block Magento\Catalog\Block\Product\ProductList\Item\AddTo\Compare
+ * @var $escaper Magento\Framework\Escaper
+ */
+
+$amViewModel = $block->getData('amAjaxViewModel');
+$isAjaxCompareEnable = $amViewModel ? $amViewModel->isEnabledAjaxAddToCompare() : false;
+$dataPost = $block->getCompareHelper()->getPostDataParams($block->getProduct());
+?>
+
+<a href="#"
+   class="action tocompare amtheme-circle-icon"
+   title="<?= $escaper->escapeHtmlAttr(__('Add to Compare')) ?>"
+   aria-label="<?= $escaper->escapeHtmlAttr(__('Add to Compare')) ?>"
+   data-post='<?= /* @noEscape */ $dataPost ?>'
+   <?php if ($isAjaxCompareEnable): ?>
+        data-amtheme-js="ajax-product-compare"
+   <?php endif; ?>
+   role="button">
+    <svg class="amtheme-icon -hover-bg">
+        <use xlink:href="#icon-compare"/>
+    </svg>
+    <span class="amtheme-title">
+        <?= $escaper->escapeHtml(__('Add to Compare')) ?>
+    </span>
+</a>
+
+<?php if ($isAjaxCompareEnable): ?>
+    <script type="text/x-magento-init">
+        {
+            "[data-amtheme-js=ajax-product-compare]": {
+                "amAjaxCompare": {
+                    "actionUrl": "<?= /* @noEscape */ $amViewModel->getAjaxAddToCompare()?>"
+                }
+            }
+        }
+    </script>
+<?php endif; ?>

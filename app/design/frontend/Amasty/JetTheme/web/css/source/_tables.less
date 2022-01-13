@@ -1,0 +1,88 @@
+//
+//  Tables
+//  _____________________________________________
+
+//
+//  Common
+//  ---------------------------------------------
+
+& when (@media-common = true) {
+    .table-wrapper {
+        &:extend(.am-custom-scrollbar all);
+
+        margin-bottom: @indent__l;
+    }
+
+    table {
+        .lib-table-caption();
+    }
+
+    table > thead > tr > th {
+        .am-text-uppercase;
+        .am-padding(@table-th__padding);
+
+        color: @table-th__color;
+        vertical-align: top;
+        letter-spacing: @letter-spacing__base * 2;
+        font-size: @table-th__font-size;
+    }
+
+    table > tbody:last-of-type > tr:last-of-type td {
+        padding-bottom: 20px;
+    }
+}
+
+//
+//  Mobile
+//  ---------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__xs) {
+    .table-wrapper .table:not(.cart):not(.totals):not(.table-comparison) {
+        > tbody > tr > td {
+            .am-padding(10px);
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
+    .table-wrapper {
+        .lib-table-overflow();
+    }
+
+    .table-wrapper .table:not(.cart):not(.totals):not(.table-comparison) {
+        & {
+            .lib-table-responsive();
+        }
+
+        > tbody > tr {
+            & {
+                border-radius: @table-responsive-row__border-radius;
+                background: @amtheme__background-secondary__color;
+            }
+
+            td[data-th]:before,
+            th[data-th]:before {
+                .am-text-uppercase;
+                .am-word-break;
+
+                box-sizing: border-box;
+                width: @table-responsive-cell-label__width;
+            }
+        }
+
+        > tbody > tr > td {
+            & {
+                clear: both;
+            }
+
+            &:first-of-type { /* stylelint-disable-line */
+                padding-top: 15px;
+            }
+
+            &:last-of-type { /* stylelint-disable-line */
+                margin-bottom: @indent__sm;
+                padding-bottom: 20px;
+            }
+        }
+    }
+}

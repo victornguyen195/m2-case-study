@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+
+    <body>
+        <referenceBlock name="reviews.tab">
+            <block class="Magento\Catalog\Block\Product\View"
+                   name="amtheme.reviews.aside.title"
+                   template="Magento_Catalog::product/view/am-review-aside-title.phtml"
+                   before="-"
+            >
+                <arguments>
+                    <argument name="view_model" xsi:type="object">Amasty\JetTheme\ViewModel\Review\ReviewViewModel</argument>
+                </arguments>
+                <block class="Magento\Catalog\Block\Product\View"
+                       name="amtheme.product.info.review.rating.number.aside"
+                       as="amtheme-rating-number-aside"
+                       template="Magento_Review::helper/am-rating-number.phtml"
+                />
+            </block>
+        </referenceBlock>
+    </body>
+</page>

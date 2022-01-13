@@ -1,0 +1,168 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <attribute name="class" value="amasty-jet-theme"/>
+        <referenceContainer name="after.body.start">
+            <block class="Magento\Framework\View\Element\Js\Components" name="svg-sprite" as="svg-sprite" template="Magento_Theme::svg.phtml" before="-"/>
+        </referenceContainer>
+        <referenceBlock name="logo">
+            <arguments>
+                <argument name="logo_img_width" xsi:type="number">81</argument>
+                <argument name="logo_img_height" xsi:type="number">52</argument>
+                <argument name="logo_width" xsi:type="null" />
+            </arguments>
+        </referenceBlock>
+        <referenceContainer name="header-wrapper">
+            <block class="Magento\Framework\View\Element\Template" name="header.navigation.icon" as="navIcon" template="Magento_Theme::html/header/nav-icon.phtml" before="-" />
+            <container name="header.icons" htmlTag="div" htmlClass="amtheme-icons-container" after="logo" />
+        </referenceContainer>
+        <referenceBlock name="header.panel">
+            <block class="Magento\Framework\View\Element\Html\Links" name="header.links" after="-">
+                <arguments>
+                    <argument name="css_class" xsi:type="string">header links</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+        <referenceBlock name="top.links">
+            <arguments>
+                <argument name="css_class" xsi:type="string">header-links</argument>
+            </arguments>
+        </referenceBlock>
+        <referenceBlock name="store.menu">
+            <arguments>
+                <argument name="title" xsi:type="string"/>
+                <argument name="css_class" xsi:type="string">amtheme-menu-block</argument>
+            </arguments>
+        </referenceBlock>
+        <referenceBlock name="store.links">
+            <arguments>
+                <argument name="title" translate="true" xsi:type="string">My Account</argument>
+                <argument name="css_class" xsi:type="string">amtheme-menu-account amtheme-item -bottom</argument>
+                <argument name="svg_icon" xsi:type="string">
+                    <![CDATA[<svg class="amtheme-icon"><use xlink:href="#icon-account"/></svg>]]>
+                </argument>
+            </arguments>
+        </referenceBlock>
+        <referenceBlock name="store.settings" remove="true" />
+        <referenceBlock name="navigation.sections">
+            <block class="Magento\Framework\View\Element\Template" name="amtheme.store.language" group="navigation-sections" template="Magento_Theme::html/container.phtml" after="-">
+                <arguments>
+                    <argument name="css_class" xsi:type="string">amtheme-menu-language amtheme-item -bottom</argument>
+                </arguments>
+                <block class="Magento\Store\Block\Switcher" name="store.settings.language" template="Magento_Store::switch/nav-languages.phtml">
+                    <arguments>
+                        <argument name="id_modifier" xsi:type="string">nav</argument>
+                    </arguments>
+                </block>
+            </block>
+            <block class="Magento\Framework\View\Element\Template" name="amtheme.store.currency" group="navigation-sections" template="Magento_Theme::html/container.phtml" after="-">
+                <arguments>
+                    <argument name="css_class" xsi:type="string">amtheme-menu-currency amtheme-item -bottom</argument>
+                </arguments>
+                <block class="Magento\Directory\Block\Currency" name="store.settings.currency" template="Magento_Directory::nav-currency.phtml">
+                    <arguments>
+                        <argument name="id_modifier" xsi:type="string">nav</argument>
+                    </arguments>
+                </block>
+            </block>
+            <block class="Magento\Framework\View\Element\Template" name="amtheme.store.compare" group="navigation-sections" template="Magento_Theme::html/container.phtml" after="-">
+                <arguments>
+                    <argument name="css_class" xsi:type="string">amtheme-menu-compare amtheme-item -bottom</argument>
+                </arguments>
+                <block class="Magento\Framework\View\Element\Template" name="nav.compare.link" after="-"
+                       template="Magento_Catalog::product/compare/link.phtml">
+                    <arguments>
+                        <argument name="jsLayout" xsi:type="array">
+                            <item name="components" xsi:type="array">
+                                <item name="compareProducts" xsi:type="array">
+                                    <item name="component" xsi:type="string">Magento_Catalog/js/view/compare-products</item>
+                                </item>
+                            </item>
+                        </argument>
+                    </arguments>
+                </block>
+            </block>
+        </referenceBlock>
+        <referenceContainer name="minicart.addons">
+            <block class="Magento\Framework\View\Element\Template"
+                   name="amtheme.minicart.payment.methods.block"
+                   template="Magento_Theme::html/payments.phtml"
+                   after="-"
+                   ifconfig="amasty_jettheme/payment_links/show_payment_links_block_minicart">
+                <arguments>
+                    <argument name="payment_view_model" xsi:type="object">Amasty\JetTheme\ViewModel\PaymentViewModel</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+        <referenceContainer name="footer-container">
+            <block class="Magento\Framework\View\Element\Template" name="back-to-top" template="Magento_Theme::html/back-to-top.phtml" before="footer"/>
+            <block class="Amasty\JetTheme\Block\Footer\DefaultFooterWrapper" name="footer.wrapper" after="-"/>
+        </referenceContainer>
+        <referenceContainer name="footer">
+            <block class="Magento\Theme\Block\Html\Header\Logo"
+                   name="footer.logo"
+                   before="-"
+                   ifconfig="amasty_jettheme/custom_footer/show_logo_block"/>
+            <container name="footer.container.top" htmlTag="div" htmlClass="amtheme-footer-section" after="-">
+                <block class="Magento\Framework\View\Element\Template"
+                       name="footer_links.wrap"
+                       template="Magento_Theme::html/container.phtml"
+                       before="-"
+                       ifconfig="amasty_jettheme/custom_footer/show_footer_links" />
+                <block class="Magento\Framework\View\Element\Template"
+                       name="footer.social"
+                       template="Magento_Theme::footer/social.phtml"
+                       after="-"
+                       ifconfig="amasty_jettheme/custom_footer/show_links_block">
+                    <arguments>
+                        <argument name="view_model" xsi:type="object">Amasty\JetTheme\ViewModel\SocialViewModel</argument>
+                    </arguments>
+                </block>
+                <block class="Magento\Framework\View\Element\Template"
+                       name="amtheme.footer.payment.methods.block"
+                       template="Magento_Theme::footer/payments.phtml"
+                       after="footer.form.subscribe"
+                       ifconfig="amasty_jettheme/custom_footer/show_payment_links_block_footer">
+                    <arguments>
+                        <argument name="payment_view_model" xsi:type="object">Amasty\JetTheme\ViewModel\PaymentViewModel</argument>
+                        <argument name="footer_view_model" xsi:type="object">Amasty\JetTheme\ViewModel\Footer\FooterViewModel</argument>
+                    </arguments>
+                </block>
+                <block class="Magento\Framework\View\Element\Template"
+                       name="footer.cms.block"
+                       template="Magento_Theme::footer/footer-cms.phtml"
+                       after="amtheme.footer.payment.methods.block"
+                       ifconfig="amasty_jettheme/custom_footer/enable_custom_cms_block">
+                    <arguments>
+                        <argument name="view_model" xsi:type="object">Amasty\JetTheme\ViewModel\Footer\FooterViewModel</argument>
+                    </arguments>
+                </block>
+            </container>
+        </referenceContainer>
+        <referenceBlock name="copyright">
+            <arguments>
+                <argument name="view_model" xsi:type="object">Amasty\JetTheme\ViewModel\Footer\FooterViewModel</argument>
+            </arguments>
+        </referenceBlock>
+        <move element="copyright" destination="before.body.end" />
+        <move element="footer" destination="footer.wrapper" />
+        <move element="minicart" destination="header.icons" after="-" />
+        <move element="header" destination="header.panel" before="-" />
+        <move element="amblog_toolbar_link" destination="top.links" before="-" />
+        <move element="navigation.sections" destination="header.container" />
+        <move element="footer_links" destination="footer_links.wrap" before="-" />
+        <referenceBlock name="report.bugs" remove="true"/>
+        <referenceContainer name="before.body.end">
+            <block class="Magento\Framework\View\Element\Js\Components" name="amtheme-scripts" as="amtheme-scripts" template="Magento_Theme::scripts.phtml" after="-">
+                <block class="Magento\Framework\View\Element\Template"
+                       name="amtheme.sticky.header.script"
+                       template="Magento_Theme::scripts/sticky-header.phtml"
+                       before="-">
+                    <arguments>
+                        <argument name="view_model" xsi:type="object">Amasty\JetTheme\ViewModel\StickyHeaderViewModel</argument>
+                    </arguments>
+                </block>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

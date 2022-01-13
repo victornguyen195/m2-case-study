@@ -1,0 +1,19 @@
+<?php
+/** @var \Magento\Framework\View\Element\Js\Components $block */
+?>
+
+<script type="text/x-magento-init">
+{
+    "nav.navigation": {
+        "amMenu": {}
+    },
+    "[data-amtheme-js='form-minisearch']": {
+        "amSearch": {}
+    },
+    "[data-amtheme-js='backtotop-wrap']": {
+        "backTop": {}
+    }
+}
+</script>
+
+<?= /* @noEscape */ $block->getChildHtml() ?>

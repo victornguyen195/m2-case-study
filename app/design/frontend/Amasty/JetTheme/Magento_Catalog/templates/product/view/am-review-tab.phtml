@@ -1,0 +1,44 @@
+<?php
+/** @var $block \Magento\Review\Block\Product\Review */
+
+$reviewFormTrigger = 'review-form-open';
+$reviewsCount = $block->getCollectionSize();
+?>
+
+<div class="amtheme-reviews-tab <?= $reviewsCount ? '' : '-am-noreviews'; ?>" data-mage-init='{"amReviewTab":{
+    "productReviewUrl": "<?= $block->escapeJs($block->getProductReviewUrl()) ?>"
+}}'>
+    <h4 class="amtheme-title">
+        <?= $block->escapeHtml(__('Ratings & Reviews')); ?>
+    </h4>
+    <div class="amtheme-content">
+        <?php if ($reviewsCount): ?>
+            <div class="amtheme-rating-wrap star-secondary">
+                <?= /* @noEscape */ $block->getChildHtml('amtheme-rating-number'); ?>
+                <?= /* @noEscape */ $block->getChildHtml('amtheme-rating'); ?>
+            </div>
+        <?php else: ?>
+            <p class="amtheme-noreviews-text"><?= $block->escapeHtml(__('Be the first to review this product')) ?></p>
+        <?php endif; ?>
+        <div class="amtheme-actions">
+            <button class="action size-s"
+                    title="<?= $block->escapeHtml(__('Write review')); ?>"
+                    aria-label="<?= $block->escapeHtml(__('Write review')); ?>"
+                    data-amtheme-js="<?= $block->escapeHtml($reviewFormTrigger); ?>"
+            >
+                <?= $block->escapeHtml(__('Write review')); ?>
+            </button>
+            <?php if ($reviewsCount): ?>
+                <button class="action outline size-s amtheme-toall-reviews"
+                        data-amtheme-js="to-all-reviews"
+                        title="<?= $block->escapeHtml(__('See All')); ?>"
+                        aria-label="<?= $block->escapeHtml(__('See All')); ?>">
+                    <?= $block->escapeHtml(__('See All')); ?>
+                    <svg class="amtheme-icon">
+                        <use xlink:href="#icon-arrow-right" />
+                    </svg>
+                </button>
+            <?php endif; ?>
+        </div>
+    </div>
+</div>

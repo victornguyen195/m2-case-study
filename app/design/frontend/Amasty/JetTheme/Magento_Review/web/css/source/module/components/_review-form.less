@@ -1,0 +1,52 @@
+//
+//  Form Review styles
+//  _____________________________________________
+
+//
+//  Common
+//  ---------------------------------------------
+
+& when (@media-common = true) {
+    .amtheme-reviewform-block {
+        .form-heading {
+            margin-bottom: @indent__l;
+            text-align: center;
+        }
+
+        .form-title {
+            margin: 0 0 @indent__xs;
+            letter-spacing: @letter-spacing__base;
+            font-weight: @h2__font-weight;
+            font-size: @h2__font-size;
+        }
+
+        .product-name {
+            .am-word-break;
+        }
+    }
+
+    .amtheme-reviewform-block .product-review-table {
+        & {
+            display: table;
+            max-width: 100%;
+        }
+
+        > .review-field-rating {
+            display: table-row;
+        }
+
+        .rating-stars-block {
+            padding: 5px 0;
+        }
+
+        > .review-field-rating > .label {
+            .am-word-break;
+
+            display: table-cell;
+            padding: 5px 10px 5px 0;
+            min-width: 60px;
+            max-width: 170px;
+            vertical-align: middle;
+        }
+    }
+}

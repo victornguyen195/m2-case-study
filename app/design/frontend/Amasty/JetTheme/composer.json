@@ -1,0 +1,33 @@
+{
+    "name": "amasty/theme-frontend-jet-theme-lite",
+    "description": "N/A",
+    "config": {
+        "sort-packages": true
+    },
+    "require": {
+        "php": "^7.3.0",
+        "magento/framework": "*",
+        "magento/theme-frontend-blank": "*",
+        "amasty/base": "*",
+        "amasty/jet-theme": "*"
+    },
+    "suggest": {
+        "amasty/module-jet-optimizer": "Please install the Jet Theme Image Optimizer module by Amasty for free if you want to use it.",
+        "amasty/jet-non-latin-fonts": "Please install the Non Latin Fonts Pack by Amasty for free if you want to use it.",
+        "amasty/jet-theme-sample-data": "Install Jet Theme Sample Data to See All Features of Our Theme. After Install Just Run jettheme:sampledata:deploy --clean command (Be careful, this command will remove all your previous data from site).",
+        "amasty/module-mixin-rewrite-patch": "Install mixin rewrite patch if you have a problem with extension on Magento 2.4.2 version",
+        "amasty/module-jet-theme-mftf-2": "Install module-jet-theme-mftf-2 module to be able to run Jet Theme MFTF tests for Magento 2.3.6 and higher.",
+        "amasty/module-jet-theme-mftf-3": "Install module-jet-theme-mftf-3 module to be able to run Jet Theme MFTF tests for Magento 2.4.1 and higher."
+    },
+    "type": "magento2-theme",
+    "version": "1.12.3",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ]
+    }
+}

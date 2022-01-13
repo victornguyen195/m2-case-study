@@ -1,0 +1,50 @@
+//
+//  Breadcrumbs styles
+//  _____________________________________________
+
+//
+//  Variables
+//  ---------------------------------------------
+
+@breadcrumbs-icon__background: ~'url("../svg/@{amtheme__icons__color-mode-prefix}/@{amtheme__icons__mode}/breadcrumbs-arrow.svg")';
+@breadcrumbs-icon__width: 6px;
+@breadcrumbs-icon__height: 10px;
+
+//
+//  Common
+//  ---------------------------------------------
+
+& when (@media-common = true) {
+    .breadcrumbs {
+        & {
+            .lib-breadcrumbs();
+            &:extend(.am-no-display-mobile);
+        }
+
+        a {
+            transition: color @amtheme__transition__delay @amtheme__transition__func;
+        }
+
+        a,
+        strong {
+            vertical-align: middle;
+        }
+
+        .item {
+            text-transform: uppercase;
+            cursor: default;
+        }
+
+        .item:not(:last-child) {
+            &:after {
+                display: inline-block;
+                padding: 0 10px;
+                width: @breadcrumbs-icon__width;
+                height: @breadcrumbs-icon__height;
+                background: @breadcrumbs-icon__background no-repeat center;
+                content: '';
+                vertical-align: middle;
+            }
+        }
+    }
+}

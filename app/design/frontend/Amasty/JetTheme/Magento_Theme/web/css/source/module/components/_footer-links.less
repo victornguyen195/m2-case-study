@@ -1,0 +1,75 @@
+//
+//  Footer links styles
+//  _____________________________________________
+
+//
+//  Common
+//  ---------------------------------------------
+
+& when (@media-common = true) {
+    .footer.links {
+        & {
+            &:extend(.abs-reset-list all);
+        }
+
+        a {
+            & {
+                .am-word-break;
+
+                color: @amtheme-footer-links__color;
+                transition: all @amtheme__transition__func @amtheme__transition__delay;
+            }
+
+            &:hover {
+                color: @amtheme-footer-links__hover__color;
+            }
+
+            .ie11 & {
+                display: inline-block;
+            }
+        }
+    }
+}
+
+//
+//  Mobile
+//  ---------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .footer.links {
+        & {
+            margin-bottom: @indent__s;
+        }
+
+        .item {
+            padding: 15px 0;
+            border-bottom: @amtheme-footer-links-mobile__border;
+        }
+    }
+}
+
+//
+//  Desktop
+//  ---------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .footer.links {
+        & {
+            column-count: @amtheme-footer-links-tablet__column-count;
+            column-gap: 15px;
+        }
+
+        .item {
+            margin: 0 0 15px;
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+    .footer.links {
+        & {
+            column-count: @amtheme-footer-links-desktop__column-count;
+            column-gap: 60px;
+        }
+    }
+}

@@ -1,0 +1,45 @@
+<?php
+/**
+ * @var Magento\Catalog\Block\Product\ProductList\Item\Container $block
+ * @var Amasty\JetTheme\ViewModel\CategoryPage\CategoryPageViewModel $amViewModel
+ * @var Amasty\JetTheme\ViewModel\Catalog\Ajax $amAjaxViewModel
+ * @var Magento\Framework\Escaper $escaper
+ */
+
+$amAjaxViewModel = $block->getData('amAjaxViewModel');
+$isQuickViewEnabled = $amAjaxViewModel ? $amAjaxViewModel->isEnabledQuickView() : false;
+
+$amViewModel = $block->getData('amViewModel');
+$actualBlocksWrappers = $amViewModel->getActualBlockWrappers();
+$quickViewPosition = 'center';
+$requisitionPosition = 'bottom-left';
+$addToComparePosition = $amViewModel->getAddToComparePosition();
+$addToWishlistPosition = $amViewModel->getAddToWishlistPosition();
+?>
+
+<?php if ($isQuickViewEnabled): ?>
+<div class="amtheme-icons-position -<?= $escaper->escapeHtmlAttr($quickViewPosition) ?>">
+    <div class="amtheme-icon-wrapper -hover">
+        <?= $block->getChildHtml('amtheme.quick.view'); ?>
+    </div>
+</div>
+<?php endif; ?>
+<?php foreach ($actualBlocksWrappers as $wrapper): ?>
+    <div class="amtheme-icons-position -<?= $escaper->escapeHtmlAttr($wrapper) ?>">
+        <?php if ($block->getChildHtml('amtheme.requisition') && $requisitionPosition === $wrapper): ?>
+            <div class="amtheme-icon-wrapper -order-first">
+                <?= $block->getChildHtml('amtheme.requisition'); ?>
+            </div>
+        <?php endif; ?>
+        <?php if ($amViewModel->getIconPosition($addToWishlistPosition) == $wrapper): ?>
+            <div class="amtheme-wishlist amtheme-icon-wrapper -<?= $escaper->escapeHtmlAttr($addToWishlistPosition) ?>">
+                <?= $block->getChildHtml('amtheme.wishlist'); ?>
+            </div>
+        <?php endif; ?>
+        <?php if ($amViewModel->getIconPosition($addToComparePosition) === $wrapper): ?>
+            <div class="amtheme-compare amtheme-icon-wrapper -<?= $escaper->escapeHtmlAttr($addToComparePosition) ?>">
+                <?= $block->getChildHtml('amtheme.compare'); ?>
+            </div>
+        <?php endif; ?>
+    </div>
+<?php endforeach; ?>

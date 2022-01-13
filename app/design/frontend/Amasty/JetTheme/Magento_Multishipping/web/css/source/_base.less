@@ -1,0 +1,164 @@
+//
+//  Multishipping base styles
+//  _____________________________________________
+
+//
+//  Common
+//  ---------------------------------------------
+
+& when (@media-common = true) {
+    .multicheckout .amtheme-collapsible-block {
+        &:extend(.amtheme-collapsible-block all);
+    }
+
+    .multicheckout .amtheme-card-block {
+        > .box {
+            box-sizing: border-box;
+        }
+
+        > .box > .action {
+            .am-text-uppercase;
+
+            display: inline-flex;
+            margin-top: @indent__base;
+        }
+    }
+
+    .amtheme-cart-items {
+        .amtheme-item:not(:first-of-type) {
+            margin-top: @indent__base;
+            padding-top: @indent__base;
+            border-top: @amtheme__border;
+        }
+
+        .product-item-name {
+            .am-word-break;
+
+            color: @amtheme__text-primary__color;
+            letter-spacing: @letter-spacing__base;
+            font-weight: @font-weight__regular;
+            font-size: 1.6rem;
+            line-height: @h3__line-height;
+        }
+
+        .product-item-name > a {
+            color: inherit;
+        }
+
+        .amtheme-qty {
+            clear: both;
+            margin-top: 20px;
+            color: @amtheme__text-secondary__color;
+        }
+
+        .item-options {
+            .am-product-options;
+
+            margin-top: 15px;
+        }
+
+        .item-options dt,
+        .item-options dd {
+            margin-bottom: 10px;
+        }
+
+        .item-options dd:last-of-type {
+            margin-bottom: 20px;
+        }
+
+        .item-options .price {
+            font-weight: @price__font-weight;
+        }
+    }
+
+    .amtheme-shipping-methods {
+        .amtheme-item:not(:first-of-type) {
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: @amtheme__border;
+        }
+
+        .amtheme-item .amtheme-label {
+            display: flex;
+            flex-wrap: wrap;
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+        .amtheme-title {
+            .am-word-break;
+
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .amtheme-description {
+            .am-word-break;
+
+            margin-top: 5px;
+            color: @color-gray;
+            letter-spacing: @letter-spacing__base;
+            font-size: 1.4rem;
+        }
+
+        .amtheme-price {
+            white-space: nowrap;
+            font-weight: @price__font-weight;
+        }
+    }
+
+    [class*='multishipping-checkout'] .page-header .logo {
+        margin: 0 auto 0 0;
+    }
+}
+
+//
+//  Mobile
+//  ---------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
+    .multishipping-checkout_address-newshipping,
+    .multishipping-checkout_address-newbilling,
+    .multishipping-checkout_address-editshipping,
+    .multishipping-checkout_address-editaddress {
+        .form-address-edit .fieldset-fullname .field:last-of-type {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .multicheckout .amtheme-collapsible-block {
+        &:extend(.amtheme-collapsible-block all);
+    }
+}
+
+//
+//  Desktop
+//  ---------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .multicheckout .amtheme-collapsible-block {
+        &:extend(.amtheme-collapsible-block all);
+    }
+
+    .multishipping-checkout_address-selectbilling,
+    .multishipping-checkout_address-newshipping,
+    .multishipping-checkout_address-newbilling,
+    .multishipping-checkout_address-editshipping,
+    .multishipping-checkout_address-editaddress {
+        .page-header .logo {
+            margin: 0 auto;
+        }
+
+        .page-title-wrapper {
+            text-align: center;
+        }
+
+        .form-address-edit {
+            .am-margin-right(auto);
+            .am-margin-left(auto);
+        }
+    }
+}

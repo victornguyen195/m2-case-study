@@ -1,0 +1,39 @@
+<?php
+/**
+ * @var $block Magento\Customer\Block\Account\Customer
+ * @var $escaper Magento\Framework\Escaper
+ */
+?>
+
+<?php if ($block->customerLoggedIn()): ?>
+    <li class="amtheme-myaccount-link switcher">
+        <span class="action toggle switcher-options"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              data-mage-init='{"dropdown":{}}'>
+            <svg class="amtheme-icon">
+                <use xlink:href="#icon-account"/>
+            </svg>
+            <?= $escaper->escapeHtml(__('My Account')) ?>
+        </span>
+
+        <script type="text/x-magento-init">
+        {
+            "*": {
+                "Magento_Ui/js/core/app": {
+                    "components": {
+                        "customer": {
+                            "component": "Magento_Customer/js/view/customer"
+                        }
+                    }
+                }
+            }
+        }
+        </script>
+        <?php if ($block->getChildHtml()): ?>
+            <div class="dropdown switcher-dropdown" data-target="dropdown">
+                <?= $block->getChildHtml() ?>
+            </div>
+        <?php endif; ?>
+    </li>
+<?php endif; ?>

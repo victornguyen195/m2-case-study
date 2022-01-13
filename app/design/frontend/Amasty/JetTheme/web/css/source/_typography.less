@@ -1,0 +1,46 @@
+//
+//  Typography
+//  _____________________________________________
+
+//  Font custom theme
+@import '_fonts-system';
+
+//
+//  Common
+//  ---------------------------------------------
+
+& when (@media-common = true) {
+    body {
+        letter-spacing: @letter-spacing__base;
+    }
+
+    h1 {
+        letter-spacing: @h1__letter-spacing;
+    }
+
+    h3 {
+        letter-spacing: @h3__letter-spacing;
+    }
+
+    a {
+        font-weight: @link__font-weight;
+        transition: color @amtheme__transition;
+    }
+
+    .items {
+        .lib-list-reset-styles();
+    }
+}
+
+//
+//  Desktop
+//  ---------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    h1 {
+        letter-spacing: @h1__letter-spacing-desktop;
+        font-weight: @h1__font-weight-desktop;
+        font-size: @h1__font-size-desktop;
+        line-height: @h1__line-height-desktop;
+    }
+}

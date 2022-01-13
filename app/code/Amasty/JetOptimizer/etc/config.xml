@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <amoptimizer>
+            <lazy_load_general>
+                <lazy_load>0</lazy_load>
+            </lazy_load_general>
+            <images>
+                <image_optimization_type>0</image_optimization_type>
+            </images>
+        </amoptimizer>
+    </default>
+</config>

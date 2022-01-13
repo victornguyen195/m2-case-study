@@ -1,0 +1,66 @@
+//
+// Jet Theme email styles helpers
+// ______________________________________________
+
+._am-email-title {
+    text-transform: uppercase;
+    letter-spacing: @email-table-header__letter-spacing;
+    font-weight: @font-weight__bold;
+    font-size: @email-table-header__font-size;
+    line-height: @email-table-header__line-height;
+}
+
+._am-email-product-name {
+    color: @email-text__color;
+    font-weight: @font-weight__regular;
+}
+
+._am-email-products-grid() {
+    & {
+        width: 100%;
+    }
+
+    tr > {
+        > td {
+            .am-padding(0 @email-table-cells-indent__base 0 0);
+        }
+
+        > td.col {
+            .am-padding(0);
+            width: 30%;
+        }
+    }
+}
+
+._am-email-products-list() {
+    & {
+        .am-padding(@email-table-cells-indent__m);
+        background: @amtheme__background-secondary__color;
+    }
+
+    table {
+        .lib-table(@table__width, @email-table-cells-indent__l, @email-table-cells-indent__base);
+    }
+
+    table > tbody {
+        > tr > td.col {
+            padding-left: 0;
+            border-bottom: @amtheme__border;
+        }
+
+        > tr.amtheme-item.-first > td.col {
+            padding-top: 0;
+        }
+
+        > tr.amtheme-item.-last > td.col {
+            padding-bottom: 0;
+            border: none;
+        }
+    }
+}
+
+.email-non-inline() {
+    ._am-email-product-name {
+        &:extend(.no-link a);
+    }
+}

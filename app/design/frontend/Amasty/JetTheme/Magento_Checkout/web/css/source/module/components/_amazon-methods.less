@@ -1,0 +1,105 @@
+//
+//  Amazon methods styles
+//  _____________________________________________
+
+//
+//  Variables
+//  ---------------------------------------------
+
+@amazon-sandbox-simulator-icon__background: ~'url("../svg/@{amtheme__icons__color-mode-prefix}/@{amtheme__icons__mode}/amazon-arrow-top.svg")';
+
+@amazon-sandbox-simulator-icon__width: 10px;
+@amazon-sandbox-simulator-icon__height: 6px;
+
+//
+//  Common
+//  ---------------------------------------------
+
+& when (@media-common = true) {
+    .checkout-shipping-address {
+        .revert-checkout {
+            .am-text-uppercase;
+
+            margin-top: 0;
+        }
+
+        label[for='amazon-email-address'] {
+            font-weight: @font-weight__bold;
+        }
+
+        label[for='amazon-email-address'] + span {
+            .am-word-break;
+        }
+    }
+
+    .checkout-payment-method .amazon-sandbox-simulator {
+        & {
+            margin-bottom: @indent__l;
+        }
+
+        &.payment-option > .payment-option-title {
+            margin: 0 0 @indent__base;
+        }
+
+        > .payment-option-content {
+            margin: 0 0 @indent__base;
+            padding: 0;
+        }
+
+        &.payment-option > .payment-option-title > .action-toggle {
+            & {
+                display: flex;
+                align-items: center;
+                line-height: 1;
+            }
+
+            &:after {
+                display: block;
+                .am-margin-left(@indent__s);
+                width: @amazon-sandbox-simulator-icon__width;
+                height: @amazon-sandbox-simulator-icon__height;
+                background: @amazon-sandbox-simulator-icon__background;
+                content: '';
+                transition: all @amtheme__transition;
+                transform: rotate(180deg);
+            }
+        }
+
+        &._active.payment-option > .payment-option-title .action-toggle:after {
+            transform: rotate(0deg);
+        }
+    }
+
+    .checkout-payment-method .amazon-payment-method {
+        .payment-method-title {
+            display: none;
+        }
+
+        .payment-method-content {
+            margin-bottom: @indent__l;
+            padding: 0;
+        }
+
+        .amazon-widget-container {
+            margin: @indent__l 0;
+        }
+    }
+
+    .amazon-manipulate-form {
+        width: 100%;
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .checkout-payment-method .amazon-sandbox-simulator.payment-option {
+        & {
+            margin: 0 0 @indent__l;
+            border-top: 0;
+        }
+
+        > .payment-option-title,
+        > .payment-option-content {
+            padding: 0;
+        }
+    }
+}

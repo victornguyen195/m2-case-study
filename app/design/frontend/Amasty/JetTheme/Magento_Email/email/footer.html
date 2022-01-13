@@ -1,0 +1,40 @@
+<!--@subject {{trans "Footer"}} @-->
+<!--@vars {
+"var store.frontend_name":"Store Name",
+"var store_phone":"Store Phone"
+} @-->
+
+                    <!-- End Content -->
+                    </td>
+                </tr>
+                <tr>
+                    <td class="footer amtheme-email-closing">
+                        <p class="closing">{{trans "Thank you, %store_name" store_name=$store.frontend_name}}!</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="amtheme-social-footer">
+                        <table>
+                            <tbody>
+                            <tr>
+                                {{depend store_phone}}
+                                <td class="amtheme-store-phone">
+                                    <p class="amtheme-nomargin">
+                                        {{trans 'If you have an urgent issue, Call us:
+                                        <a class="amtheme-link" href="tel:%store_phone" title="Store Phone">%store_phone</a>'
+                                        store_phone=$store_phone |raw}}
+                                    </p>
+                                </td>
+                                {{/depend}}
+                                {{layout handle="email_footer_handle"}}
+                            </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+<!-- End wrapper table -->
+</body>

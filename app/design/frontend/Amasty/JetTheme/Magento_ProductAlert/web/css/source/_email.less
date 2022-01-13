@@ -1,0 +1,42 @@
+//
+// Product Alert Email
+// _________________________________________
+
+.greeting {
+    margin-bottom: 0;
+}
+
+.amtheme-table-wrapper {
+    .photo.image {
+        border: @amtheme__border;
+    }
+
+    .col.item .price {
+        color: @amtheme__text-primary__color;
+        font-weight: @font-weight__bold;
+        font-size: @price__font-size;
+    }
+
+    .col.photo {
+        width: 1%; // set product image cell width to product image width
+    }
+}
+
+.amtheme-unsubscribe-container {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.amtheme-unsubscribe-product {
+    margin-top: @p__margin-bottom;
+}
+
+.email-non-inline() {
+    .amtheme-unsubscribe-product .amtheme-link {
+        &:extend(.no-link a);
+    }
+
+    .amtheme-table-wrapper {
+        ._am-email-products-list();
+    }
+}

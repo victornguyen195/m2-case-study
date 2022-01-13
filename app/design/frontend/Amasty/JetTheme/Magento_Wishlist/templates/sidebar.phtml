@@ -1,0 +1,67 @@
+<?php
+/** @var \Magento\Wishlist\Block\Customer\Sidebar $block */
+
+// phpcs:ignore
+$wishlistHelper = $this->helper(\Magento\Wishlist\Helper\Data::class);
+?>
+
+<?php if ($wishlistHelper->isAllow()): ?>
+    <div class="amtheme-sidebar-block amtheme-sidebar-wishlist"
+         data-bind="scope: 'wishlist'">
+        <div class="amtheme-heading">
+            <span class="amtheme-title"
+                  role="heading"
+                  aria-level="2">
+                <?= $block->escapeHtml($block->getTitle()) ?>
+            </span>
+        </div>
+        <div class="amtheme-content">
+            <!-- ko if: wishlist().counter -->
+                <ul class="amtheme-items no-display"
+                    id="wishlist-sidebar"
+                    data-bind="foreach: wishlist().items, css: {'no-display': null}">
+                    <li class="amtheme-item product-item">
+                        <a class="amtheme-photo"
+                           data-bind="attr: { href: product_url, title: product_name }">
+                            <!-- ko template: {name: $data.image.template, data: $data.image} --><!-- /ko -->
+                        </a>
+                        <div class="amtheme-details">
+                            <a data-bind="attr: { href: product_url }"
+                               class="amtheme-name amtheme-link">
+                                <span data-bind="html: product_name"></span>
+                            </a>
+                            <div data-bind="html: product_price"></div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="amtheme-actions no-display" data-bind="css: {'no-display': null}">
+                    <a class="action button-as-link details amtheme-sliding-icon"
+                       href="<?= $block->escapeUrl($wishlistHelper->getListUrl()) ?>"
+                       title="<?= $block->escapeHtml(__('Go to Wish List')) ?>"
+                       aria-label="<?= $block->escapeHtml(__('Go to Wish List')) ?>">
+                        <?= $block->escapeHtml(__('Go to Wish List')) ?>
+                        <svg class="amtheme-icon" focusable="false">
+                            <use xlink:href="#icon-arrow-right-min"></use>
+                        </svg>
+                    </a>
+                </div>
+            <!-- /ko -->
+            <!-- ko ifnot: wishlist().counter -->
+                <div class="amtheme-empty"><?= $block->escapeHtml(__('You have no items in your wish list.')) ?></div>
+            <!-- /ko -->
+        </div>
+    </div>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "wishlist": {
+                        "component": "Magento_Wishlist/js/view/wishlist"
+                    }
+                }
+            }
+        }
+    }
+</script>
+<?php endif ?>

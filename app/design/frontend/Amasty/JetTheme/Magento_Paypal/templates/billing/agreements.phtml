@@ -1,0 +1,134 @@
+<?php
+/**
+ * @var \Magento\Paypal\Block\Billing\Agreements $block
+ */
+
+$billingAgreements = $block->getBillingAgreements();
+$paymentMethods = $block->getWizardPaymentMethodOptions();
+?>
+<div class="account-billing-agreements">
+    <?php if (count($billingAgreements) > 0): ?>
+        <?= $block->getChildHtml('pager') ?>
+        <div class="table-wrapper billing-agreements">
+            <table id="billing-agreements" class="data table table-billing-agreements">
+                <caption class="table-caption"><?= $block->escapeHtml(__('Billing Agreements')) ?></caption>
+                <thead>
+                    <tr>
+                        <th scope="col" class="col id"><?= $block->escapeHtml(__('Reference ID')) ?></th>
+                        <th scope="col" class="col status"><?= $block->escapeHtml(__('Status')) ?></th>
+                        <th scope="col" class="col created"><?= $block->escapeHtml(__('Created At')) ?></th>
+                        <th scope="col" class="col updated"><?= $block->escapeHtml(__('Updated At')) ?></th>
+                        <th scope="col" class="col payment"><?= $block->escapeHtml(__('Payment Method')) ?></th>
+                        <th scope="col" class="col actions">&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($billingAgreements as $item): ?>
+                        <tr>
+                            <td data-th="<?= $block->escapeHtmlAttr(__('Reference ID')) ?>" class="col id">
+                                <a href="<?= $block->escapeUrl($block->getItemValue($item, 'edit_url')) ?>"
+                                   title="<?= $block->escapeHtml(__('View Billing Agreement'))?>"
+                                   class="action view">
+                                    <?= $block->escapeHtml($block->getItemValue($item, 'reference_id')) ?>
+                                </a>
+                            </td>
+                            <td data-th="<?= $block->escapeHtmlAttr(__('Status')) ?>"
+                                class="col status">
+                                <span class="status -<?= $block->escapeHtml($item->getStatus()) ?>">
+                                    <?= $block->escapeHtml($block->getItemValue($item, 'status')) ?>
+                                </span>
+                            </td>
+                            <td data-th="<?= $block->escapeHtmlAttr(__('Created At')) ?>" class="col created">
+                                <?= $block->escapeHtml($block->getItemValue($item, 'created_at')) ?>
+                            </td>
+                            <td data-th="<?= $block->escapeHtmlAttr(__('Updated At')) ?>" class="col updated">
+                                <?= $block->escapeHtml($block->getItemValue($item, 'updated_at')) ?>
+                            </td>
+                            <td data-th="<?= $block->escapeHtmlAttr(__('Payment Method')) ?>" class="col payment">
+                                <?= $block->escapeHtml($block->getItemValue($item, 'payment_method_label')) ?>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    <?php else: ?>
+        <div class="message info empty">
+            <span><?= $block->escapeHtml(__('There are no billing agreements yet.')) ?></span>
+        </div>
+    <?php endif; ?>
+
+    <?php if ($paymentMethods): ?>
+        <form action="<?= $block->escapeUrl($block->getCreateUrl()) ?>" method="post"
+              class="form form-new-agreement">
+            <fieldset class="fieldset">
+                <legend class="legend">
+                    <?= $block->escapeHtml(__('New Billing Agreement')) ?>
+                </legend>
+                <p class="note">
+                    <?= $block->escapeHtml(__('You will be redirected to the payment system website.')) ?>
+                </p>
+                <div class="content-wrapper">
+                    <div class="field payment method">
+                        <div class="control">
+                            <select id="payment_method"
+                                    name="payment_method"
+                                    class="amtheme-select"
+                                    tabindex="-1">
+                                <option value=""><?= $block->escapeHtml(__('Please Select')) ?></option>
+                                <?php foreach ($paymentMethods as $code => $title): ?>
+                                    <option value="<?= $block->escapeHtmlAttr($code) ?>">
+                                        <?= $block->escapeHtml($title) ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+                            <div class="amtheme-select-block"
+                                 data-mage-init='{"amSelect": {"selectId": "payment_method"}}'
+                                 data-amselect-js="select">
+                                <span role="button"
+                                      tabindex="0"
+                                      class="amtheme-placeholder"
+                                      data-amselect-js="placeholder">
+                                    <span class="amtheme-content"
+                                          data-amselect-js="placeholder-content">
+                                        <?= $block->escapeHtml(__('Please Select')) ?>
+                                    </span>
+                                </span>
+                                <ul role="list"
+                                    class="amtheme-select-options"
+                                    data-amselect-js="options">
+                                    <?php foreach ($paymentMethods as $code => $title): ?>
+                                        <li class="amtheme-option"
+                                            tabindex="0"
+                                            data-amselect-js="item"
+                                            data-amselect-value="<?= $block->escapeHtmlAttr($code) ?>">
+                                            <span class="amtheme-title"><?= $block->escapeHtml($title) ?></span>
+                                        </li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit"
+                            class="outline action create"
+                            title="<?= $block->escapeHtml(__('Create Billing Agreement')) ?>">
+                        <?= $block->escapeHtml(__('Create')) ?>
+                        <svg class="amtheme-icon">
+                            <use xlink:href="#icon-arrow-right" />
+                        </svg>
+                    </button>
+                </div>
+            </fieldset>
+        </form>
+    <?php else: ?>
+        <div class="actions-toolbar">
+            <div class="secondary">
+                <a href="<?= $block->escapeUrl($block->getBackUrl()) ?>"
+                   class="action back"
+                   title="<?= $block->escapeHtml(__('Back')) ?>">
+                    <?= $block->escapeHtml(__('Back')) ?>
+                </a>
+            </div>
+        </div>
+    <?php endif; ?>
+</div>

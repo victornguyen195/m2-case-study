@@ -1,0 +1,44 @@
+//
+//  Checkout Estimated Total styles
+//  _____________________________________________
+
+//
+//  Common
+//  ---------------------------------------------
+
+& when (@media-common = true) {
+    .opc-block-summary .amtheme-estimated-total {
+        & {
+            display: block;
+            .am-margin(0);
+            .am-padding(@indent__base @indent__m);
+            border-bottom: 0;
+            color: @amtheme__text-secondary__color;
+            text-align: right;
+            font-weight: @font-weight__bold;
+            font-size: 2.6rem;
+            cursor: default;
+        }
+
+        &:before {
+            display: block;
+            box-sizing: border-box;
+            padding-bottom: 20px;
+            width: 100%;
+            border-top: @amtheme__border;
+            content: '';
+        }
+    }
+}
+
+//
+//  Desktop
+//  --------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+    .opc-block-summary {
+        .amtheme-estimated-total {
+            padding: 20px 0 0;
+        }
+    }
+}

@@ -1,0 +1,58 @@
+//
+//  Search Terms styles
+//  _____________________________________________
+
+//
+//  Variables
+//  --------------------------------------------
+
+@amtheme-search-terms__background: @amtheme__background-secondary__color;
+@amtheme-search-terms__border: 1px solid @color-gray-light;
+
+//
+//  Common
+//  ---------------------------------------------
+
+& when (@media-common = true) {
+    .amtheme-search-terms {
+        & {
+            display: flex;
+            flex-wrap: wrap;
+            padding: @indent__xs 0;
+        }
+
+        .amtheme-title {
+            .am-margin(0);
+            width: 100%;
+            font-size: 1.8rem;
+            line-height: 2rem;
+        }
+
+        .amtheme-item {
+            box-sizing: border-box;
+            .am-margin(@indent__sm @indent__sm 0 0);
+            max-width: 100%;
+        }
+
+        .amtheme-link {
+            display: inline-block;
+            box-sizing: border-box;
+            padding: 8px @indent__s;
+            max-width: 100%;
+            border: @amtheme-search-terms__border;
+            border-radius: @amtheme__border-radius__s;
+            color: @amtheme__text-secondary__color;
+            word-break: break-all;
+            font-weight: @font-weight__regular;
+        }
+
+        .amtheme-link:hover .amtheme-count {
+            color: @link__hover__color;
+        }
+
+        .amtheme-count {
+            color: @amtheme__link__color;
+            font-weight: @font-weight__bold;
+        }
+    }
+}

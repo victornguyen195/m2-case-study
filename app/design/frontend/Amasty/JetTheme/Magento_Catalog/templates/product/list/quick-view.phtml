@@ -1,0 +1,38 @@
+<?php
+/**
+ * @var Magento\Catalog\Block\Product\ProductList\Item\Block $block
+ * @var Magento\Framework\Escaper $escaper
+ */
+
+$amViewModel = $block->getData('amAjaxViewModel');
+$isQuickViewEnabled = $amViewModel ? $amViewModel->isEnabledQuickView() : false;
+$productId = $block->getParentBlock()->getProduct()->getId();
+?>
+
+<?php if ($isQuickViewEnabled): ?>
+    <div class="amtheme-quick-view">
+        <a href="#"
+           class="action amtheme-link amtheme-circle-icon"
+           title="<?= $escaper->escapeHtmlAttr(__('Quick View')) ?>"
+           aria-label="<?= $escaper->escapeHtmlAttr(__('Quick View')) ?>"
+           data-amtheme-js="quick-view"
+           data-amtheme-post-data='{"product": "<?= /* @noEscape */ $productId; ?>"}'
+           role="button">
+            <svg class="amtheme-icon -hover-bg" focusable="false">
+                <use xlink:href="#icon-eye" />
+            </svg>
+        </a>
+    </div>
+
+    <script type="text/x-magento-init">
+        {
+            "[data-amtheme-js='quick-view']": {
+                "amQuickView": {
+                    "actionUrl": "<?= /* @noEscape */ $amViewModel->getQuickViewUrl(); ?>",
+                    "toCartUrl": "<?= /* @noEscape */ $amViewModel->getAjaxAddToCartUrl()?>",
+                    "loaderUrl": "<?= /* @noEscape */ $block->getViewFileUrl('images/loader-1.gif')?>"
+                }
+            }
+        }
+    </script>
+<?php endif; ?>

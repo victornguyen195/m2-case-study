@@ -1,0 +1,27 @@
+//
+//  Container icons styles
+//  _____________________________________________
+
+//
+//  Variables
+//  ---------------------------------------------
+
+@amtheme-svg-icon__padding: 5px;
+
+//
+//  Common
+//  ---------------------------------------------
+
+& when (@media-common = true) {
+    .amtheme-icons-container {
+        & {
+            display: flex;
+            align-items: center;
+        }
+
+        .amtheme-icon {
+            padding: @amtheme-svg-icon__padding;
+            vertical-align: middle;
+        }
+    }
+}
