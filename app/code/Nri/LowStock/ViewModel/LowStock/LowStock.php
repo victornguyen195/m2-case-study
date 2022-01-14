@@ -5,12 +5,13 @@ namespace Nri\LowStock\ViewModel\LowStock;
 use Magento\Framework\Registry;
 use Nri\LowStock\Helper\LowStock as LowStockHelper;
 use Magento\InventorySalesAdminUi\Model\GetSalableQuantityDataBySku;
+use Magento\Cms\Block\Block as CmsBlock;
 
 class LowStock implements \Magento\Framework\View\Element\Block\ArgumentInterface
 {
     const LOW_STOCK_QUANTITY_KEY_CONFIG = 'low_stock_quantity';
-    const LOW_STOCK_MESSAGE_KEY_CONFIG = 'low_stock_message';
-    const OUT_OF_STOCK_MESSAGE_KEY_CONFIG = 'out_stock_message';
+    const LOW_STOCK_MESSAGE_KEY = 'low-stock';
+    const OUT_OF_STOCK_MESSAGE_KEY = 'out-of-stock';
 
     /**
      * @var Registry
@@ -27,20 +28,27 @@ class LowStock implements \Magento\Framework\View\Element\Block\ArgumentInterfac
      */
     protected $getSalableQuantityDataBySku;
 
+    /**
+     * @var
+     */
+    protected $cms;
 
     /**
      * @param Registry $registry
      * @param LowStockHelper $lowStockHelper
      * @param GetSalableQuantityDataBySku $getSalableQuantityDataBySku
+     * @param CmsBlock $cmsblock
      */
     public function __construct(
         Registry $registry,
         LowStockHelper $lowStockHelper,
-        GetSalableQuantityDataBySku $getSalableQuantityDataBySku
+        GetSalableQuantityDataBySku $getSalableQuantityDataBySku,
+        CmsBlock $cmsblock
     ) {
         $this->_registry = $registry;
         $this->lowStockHelper = $lowStockHelper;
         $this->getSalableQuantityDataBySku = $getSalableQuantityDataBySku;
+        $this->cmsblock = $cmsblock;
     }
 
     /**
@@ -58,11 +66,11 @@ class LowStock implements \Magento\Framework\View\Element\Block\ArgumentInterfac
         }
 
         if (!$quantity) {
-            return $this->lowStockHelper->getGeneralConfig(self::OUT_OF_STOCK_MESSAGE_KEY_CONFIG);
+            return $this->cmsblock->setBlockId(self::OUT_OF_STOCK_MESSAGE_KEY)->toHtml();
         }
 
         if ($quantity <= $lowStockQuantity) {
-            return $this->lowStockHelper->getGeneralConfig(self::LOW_STOCK_MESSAGE_KEY_CONFIG);
+            return $this->cmsblock->setBlockId(self::LOW_STOCK_MESSAGE_KEY)->toHtml();
         }
 
         return '';

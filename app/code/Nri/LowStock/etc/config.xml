@@ -4,8 +4,6 @@
         <low_stock_config>
             <general>
                 <low_stock_quantity>10</low_stock_quantity>
-                <low_stock_message>在庫が残りわずかです。</low_stock_message>
-                <out_stock_message>在庫切れのため、お買い物カゴに投入できません。</out_stock_message>
             </general>
         </low_stock_config>
     </default>
