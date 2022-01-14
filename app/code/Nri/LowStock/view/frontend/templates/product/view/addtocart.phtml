@@ -11,12 +11,12 @@ $viewModel = $block->getViewModel();
 <?php $_product = $block->getProduct(); ?>
 <?php $buttonTitle = __('Add to Cart'); ?>
 
+<?php if ($viewModel->getLowStockMessageMessage()) :?>
+    <p class="low-stock-message"><?= $viewModel->getLowStockMessageMessage() ?></p>
+<?php endif; ?>
 <?php if ($_product->isSaleable()):?>
     <div class="box-tocart">
         <div class="fieldset">
-            <?php if ($viewModel->getLowStockMessageMessage()) :?>
-                <p class="low-stock-message"><?= $viewModel->getLowStockMessageMessage() ?></p>
-            <?php endif; ?>
             <div class="actions">
                 <button type="submit"
                         title="<?= $escaper->escapeHtml($buttonTitle) ?>"
