@@ -4,16 +4,24 @@
         <tab id="nri" translate="label" sortOrder="10">
             <label>NRI</label>
         </tab>
-        <section id="low-stock-config" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+        <section id="low_stock_config" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
             <class>separator-top</class>
             <label>Low Stock</label>
             <tab>nri</tab>
             <resource>Magento_Catalog::catalog</resource>
             <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
                 <label>Low Stock Configuration</label>
-                <field id="low-stock-quantity" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                <field id="low_stock_quantity" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
                     <label>Low Stock Quantity</label>
-                    <comment>Config low stock quantity will display on the frontend.</comment>
+                    <comment>Config low stock quantity will display message on the frontend.</comment>
+                </field>
+                <field id="low_stock_message" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Low Stock Message</label>
+                    <comment>The message will be displayed when the products are running low.</comment>
+                </field>
+                <field id="out_stock_message" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Out Of Stock Message</label>
+                    <comment>The message will be displayed when the products are out of stock.</comment>
                 </field>
             </group>
         </section>

@@ -7,17 +7,27 @@ use Magento\Store\Model\ScopeInterface;
 
 class LowStock extends AbstractHelper
 {
-    const XML_PATH_LOW_STOCK = 'low-stock-config/general/low-stock-quantity';
+    const XML_PATH_LOW_STOCK = 'low_stock_config/general/';
 
     /**
-     * @param string $field
+     * @param $field
      * @param $storeId
      * @return mixed
      */
-    public function getLowStockConfigValue(string $field = self::XML_PATH_LOW_STOCK, $storeId = null)
+    public function getConfigValue($field, $storeId = null)
     {
         return $this->scopeConfig->getValue(
             $field, ScopeInterface::SCOPE_STORE, $storeId
         );
+    }
+
+    /**
+     * @param $code
+     * @param $storeId
+     * @return mixed
+     */
+    public function getGeneralConfig($code, $storeId = null)
+    {
+        return $this->getConfigValue(self::XML_PATH_LOW_STOCK . $code, $storeId);
     }
 }

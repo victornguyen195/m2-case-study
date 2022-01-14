@@ -1,10 +1,12 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
     <default>
-        <low-stock-config>
+        <low_stock_config>
             <general>
-                <low-stock-quantity>10</low-stock-quantity>
+                <low_stock_quantity>10</low_stock_quantity>
+                <low_stock_message>在庫が残りわずかです。</low_stock_message>
+                <out_stock_message>在庫切れのため、お買い物カゴに投入できません。</out_stock_message>
             </general>
-        </low-stock-config>
+        </low_stock_config>
     </default>
 </config>
