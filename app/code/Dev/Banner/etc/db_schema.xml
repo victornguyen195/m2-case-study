@@ -2,7 +2,6 @@
     <table name="banner" resource="default" engine="innodb" comment="Dev Banner Table">
         <column xsi:type="int" name="banner_id" unsigned="true" nullable="false" identity="true" comment="Banner ID"/>
         <column xsi:type="varchar" name="name" nullable="false" comment="Banner Name"/>
-        <column xsi:type="varchar" name="description" nullable="false" comment="Banner Description"/>
         <column xsi:type="varchar" name="image" nullable="false" comment="Banner Image"/>
         <column xsi:type="int" name="status" nullable="false" comment="Banner Status"/>
         <constraint xsi:type="primary" referenceId="PRIMARY">
