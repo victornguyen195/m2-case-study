@@ -5,7 +5,8 @@
             "name": true,
             "description": true,
             "image": true,
-            "status": true
+            "status": true,
+            "short_description": true
         },
         "constraint": {
             "PRIMARY": true
