@@ -1,0 +1,26 @@
+<?php
+
+/**
+ * @var \Dev\Banner\Block\Banner $block
+ */
+
+?>
+
+<?php $banner = $block->getBanner() ?>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Image</th>
+        <th>Status</th>
+        <th>Short Description</th>
+    </tr>
+    <tr>
+        <td><?= $banner->getId() ?></td>
+        <td><?= $banner->getName() ?></td>
+        <td><?= $banner->getImage() ?></td>
+        <td><?= $banner->getStatus() ?></td>
+        <td><?= $banner->getShortDescription() ?></td>
+    </tr>
+</table>
