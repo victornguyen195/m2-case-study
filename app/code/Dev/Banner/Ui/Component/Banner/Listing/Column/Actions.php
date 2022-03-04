@@ -8,13 +8,12 @@ namespace Dev\Banner\Ui\Component\Banner\Listing\Column;
 
 use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
-use Magento\Framework\Url;
+use Magento\Framework\UrlInterface;
 use Magento\Ui\Component\Listing\Columns\Column;
 use Magento\Framework\Escaper;
 
 class Actions extends Column
 {
-    const VIEW_URL = 'banner/index/view';
     const EDIT_URL = 'banner/index/edit';
     const DELETE_URL = 'banner/index/delete';
 
@@ -42,7 +41,7 @@ class Actions extends Column
     public function __construct(
         ContextInterface $context,
         UiComponentFactory $uiComponentFactory,
-        Url $urlBuilder,
+        UrlInterface  $urlBuilder,
         Escaper $_escaper,
         array $components = [],
         array $data = []
@@ -64,10 +63,6 @@ class Actions extends Column
             foreach ($dataSource['data']['items'] as & $item) {
                 $name = $this->getData('name');
                 if (isset($item['banner_id'])) {
-                    $item[$name]['view'] = [
-                        'href' => $this->_urlBuilder->getUrl(self::VIEW_URL, ['id' => $item['banner_id']]),
-                        'label' => __('View'),
-                    ];
                     $item[$name]['edit'] = [
                         'href' => $this->_urlBuilder->getUrl(self::EDIT_URL, ['id' => $item['banner_id']]),
                         'label' => __('Edit'),

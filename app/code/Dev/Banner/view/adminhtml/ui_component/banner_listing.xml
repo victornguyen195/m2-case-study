@@ -7,7 +7,7 @@
     <settings>
         <buttons>
             <button name="add">
-                <url path="*/*/new"/>
+                <url path="*/*/add"/>
                 <class>primary</class>
                 <label translate="true">Add New Banner</label>
             </button>
