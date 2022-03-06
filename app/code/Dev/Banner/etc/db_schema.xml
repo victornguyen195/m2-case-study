@@ -8,5 +8,12 @@
         <constraint xsi:type="primary" referenceId="PRIMARY">
             <column name="banner_id"/>
         </constraint>
+        <index referenceId="BANNER_ID" indexType="btree">
+            <column name="banner_id"/>
+        </index>
+        <index referenceId="BANNER_NAME_SHORT_DESCRIPTION" indexType="fulltext">
+            <column name="name"/>
+            <column name="short_description"/>
+        </index>
     </table>
 </schema>

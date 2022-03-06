@@ -10,6 +10,10 @@
         },
         "constraint": {
             "PRIMARY": true
+        },
+        "index": {
+            "BANNER_BANNER_ID": true,
+            "BANNER_NAME_SHORT_DESCRIPTION": true
         }
     }
 }
