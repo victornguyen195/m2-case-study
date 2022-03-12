@@ -333,6 +333,7 @@ return [
         'Amazon_Payment' => 1,
         'Dev_Banner' => 1,
         'Dev_Catalog' => 1,
+        'Dev_ExpertReview' => 1,
         'Dotdigitalgroup_Email' => 1,
         'Dotdigitalgroup_Chat' => 1,
         'Dotdigitalgroup_Sms' => 1,
