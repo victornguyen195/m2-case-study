@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Dev_ExpertReview::manage" title="Manage Expert" module="Dev_ExpertReview" sortOrder="10" resource="Dev_ExpertReview::manage_expert" action="expert/index/index"/>
+    </menu>
+</config>
