@@ -1,0 +1,16 @@
+{
+    "experts": {
+        "column": {
+            "expert_id": true,
+            "name": true,
+            "position": true,
+            "workplace": true
+        },
+        "index": {
+            "EXPERTS_NAME_POSITION_WORKPLACE": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

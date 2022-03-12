@@ -1,0 +1,16 @@
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="experts" resource="default" engine="innodb" comment="Experts Table">
+        <column xsi:type="int" name="expert_id" unsigned="true" nullable="false" identity="true" comment="Expert ID"/>
+        <column xsi:type="varchar" name="name" nullable="false" comment="Expert Name"/>
+        <column xsi:type="varchar" name="position" nullable="false" comment="Expert Position"/>
+        <column xsi:type="varchar" name="workplace" nullable="false" comment="Expert Workplace"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="expert_id"/>
+        </constraint>
+        <index referenceId="EXPERT_NAME_POSITION_WORKPLACE" indexType="fulltext">
+            <column name="name"/>
+            <column name="position"/>
+            <column name="workplace"/>
+        </index>
+    </table>
+</schema>
