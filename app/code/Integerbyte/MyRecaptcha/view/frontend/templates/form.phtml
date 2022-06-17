@@ -1,0 +1,45 @@
+<?php $form_url = $this->getUrl('myrecaptcha/index/save'); ?>
+<div id="myrecaptcha-div">
+    <div class="modal-body">
+        <form class="form" action="<?= $block->escapeHtmlAttr($form_url) ?>"
+              id="demo-recaptcha-form" method="post" enctype='multipart/form-data' >
+            <input type="hidden" name="product_id" >
+            <fieldset class="fieldset">
+                <div class="field required">
+                    <label for="user_name" class="label">
+                        <span><?= $block->escapeHtml('Name:') ?></span>
+                    </label>
+                    <div class="control">
+                        <input type="text" name="customer_name" title="<?= $block->escapeHtml('Name') ?>"
+                               class="input-text" data-validate="{required:true}"> </div>
+                </div>
+                <div class="field required">
+                    <label for="user_name" class="label">
+                        <span><?= $block->escapeHtml('E-mail:') ?></span>
+                    </label>
+                    <div class="control">
+                        <input type="email" name="customer_email" title="<?= $block->escapeHtml('E-mail') ?>"
+                               class="input-text" data-validate="{required:true, 'validate-email':true}">
+                    </div>
+                </div>
+                <?= $block->getChildHtml('form.additional.info.demo.for.recaptcha') ?>
+            </fieldset>
+            <div class="actions-toolbar">
+                <div class="primary">
+                    <button type="submit" class="action submit primary " title="<?= $block->escapeHtml('Submit') ?>">
+<span>
+      <?= $block->escapeHtml('Submit') ?>
+</span>
+                    </button>
+                </div>
+            </div>
+        </form>
+        <script type="text/x-magento-init">
+       {
+         "#demo-recaptcha-form": {
+         "validation": {}
+        }
+       }
+      </script>
+    </div>
+</div>
